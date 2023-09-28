@@ -1,0 +1,65 @@
+<script>
+  import {
+    bankAddress,
+    physicalAddress,
+    required
+  } from "$lib/strings/poSheet";
+
+  export let bankAddressActualLine1 = "Some place";
+  export let bankAddressActualLine2 = "where money";
+  export let bankAddressActualLine3 = "is stored";
+</script>
+
+<div class="grid-container">
+  <div class="bank-address-label item-a">
+    <h5 class="bank-address-text item-a">
+      {bankAddress}
+    </h5>
+    <p class="required">
+      {required}:
+    </p>
+  </div>
+  <p class="physical-address-warning">
+    {physicalAddress}
+  </p>
+  <p class="bank-address-actual-line1">
+    {bankAddressActualLine1}
+  </p>
+  <p class="bank-address-actual-line2">
+    {bankAddressActualLine2}
+  </p>
+  <p class="bank-address-actual-line3">
+    {bankAddressActualLine3}
+  </p>
+</div>
+
+<style>
+  .bank-address-label {
+    display: flex;
+    grid-area: bankAddressLabel;
+  }
+  .physical-address-warning {
+    grid-area: physicalAddressWarning;
+  }
+  .bank-address-actual-line1 {
+    grid-area: bankAddressActualLine1;
+    border-bottom: 1px solid black;
+  }
+  .bank-address-actual-line2 {
+    grid-area: bankAddressActualLine2;
+    border-bottom: 1px solid black;
+  }
+  .bank-address-actual-line3 {
+    grid-area: bankAddressActualLine3;
+    border-bottom: 1px solid black;
+  }
+  .grid-container {
+    display: grid;
+    grid-template-columns: 33% 1fr;
+    grid-template-rows: repeat(3, auto);
+    grid-template-areas:
+    "bankAddressLabel bankAddressActualLine1"
+    "physicalAddressWarning bankAddressActualLine2"
+    ". bankAddressActualLine3";
+  }
+</style>

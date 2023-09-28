@@ -1,2 +1,16 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+  import PoTemplate from '$lib/components/poTemplate/PoTemplate.svelte'; 
+</script>
+
+<div class="page-container">
+  <PoTemplate />
+</div>
+
+<style>
+  .page-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+</style>

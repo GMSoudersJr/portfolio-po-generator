@@ -1,0 +1,16 @@
+<script>
+  import { title, subtitle} from '$lib/strings/poSheet'
+</script>
+
+<section class="title">
+  <h1>
+    {title}
+  </h1>
+</section>
+
+
+<style>
+  h1 {
+   text-align: center; 
+  }
+</style>
