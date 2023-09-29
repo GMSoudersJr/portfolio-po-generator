@@ -9,18 +9,18 @@
 </script>
 
 <div class="grid-container">
-  <div class="address-label item-a">
-    <h5 class="address-text item-a">
+  <div class="address-label">
+    <h5 class="address-text section1-data-label">
       {address}
     </h5>
-    <p class="required">
+    <p class="required warning">
       {required}:
     </p>
   </div>
-  <p class="address-actual-line-1">
+  <p class="address-actual-line-1 section1-data-actual">
     {addressActualLine1}
   </p>
-  <p class="address-actual-line-2">
+  <p class="address-actual-line-2 section1-data-actual">
     {addressActualLine2}
   </p>
 </div>
@@ -29,6 +29,7 @@
   .address-label {
     display: flex;
     grid-area: addressLabel;
+    padding-left: 0.15em;
   }
   .address-actual-line-1 {
     grid-area: addressActualLine1;
@@ -46,5 +47,7 @@
     "addressLabel addressActualLine1"
     ". addressActualLine2"
     "none none";
+    row-gap: 0.3em;
+    margin: 0.25em 0;
   }
 </style>

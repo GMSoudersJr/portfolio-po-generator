@@ -93,18 +93,21 @@
   }
   .section-1-label{
     grid-area: section1Label;
+    font-size: var(--fontSizeSectionLabel);
   }
   .section1 {
     grid-area: section1;
   }
   .section-2-label{
     grid-area: section2Label;
+    font-size: var(--fontSizeSectionLabel);
   }
   .section2 {
     grid-area: section2;
   }
   .section-3-label{
     grid-area: section3Label;
+    font-size: var(--fontSizeSectionLabel);
   }
   .section3 {
     grid-area: section3;
@@ -124,11 +127,10 @@
   .page-container {
     width: 21cm;
     height: 29.7cm;
-    border: 1px solid black;
     display: grid;
     padding: 30px 45px;
-    grid-template-columns: 10% 90%;
-    grid-template-rows: repeat(4, 2.5%) repeat(8, 1fr);
+    grid-template-columns: auto 1fr;
+    grid-template-rows: repeat(7, auto) repeat(5, 1fr);
     grid-template-areas:
     ". title"
     ". subtitle"
@@ -142,7 +144,6 @@
     ". requestedBy"
     ". approvedBy"
     "footer footer";
-    row-gap: 12px;
   }
   @page {
     size: 21cm 29.7cm;

@@ -16,10 +16,12 @@
 <style>
   .due-by {
     grid-area: dueBy;
+    font-size: var(--fontSizeSectionDataLabel);
   }
   .due-date {
     grid-area: dueDate;
     border-bottom: 1px solid black;
+    font-size: var(--fontSizeSectionDataActual);
   }
   .grid-container {
     display: grid;
@@ -27,5 +29,6 @@
     grid-template-rows: 1fr;
     grid-template-areas:
     "dueBy dueDate .";
+    margin: 0.25em 0;
   }
 </style>

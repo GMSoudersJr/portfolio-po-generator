@@ -8,14 +8,12 @@
 </script>
 
 <section class="grid-container">
-  <div class="section-data-container">
-    <DateLine />
-    <TopicDivisionLine />
-    <ReportingBudgetLineLine />
-    <PnpLocationLine />
-    <PayableToLine />
-    <AddressLine />
-  </div>
+  <DateLine />
+  <TopicDivisionLine />
+  <ReportingBudgetLineLine />
+  <PnpLocationLine />
+  <PayableToLine />
+  <AddressLine />
 </section>
 
 
@@ -24,8 +22,7 @@
   .grid-container {
     display: grid;
     grid-template-columns: auto;
-  }
-  .section-data-container {
+    grid-template-rows: repeat(6, auto);
     border: 2px solid black;
   }
 </style>

@@ -10,16 +10,16 @@
 </script>
 
 <div class="grid-container">
-  <div class="po-label item-a">
-    <h5 class="po-number-text item-a">
+  <div class="po-label">
+    <h5 class="po-number-text">
       {poNumber}
     </h5>
-    <p class="required">
+    <p class="required warning">
       {required}:
     </p>
   </div>
-  <div class=" po-number-area item-b b-grid-container">
-    <p class="actual-po-number">
+  <div class=" po-number-area">
+    <p class="po-number-actual">
       {poNumberActual}
     </p>
     <p class="po-number-format">
@@ -35,18 +35,27 @@
   .po-number-format,
   .po-number-example {
     color: var(--exampleCrimson);
-    font-size: 12px;
+    font-size: var(--fontSizePoFormatAndExample);
+    font-size: 0.64em;
+    font-style: italic;
     text-align: center;
+
   }
   .po-label {
     display: flex;
     grid-area: poLabel;
   }
+  .po-number-text {
+    font-size: var(--fontSizeSectionDataLabel);
+  }
   .po-number-area {
     grid-area: poNumberArea;
+    display: grid;
+    row-gap: 0.5em;;
   }
-  .actual-po-number {
+  .po-number-actual {
     border-bottom: 1px solid black;
+    font-size: var(--fontSizeSectionDataActual);
   }
   .grid-container {
     display: grid;
@@ -54,5 +63,6 @@
     grid-template-rows: 1fr;
     grid-template-areas:
     "poLabel poNumberArea .";
+    margin: 0.25em 0;
   }
 </style>

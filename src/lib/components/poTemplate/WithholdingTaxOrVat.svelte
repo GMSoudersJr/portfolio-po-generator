@@ -6,13 +6,13 @@
 
 <div class="grid-container">
   <div class="withholding-tax-vat">
-    <h5>
+    <p class="withholding-tax-vat-label">
       {withholdingTaxOrVat}
-    </h5>
+    </p>
   </div>
-  <p class="amount">
+  <h5 class="amount">
     {withholdingTaxOrVatActual}
-  </p>
+  </h5>
 </div>
 
 <style>
@@ -21,10 +21,18 @@
     border-right: 1px solid black;
     display: flex;
     justify-self: end;
+    padding-top: 0.25em;
+    padding-right: 0.15em;
+  }
+  .withholding-tax-vat-label {
+    font-size: var(--fontSizeSectionDataLabel);
   }
   .amount {
     grid-area: amount;
     justify-self: end;
+    font-size: var(--fontSizePaymentMethodActualAndMoney);
+    padding-top: 0.25em;
+    padding-right: 0.15em;
   }
   .grid-container {
     border-top: 1px solid black;

@@ -5,19 +5,17 @@
 
 <div class="grid-container">
   <div class="approved-label">
-    <h5>
+    <h5 class="approved-by-label">
       {approvedBy}
     </h5>
-    <p class="required">
+    <p class="required warning">
       {required}:
     </p>
   </div>
 
-  <div class="approved-name">
-    <p>
-      {approvedByName}
-    </p>
-  </div>
+  <p class="approved-name">
+    {approvedByName}
+  </p>
 </div>
 
 <style>
@@ -25,16 +23,20 @@
     display: flex;
     grid-area: approvedBy;
   }
+  .approved-by-label {
+    font-size: var(--fontSizeApprovedBy);
+  }
   .approved-name {
     grid-area: approvedName;
     border-bottom: 3px solid black;
+    font-size: var(--fontSizeApprovedBy);
   }
   .grid-container {
     display: grid;
     grid-template-columns: 33% 1fr;
     grid-template-rows: 1fr;
     grid-template-areas:
-    "approvedBy approvedName .";
+    "approvedBy approvedName";
 
   }
 </style>

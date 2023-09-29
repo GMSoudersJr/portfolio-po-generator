@@ -4,16 +4,14 @@
     nationalIdOrBusinessReg
   } from "$lib/strings/poSheet";
 
-  export let addtionalNotesActual = "";
+  export let addtionalNotesActual = "811925-33849";
   export let nationalIdOrBusinessRegistrationActual = "";
 </script>
 
 <div class="grid-container">
-  <div class="additional-notes-label item-a">
-    <h5 class="routing-number-text item-a">
-      {additionalNotes}:
-    </h5>
-  </div>
+  <h5 class="additional-notes-label">
+    {additionalNotes}:
+  </h5>
   <p class="national-id-business-registration-label warning">
     {nationalIdOrBusinessReg}
   </p>
@@ -28,6 +26,7 @@
 <style>
   .additional-notes-label {
     grid-area: additionalNotesLabel;
+    font-size: var(--fontSizeSectionDataLabel);
   }
   .national-id-business-registration-label {
     grid-area: nationalIdOrBusinessRegistrationLabel;
@@ -35,10 +34,12 @@
   .additional-notes-actual {
     grid-area: addtionalNotesActual;
     border-bottom: 1px solid black;
+    font-size: var(--fontSizeSectionDataActual);
   }
   .national-id-business-registration-actual {
     grid-area: nationalIdOrBusinessRegistrationActual;
     border-bottom: 1px solid black;
+    font-size: var(--fontSizeSectionDataActual);
   }
   .grid-container {
     display: grid;

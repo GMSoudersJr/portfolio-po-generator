@@ -8,15 +8,15 @@
 </script>
 
 <div class="grid-container">
-  <div class="reporting-budget-line-label item-a">
-    <h5 class="reporting-budget-line-text item-a">
+  <div class="reporting-budget-line-label">
+    <h5 class="reporting-budget-line-text section1-data-label">
       {reportingBudgetLine}
     </h5>
-    <p class="required">
+    <p class="required warning">
       {required}:
     </p>
   </div>
-  <p class="reporting-budget-line-actual">
+  <p class="reporting-budget-line-actual section1-data-actual">
     {reportingBudgetLineActual}
   </p>
 </div>
@@ -25,6 +25,7 @@
   .reporting-budget-line-label {
     display: flex;
     grid-area: reportingBudgetLineLabel;
+    padding-left: 0.15em;
   }
   .reporting-budget-line-actual {
     grid-area: reportingBudgetLineActual;
@@ -36,5 +37,6 @@
     grid-template-rows: 1fr;
     grid-template-areas:
     "reportingBudgetLineLabel reportingBudgetLineActual";
+    margin: 0.25em 0;
   }
 </style>

@@ -8,15 +8,15 @@
 </script>
 
 <div class="grid-container">
-  <div class="date-label item-a">
-    <h5 class="date-text item-a">
+  <div class="date-label">
+    <h5 class="date-text section1-data-label">
       {date}
     </h5>
-    <p class="required">
+    <p class="required warning">
       {required}:
     </p>
   </div>
-  <p class="date-actual">
+  <p class="date-actual section1-data-actual">
     {dateActual}
   </p>
 </div>
@@ -25,6 +25,7 @@
   .date-label {
     display: flex;
     grid-area: dateLabel;
+    padding-left: 0.15em;
   }
   .date-actual {
     grid-area: dateActual;
@@ -38,6 +39,7 @@
     grid-template-rows: 1fr;
     grid-template-areas:
     "dateLabel dateActual";
+    margin: 0.25em 0;
   }
 </style>
 

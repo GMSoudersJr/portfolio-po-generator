@@ -8,15 +8,15 @@
 </script>
 
 <div class="grid-container">
-  <div class="payable-to-label item-a">
-    <h5 class="payable-to-text item-a">
+  <div class="payable-to-label">
+    <h5 class="payable-to-text section1-data-label">
       {payableTo}
     </h5>
-    <p class="required">
+    <p class="required warning">
       {required}:
     </p>
   </div>
-  <p class="payable-to-actual">
+  <p class="payable-to-actual section1-data-actual">
     {payableToActual}
   </p>
 </div>
@@ -25,6 +25,7 @@
   .payable-to-label {
     display: flex;
     grid-area: payableToLabel;
+    padding-left: 0.15em;
   }
   .payable-to-actual {
     grid-area: payableToActual;
@@ -36,5 +37,6 @@
     grid-template-rows: 1fr;
     grid-template-areas:
     "payableToLabel payableToActual";
+    margin: 0.25em 0;
   }
 </style>

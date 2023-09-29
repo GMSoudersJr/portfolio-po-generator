@@ -11,24 +11,24 @@
 </script>
 
 <div class="grid-container">
-  <div class="bank-address-label item-a">
-    <h5 class="bank-address-text item-a">
+  <div class="bank-address-label">
+    <h5 class="bank-address-text section3-data-label">
       {bankAddress}
     </h5>
-    <p class="required">
+    <p class="required warning">
       {required}:
     </p>
   </div>
-  <p class="physical-address-warning">
+  <p class="physical-address-warning warning">
     {physicalAddress}
   </p>
-  <p class="bank-address-actual-line1">
+  <p class="bank-address-actual-line1 section3-data-actual">
     {bankAddressActualLine1}
   </p>
-  <p class="bank-address-actual-line2">
+  <p class="bank-address-actual-line2 section3-data-actual">
     {bankAddressActualLine2}
   </p>
-  <p class="bank-address-actual-line3">
+  <p class="bank-address-actual-line3 section3-data-actual">
     {bankAddressActualLine3}
   </p>
 </div>
@@ -37,9 +37,11 @@
   .bank-address-label {
     display: flex;
     grid-area: bankAddressLabel;
+    padding-left: 0.15em;
   }
   .physical-address-warning {
     grid-area: physicalAddressWarning;
+    padding-left: 0.15em;
   }
   .bank-address-actual-line1 {
     grid-area: bankAddressActualLine1;
@@ -61,5 +63,7 @@
     "bankAddressLabel bankAddressActualLine1"
     "physicalAddressWarning bankAddressActualLine2"
     ". bankAddressActualLine3";
+    row-gap: 0.25em;
+    margin: 0.25em 0;
   }
 </style>

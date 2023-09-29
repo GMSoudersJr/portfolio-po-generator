@@ -4,7 +4,7 @@
 
 <div class="grid-container">
   <div class="description">
-    <h5>
+    <h5 class="section2-data-label">
       {productServiceDescription}
     </h5>
     <p class="warning">
@@ -18,6 +18,8 @@
     grid-area: description;
     border-right: 1px solid black;
     display: flex;
+    padding-top: 0.25em;
+    padding-left: 0.15em;
   }
   .grid-container {
     display: grid;

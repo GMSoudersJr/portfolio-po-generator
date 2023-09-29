@@ -6,7 +6,7 @@
 
 <div class="grid-container">
   <div class="total">
-    <h5>
+    <h5 class="total-label">
       {total}
     </h5>
   </div>
@@ -21,10 +21,19 @@
     border-right: 1px solid black;
     display: flex;
     justify-self: end;
+    padding-top: 0.25em;
+    padding-right: 0.15em;
+  }
+  .total-label {
+    font-size: var(--fontSizeSectionDataLabel);
   }
   .amount {
     grid-area: amount;
     justify-self: end;
+    font-size: var(--fontSizePaymentMethodActualAndMoney);
+    font-weight: 700;
+    padding-top: 0.25em;
+    padding-right: 0.15em;
   }
   .grid-container {
     border-top: 1px solid black;

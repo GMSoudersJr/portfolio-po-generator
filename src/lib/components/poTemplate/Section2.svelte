@@ -13,17 +13,15 @@ import ProductSvcDescriptionTitle from "./ProductSVCDescriptionTitle.svelte";
 </script>
 
 <section class="grid-container">
-  <div class="section-data-container">
-    <ProductSvcDescriptionTitle />
-    {#each productServices as productOrService}
-      <ProductSvcDescriptionLine
-        description={productOrService.description}
-        price={productOrService.price}
-      />
-    {/each}
-    <WithholdingTaxOrVat />
-    <TotalLine />
-  </div>
+  <ProductSvcDescriptionTitle />
+  {#each productServices as productOrService}
+    <ProductSvcDescriptionLine
+      description={productOrService.description}
+      price={productOrService.price}
+    />
+  {/each}
+  <WithholdingTaxOrVat />
+  <TotalLine />
 </section>
 
 
@@ -32,9 +30,7 @@ import ProductSvcDescriptionTitle from "./ProductSVCDescriptionTitle.svelte";
   .grid-container {
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: 1fr;
-  }
-  .section-data-container {
+    grid-template-rows: repeat(7, auto);
     border: 2px solid black;
   }
 </style>

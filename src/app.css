@@ -1,8 +1,40 @@
 * {
-  padding: 0;
   margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
   box-sizing: border-box;
   --warningRed: #FF0F0F;
   --exampleCrimson: #D0342C;
   --backgroundSubtitle: #E5DECF;
+  --fontSizePoTitle: 1em; /* 12pt */
+  --fontSizePoSubtitle: 0.81em; /* 10pt */
+  --fontSizeSectionLabel: 0.81em; /* 10pt */
+  --fontSizeSectionDataTitle: 0.75em; /* 9pt */
+  --fontSizeSectionDataLabel: 0.75em; /* 9pt */
+  --fontSizeSectionDataActual: 0.75em;/* 9pt */
+  --fontSizeRequiredWarning: 0.67em; /* 8pt */
+  --fontSizePoFormatAndExample: 0.67em; /* 8pt */
+  --fontSizePaymentMethodActualAndMoney: 0.81em; /* 10pt */
+  --fontSizeRequestedBy: 0.75em;
+  --fontSizeApprovedBy: 0.81em;
+
+  --fontSize12pt: 1em;
+  --fontSize10pt: 0.81em;
+  --fontSize09pt: 0.75em;
+  --fontSize08pt: 0.67em;
+}
+
+.warning {
+  color: var(--warningRed);
+}
+.required, .warning {
+  font-size: var(--fontSizeRequiredWarning);
+  font-style: italic;
+}
+.section1-data-label,
+.section3-data-label {
+  font-size: var(--fontSizeSectionDataLabel);
+}
+.section1-data-actual,
+.section3-data-actual {
+  font-size: var(--fontSizeSectionDataActual);
 }

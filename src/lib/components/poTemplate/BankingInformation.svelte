@@ -4,8 +4,11 @@
 
 <div class="grid-container">
   <div class="title">
-    <p>
-      {bankingInformation} {forWirePaymentsOnly}
+    <h5 class="section-data-title">
+      {bankingInformation}
+    </h5>
+    <p class="warning">
+      {forWirePaymentsOnly}
     </p>
   </div>
 </div>
@@ -14,14 +17,18 @@
   .title {
     grid-area: title;
     display: flex;
-
+    align-items: center;
+  }
+  .section-data-title {
+    font-size: var(--fontSizeSectionDataTitle);
   }
   .grid-container {
     display: grid;
-    grid-template-columns: 33% 1fr 16.5%;
+    grid-template-columns: auto;
     grid-template-rows: auto;
     grid-template-areas:
-    ". title title";
-
+    "title";
+    justify-content: center;
+    margin: 0.25em 0;
   }
 </style>

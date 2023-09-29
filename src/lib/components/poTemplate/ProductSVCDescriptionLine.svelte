@@ -5,7 +5,7 @@
 
 <div class="grid-container">
   <div class="description">
-    <p>
+    <p class="product-service-description">
       {description}
     </p>
   </div>
@@ -19,10 +19,22 @@
     grid-area: description;
     border-right: 1px solid black;
     display: flex;
+    padding-top: 0.25em;
+    padding-left: 0.15em;
+    padding-right: 0.15em;
+  }
+  .product-service-description {
+    font-size: var(--fontSizeSectionDataLabel);
+    font-weight: 700;
+
   }
   .amount {
     grid-area: amount;
     justify-self: end;
+    font-size: var(--fontSizePaymentMethodActualAndMoney);
+    font-weight: 700;
+    padding-top: 0.25em;
+    padding-right: 0.15em;
   }
   .grid-container {
     border-top: 1px solid black;

@@ -8,15 +8,15 @@
 </script>
 
 <div class="grid-container">
-  <div class="beneficiary-name-label item-a">
-    <h5 class="beneficiary-name-text item-a">
+  <div class="beneficiary-name-label">
+    <h5 class="beneficiary-name-text section3-data-label">
       {beneficiaryName}
     </h5>
-    <p class="required">
+    <p class="required warning">
       {required}:
     </p>
   </div>
-  <p class="beneficiary-name-actual">
+  <p class="beneficiary-name-actual section3-data-actual">
     {beneficiaryNameActual}
   </p>
 </div>
@@ -25,6 +25,7 @@
   .beneficiary-name-label {
     display: flex;
     grid-area: beneficiaryNameLabel;
+    padding-left: 0.15em;
   }
   .beneficiary-name-actual {
     grid-area: beneficiaryNameActual;
@@ -36,5 +37,6 @@
     grid-template-rows: 1fr;
     grid-template-areas:
     "beneficiaryNameLabel beneficiaryNameActual";
+    margin: 0.25em 0;
   }
 </style>
