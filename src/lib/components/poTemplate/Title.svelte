@@ -1,5 +1,5 @@
 <script>
-  import { title, subtitle} from '$lib/strings/poSheet'
+  import { title } from '$lib/strings/poTemplate'
 </script>
 
 <section class="title">

@@ -3,7 +3,7 @@
     routingABAOrSwift,
     routingMessage,
     required
-  } from "$lib/strings/poSheet";
+  } from "$lib/strings/poTemplate";
 
   export let routingNumberActual = "2343200094";
   export let swiftCodeActual = "FRBBUS6S";

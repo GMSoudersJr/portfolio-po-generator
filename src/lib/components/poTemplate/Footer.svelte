@@ -1,5 +1,5 @@
 <script>
-  import { importantMessage } from '$lib/strings/poSheet'
+  import { importantMessage } from '$lib/strings/poTemplate'
 </script>
 
 <p class="warning">

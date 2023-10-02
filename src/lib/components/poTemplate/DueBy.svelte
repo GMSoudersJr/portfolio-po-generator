@@ -1,5 +1,5 @@
 <script>
-  import { dueBy } from "$lib/strings/poSheet";
+  import { dueBy } from "$lib/strings/poTemplate";
 
   export let dueDate = "DD/MM/YYYY"
 </script>

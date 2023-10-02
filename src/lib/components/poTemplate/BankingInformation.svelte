@@ -1,5 +1,8 @@
 <script>
-  import { bankingInformation, forWirePaymentsOnly } from "$lib/strings/poSheet";
+  import {
+    bankingInformation,
+    forWirePaymentsOnly
+  } from "$lib/strings/poTemplate";
 </script>
 
 <div class="grid-container">

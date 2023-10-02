@@ -38,3 +38,8 @@
 .section3-data-actual {
   font-size: var(--fontSizeSectionDataActual);
 }
+.form-input {
+  padding: 12px 20px;
+  width: 100%;
+  margin: 8px 0;
+}

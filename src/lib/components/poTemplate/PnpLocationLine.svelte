@@ -2,7 +2,7 @@
   import {
     pnpLocation,
     required
-  } from "$lib/strings/poSheet";
+  } from "$lib/strings/poTemplate";
 
   export let pnpLocationActual = "Korea";
 </script>

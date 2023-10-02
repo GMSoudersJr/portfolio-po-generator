@@ -1,5 +1,5 @@
 <script>
-	import {withholdingTaxOrVat} from "$lib/strings/poSheet";
+	import {withholdingTaxOrVat} from "$lib/strings/poTemplate";
 
   export let withholdingTaxOrVatActual = "66654";
 </script>

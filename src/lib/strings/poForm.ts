@@ -1,0 +1,310 @@
+import { todayDateString } from "$lib/utils";
+
+export const paymentMethod = {
+	class: "form-input",
+	id: "paymentMethod",
+	label: "Payment Method",
+	name: "paymentMethod",
+	type: "select",
+	options: [
+		{
+			id: "wire",
+			text: "Wire",
+			value: "wire",
+		},
+		{
+			id: "cash",
+			text: "Cash",
+			value: "cash",
+		},
+		{
+			id: "creditCard",
+			text: "Credit Card",
+			value: "creditCard",
+		},
+		{
+			id: "bitcoin",
+			text: "Bitcoin",
+			value: "bitcoin",
+		},
+	]
+};
+
+export const topicDivision = {
+	class: "form-input",
+	id: "topicDivision",
+	label: "Topic / Division",
+	name: "topicDivision",
+	type: "select",
+	options: [
+		{
+			id: "general",
+			text: "General",
+			value: "general",
+		},
+		{
+			id: "governmentKorea",
+			text: "Government Korea",
+			value: "governmentKorea",
+		},
+		{
+			id: "smartCitiesKorea",
+			text: "Smart Cities Korea",
+			value: "smartCitiesKorea",
+		},
+	]
+};
+
+export const reportBudgetLine = {
+	class: "form-input",
+	id: "reportingBudgetLine",
+	label: "Reporting / Budget Line",
+	name: "reportingBudgetLine",
+	type: "select",
+	options: [
+		{
+			id: "amoritizationExpense",
+			text: "Amoritization Expense",
+			value: "amoritizationExpense",
+		},
+		{
+			id: "deposits",
+			text: "Deposits",
+			value: "deposits",
+		},
+		{
+			id: "employeeMorale",
+			text: "Employee Morale",
+			value: "employeeMorale",
+		},
+		{
+			id: "entertainment",
+			text: "Entertainment",
+			value: "entertainment",
+		},
+		{
+			id: "expoDay",
+			text: "Expo Day",
+			value: "expoDay",
+		},
+		{
+			id: "externalEvents",
+			text: "External Events",
+			value: "externalEvents",
+		},
+		{
+			id: "facilityOthers",
+			text: "Facility Others",
+			value: "facilityOthers",
+		},
+		{
+			id: "facilityRent",
+			text: "Facility Rent",
+			value: "facilityRent",
+		},
+		{
+			id: "insurances",
+			text: "Insurances",
+			value: "insurances",
+		},
+		{
+			id: "internalEvents",
+			text: "Internal Events",
+			value: "internalEvents",
+		},
+		{
+			id: "itCosts",
+			text: "IT Costs",
+			value: "itCosts",
+		},
+		{
+			id: "legalAndProfessionalServices",
+			text: "Legal & Profeessional Services",
+			value: "legalAndProfessionalServices",
+		},
+		{
+			id: "managementCompensation",
+			text: "Management Compensation",
+			value: "managementCompensation",
+		},
+		{
+			id: "marketingMaterials",
+			text: "Marketing Materials",
+			value: "marketingMaterials",
+		},
+		{
+			id: "meetups",
+			text: "Meetups",
+			value: "meetups",
+		},
+		{
+			id: "nationalInsurance",
+			text: "National Insurance",
+			value: "nationalInsurance",
+		},
+		{
+			id: "otherAdvertisingCosts",
+			text: "Other Advertising Costs",
+			value: "otherAdvertisingCosts",
+		},
+		{
+			id: "otherEvents",
+			text: "Other Events",
+			value: "otherEvents",
+		},
+		{
+			id: "otherExpenses",
+			text: "Other Expenses",
+			value: "otherExpenses",
+		},
+		{
+			id: "perDiem",
+			text: "Per diem",
+			value: "perDiem",
+		},
+		{
+			id: "salary",
+			text: "Salary",
+			value: "salary",
+		},
+		{
+			id: "selectionDay",
+			text: "Selection Day",
+			value: "selectionDay",
+		},
+		{
+			id: "subscriptions",
+			text: "Subscriptions",
+			value: "subscriptions",
+		},
+		{
+			id: "taxes",
+			text: "Taxes",
+			value: "taxes",
+		},
+		{
+			id: "teamBonding",
+			text: "Team Bonding",
+			value: "teamBonding",
+		},
+		{
+			id: "telephones",
+			text: "Telephones",
+			value: "telephones",
+		},
+		{
+			id: "travel",
+			text: "Travel",
+			value: "travel",
+		},
+	]
+};
+
+export const dueDate = {
+	class: "form-input",
+	id: "dueDate",
+	label: "Due Date",
+	name: "dueDate",
+	type: "date",
+	min: todayDateString(),
+	value: todayDateString(),
+};
+
+export const createdDate = {
+	class: "form-input",
+	id: "createdDate",
+	label: "Created Date",
+	name: "createdDate",
+	type: "date",
+	min: todayDateString(),
+	value: todayDateString(),
+};
+
+export const pnpLocation = {
+	class: "form-input",
+	id: "pnpLocation",
+	label: "PNP Location",
+	name: "pnpLocation",
+	type: "select",
+	options: [
+		{
+			id: "pnpKorea",
+			text: "PNP - Korea",
+			value: "pnpKorea",
+		},
+	]
+};
+
+export const requestedBy = {
+	class: "form-input",
+	id: "requestedBy",
+	label: "Requested By",
+	name: "requestedBy",
+	type: "select",
+	options: [
+		{
+			id: "rachelChung",
+			text: "Rachel Chung",
+			value: "rachelChung",
+		},
+	]
+};
+
+export const approvedBy = {
+	class: "form-input",
+	id: "approvedBy",
+	label: "Approved By",
+	name: "approvedBy",
+	type: "select",
+	options: [
+		{
+			id: "phillipVincent",
+			text: "Phillip Vincent",
+			value: "phillipVincent",
+		},
+		{
+			id: "miguelBello",
+			text: "Miguel Bello",
+			value: "miguelBello",
+		},
+		{
+			id: "brandonJoe",
+			text: "Brandon Joe",
+			value: "brandonJoe",
+		},
+	]
+};
+
+export const currency = {
+	class: "form-input",
+	id: "currency",
+	label: "Currency",
+	name: "currency",
+	type: "select",
+	options: [
+		{
+			abbreviation: "KRW",
+			id: "koreanWon",
+			symbol: "￦",
+			value: "krw",
+		},
+		{
+			abbreviation: "USD",
+			id: "americanDollar",
+			symbol: "$",
+			value: "usd",
+		},
+		{
+			abbreviation: "EUR",
+			id: "euEuro",
+			symbol: "€",
+			value: "eur",
+		},
+		{
+			abbreviation: "BTC",
+			id: "bitcoin",
+			symbol: "₿",
+			value: "btc",
+		},
+	]
+};

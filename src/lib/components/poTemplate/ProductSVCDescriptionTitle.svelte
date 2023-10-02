@@ -1,5 +1,8 @@
 <script>
-	import {ifEventRelated, productServiceDescription} from "$lib/strings/poSheet";
+  import {
+    ifEventRelated,
+    productServiceDescription
+  } from "$lib/strings/poTemplate";
 </script>
 
 <div class="grid-container">

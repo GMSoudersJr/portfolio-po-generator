@@ -4,7 +4,7 @@
     poNumberFormat,
     poNumberFormatExample,
     required
-  } from "$lib/strings/poSheet";
+  } from "$lib/strings/poTemplate";
 
   export let poNumberActual = "020922-Freelance-General-RC"
 </script>

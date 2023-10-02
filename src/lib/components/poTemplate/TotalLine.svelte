@@ -1,5 +1,5 @@
 <script>
-	import {total} from "$lib/strings/poSheet";
+	import {total} from "$lib/strings/poTemplate";
 
   export let totalActual = "6665400";
 </script>

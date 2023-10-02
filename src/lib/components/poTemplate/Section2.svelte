@@ -1,6 +1,6 @@
 <script>
 	import ProductSvcDescriptionLine from "./ProductSVCDescriptionLine.svelte";
-import ProductSvcDescriptionTitle from "./ProductSVCDescriptionTitle.svelte";
+  import ProductSvcDescriptionTitle from "./ProductSVCDescriptionTitle.svelte";
 	import TotalLine from "./TotalLine.svelte";
 	import WithholdingTaxOrVat from "./WithholdingTaxOrVat.svelte";
 

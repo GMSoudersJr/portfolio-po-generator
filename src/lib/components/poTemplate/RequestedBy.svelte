@@ -1,5 +1,5 @@
 <script>
-  import { requestedBy, required } from "$lib/strings/poSheet";
+  import { requestedBy, required } from "$lib/strings/poTemplate";
   export let requestedByName = "Rachel Chung";
 </script>
 

@@ -3,7 +3,7 @@
     bankAccountNumberOrIban,
     forMexicoAccounts,
     required
-  } from "$lib/strings/poSheet";
+  } from "$lib/strings/poTemplate";
 
   export let bankAcountNumberOfIbanActual = "883244923348";
 </script>

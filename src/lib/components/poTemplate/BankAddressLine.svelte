@@ -3,7 +3,7 @@
     bankAddress,
     physicalAddress,
     required
-  } from "$lib/strings/poSheet";
+  } from "$lib/strings/poTemplate";
 
   export let bankAddressActualLine1 = "Some place";
   export let bankAddressActualLine2 = "where money";

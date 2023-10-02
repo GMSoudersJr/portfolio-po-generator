@@ -1,5 +1,5 @@
 <script>
-  import { subtitle } from "$lib/strings/poSheet";
+  import { subtitle } from "$lib/strings/poTemplate";
 </script>
 
 <h4>

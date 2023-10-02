@@ -2,7 +2,7 @@
   import {
     reportingBudgetLine,
     required
-  } from "$lib/strings/poSheet";
+  } from "$lib/strings/poTemplate";
 
   export let reportingBudgetLineActual = "Acquisitions";
 </script>

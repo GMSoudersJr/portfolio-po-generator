@@ -2,7 +2,7 @@
   import {
     topicDivision,
     required
-  } from "$lib/strings/poSheet";
+  } from "$lib/strings/poTemplate";
 
   export let topicDivisionActual = "General";
 </script>

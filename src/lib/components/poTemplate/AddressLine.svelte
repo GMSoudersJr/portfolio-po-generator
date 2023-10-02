@@ -2,7 +2,7 @@
   import {
     address,
     required
-  } from "$lib/strings/poSheet";
+  } from "$lib/strings/poTemplate";
 
   export let addressActualLine1 = "wherever it is";
   export let addressActualLine2 = "I will come to you";

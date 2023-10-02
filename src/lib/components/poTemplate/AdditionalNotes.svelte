@@ -2,7 +2,7 @@
   import {
     additionalNotes,
     nationalIdOrBusinessReg
-  } from "$lib/strings/poSheet";
+  } from "$lib/strings/poTemplate";
 
   export let addtionalNotesActual = "811925-33849";
   export let nationalIdOrBusinessRegistrationActual = "";

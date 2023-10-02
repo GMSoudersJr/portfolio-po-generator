@@ -1,5 +1,5 @@
 <script>
-	import {section1, section2, section3} from "$lib/strings/poSheet";
+	import {section1, section2, section3} from "$lib/strings/poTemplate";
 	import AdditionalNotes from "./AdditionalNotes.svelte";
   import ApprovedBy from "./ApprovedBy.svelte";
   import DueBy from "./DueBy.svelte";

@@ -2,7 +2,7 @@
   import {
     beneficiaryName,
     required
-  } from "$lib/strings/poSheet";
+  } from "$lib/strings/poTemplate";
 
   export let beneficiaryNameActual = "Rachel Chung";
 </script>

@@ -2,7 +2,7 @@
   import {
     bankName,
     required
-  } from "$lib/strings/poSheet";
+  } from "$lib/strings/poTemplate";
 
   export let bankNameActual = "Shinhan Bank";
 </script>

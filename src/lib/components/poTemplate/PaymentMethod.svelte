@@ -1,5 +1,5 @@
 <script>
-  import { paymentMethod } from "$lib/strings/poSheet";
+  import { paymentMethod } from "$lib/strings/poTemplate";
 
   export let actualPaymentMethod = "Wire";
 </script>

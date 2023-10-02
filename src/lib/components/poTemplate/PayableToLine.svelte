@@ -2,7 +2,7 @@
   import {
     payableTo,
     required
-  } from "$lib/strings/poSheet";
+  } from "$lib/strings/poTemplate";
 
   export let payableToActual = "Rachel Chung";
 </script>

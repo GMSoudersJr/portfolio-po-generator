@@ -2,7 +2,7 @@
   import {
     date,
     required
-  } from "$lib/strings/poSheet";
+  } from "$lib/strings/poTemplate";
 
   export let dateActual = "020922";
 </script>
