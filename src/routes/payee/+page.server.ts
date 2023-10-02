@@ -10,6 +10,8 @@ import {
 	routingNumber,
 	swiftCode
 } from '$lib/strings/payeeForm';
+import {Payee, encryptTheData, generateKeypair, trimTheFormData} from '$lib/utils';
+import {addPayee} from '$lib/db';
 
 const beneficiaryNameString = beneficiaryName.name;
 const payeeTypeNameString = payeeTypeAndTax.name;
@@ -21,39 +23,6 @@ const bankAddressNameString = bankAddress.name;
 const routingNumberNameString = routingNumber.name;
 const swiftCodeNameString = swiftCode.name;
 
-class Payee {
-	beneficiaryName: string | undefined;
-	typeOfPayee: string | undefined;
-	bankName: string | undefined;
-	bankAccountNumber: string | undefined;
-	nationalIdOrBusinessRegistrationNumber: string | undefined;
-	homeAddress: string | undefined;
-	bankAddress: string | undefined;
-	routingNumber: string | undefined;
-	swiftCode: string | undefined;
-
-	constructor(
-		beneficiaryName: string | undefined,
-		typeOfPayee: string | undefined,
-		bankName: string | undefined,
-		bankAccountNumber: string | undefined,
-	) {
-		this.beneficiaryName = beneficiaryName;
-		this.typeOfPayee = typeOfPayee;
-		this.bankName = bankName;
-		this.bankAccountNumber = bankAccountNumber;
-		this.nationalIdOrBusinessRegistrationNumber = undefined;
-		this.homeAddress = undefined;
-		this.bankAddress = undefined;
-		this.routingNumber = undefined;
-		this.swiftCode = undefined;
-	}
-};
-
-function trimTheFormData(data: FormDataEntryValue | null) {
-	return data?.toString().trim();
-}
-
 export const actions = {
 	add: async ({ request }) => {
 		const data = await request.formData();
@@ -64,6 +33,7 @@ export const actions = {
 			trimTheFormData(data.get(nationaIdOrBusinessRegistrationNameString))
 		const formHomeAddressData = trimTheFormData(data.get(homeAddressNameString));
 		const formBankNameData = trimTheFormData(data.get(bankNameString));
+		// TODO Bank Account Number needs to be encrypted.
 		const formBankAccountNumberData = trimTheFormData(data.get(bankAccountNumberNameString));
 		const formBankAddressData = trimTheFormData(data.get(bankAddressNameString));
 		const formRoutingNumberData = trimTheFormData(data.get(routingNumberNameString));
@@ -76,6 +46,7 @@ export const actions = {
 			formBankAccountNumberData
 		);
 
+		// TODO National ID or Business Registraion Number needs to be encrypted.
 		if ( formNationalIdOrBusinessRegistraionData == "" ) {
 			payee.nationalIdOrBusinessRegistrationNumber = undefined;
 		} else {
@@ -83,10 +54,12 @@ export const actions = {
 				formNationalIdOrBusinessRegistraionData;
 		}
 
+		// TODO home address needs to be encrypted
 		if ( formHomeAddressData == "" ) {
 			payee.homeAddress = undefined;
 		} else {
-			payee.homeAddress = formHomeAddressData;
+			payee.homeAddress = await encryptTheData((await generateKeypair()).publicKey, formHomeAddressData);
+			//payee.homeAddress = formHomeAddressData;
 		}
 
 		if ( formBankAddressData == "" ) {
@@ -107,8 +80,10 @@ export const actions = {
 			payee.swiftCode = formSwiftCodeData;
 		}
 
+		const databaseResponse = await addPayee(payee);
+
 		return {
-			success: true,
+			success: databaseResponse,
 			message: `Added ${payee.beneficiaryName} to the database!`
 		};
 	}
