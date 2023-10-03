@@ -8,13 +8,14 @@
 </script>
 
 <div class="grid-container">
-  <div class="date-label">
+  <div class="date-label required-line">
     <h5 class="date-text section1-data-label">
       {date}
     </h5>
     <p class="required warning">
-      {required}:
+      {required}
     </p>
+    <h5>:</h5>
   </div>
   <p class="date-actual section1-data-actual">
     {dateActual}

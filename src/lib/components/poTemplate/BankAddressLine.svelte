@@ -11,13 +11,14 @@
 </script>
 
 <div class="grid-container">
-  <div class="bank-address-label">
+  <div class="bank-address-label required-line">
     <h5 class="bank-address-text section3-data-label">
       {bankAddress}
     </h5>
     <p class="required warning">
-      {required}:
+      {required}
     </p>
+    <h5>:</h5>
   </div>
   <p class="physical-address-warning warning">
     {physicalAddress}

@@ -10,13 +10,14 @@
 </script>
 
 <div class="grid-container">
-  <div class="po-label">
+  <div class="po-label required-line">
     <h5 class="po-number-text">
       {poNumber}
     </h5>
     <p class="required warning">
-      {required}:
+      {required}
     </p>
+    <h5>:</h5>
   </div>
   <div class=" po-number-area">
     <p class="po-number-actual">
@@ -44,6 +45,7 @@
   .po-label {
     display: flex;
     grid-area: poLabel;
+    align-self: flex-start;
   }
   .po-number-text {
     font-size: var(--fontSizeSectionDataLabel);

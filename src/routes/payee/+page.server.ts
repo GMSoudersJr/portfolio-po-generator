@@ -8,7 +8,7 @@ import {
 	bankAccountNumber,
 	bankAddress,
 	routingNumber,
-	swiftCode
+	SwiftCodeOrIbanNumber
 } from '$lib/strings/payeeForm';
 import {Payee, encryptTheData, generateKeypair, trimTheFormData} from '$lib/utils';
 import {addPayee} from '$lib/db';
@@ -21,7 +21,7 @@ const bankNameString = bankName.name;
 const bankAccountNumberNameString = bankAccountNumber.name;
 const bankAddressNameString = bankAddress.name;
 const routingNumberNameString = routingNumber.name;
-const swiftCodeNameString = swiftCode.name;
+const swiftCodeNameString = SwiftCodeOrIbanNumber.name;
 
 export const actions = {
 	add: async ({ request }) => {

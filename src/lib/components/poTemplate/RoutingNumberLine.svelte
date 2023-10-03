@@ -10,13 +10,14 @@
 </script>
 
 <div class="grid-container">
-  <div class="routing-number-label">
+  <div class="routing-number-label required-line">
     <h5 class="routing-number-text section3-data-label">
       {routingABAOrSwift}
     </h5>
     <p class="required warning">
-      {required}:
+      {required}
     </p>
+    <h5>:</h5>
   </div>
   <p class="routing-message warning">
     {routingMessage}
@@ -49,11 +50,12 @@
   }
   .grid-container {
     display: grid;
-    grid-template-columns: 33% 1fr 1fr;
-    grid-template-rows: auto auto;
+    grid-template-columns: 33% 1fr 16.5%;
+    grid-template-rows: repeat(2, auto);
     grid-template-areas:
     "routingNumberLabel routingNumberActual swiftCodeActual"
     "routingMessage . .";
+    row-gap: 0.25em;
     margin: 0.25em 0;
   }
 </style>

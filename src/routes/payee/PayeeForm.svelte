@@ -8,7 +8,7 @@
   import PayeeType from "./PayeeType.svelte";
 	import RoutingNumber from "./RoutingNumber.svelte";
 	import SubmitButton from "./SubmitButton.svelte";
-	import SwiftCode from "./SwiftCode.svelte";
+	import SwiftCodeOrIbanNumber from "./SwiftCodeOrIbanNumber.svelte";
 </script>
 
 <form
@@ -23,7 +23,7 @@
   <BankAccountNumber />
   <BankAddress />
   <RoutingNumber />
-  <SwiftCode />
+  <SwiftCodeOrIbanNumber />
   <SubmitButton />
 </form>
 

@@ -9,13 +9,14 @@
 </script>
 
 <div class="grid-container">
-  <div class="address-label">
+  <div class="address-label required-line">
     <h5 class="address-text section1-data-label">
       {address}
     </h5>
     <p class="required warning">
-      {required}:
+      {required}
     </p>
+    <h5>:</h5>
   </div>
   <p class="address-actual-line-1 section1-data-actual">
     {addressActualLine1}

@@ -8,13 +8,14 @@
 </script>
 
 <div class="grid-container">
-  <div class="pnp-location-label">
+  <div class="pnp-location-label required-line">
     <h5 class="pnp-location-text section1-data-label">
       {pnpLocation}
     </h5>
     <p class="required warning">
-      {required}:
+      {required}
     </p>
+    <h5>:</h5>
   </div>
   <p class="pnp-location-actual section1-data-actual">
     {pnpLocationActual}

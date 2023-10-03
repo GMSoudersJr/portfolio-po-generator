@@ -8,13 +8,14 @@
 </script>
 
 <div class="grid-container">
-  <div class="payable-to-label">
+  <div class="payable-to-label required-line">
     <h5 class="payable-to-text section1-data-label">
       {payableTo}
     </h5>
     <p class="required warning">
-      {required}:
+      {required}
     </p>
+    <h5>:</h5>
   </div>
   <p class="payable-to-actual section1-data-actual">
     {payableToActual}

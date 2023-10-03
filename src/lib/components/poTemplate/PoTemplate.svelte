@@ -36,21 +36,21 @@
     <PoNumber />
   </section>
 
-  <section class="section-1-label">
+  <section class="section-1-label section-label">
     {section1}
   </section>
   <section class="section1">
     <Section1 />
   </section>
 
-  <section class="section-2-label">
+  <section class="section-2-label section-label">
     {section2}
   </section>
   <section class="section2">
     <Section2 />
   </section>
 
-  <section class="section-3-label">
+  <section class="section-3-label section-label">
     {section3}
   </section>
   <section class="section3">
@@ -91,38 +91,45 @@
   .po-number {
     grid-area: poNumber;
   }
+  .section-label {
+    font-size: var(--fontSizeSectionLabel);
+  }
   .section-1-label{
     grid-area: section1Label;
-    font-size: var(--fontSizeSectionLabel);
+    padding-top: calc(0.25em + 2px);
   }
   .section1 {
     grid-area: section1;
   }
   .section-2-label{
     grid-area: section2Label;
-    font-size: var(--fontSizeSectionLabel);
+    padding-top: calc(0.25em + 2px);
   }
   .section2 {
     grid-area: section2;
   }
   .section-3-label{
     grid-area: section3Label;
-    font-size: var(--fontSizeSectionLabel);
+    padding-top: calc(0.25em + 2px);
   }
   .section3 {
     grid-area: section3;
   }
   .additional-notes {
     grid-area: additionalNotes;
+    align-self: center;
   }
   .requested-by {
     grid-area: requestedBy;
+    align-self: center;
   }
   .approved-by {
     grid-area: approvedBy;
+    align-self: center;
   }
   .footer {
     grid-area: footer;
+    align-self: end;
   }
   .page-container {
     width: 21cm;
@@ -130,7 +137,7 @@
     display: grid;
     padding: 30px 45px;
     grid-template-columns: auto 1fr;
-    grid-template-rows: repeat(7, auto) repeat(5, 1fr);
+    grid-template-rows: repeat(4, min-content) repeat(3, auto) min-content;
     grid-template-areas:
     ". title"
     ". subtitle"
@@ -144,6 +151,7 @@
     ". requestedBy"
     ". approvedBy"
     "footer footer";
+    column-gap: 0.12em;
   }
   @page {
     size: 21cm 29.7cm;

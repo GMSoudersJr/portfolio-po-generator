@@ -94,17 +94,23 @@ export const routingNumber = {
 	],
 };
 
-export const swiftCode = {
+export const SwiftCodeOrIbanNumber = {
 	class: "form-input",
-	id: "swiftCode",
-	label: "Swift Code",
-	name: "swiftCode",
+	id: "swiftCodeOrIban",
+	label: "Swift Code / IBAN #",
+	name: "swiftCodeOrIban",
 	type: "text",
 	options: [
 		{
 			id: "swiftCode",
 			name: "swiftCode",
 			text: "Swift Code",
+			class: "form-input"
+		},
+		{
+			id: "iban",
+			name: "iban",
+			text: "IBAN #",
 			class: "form-input"
 		},
 	],

@@ -1,3 +1,11 @@
+export function updateArrayOfNumbers(someQuantity: number) {
+	let arrayOfNumbers = [];
+	for(let i = 1; i <= someQuantity; i++) {
+		arrayOfNumbers.push(i);
+	}
+	return arrayOfNumbers;
+}
+
 function formatString(stringToBeFormatted: string): string {
 	if (stringToBeFormatted.length < 2) {
 		return `0${stringToBeFormatted}`

@@ -1,5 +1,77 @@
 import { todayDateString } from "$lib/utils";
 
+export const numberOfProductsOrServices = {
+	class: "form-input",
+	id: "number-of-products-or-services",
+	label: "Number of Products or Services",
+	name: "numberOfProductsOrServices",
+	type: "number",
+};
+
+export const poNumber = {
+	class: "form-input",
+	id: "po-number",
+	label: "PO #",
+	name: "poNumber",
+	type: "text",
+};
+
+export const tax = {
+	class: "form-input",
+	id: "tax",
+	label: "Tax",
+	name: "tax",
+	type: "text",
+};
+
+export const taxRate = {
+	class: "form-input",
+	id: "tax-rate",
+	label: "Tax Rate",
+	name: "taxRate",
+	type: "text",
+};
+
+export const subtotal = {
+	class: "form-input",
+	id: "subtotal",
+	label: "Subtotal",
+	name: "subtotal",
+	type: "text",
+};
+
+export const total = {
+	class: "form-input",
+	id: "total",
+	label: "Total",
+	name: "total",
+	type: "text",
+};
+
+export const payeeName = {
+	class: "form-input",
+	id: "payee-name",
+	label: "Payee Name",
+	name: "payeeName",
+	type: "search",
+};
+
+export const productServiceDescription = {
+	class: "form-input",
+	id: "product-service-description",
+	label: "Product / SVC Description",
+	name: "productServiceDescription",
+	type: "text",
+};
+
+export const price = {
+	class: "form-input",
+	id: "price",
+	label: "Price",
+	name: "price",
+	type: "number",
+};
+
 export const paymentMethod = {
 	class: "form-input",
 	id: "paymentMethod",

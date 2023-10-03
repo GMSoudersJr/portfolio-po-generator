@@ -8,13 +8,14 @@
 </script>
 
 <div class="grid-container">
-  <div class="bank-name-label">
+  <div class="bank-name-label required-line">
     <h5 class="bank-name-text section3-data-label">
       {bankName}
     </h5>
     <p class="required warning">
-      {required}:
+      {required}
     </p>
+    <h5>:</h5>
   </div>
   <p class="bank-name-actual section3-data-actual">
     {bankNameActual}

@@ -21,6 +21,8 @@
     grid-area: description;
     border-right: 1px solid black;
     display: flex;
+    align-items: center;
+    column-gap: 0.2em;
     padding-top: 0.25em;
     padding-left: 0.15em;
   }

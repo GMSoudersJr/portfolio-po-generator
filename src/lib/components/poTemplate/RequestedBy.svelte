@@ -4,13 +4,14 @@
 </script>
 
 <div class="grid-container">
-  <div class="requested-label">
+  <div class="requested-label required-line">
     <h5 class="requested-by-label">
       {requestedBy}
     </h5>
     <p class="required warning">
-      {required}:
+      {required}
     </p>
+    <h5>:</h5>
   </div>
 
   <p class="requested-name">

@@ -8,13 +8,14 @@
 </script>
 
 <div class="grid-container">
-  <div class="topic-division-label">
+  <div class="topic-division-label required-line">
     <h5 class="date-text section1-data-label">
       {topicDivision}
     </h5>
     <p class="required warning">
-      {required}:
+      {required}
     </p>
+    <h5>:</h5>
   </div>
   <p class="topic-division-actual section1-data-actual">
     {topicDivisionActual}

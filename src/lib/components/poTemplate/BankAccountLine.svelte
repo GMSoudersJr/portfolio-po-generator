@@ -9,13 +9,14 @@
 </script>
 
 <div class="grid-container">
-  <div class="bank-account-label">
+  <div class="bank-account-label required-line">
     <h5 class="bank-account-text section3-data-label">
       {bankAccountNumberOrIban}
     </h5>
     <p class="required warning">
-      {required}:
+      {required}
     </p>
+    <h5>:</h5>
   </div>
   <p class="for-mexico-accounts warning">
     {forMexicoAccounts}

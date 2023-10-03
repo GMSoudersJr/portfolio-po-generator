@@ -32,6 +32,14 @@
 }
 .required {
   font-size: 0.5em;
+  font-weight: 600;
+}
+.required-line {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-self: left;
+  column-gap: 0.1em;
 }
 .section1-data-label,
 .section3-data-label {

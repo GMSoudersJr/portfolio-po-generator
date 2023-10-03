@@ -8,13 +8,14 @@
 </script>
 
 <div class="grid-container">
-  <div class="beneficiary-name-label">
+  <div class="beneficiary-name-label required-line">
     <h5 class="beneficiary-name-text section3-data-label">
       {beneficiaryName}
     </h5>
     <p class="required warning">
-      {required}:
+      {required}
     </p>
+    <h5>:</h5>
   </div>
   <p class="beneficiary-name-actual section3-data-actual">
     {beneficiaryNameActual}

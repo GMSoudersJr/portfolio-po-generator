@@ -20,7 +20,7 @@
   .title {
     grid-area: title;
     display: flex;
-    align-items: center;
+    column-gap: .2em;
   }
   .section-data-title {
     font-size: var(--fontSizeSectionDataTitle);
