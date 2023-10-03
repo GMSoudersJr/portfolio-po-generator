@@ -17,6 +17,7 @@
 	import NumberOfProductsOrServices from "./NumberOfProductsOrServices.svelte";
   import { updateArrayOfNumbers } from "$lib/utils";
   import { numberOfProductsOrServices } from "$lib/stores";
+	import PoNumber from "./PoNumber.svelte";
 
   $: arrayOfNumbers = updateArrayOfNumbers($numberOfProductsOrServices);
 
@@ -32,6 +33,7 @@
   {#each arrayOfNumbers as d, i}
   <ProductAndPrice number={(i + 1).toString()}/>
   {/each}
+  <PoNumber />
   <Tax />
   <TaxRate />
   <Subtotal />
