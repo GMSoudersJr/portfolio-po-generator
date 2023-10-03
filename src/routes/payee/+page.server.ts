@@ -8,7 +8,7 @@ import {
 	bankAccountNumber,
 	bankAddress,
 	routingNumber,
-	SwiftCodeOrIbanNumber
+	SwiftCodeOrIbanNumber,
 } from '$lib/strings/payeeForm';
 import {Payee, encryptTheData, generateKeypair, trimTheFormData} from '$lib/utils';
 import {addPayee} from '$lib/db';
@@ -21,7 +21,8 @@ const bankNameString = bankName.name;
 const bankAccountNumberNameString = bankAccountNumber.name;
 const bankAddressNameString = bankAddress.name;
 const routingNumberNameString = routingNumber.name;
-const swiftCodeNameString = SwiftCodeOrIbanNumber.name;
+const swiftCodeOrIbanNumberNameString = SwiftCodeOrIbanNumber.name;
+const taxRateNameString = "taxRate";
 
 export const actions = {
 	add: async ({ request }) => {
@@ -37,7 +38,7 @@ export const actions = {
 		const formBankAccountNumberData = trimTheFormData(data.get(bankAccountNumberNameString));
 		const formBankAddressData = trimTheFormData(data.get(bankAddressNameString));
 		const formRoutingNumberData = trimTheFormData(data.get(routingNumberNameString));
-		const formSwiftCodeData = trimTheFormData(data.get(swiftCodeNameString));
+		const formSwiftCodeData = trimTheFormData(data.get(swiftCodeOrIbanNumberNameString));
 
 		const payee = new Payee(
 			formBeneficiaryNameData,
@@ -45,6 +46,9 @@ export const actions = {
 			formBankNameData,
 			formBankAccountNumberData
 		);
+
+		let payeeTaxRate = payeeTypeAndTax.options.filter((option) => option.value == formPayeeTypeData);
+		payee.taxRate = payeeTaxRate[0].taxRate;
 
 		// TODO National ID or Business Registraion Number needs to be encrypted.
 		if ( formNationalIdOrBusinessRegistraionData == "" ) {

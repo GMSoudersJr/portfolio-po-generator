@@ -1,11 +1,8 @@
-<script>
+<script lang="ts">
 	import Price from "./Price.svelte";
   import ProductSvcDescription from "./ProductServiceDescription.svelte";
 
-  /**
-   *@type string
-   */
-  export let number;
+  export let number: string;
 </script>
 
 <section class="section-grid-container">

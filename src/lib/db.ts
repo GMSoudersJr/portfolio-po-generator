@@ -1,5 +1,5 @@
 import {DB_URI, DB_NAME} from "$env/static/private";
-import { MongoClient, ServerApiVersion } from "mongodb";
+import { MongoClient, ServerApiVersion, ObjectId } from "mongodb";
 import type {Payee} from "./utils";
 
 const client = new MongoClient(DB_URI, {
@@ -28,25 +28,26 @@ export async function addPayee(payee: Payee) {
 	}
 }
 
-export async function getPayees() {
-	const projection = {
-		bankAccountNumber: 0,
-		bankName: 0,
-		nationalIdOrBusinessRegistrationNumber: 0,
-		homeAddress: 0,
-		bankAddress: 0,
-		routingNumber: 0,
-		swiftCode: 0
-	};
+export async function getPayeesWithMinimalInfo() {
+	const aggregate = [
+		{
+			$project: {
+				_id: {
+					$toString: "$_id"
+				},
+				beneficiaryName: 1,
+				typeOfPayee: 1,
+				taxRate: 1
+			}
+		}
+	];
 	try {
 		await client.connect();
 		console.log("Connected to database to get payees.")
-		return await payeeCollection
-			.find(
-				{},
-				{ projection: projection }
-			)
+		const payees = await payeeCollection
+			.aggregate(aggregate)
 			.toArray();
+		return payees;
 	} catch (error) {
 		console.log("Error getting the payees.", error);
 	} finally {

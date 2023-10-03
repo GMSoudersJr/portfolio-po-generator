@@ -22,7 +22,9 @@
   --fontSize09pt: 0.75em;
   --fontSize08pt: 0.67em;
 }
-
+.hide {
+  display: none;
+}
 .warning {
   color: var(--warningRed);
   font-size: var(--fontSizeRequiredWarning);

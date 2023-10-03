@@ -132,8 +132,6 @@ export const nationaIdOrBusinessRegistration = {
 	],
 };
 
-
-
 export const payeeTypeAndTax = {
 	class: "form-input",
 	id: "payeeType",
@@ -143,55 +141,55 @@ export const payeeTypeAndTax = {
 	options: [
 		{
 			id: "employee",
-			value: "employee",
+			value: "Employee",
 			text: "Employee",
 			taxRate: 0,
 		},
 		{
 			id: "freelancerAbroad",
-			value: "freelancerAbroad",
+			value: "Freelancer (Abroad)",
 			text: "Freelancer (Abroad)",
 			taxRate: 0,
 		},
 		{
 			id: "freelancerKoreaLongTerm",
-			value: "freelancerKoreaLongTerm",
+			value: "Freelancer (Korea Long-Term)",
 			text: "Freelancer (Korea Long-Term)",
 			taxRate: 0,
 		},
 		{
 			id: "freelancerKoreaOneOff",
-			value: "freelancerKoreaOneOff",
+			value: "Freelancer (Korea One-Off)",
 			text: "Freelancer (Korea One-Off)",
 			taxRate: 0,
 		},
 		{
 			id: "nationalInsurance",
-			value: "nationalInsurance",
+			value: "National Insurance",
 			text: "National Insurance",
 			taxRate: 0,
 		},
 		{
 			id: "plugAndPlay",
-			value: "plugAndPlay",
+			value: "Plug and Play",
 			text: "Plug and Play",
 			taxRate: 0,
 		},
 		{
 			id: "taxes",
-			value: "taxes",
+			value: "Taxes",
 			text: "Taxes",
 			taxRate: 0,
 		},
 		{
 			id: "vendorAbroad",
-			value: "vendorAbroad",
+			value: "Vendor (Abroad)",
 			text: "Vendor (Abroad)",
 			taxRate: 0,
 		},
 		{
 			id: "vendorKorea",
-			value: "vendorKorea",
+			value: "Vendor (Korea)",
 			text: "Vendor (Korea)",
 			taxRate: 0.1,
 		},

@@ -51,6 +51,7 @@
 
 <style>
   form {
-    width: 30%;
+    width: 100%;
+    padding-top: 1rem;
   }
 </style>

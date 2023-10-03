@@ -16,7 +16,6 @@
       >
         {payeeType.text}
       </option>
-
     {/each}
   </select>
 </label>

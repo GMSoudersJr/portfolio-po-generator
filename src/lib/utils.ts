@@ -42,6 +42,7 @@ export class Payee {
 	bankAddress: string | undefined;
 	routingNumber: string | undefined;
 	swiftCode: string | undefined;
+	taxRate: number | undefined;
 
 	constructor(
 		beneficiaryName: string | undefined,
@@ -58,6 +59,7 @@ export class Payee {
 		this.bankAddress = undefined;
 		this.routingNumber = undefined;
 		this.swiftCode = undefined;
+		this.taxRate = undefined;
 	}
 };
 
