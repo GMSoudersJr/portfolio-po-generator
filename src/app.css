@@ -25,10 +25,13 @@
 
 .warning {
   color: var(--warningRed);
+  font-size: var(--fontSizeRequiredWarning);
 }
 .required, .warning {
-  font-size: var(--fontSizeRequiredWarning);
   font-style: italic;
+}
+.required {
+  font-size: 0.5em;
 }
 .section1-data-label,
 .section3-data-label {
