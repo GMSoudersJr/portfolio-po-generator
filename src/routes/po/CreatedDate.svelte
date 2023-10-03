@@ -9,8 +9,8 @@
     type={createdDate.type}
     name={createdDate.name}
     id={createdDate.id}
-    min={dueDate.min}
-    value={dueDate.value}
+    min={createdDate.min}
+    value={createdDate.value}
     required
   >
 </label>
