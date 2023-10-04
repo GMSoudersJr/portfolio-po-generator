@@ -5,6 +5,7 @@
   export let payeeName: string;
   export let payeeType: string;
   export let payee_id: string;
+  export let payee_taxRate: number = 0;
 
   const dispatch = createEventDispatcher();
 
@@ -12,7 +13,8 @@
     dispatch("clickedPayee", {
       payee: {
         beneficiaryName: payeeName,
-        _id: payee_id
+        _id: payee_id,
+        taxRate: payee_taxRate
       }
     })
   }

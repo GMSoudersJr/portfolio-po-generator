@@ -20,8 +20,15 @@
 	import PoNumber from "./PoNumber.svelte";
 
   $: arrayOfNumbers = updateArrayOfNumbers($numberOfProductsOrServices);
+  let subtotal = 0;
+
+  function handlePriceInput(event: CustomEvent) {
+    const priceInput = event.detail.price.value;
+  }
 
   export let clickedPayeeName = "";
+  export let clickedPayeeTaxRate = 0;
+  export let clickedPayee_id ="";
 </script>
 
 <form
@@ -33,12 +40,15 @@
     {clickedPayeeName}
   />
   <NumberOfProductsOrServices />
-  {#each arrayOfNumbers as d, i}
-  <ProductAndPrice number={(i + 1).toString()}/>
+  {#each arrayOfNumbers as d}
+    <ProductAndPrice
+      number={(d).toString()}
+      on:priceInput={handlePriceInput}
+    />
   {/each}
   <PoNumber />
   <Tax />
-  <TaxRate />
+  <TaxRate {clickedPayeeTaxRate}/>
   <Subtotal />
   <Total />
   <Dates />

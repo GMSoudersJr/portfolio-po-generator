@@ -1,5 +1,6 @@
-<script>
+<script lang="ts">
   import { taxRate } from "$lib/strings/poForm";
+  export let clickedPayeeTaxRate: number;
 </script>
 
 <label for={taxRate.id}>
@@ -7,8 +8,12 @@
   <input
     class={taxRate.class}
     id={taxRate.id}
-    type={taxRate.type}
+    type="number"
     name={taxRate.name}
+    min="0"
+    step="0.1"
+    disabled
+    bind:value={clickedPayeeTaxRate}
     required
   >
 </label>

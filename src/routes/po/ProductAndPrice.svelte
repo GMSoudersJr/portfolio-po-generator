@@ -10,7 +10,10 @@
     <ProductSvcDescription {number}/>
   </div>
   <div class="price">
-    <Price {number}/>
+    <Price
+      {number}
+      on:priceInput
+    />
   </div>
 </section>
 

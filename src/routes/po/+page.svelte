@@ -7,6 +7,8 @@
 
   let payees = data.payees;
   let clickedPayeeName = "";
+  let clickedPayeeTaxRate = 0;
+  let clickedPayee_id = "";
 
   function handleSearch(event: CustomEvent) {
     const query = event.detail.query.toLowerCase();
@@ -20,7 +22,16 @@
   function handleClickedPayee(event: CustomEvent) {
     const payeeName = event.detail.payee.beneficiaryName;
     const _id = event.detail.payee._id;
+    const taxRate = event.detail.payee.taxRate;
     clickedPayeeName = payeeName;
+    clickedPayee_id = _id;
+    clickedPayeeTaxRate = taxRate;
+
+    payees?.forEach(payee => {
+    const shouldBeShown = payee.beneficiaryName.toLowerCase().includes(payeeName.toLowerCase());
+      payee.shouldBeShown = shouldBeShown;
+    });
+    payees = payees;
   }
 
 
@@ -37,6 +48,8 @@
     <PoForm
       on:searching={handleSearch}
       {clickedPayeeName}
+      {clickedPayee_id}
+      {clickedPayeeTaxRate}
     />
   </div>
 </div>

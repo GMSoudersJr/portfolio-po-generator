@@ -15,6 +15,7 @@
         payeeName={payee.beneficiaryName}
         payeeType={payee.typeOfPayee}
         payee_id={payee._id}
+        payee_taxRate={payee.taxRate}
         on:clickedPayee
       />
     {/if}

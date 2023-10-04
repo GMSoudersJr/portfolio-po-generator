@@ -1,7 +1,24 @@
 <script lang="ts">
   import { price } from "$lib/strings/poForm";
+  import { createEventDispatcher } from "svelte";
+
+  const dispatch = createEventDispatcher();
+
+  function handleChange(event: Event) {
+    const target = event.target as HTMLInputElement;
+    const value = target.value;
+    console.log(value);
+
+    dispatch("priceInput", {
+      price: {
+        for: `price${number}`,
+        value: value
+      }
+    })
+  }
 
   export let number: string;
+  let value = 0;
 </script>
 
 <label for={`${price.id}${number}`}>
@@ -9,10 +26,12 @@
   <input
     class={price.class}
     id={`${price.id}${number}`}
-    type={price.type}
+    type=number
     name={`${price.name}${number}`}
     min="0"
+    bind:value={value}
     required={number == "1"}
+    on:input={handleChange}
   >
 </label>
 

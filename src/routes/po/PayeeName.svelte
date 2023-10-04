@@ -11,7 +11,9 @@
       query: value
     });
   }
+
   export let clickedPayeeName = "";
+  $: value = clickedPayeeName;
 </script>
 
 <label for={payeeName.id}>
@@ -19,11 +21,11 @@
   <input
     class={payeeName.class}
     id={payeeName.id}
-    type={payeeName.type}
+    type="search"
     name={payeeName.name}
     required
     on:input={handleInput}
-    value={clickedPayeeName}
+    bind:value={value}
   >
 </label>
 
