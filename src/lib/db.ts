@@ -35,6 +35,9 @@ export async function getPayeesWithMinimalInfo() {
 				_id: {
 					$toString: "$_id"
 				},
+				shouldBeShown: {
+					$literal: true
+				},
 				beneficiaryName: 1,
 				typeOfPayee: 1,
 				taxRate: 1

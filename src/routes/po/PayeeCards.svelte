@@ -1,10 +1,8 @@
 <script lang="ts">
 	import PayeeCard from "$lib/components/cardTemplates/PayeeCard.svelte";
-  export let payees: {
-    _id: string,
-    beneficiaryName: string,
-    typeOfPayee: string
-  }[];
+	import type {Document} from "mongodb";
+
+  export let payees: Document[];
 </script>
 
 <h6 class="available-payees-title">
@@ -12,10 +10,14 @@
 </h6>
 <section class="cards">
   {#each payees as payee (payee._id)}
-    <PayeeCard
-      payeeName={payee.beneficiaryName}
-      payeeType={payee.typeOfPayee}
-    />
+    {#if payee.shouldBeShown}
+      <PayeeCard
+        payeeName={payee.beneficiaryName}
+        payeeType={payee.typeOfPayee}
+        payee_id={payee._id}
+        on:clickedPayee
+      />
+    {/if}
   {/each}
 </section>
 

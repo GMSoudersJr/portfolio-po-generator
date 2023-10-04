@@ -1,35 +1,60 @@
 <script lang="ts">
+	import {createEventDispatcher} from "svelte";
+
+
   export let payeeName: string;
   export let payeeType: string;
+  export let payee_id: string;
+
+  const dispatch = createEventDispatcher();
+
+  function handleClick() {
+    dispatch("clickedPayee", {
+      payee: {
+        beneficiaryName: payeeName,
+        _id: payee_id
+      }
+    })
+  }
 </script>
 
-<div class="payee-card">
-  <h3 class="payee-name">
+<button
+  type="button"
+  class="payee-card"
+  on:click={handleClick}
+  value={payeeName}
+>
+  <h3
+    class="header"
+    value={payeeName}
+  >
     {payeeName}
   </h3>
-  <p class="payee-type">
+  <p
+    class="body"
+    value={payeeName}
+  >
     {payeeType}
   </p>
-</div>
+</button>
 
 
 <style>
   .payee-card {
-    border: 1px solid black;
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto;
     grid-template-areas:
-    "name"
-    "payeeType";
+    "header"
+    "body";
     row-gap: 0.25rem;
     padding: 0.5rem;
   }
-  .payee-name {
-    grid-area: name;
+  .header {
+    grid-area: header;
   }
-  .payee-type {
-    grid-area: payeeType;
+  .body {
+    grid-area: body;
     color: #777;
   }
 </style>

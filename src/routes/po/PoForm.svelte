@@ -21,14 +21,17 @@
 
   $: arrayOfNumbers = updateArrayOfNumbers($numberOfProductsOrServices);
 
-
+  export let clickedPayeeName = "";
 </script>
 
 <form
   method="post"
   action="?/add"
 >
-  <PayeeName />
+  <PayeeName
+    on:searching
+    {clickedPayeeName}
+  />
   <NumberOfProductsOrServices />
   {#each arrayOfNumbers as d, i}
   <ProductAndPrice number={(i + 1).toString()}/>
