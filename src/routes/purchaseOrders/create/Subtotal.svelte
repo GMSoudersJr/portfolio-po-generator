@@ -1,10 +1,6 @@
 <script lang="ts">
   import { subtotal } from "$lib/strings/poForm";
 
-  interface SubtotalObject {
-    [index: string]: number;
-  }
-
   export let subtotalActual: number;
 </script>
 

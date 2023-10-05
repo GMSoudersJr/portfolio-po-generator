@@ -1,9 +1,10 @@
 <script>
   import PoTemplate from '$lib/components/poTemplate/PoTemplate.svelte'; 
+  import HomePage from './HomePage.svelte';
 </script>
 
 <div class="page-container">
-  <PoTemplate />
+  <HomePage />
 </div>
 
 <style>
@@ -11,6 +12,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #259259;
   }
 
 </style>
