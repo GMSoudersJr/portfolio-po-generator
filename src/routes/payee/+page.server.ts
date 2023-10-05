@@ -23,6 +23,7 @@ const bankAddressNameString = bankAddress.name;
 const routingNumberNameString = routingNumber.name;
 const swiftCodeOrIbanNumberNameString = SwiftCodeOrIbanNumber.name;
 const taxRateNameString = "taxRate";
+const currencyNameString= "currency";
 
 export const actions = {
 	add: async ({ request }) => {
@@ -39,16 +40,20 @@ export const actions = {
 		const formBankAddressData = trimTheFormData(data.get(bankAddressNameString));
 		const formRoutingNumberData = trimTheFormData(data.get(routingNumberNameString));
 		const formSwiftCodeData = trimTheFormData(data.get(swiftCodeOrIbanNumberNameString));
+		const formCurrencyData = trimTheFormData(data.get(currencyNameString));
+		const payeeTaxRate = payeeTypeAndTax.options.filter((option) => option.value == formPayeeTypeData);
+		const taxRate = payeeTaxRate[0].taxRate;
 
 		const payee = new Payee(
 			formBeneficiaryNameData,
 			formPayeeTypeData,
 			formBankNameData,
-			formBankAccountNumberData
+			formBankAccountNumberData,
+			taxRate,
+			formCurrencyData,
 		);
 
-		let payeeTaxRate = payeeTypeAndTax.options.filter((option) => option.value == formPayeeTypeData);
-		payee.taxRate = payeeTaxRate[0].taxRate;
+		
 
 		// TODO National ID or Business Registraion Number needs to be encrypted.
 		if ( formNationalIdOrBusinessRegistraionData == "" ) {

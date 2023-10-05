@@ -43,23 +43,27 @@ export class Payee {
 	routingNumber: string | undefined;
 	swiftCode: string | undefined;
 	taxRate: number | undefined;
+	currency: string | undefined;
 
 	constructor(
 		beneficiaryName: string | undefined,
 		typeOfPayee: string | undefined,
 		bankName: string | undefined,
 		bankAccountNumber: string | undefined,
+		taxRate: number | undefined,
+		currency: string | undefined,
 	) {
 		this.beneficiaryName = beneficiaryName;
 		this.typeOfPayee = typeOfPayee;
 		this.bankName = bankName;
 		this.bankAccountNumber = bankAccountNumber;
+		this.taxRate = taxRate;
+		this.currency = currency;
 		this.nationalIdOrBusinessRegistrationNumber = undefined;
 		this.homeAddress = undefined;
 		this.bankAddress = undefined;
 		this.routingNumber = undefined;
 		this.swiftCode = undefined;
-		this.taxRate = undefined;
 	}
 };
 
