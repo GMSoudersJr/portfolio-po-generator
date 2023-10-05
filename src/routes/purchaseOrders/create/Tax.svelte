@@ -2,7 +2,7 @@
   import { tax } from "$lib/strings/poForm";
 
   export let taxActual: number;
-  $: value = taxActual.toFixed(2);
+  $: value = taxActual.toFixed(0);
 </script>
 
 <label for={tax.id}>
