@@ -3,6 +3,7 @@
   import BankAddress from "./BankAddress.svelte";
   import BankName from "./BankName.svelte";
   import BeneficiaryName from "./BeneficiaryName.svelte";
+	import Currency from "$lib/components/forms/Currency.svelte";
 	import HomeAddress from "./HomeAddress.svelte";
 	import NationalIdOrBusinessRegistration from "./NationalIDOrBusinessRegistration.svelte";
   import PayeeType from "./PayeeType.svelte";
@@ -18,6 +19,7 @@
   <BeneficiaryName />
   <PayeeType />
   <NationalIdOrBusinessRegistration />
+  <Currency />
   <HomeAddress />
   <BankName />
   <BankAccountNumber />
@@ -30,6 +32,6 @@
 
 <style>
   form {
-    width: 30%;
+    width: 100%;
   }
 </style>

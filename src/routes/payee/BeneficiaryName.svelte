@@ -9,6 +9,7 @@
     id={beneficiaryName.id}
     type={beneficiaryName.type}
     name={beneficiaryName.name}
+    required
   >
 </label>
 
