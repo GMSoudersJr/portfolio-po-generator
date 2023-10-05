@@ -20,29 +20,30 @@
 	import PoNumber from "./PoNumber.svelte";
 
   $: arrayOfNumbers = updateArrayOfNumbers($numberOfProductsOrServices);
-  interface ProductAndServicePricesObject {
+  interface SubtotalObject {
     [index: string]: number;
   }
 
-  const productAndServicePricesObject: ProductAndServicePricesObject = {}
+  const subtotalObject: SubtotalObject = {}
+
+  function resetPriceForRemovedProduct() {
+    subtotalObject[`price${arrayOfNumbers.length}`] = 0
+  }
 
   function handlePriceInput(event: CustomEvent) {
-  if (
-    arrayOfNumbers.length < Object.entries(productAndServicePricesObject).length &&
-    productAndServicePricesObject[`price${arrayOfNumbers.length + 1}`] > 0
-  ) {
-      productAndServicePricesObject[`price${arrayOfNumbers.length + 1}`] = 0
-    }
-
     const priceInput = +event.detail.price.value;
     const priceFor: string = event.detail.price.for;
-    productAndServicePricesObject[priceFor] = priceInput;
-    console.log(productAndServicePricesObject);
+    subtotalObject[priceFor] = priceInput;
   }
+
 
   export let clickedPayeeName = "";
   export let clickedPayeeTaxRate = 0;
   export let clickedPayee_id = "";
+
+  $: subtotalActual = Object.values(subtotalObject).reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+  $: taxActual = +clickedPayeeTaxRate * +subtotalActual;
+  $: totalActual = +subtotalActual + +taxActual;
 </script>
 
 <form
@@ -53,20 +54,21 @@
     on:searching
     {clickedPayeeName}
   />
-  <NumberOfProductsOrServices />
+  <NumberOfProductsOrServices
+    on:removalOfProductOrService={resetPriceForRemovedProduct}
+  />
   {#each arrayOfNumbers as d}
     <ProductAndPrice
       number={(d).toString()}
       on:priceInput={handlePriceInput}
     />
   {/each}
-  <PoNumber />
-  <TaxRate {clickedPayeeTaxRate}/>
   <Subtotal
-    {productAndServicePricesObject}
+    {subtotalActual}
   />
-  <Tax />
-  <Total />
+  <TaxRate {clickedPayeeTaxRate}/>
+  <Tax {taxActual}/>
+  <Total {totalActual}/>
   <Dates />
   <PaymentMethod />
   <Currency />
@@ -75,6 +77,7 @@
   <PnpLocation />
   <RequestedBy />
   <ApprovedBy />
+  <PoNumber />
   <SubmitPoButton />
 </form>
 

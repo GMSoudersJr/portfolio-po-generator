@@ -1,12 +1,11 @@
 <script lang="ts">
   import { subtotal } from "$lib/strings/poForm";
 
-  interface ProductAndServicePricesObject {
+  interface SubtotalObject {
     [index: string]: number;
   }
 
-  export let productAndServicePricesObject: ProductAndServicePricesObject;
-  $: value = Object.values(productAndServicePricesObject).reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+  export let subtotalActual: number;
 </script>
 
 <label for={subtotal.id}>
@@ -16,8 +15,8 @@
     id={subtotal.id}
     type="number"
     name={subtotal.name}
-    required
-    bind:value={value}
+    disabled
+    bind:value={subtotalActual}
   >
 </label>
 

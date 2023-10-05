@@ -1,5 +1,8 @@
-<script>
+<script lang="ts">
   import { tax } from "$lib/strings/poForm";
+
+  export let taxActual: number;
+  $: value = taxActual.toFixed(2);
 </script>
 
 <label for={tax.id}>
@@ -7,9 +10,10 @@
   <input
     class={tax.class}
     id={tax.id}
-    type={tax.type}
+    type="number"
     name={tax.name}
     required
+    bind:value={value}
   >
 </label>
 

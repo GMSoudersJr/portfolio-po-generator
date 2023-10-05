@@ -82,22 +82,22 @@ export const paymentMethod = {
 		{
 			id: "wire",
 			text: "Wire",
-			value: "wire",
+			value: "Wire",
 		},
 		{
 			id: "cash",
 			text: "Cash",
-			value: "cash",
+			value: "Cash",
 		},
 		{
 			id: "creditCard",
 			text: "Credit Card",
-			value: "creditCard",
+			value: "Credit Card",
 		},
 		{
 			id: "bitcoin",
 			text: "Bitcoin",
-			value: "bitcoin",
+			value: "Bitcoin",
 		},
 	]
 };
@@ -112,17 +112,17 @@ export const topicDivision = {
 		{
 			id: "general",
 			text: "General",
-			value: "general",
+			value: "General",
 		},
 		{
 			id: "governmentKorea",
 			text: "Government Korea",
-			value: "governmentKorea",
+			value: "Government Korea",
 		},
 		{
 			id: "smartCitiesKorea",
 			text: "Smart Cities Korea",
-			value: "smartCitiesKorea",
+			value: "Smart Cities Korea",
 		},
 	]
 };
