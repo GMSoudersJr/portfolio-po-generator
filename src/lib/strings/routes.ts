@@ -5,13 +5,25 @@ const routes = [
 		class: "nav-link",
 	},
 	{
-		name: "Add Payee",
-		href: "/addPayee",
+		name: "Purchase Orders",
+		href: "/purchaseOrders",
 		class: "nav-link",
+		options: [
+			{
+				name: "Create New POs",
+				href: "/purchaseOrders/create",
+			},
+		]
 	},
 	{
-		name: "Create POs",
-		href: "/createPos",
+		name: "Payees",
+		href: "/payees",
 		class: "nav-link",
+		options: [
+			{
+				name: "Create New Payees",
+				href: "/payees/create",
+			},
+		]
 	},
 ];
