@@ -2,8 +2,9 @@
   import { updateArrayOfNumbers } from "$lib/utils";
   import { numberOfProductsOrServices } from "$lib/stores";
 	import ApprovedBy from "./ApprovedBy.svelte";
+	import CreatedDate from "./CreatedDate.svelte";
 	import Currency from "$lib/components/forms/Currency.svelte";
-	import Dates from "./Dates.svelte";
+	import DueDate from "./DueDate.svelte";
 	import NumberOfProductsOrServices from "./NumberOfProductsOrServices.svelte";
 	import PayeeName from "./PayeeName.svelte";
 	import PaymentMethod from "./PaymentMethod.svelte";
@@ -70,7 +71,8 @@
   <TaxRate {clickedPayeeTaxRate}/>
   <Tax {taxActual}/>
   <Total {totalActual}/>
-  <Dates />
+  <DueDate />
+  <CreatedDate />
   <PaymentMethod />
   <Currency {clickedPayeeCurrency}/>
   <TopicDivision />

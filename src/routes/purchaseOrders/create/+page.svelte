@@ -61,11 +61,11 @@
 <style>
   .page-grid-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 2fr 1fr;
     grid-template-rows: auto;
     grid-template-areas:
     "availablePayees poForm .";
-    column-gap: 2rem;
+    column-gap: 1rem;
   }
   .available-payees {
     grid-area: availablePayees;
