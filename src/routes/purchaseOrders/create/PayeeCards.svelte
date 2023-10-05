@@ -1,6 +1,6 @@
 <script lang="ts">
 	import PayeeCard from "$lib/components/cardTemplates/PayeeCard.svelte";
-	import type {Document} from "mongodb";
+	import type { Document } from "mongodb";
 
   export let payees: Document[];
 </script>

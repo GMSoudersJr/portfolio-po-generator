@@ -1,11 +1,11 @@
 <script lang="ts">
-	import type {PageData} from "./$types";
+	import type { PageData } from "./$types";
 	import PayeeCards from "./PayeeCards.svelte";
 	import PoForm from "./PoForm.svelte";
 
   export let data: PageData;
 
-  let payees = data.payees;
+  $: ({ payees } = data);
   let clickedPayeeName: string = "";
   let clickedPayeeTaxRate: number = 0;
   let clickedPayee_id: string = "";
