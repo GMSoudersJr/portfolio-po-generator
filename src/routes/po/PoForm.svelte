@@ -40,6 +40,7 @@
   export let clickedPayeeName = "";
   export let clickedPayeeTaxRate = 0;
   export let clickedPayee_id = "";
+  export let clickedPayeeCurrency = "";
 
   $: subtotalActual = Object.values(subtotalObject).reduce((accumulator, currentValue) => accumulator + currentValue, 0);
   $: taxActual = +clickedPayeeTaxRate * +subtotalActual;
@@ -71,7 +72,7 @@
   <Total {totalActual}/>
   <Dates />
   <PaymentMethod />
-  <Currency />
+  <Currency {clickedPayeeCurrency}/>
   <TopicDivision />
   <ReportingBudgetLine />
   <PnpLocation />

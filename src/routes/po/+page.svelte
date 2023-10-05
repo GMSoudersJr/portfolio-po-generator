@@ -6,9 +6,10 @@
   export let data: PageData;
 
   let payees = data.payees;
-  let clickedPayeeName = "";
-  let clickedPayeeTaxRate = 0;
-  let clickedPayee_id = "";
+  let clickedPayeeName: string = "";
+  let clickedPayeeTaxRate: number = 0;
+  let clickedPayee_id: string = "";
+  let clickedPayeeCurrency: string = "";
 
   function handleSearch(event: CustomEvent) {
     const query = event.detail.query.toLowerCase();
@@ -23,9 +24,11 @@
     const payeeName = event.detail.payee.beneficiaryName;
     const _id = event.detail.payee._id;
     const taxRate = event.detail.payee.taxRate;
+    const currency = event.detail.payee.currency;
     clickedPayeeName = payeeName;
     clickedPayee_id = _id;
     clickedPayeeTaxRate = taxRate;
+    clickedPayeeCurrency = currency;
 
     payees?.forEach(payee => {
     const shouldBeShown = payee.beneficiaryName.toLowerCase().includes(payeeName.toLowerCase());
@@ -50,6 +53,7 @@
       {clickedPayeeName}
       {clickedPayee_id}
       {clickedPayeeTaxRate}
+      {clickedPayeeCurrency}
     />
   </div>
 </div>

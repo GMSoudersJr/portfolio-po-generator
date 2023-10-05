@@ -16,6 +16,7 @@
         payeeType={payee.typeOfPayee}
         payee_id={payee._id}
         payee_taxRate={payee.taxRate}
+        payee_currency={payee.currency}
         on:clickedPayee
       />
     {/if}

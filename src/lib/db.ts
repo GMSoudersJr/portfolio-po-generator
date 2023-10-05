@@ -40,7 +40,8 @@ export async function getPayeesWithMinimalInfo() {
 				},
 				beneficiaryName: 1,
 				typeOfPayee: 1,
-				taxRate: 1
+				taxRate: 1,
+				currency: 1,
 			}
 		}
 	];
