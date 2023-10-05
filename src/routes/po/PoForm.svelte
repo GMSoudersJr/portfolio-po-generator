@@ -23,6 +23,7 @@
   interface ProductAndServicePricesObject {
     [index: string]: number;
   }
+
   const productAndServicePricesObject: ProductAndServicePricesObject = {}
 
   function handlePriceInput(event: CustomEvent) {
@@ -61,11 +62,10 @@
   {/each}
   <PoNumber />
   <TaxRate {clickedPayeeTaxRate}/>
-  <Tax />
   <Subtotal
-    {clickedPayeeTaxRate}
     {productAndServicePricesObject}
   />
+  <Tax />
   <Total />
   <Dates />
   <PaymentMethod />
