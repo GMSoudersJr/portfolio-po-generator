@@ -164,21 +164,9 @@ export const payeeTypeAndTax = {
 			taxRate: 0,
 		},
 		{
-			id: "nationalInsurance",
-			value: "National Insurance",
-			text: "National Insurance",
-			taxRate: 0,
-		},
-		{
 			id: "plugAndPlay",
 			value: "Plug and Play",
 			text: "Plug and Play",
-			taxRate: 0,
-		},
-		{
-			id: "taxes",
-			value: "Taxes",
-			text: "Taxes",
 			taxRate: 0,
 		},
 		{
