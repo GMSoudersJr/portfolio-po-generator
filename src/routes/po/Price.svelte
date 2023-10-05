@@ -7,7 +7,6 @@
   function handleChange(event: Event) {
     const target = event.target as HTMLInputElement;
     const value = target.value;
-    console.log(value);
 
     dispatch("priceInput", {
       price: {

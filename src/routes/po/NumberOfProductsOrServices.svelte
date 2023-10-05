@@ -1,5 +1,16 @@
 <script lang="ts">
   import { numberOfProductsOrServices } from "$lib/stores";
+  import { createEventDispatcher } from "svelte";
+
+  const dispatch = createEventDispatcher();
+  function handleDecrement() {
+    numberOfProductsOrServices.decrement();
+    dispatch('removalOfProductOrService', {
+      price: {
+        for: `price${$numberOfProductsOrServices}`
+      }
+    })
+  }
 </script>
 
 <div class="number-and-button-container">
@@ -15,7 +26,7 @@
   <button
     type="button"
     class="po-number-button decrement"
-    on:click={numberOfProductsOrServices.decrement}>
+    on:click={handleDecrement}>
     -
   </button>
 </div>

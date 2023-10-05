@@ -1,5 +1,8 @@
 <script lang="ts">
   import { subtotal } from "$lib/strings/poForm";
+
+  export let productAndServicePricesObject;
+  export let clickedPayeeTaxRate;
 </script>
 
 <label for={subtotal.id}>
