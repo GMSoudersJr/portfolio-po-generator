@@ -137,137 +137,137 @@ export const reportBudgetLine = {
 		{
 			id: "amoritizationExpense",
 			text: "Amoritization Expense",
-			value: "amoritizationExpense",
+			value: "Amoritization Expense",
 		},
 		{
 			id: "deposits",
 			text: "Deposits",
-			value: "deposits",
+			value: "Deposits",
 		},
 		{
 			id: "employeeMorale",
 			text: "Employee Morale",
-			value: "employeeMorale",
+			value: "Employee Morale",
 		},
 		{
 			id: "entertainment",
 			text: "Entertainment",
-			value: "entertainment",
+			value: "Entertainment",
 		},
 		{
 			id: "expoDay",
 			text: "Expo Day",
-			value: "expoDay",
+			value: "Expo Day",
 		},
 		{
 			id: "externalEvents",
 			text: "External Events",
-			value: "externalEvents",
+			value: "External Events",
 		},
 		{
 			id: "facilityOthers",
 			text: "Facility Others",
-			value: "facilityOthers",
+			value: "Facility Others",
 		},
 		{
 			id: "facilityRent",
 			text: "Facility Rent",
-			value: "facilityRent",
+			value: "Facility Rent",
 		},
 		{
 			id: "insurances",
 			text: "Insurances",
-			value: "insurances",
+			value: "Insurances",
 		},
 		{
 			id: "internalEvents",
 			text: "Internal Events",
-			value: "internalEvents",
+			value: "Internal Events",
 		},
 		{
 			id: "itCosts",
 			text: "IT Costs",
-			value: "itCosts",
+			value: "IT Costs",
 		},
 		{
 			id: "legalAndProfessionalServices",
 			text: "Legal & Profeessional Services",
-			value: "legalAndProfessionalServices",
+			value: "Legal & Profeessional Services",
 		},
 		{
 			id: "managementCompensation",
 			text: "Management Compensation",
-			value: "managementCompensation",
+			value: "Management Compensation",
 		},
 		{
 			id: "marketingMaterials",
 			text: "Marketing Materials",
-			value: "marketingMaterials",
+			value: "Marketing Materials",
 		},
 		{
 			id: "meetups",
 			text: "Meetups",
-			value: "meetups",
+			value: "Meetups",
 		},
 		{
 			id: "nationalInsurance",
 			text: "National Insurance",
-			value: "nationalInsurance",
+			value: "National Insurance",
 		},
 		{
 			id: "otherAdvertisingCosts",
 			text: "Other Advertising Costs",
-			value: "otherAdvertisingCosts",
+			value: "Other Advertising Costs",
 		},
 		{
 			id: "otherEvents",
 			text: "Other Events",
-			value: "otherEvents",
+			value: "Other Events",
 		},
 		{
 			id: "otherExpenses",
 			text: "Other Expenses",
-			value: "otherExpenses",
+			value: "Other Expenses",
 		},
 		{
 			id: "perDiem",
 			text: "Per diem",
-			value: "perDiem",
+			value: "Per diem",
 		},
 		{
 			id: "salary",
 			text: "Salary",
-			value: "salary",
+			value: "Salary",
 		},
 		{
 			id: "selectionDay",
 			text: "Selection Day",
-			value: "selectionDay",
+			value: "Selection Day",
 		},
 		{
 			id: "subscriptions",
 			text: "Subscriptions",
-			value: "subscriptions",
+			value: "Subscriptions",
 		},
 		{
 			id: "taxes",
 			text: "Taxes",
-			value: "taxes",
+			value: "Taxes",
 		},
 		{
 			id: "teamBonding",
 			text: "Team Bonding",
-			value: "teamBonding",
+			value: "Team Bonding",
 		},
 		{
 			id: "telephones",
 			text: "Telephones",
-			value: "telephones",
+			value: "Telephones",
 		},
 		{
 			id: "travel",
 			text: "Travel",
-			value: "travel",
+			value: "Travel",
 		},
 	]
 };
@@ -302,7 +302,7 @@ export const pnpLocation = {
 		{
 			id: "pnpKorea",
 			text: "PNP - Korea",
-			value: "pnpKorea",
+			value: "PNP - Korea",
 		},
 	]
 };
@@ -317,7 +317,7 @@ export const requestedBy = {
 		{
 			id: "rachelChung",
 			text: "Rachel Chung",
-			value: "rachelChung",
+			value: "Rachel Chung",
 		},
 	]
 };
@@ -332,17 +332,17 @@ export const approvedBy = {
 		{
 			id: "phillipVincent",
 			text: "Phillip Vincent",
-			value: "phillipVincent",
+			value: "Phillip Vincent",
 		},
 		{
 			id: "miguelBello",
 			text: "Miguel Bello",
-			value: "miguelBello",
+			value: "Miguel Bello",
 		},
 		{
 			id: "brandonJoe",
 			text: "Brandon Joe",
-			value: "brandonJoe",
+			value: "Brandon Joe",
 		},
 	]
 };
@@ -358,25 +358,25 @@ export const currency = {
 			abbreviation: "KRW",
 			id: "koreanWon",
 			symbol: "￦",
-			value: "krw",
+			value: "￦",
 		},
 		{
 			abbreviation: "USD",
 			id: "americanDollar",
 			symbol: "$",
-			value: "usd",
+			value: "$",
 		},
 		{
 			abbreviation: "EUR",
 			id: "euEuro",
 			symbol: "€",
-			value: "eur",
+			value: "€",
 		},
 		{
 			abbreviation: "BTC",
 			id: "bitcoin",
 			symbol: "₿",
-			value: "btc",
+			value: "₿",
 		},
 	]
 };
