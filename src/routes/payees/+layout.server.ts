@@ -3,9 +3,7 @@ import {redirect} from "@sveltejs/kit";
 import type { LayoutServerLoad } from "./$types";
 
 export const load: LayoutServerLoad = async ({ locals, request }) => {
-	console.log("Locals", locals)
-//	const payees = await getPayeesWithMinimalInfo();
 	return {
-		payees: "hello"
+		payees: getPayeesWithMinimalInfo()
 	}
 }

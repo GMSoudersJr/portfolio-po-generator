@@ -9,16 +9,16 @@ export const handle: Handle = async ({ event, resolve }) => {
 	if ( accessToken ) {
 		jwt.verify(accessToken, ACCESS_TOKEN_SECRET, (error, payload) => {
 			if (error) {
-				throw redirect(302, '/login');
+				throw redirect(302, '/');
 			}
 			if (payload) {
 				event.locals.user = {
 					name: payload.username,
 					firstName: payload.firstName,
-					redirectAfterLogin: event.url.pathname,
 				}
 			}
 		})
+		return await resolve(event);
 	}
 
 	if ( event.url.pathname.startsWith('/whoLovesYou') ) {
@@ -29,19 +29,16 @@ export const handle: Handle = async ({ event, resolve }) => {
 	if ( event.url.pathname.startsWith('/purchaseOrders') ) {
 		console.log("HOOKS PURCHASE ORDERS pathname", event.url.pathname);
 		if (!event.locals.user) {
-			throw redirect(302, '/login')
+			throw redirect(302, '/')
 		}
 	}
 
 	if ( event.url.pathname.startsWith('/payees') ) {
 		console.log("HOOKS PAYEES pathname", event.url.pathname);
 		if (!event.locals.user) {
-			throw redirect(302, '/login')
+			throw redirect(302, '/')
 		}
 	}
-
-
-
 
 	const route = event.url;
 	let start = performance.now();

@@ -1,10 +1,18 @@
-<script>
+<script lang="ts">
   import PoTemplate from '$lib/components/poTemplate/PoTemplate.svelte'; 
+  import { page } from '$app/stores';
   import HomePage from './HomePage.svelte';
+  import LoginPage from './LoginPage.svelte';
+  import type { ActionData } from './login/$types';
+  export let form: ActionData;
 </script>
 
 <div class="page-container">
-  <HomePage />
+  {#if $page.data.user}
+    <HomePage />
+    {:else}
+    <LoginPage {form}/>
+  {/if}
 </div>
 
 <style>

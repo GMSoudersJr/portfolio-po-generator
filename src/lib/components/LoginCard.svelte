@@ -8,7 +8,7 @@
 <form
   class="login-form"
   method="POST"
-  action="?/login"
+  action="/login"
 >
   {#if form?.incorrect}<p class="error">{form?.message}</p> {/if}
   {#if form?.missing}<p class="error">{form?.message}</p> {/if}
@@ -29,7 +29,12 @@
       id="login-password"
     >
   </label>
-  <input type="submit" name="login-submit" id="login-submit" value="Login">
+  <input
+    type="submit"
+    name="login-submit"
+    id="login-submit"
+    value="Login"
+  >
 </form>
 
 <style>

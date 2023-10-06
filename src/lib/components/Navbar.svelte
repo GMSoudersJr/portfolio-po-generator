@@ -13,7 +13,7 @@
       <a class="nav-link" href="/">Home</a>
     </li>
     <li>
-      <a class="nav-link" href="/payees/create">Payees</a>
+      <a class="nav-link" href="/payees">Payees</a>
     </li>
     <li>
       <a class="nav-link" href="/purchaseOrders/create">Purchase Orders</a>

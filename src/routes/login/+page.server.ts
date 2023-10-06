@@ -8,16 +8,13 @@ import {AccessPayload} from '$lib/classes';
 import type { PageServerLoad, Actions } from './$types';
 
 export const load: PageServerLoad = async ({ locals, url }) => {
-	console.log("LOGIN PAGE SERVER LOAD SEARCH Params:", url.searchParams);
-	locals.redirectAfterLogin = url.searchParams.get('redirect')
-
 	return {
 		title: "Login Page",
 	}
 }
 
 export const actions = {
-	login: async ({ request, cookies, locals }) => {
+	default: async ({ request, cookies, locals }) => {
 
 		const formData = Object.fromEntries(await request.formData());
 		const { username, password } = formData;
@@ -70,7 +67,7 @@ export const actions = {
 			path: '/'
 		})
 
-		throw redirect(301, locals.redirectAfterLogin ?? '/');
+		throw redirect(301,  '/');
 		// return { success: true, error: false, message: "Login successful", data: null, redirect: '/' }
 	}
 }satisfies Actions;

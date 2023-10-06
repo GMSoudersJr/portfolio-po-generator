@@ -1,10 +1,12 @@
-<script>
+<script lang="ts">
   import { page } from '$app/stores';
   import Navbar from '$lib/components/Navbar.svelte';
   import '../app.css';
 </script>
 
-<Navbar />
+{#if  $page.data.user}
+  <Navbar />
+{/if}
 <slot />
 
 <style>

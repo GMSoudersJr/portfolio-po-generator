@@ -7,7 +7,6 @@ declare global {
 			user: {
 				name: string | undefined
 				firstName: string | undefined
-				redirectAfterLogin: string | null
 			}
 		}
 		// interface PageData {}
