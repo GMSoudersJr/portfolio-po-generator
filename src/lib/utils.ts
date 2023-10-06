@@ -32,6 +32,29 @@ export function trimTheFormData(data: FormDataEntryValue | null) {
 	return data?.toString().trim();
 }
 
+export class User {
+	firstName: string | undefined;
+	lastName: string | undefined;
+	username: string | undefined;
+	password: string | undefined;
+	salt: string | undefined;
+
+	constructor(
+		firstName: string | undefined,
+		lastName: string | undefined,
+		username: string | undefined,
+		password: string | undefined,
+		salt: string | undefined,
+	) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.username = username;
+		this.password = password;
+		this.salt = salt;
+
+	}
+}
+
 export class Payee {
 	beneficiaryName: string | undefined;
 	typeOfPayee: string | undefined;

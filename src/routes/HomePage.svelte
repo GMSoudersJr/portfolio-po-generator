@@ -1,21 +1,19 @@
 <script>
-  import LoginCard from './LoginCard.svelte';
 </script>
 
 <main class="home-page">
   <h1 class="header">
     Your Purchase Order Generator
   </h1>
-  <LoginCard />
 </main>
 
 <style>
   .home-page {
-    height: 100vh;
-    width:100vw;
+    height: 100%;
+    width:100%;
     display: grid;
     grid-template-columns: max-content;
-    grid-template-rows: auto 1fr;
+    grid-template-rows: auto;
     justify-content: center;
     align-items: center;
     row-gap: 2em;
