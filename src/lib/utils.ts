@@ -53,7 +53,7 @@ export class User {
 		this.salt = salt;
 
 	}
-}
+};
 
 export class Payee {
 	beneficiaryName: string | undefined;
@@ -95,7 +95,7 @@ let ciphterText;
 function getDataEncoding(data: string | undefined) {
 	let enc = new TextEncoder();
 	return enc.encode(data);
-}
+};
 
 
 export async function encryptTheData(key: CryptoKey, data: string | undefined) {
@@ -111,7 +111,7 @@ export async function encryptTheData(key: CryptoKey, data: string | undefined) {
 	let buffer = new Uint8Array(ciphterText, 0, 5);
 
 	return buffer;
-}
+};
 
 export async function decryptTheData(key: CryptoKey, data: Uint8Array) {
 	let decrypted = await crypto.subtle.decrypt(
@@ -126,7 +126,7 @@ export async function decryptTheData(key: CryptoKey, data: Uint8Array) {
 	let decryptedText = dec.decode(decrypted);
 
 	return decryptedText;
-}
+};
 
 export async function generateKeypair() {
 	const keyPair = await crypto.subtle.generateKey(
@@ -148,4 +148,34 @@ export async function generateKeypair() {
 		privateKey,
 		publicKey
 	}
-}
+};
+
+export function formatPoNumberDateString(date: string) {
+	const dateArray = date.split('-');
+	let twoDigitDay = dateArray.at(2);
+	let twoDigitMonth = dateArray.at(1);
+	let twoDigitYear = dateArray.at(0)?.slice(2);
+	let dateString = `${twoDigitDay}${twoDigitMonth}${twoDigitYear}`;
+	return dateString;
+};
+
+export function changeToPascalCase(someString:string) {
+	let trimmedString = someString.trim();
+	let arrayOfStrings = trimmedString.split(' ');
+	arrayOfStrings.forEach((word) => {
+		word.toLowerCase();
+		word.at(0)?.toUpperCase();
+	});
+	const pascalCasedString = arrayOfStrings.join('');
+	return pascalCasedString;
+};
+
+export function getInitials(name: string) {
+	let trimmedName = name.trim();
+	let arrayOfStrings = trimmedName.split(' ');
+	let initialsArray = arrayOfStrings.map((name) => {
+		name.at(0)?.toUpperCase();
+	});
+	let initials = initialsArray.join('');
+	return initials;
+};

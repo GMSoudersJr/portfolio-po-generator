@@ -1,10 +1,7 @@
-<script>
+<script lang="ts">
   import { productServiceDescription } from "$lib/strings/poForm";
 
-  /**
-   *@type string
-   */
-  export let number;
+  export let number: string;
 </script>
 
 <label for={`${productServiceDescription.id}${number}`}>

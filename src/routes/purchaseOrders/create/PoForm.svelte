@@ -19,13 +19,22 @@
 	import TaxRate from "./TaxRate.svelte";
 	import TopicDivision from "./TopicDivision.svelte";
 	import Total from "./Total.svelte";
+	import PoSummary from "./PoSummary.svelte";
+	import type {PoFormPoNumber} from "$lib/classes";
 
   $: arrayOfNumbers = updateArrayOfNumbers($numberOfProductsOrServices);
   interface SubtotalObject {
     [index: string]: number;
   }
 
-  const subtotalObject: SubtotalObject = {}
+
+  const subtotalObject: SubtotalObject = {};
+  const poFormPoNumber: PoFormPoNumber = {
+    dueDate: "",
+    summary: "",
+    topicDivision: "",
+    requesterInitials: ""
+  };
 
   function resetPriceForRemovedProduct() {
     subtotalObject[`price${arrayOfNumbers.length}`] = 0
@@ -37,6 +46,11 @@
     subtotalObject[priceFor] = priceInput;
   }
 
+  function handlePoNumberUpdate(event: CustomEvent) {
+    const key: string = event.detail.poNumber.key;
+    const value = event.detail.poNumber.value;
+    poFormPoNumber[`${key}`] = value;
+  }
 
   export let clickedPayeeName = "";
   export let clickedPayeeTaxRate = 0;
@@ -56,6 +70,7 @@
     on:searching
     {clickedPayeeName}
   />
+  <PoSummary />
   <NumberOfProductsOrServices
     on:removalOfProductOrService={resetPriceForRemovedProduct}
   />

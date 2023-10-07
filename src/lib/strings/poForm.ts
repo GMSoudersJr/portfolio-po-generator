@@ -1,5 +1,13 @@
 import { todayDateString } from "$lib/utils";
 
+export const poSummary = {
+	class: "form-input",
+	id: "po-summary",
+	label: "PO Summary",
+	name: "poSummary",
+	type: "text",
+};
+
 export const numberOfProductsOrServices = {
 	class: "form-input",
 	id: "number-of-products-or-services",
