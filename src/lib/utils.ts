@@ -1,3 +1,21 @@
+export function formatPoNumberDateString(date: string) {
+	const dateArray = date?.split('-');
+	let twoDigitDay = dateArray.at(2);
+	let twoDigitMonth = dateArray.at(1);
+	let twoDigitYear = dateArray.at(0)?.slice(2);
+	let dateString = `${twoDigitDay}${twoDigitMonth}${twoDigitYear}`;
+	return dateString;
+};
+
+export function formatDateForPo(dateString: string) {
+	const dateArray = dateString.split('-');
+	let twoDigitDay = dateArray.at(2);
+	let twoDigitMonth = dateArray.at(1);
+	let fourDigitYear = dateArray.at(0);
+	let formattedDateString = `${twoDigitDay}/${twoDigitMonth}/${fourDigitYear}`;
+	return formattedDateString;
+}
+
 export function updateArrayOfNumbers(someQuantity: number) {
 	let arrayOfNumbers = [];
 	for(let i = 1; i <= someQuantity; i++) {
@@ -148,15 +166,6 @@ export async function generateKeypair() {
 		privateKey,
 		publicKey
 	}
-};
-
-export function formatPoNumberDateString(date: string) {
-	const dateArray = date?.split('-');
-	let twoDigitDay = dateArray.at(2);
-	let twoDigitMonth = dateArray.at(1);
-	let twoDigitYear = dateArray.at(0)?.slice(2);
-	let dateString = `${twoDigitDay}${twoDigitMonth}${twoDigitYear}`;
-	return dateString;
 };
 
 export function changeToPascalCase(someString:string | undefined) {

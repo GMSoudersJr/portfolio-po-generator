@@ -1,6 +1,7 @@
 import { DB_URI, DB_NAME } from "$env/static/private";
-import { MongoClient, ServerApiVersion, ObjectId } from "mongodb";
+import { MongoClient, ServerApiVersion } from "mongodb";
 import type { Payee, User } from "./utils";
+import type {Po} from "./classes";
 
 const client = new MongoClient(DB_URI, {
 	serverApi: {
@@ -14,6 +15,19 @@ const db = client.db(DB_NAME);
 const payeeCollection = db.collection('payees');
 const poCollection = db.collection('pos');
 const users = db.collection('users');
+
+export async function addPoToTheDatabase(po: Po) {
+	try {
+		await client.connect();
+		console.log("Successfully connected to the database to add a po.");
+		const addedPo = (await poCollection.insertOne(po)).acknowledged;
+		return addedPo;
+	} catch (error) {
+		console.log("There was an error adding a po to the database.", error)
+	} finally {
+		await client.close();
+	}
+}
 
 export async function registerNewUser(user: User) {
 	try {

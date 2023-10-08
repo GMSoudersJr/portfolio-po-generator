@@ -68,7 +68,7 @@ export const productServiceDescription = {
 	class: "form-input",
 	id: "product-service-description",
 	label: "Product / SVC Description",
-	name: "productServiceDescription",
+	name: "productOrServiceDescription",
 	type: "text",
 };
 
@@ -365,7 +365,7 @@ export const currency = {
 		{
 			abbreviation: "KRW",
 			id: "koreanWon",
-			symbol: "￦",
+			symbol: "₩",
 			value: "KRW",
 		},
 		{

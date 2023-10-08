@@ -1,3 +1,5 @@
+import type { ObjectId } from "mongodb";
+
 export class User {
 	firstName: string | undefined;
 	lastName: string | undefined;
@@ -21,50 +23,58 @@ export class User {
 	}
 };
 
-class ProductServiceDescriptionAndPrice {
+export class ProductOrServiceDescriptionAndPrice {
 	[index: string]: string | undefined;
-	description: string | undefined;
+	productOrServiceDescription: string | undefined;
 	price: string | undefined;
 }
 
 export class Po {
-	[index: string]: string | number | ProductServiceDescriptionAndPrice[] | undefined;
-	payee_id: string | undefined;
+	[index: string]: string | number | ProductOrServiceDescriptionAndPrice[] | ObjectId | undefined;
+	payee_id: ObjectId | undefined;
+	paymentMethod: string | undefined;
 	poNumber: string | undefined;
 	dueDate: string | undefined;
 	createdDate: string | undefined;
 	pnpLocation: string | undefined;
 	topicDivision: string | undefined;
 	reportingBudgetLine: string | undefined;
-	productsOrServicesDescriptionsAndPrices: ProductServiceDescriptionAndPrice[] = [];
 	tax: string | undefined;
 	total: string | undefined;
+	productsOrServicesDescriptionsAndPrices: ProductOrServiceDescriptionAndPrice[] = [];
+	requestedBy: string | undefined;
+	approvedBy: string | undefined;
 
 	constructor(
-	payee_id: string | undefined,
+	payee_id: ObjectId | undefined,
+	paymentMethod: string | undefined,
 	poNumber: string | undefined,
 	dueDate: string | undefined,
 	createdDate: string | undefined,
 	pnpLocation: string | undefined,
 	topicDivision: string | undefined,
 	reportingBudgetLine: string | undefined,
-	productsOrServicesDescriptionsAndPrices: ProductServiceDescriptionAndPrice[],
 	tax: string | undefined,
 	total: string | undefined,
-
+	productsOrServicesDescriptionsAndPrices: ProductOrServiceDescriptionAndPrice[],
+	requestedBy: string | undefined,
+	approvedBy: string | undefined,
 	) {
 		this.payee_id = payee_id;
+		this.paymentMethod = paymentMethod;
 		this.poNumber = poNumber;
 		this.dueDate = dueDate;
 		this.createdDate = createdDate;
 		this.pnpLocation = pnpLocation;
 		this.topicDivision = topicDivision;
 		this.reportingBudgetLine = reportingBudgetLine;
-		this.productsOrServicesDescriptionsAndPrices = productsOrServicesDescriptionsAndPrices
 		this.tax = tax;
 		this.total = total;
+		this.productsOrServicesDescriptionsAndPrices = productsOrServicesDescriptionsAndPrices;
+		this.requestedBy = requestedBy;
+		this.approvedBy = approvedBy;
 	}
-}
+};
 
 export class Payee {
 	beneficiaryName: string | undefined;
