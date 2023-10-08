@@ -72,6 +72,7 @@
   <PayeeName
     on:searching
     {clickedPayeeName}
+    {clickedPayee_id}
   />
   <PoSummary on:summaryInput={handlePoNumberUpdate}/>
   <NumberOfProductsOrServices

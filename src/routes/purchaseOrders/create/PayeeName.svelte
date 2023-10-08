@@ -12,6 +12,8 @@
     });
   }
 
+  export let clickedPayee_id = "";
+  $: _idValue = clickedPayee_id;
   export let clickedPayeeName = "";
   $: value = clickedPayeeName;
 </script>
@@ -27,6 +29,7 @@
     on:input={handleInput}
     bind:value={value}
   >
+    <input type="hidden" name="_id" id="payee-id" value={_idValue}>
 </label>
 
 <style>
