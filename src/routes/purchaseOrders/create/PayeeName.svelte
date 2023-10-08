@@ -14,6 +14,7 @@
 
   export let clickedPayee_id = "";
   $: payee_idValue = clickedPayee_id;
+
   export let clickedPayeeName = "";
   $: value = clickedPayeeName;
 </script>

@@ -3,6 +3,7 @@
 	import {changeToPascalCase} from "$lib/utils";
   import { createEventDispatcher } from "svelte";
 
+  export let clickedPayeeTopicDivision: string;
   const dispatch = createEventDispatcher();
 
   function handleTopicDivisionSelected(event: Event) {
@@ -17,6 +18,7 @@
     })
   }
 
+  $: selected = clickedPayeeTopicDivision || topicDivision.options.at(0)?.value;
 </script>
 
 <label for={topicDivision.id}>
@@ -25,8 +27,10 @@
     class={topicDivision.class}
     name={topicDivision.name}
     id={topicDivision.id}
+    bind:value={selected}
     on:select={handleTopicDivisionSelected}
     on:change={handleTopicDivisionSelected}
+    on:input={handleTopicDivisionSelected}
     required
   >
     {#each topicDivision.options as entry (entry.id)}

@@ -104,6 +104,8 @@ export async function getPayeesWithMinimalInfo() {
 				typeOfPayee: 1,
 				taxRate: 1,
 				currency: 1,
+				topicDivision: 1,
+				reportingBudgetLine: 1,
 			}
 		}
 	];

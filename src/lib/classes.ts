@@ -88,6 +88,8 @@ export class Payee {
 	swiftCode: string | undefined;
 	taxRate: number | undefined;
 	currency: string | undefined;
+	reportingBudgetLine: string | undefined;
+	topicDivision: string | undefined;
 
 	constructor(
 		beneficiaryName: string | undefined,
@@ -96,6 +98,8 @@ export class Payee {
 		bankAccountNumber: string | undefined,
 		taxRate: number | undefined,
 		currency: string | undefined,
+		reportingBudgetLine: string | undefined,
+		topicDivision: string | undefined,
 	) {
 		this.beneficiaryName = beneficiaryName;
 		this.typeOfPayee = typeOfPayee;
@@ -103,6 +107,8 @@ export class Payee {
 		this.bankAccountNumber = bankAccountNumber;
 		this.taxRate = taxRate;
 		this.currency = currency;
+		this.reportingBudgetLine = reportingBudgetLine;
+		this.topicDivision = topicDivision;
 		this.nationalIdOrBusinessRegistrationNumber = undefined;
 		this.homeAddress = undefined;
 		this.bankAddress = undefined;

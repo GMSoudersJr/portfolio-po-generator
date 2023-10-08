@@ -3,6 +3,7 @@
 	import type { Document } from "mongodb";
 
   export let payees: Document[];
+  console.log(payees);
 </script>
 
 <h6 class="available-payees-title">
@@ -17,6 +18,8 @@
         payee_id={payee._id}
         payee_taxRate={payee.taxRate}
         payee_currency={payee.currency}
+        payee_topicDivision={payee.topicDivision}
+        payee_reportingBudgetLine={payee.reportingBudgetLine}
         on:clickedPayee
       />
     {/if}

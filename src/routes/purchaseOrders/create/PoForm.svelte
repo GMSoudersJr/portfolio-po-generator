@@ -58,6 +58,8 @@
   export let clickedPayeeTaxRate = 0;
   export let clickedPayee_id = "";
   export let clickedPayeeCurrency = "";
+  export let clickedPayeeTopicDivision = "";
+  export let clickedPayeeReportingBudgetLine = "";
 
   $: subtotalActual = Object.values(subtotalObject).reduce((accumulator, currentValue) => accumulator + currentValue, 0);
   $: taxActual = +clickedPayeeTaxRate * +subtotalActual;
@@ -94,8 +96,13 @@
   <CreatedDate />
   <PaymentMethod />
   <Currency {clickedPayeeCurrency}/>
-  <TopicDivision on:topicDivisionSelected={handlePoNumberUpdate}/>
-  <ReportingBudgetLine />
+  <TopicDivision
+    {clickedPayeeTopicDivision}
+    on:topicDivisionSelected={handlePoNumberUpdate}
+  />
+  <ReportingBudgetLine
+    {clickedPayeeReportingBudgetLine}
+  />
   <PnpLocation />
   <RequestedBy on:requesterChange={handlePoNumberUpdate}/>
   <ApprovedBy />

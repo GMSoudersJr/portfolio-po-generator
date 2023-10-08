@@ -10,7 +10,9 @@ import {
 	routingNumber,
 	SwiftCodeOrIbanNumber,
 } from '$lib/strings/payeeForm';
-import {Payee, encryptTheData, generateKeypair, trimTheFormData} from '$lib/utils';
+import { reportBudgetLine, topicDivision } from '$lib/strings/poForm';
+import { encryptTheData, generateKeypair, trimTheFormData} from '$lib/utils';
+import { Payee } from '$lib/classes';
 import {addPayee} from '$lib/db';
 
 const beneficiaryNameString = beneficiaryName.name;
@@ -22,6 +24,8 @@ const bankAccountNumberNameString = bankAccountNumber.name;
 const bankAddressNameString = bankAddress.name;
 const routingNumberNameString = routingNumber.name;
 const swiftCodeOrIbanNumberNameString = SwiftCodeOrIbanNumber.name;
+const reportingBudgetLineNameString = reportBudgetLine.name;
+const topicDivisionNameString = topicDivision.name;
 const taxRateNameString = "taxRate";
 const currencyNameString= "currency";
 
@@ -42,6 +46,8 @@ export const actions = {
 		const formSwiftCodeData = trimTheFormData(data.get(swiftCodeOrIbanNumberNameString));
 		const formCurrencyData = trimTheFormData(data.get(currencyNameString));
 		const payeeTaxRate = payeeTypeAndTax.options.filter((option) => option.value == formPayeeTypeData);
+		const formReportingBudgetLineData = trimTheFormData(data.get(reportingBudgetLineNameString));
+		const formTopicDivisionData = trimTheFormData(data.get(topicDivisionNameString));
 		const taxRate = payeeTaxRate[0].taxRate;
 
 		const payee = new Payee(
@@ -51,6 +57,8 @@ export const actions = {
 			formBankAccountNumberData,
 			taxRate,
 			formCurrencyData,
+			formReportingBudgetLineData,
+			formTopicDivisionData
 		);
 
 		

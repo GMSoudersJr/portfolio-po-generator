@@ -1,6 +1,4 @@
 <script lang="ts">
-	import {currency} from "$lib/strings/poForm";
-
 	import {createEventDispatcher} from "svelte";
 
 
@@ -9,6 +7,8 @@
   export let payee_id: string;
   export let payee_taxRate: number = 0;
   export let payee_currency: string;
+  export let payee_topicDivision: string;
+  export let payee_reportingBudgetLine: string;
 
   const dispatch = createEventDispatcher();
 
@@ -19,6 +19,8 @@
         _id: payee_id,
         taxRate: payee_taxRate,
         currency: payee_currency,
+        topicDivision: payee_topicDivision,
+        reportingBudgetLine: payee_reportingBudgetLine
       }
     })
   }
