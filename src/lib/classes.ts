@@ -74,8 +74,19 @@ export class AccessPayload {
 
 export class PoFormPoNumber {
 	[index: string]: string | undefined;
-	dueDate: string | undefined;
-	summary: string | undefined;
+	dueDate: string;
+	summary: string;
 	topicDivision: string | undefined;
 	requesterInitials: string | undefined;
+	constructor(
+		dueDate: string,
+		summary: string,
+		topicDivision: string,
+		requesterInitials: string
+	) {
+		this.dueDate = dueDate;
+		this.summary = summary;
+		this.topicDivision = topicDivision;
+		this.requesterInitials = requesterInitials;
+	}
 };

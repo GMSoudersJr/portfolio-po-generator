@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { updateArrayOfNumbers } from "$lib/utils";
+  import { changeToPascalCase, formatPoNumberDateString, getInitials, updateArrayOfNumbers } from "$lib/utils";
   import { numberOfProductsOrServices } from "$lib/stores";
 	import ApprovedBy from "./ApprovedBy.svelte";
 	import CreatedDate from "./CreatedDate.svelte";
@@ -21,6 +21,7 @@
 	import Total from "./Total.svelte";
 	import PoSummary from "./PoSummary.svelte";
 	import type {PoFormPoNumber} from "$lib/classes";
+	import {dueDate, requestedBy, topicDivision} from "$lib/strings/poForm";
 
   $: arrayOfNumbers = updateArrayOfNumbers($numberOfProductsOrServices);
   interface SubtotalObject {
@@ -30,10 +31,10 @@
 
   const subtotalObject: SubtotalObject = {};
   const poFormPoNumber: PoFormPoNumber = {
-    dueDate: "",
+    dueDate: formatPoNumberDateString(dueDate.value),
     summary: "",
-    topicDivision: "",
-    requesterInitials: ""
+    topicDivision: changeToPascalCase(topicDivision.options.at(0)?.value),
+    requesterInitials: getInitials(requestedBy.options.at(0)?.value)
   };
 
   function resetPriceForRemovedProduct() {
@@ -50,6 +51,7 @@
     const key: string = event.detail.poNumber.key;
     const value = event.detail.poNumber.value;
     poFormPoNumber[`${key}`] = value;
+    console.log(poFormPoNumber);
   }
 
   export let clickedPayeeName = "";
@@ -60,6 +62,7 @@
   $: subtotalActual = Object.values(subtotalObject).reduce((accumulator, currentValue) => accumulator + currentValue, 0);
   $: taxActual = +clickedPayeeTaxRate * +subtotalActual;
   $: totalActual = +subtotalActual + +taxActual;
+  $: poNumberActual = poFormPoNumber;
 </script>
 
 <form
@@ -70,7 +73,7 @@
     on:searching
     {clickedPayeeName}
   />
-  <PoSummary />
+  <PoSummary on:summaryInput={handlePoNumberUpdate}/>
   <NumberOfProductsOrServices
     on:removalOfProductOrService={resetPriceForRemovedProduct}
   />
@@ -86,16 +89,16 @@
   <TaxRate {clickedPayeeTaxRate}/>
   <Tax {taxActual}/>
   <Total {totalActual}/>
-  <DueDate />
+  <DueDate on:dueDateLoad={handlePoNumberUpdate} />
   <CreatedDate />
   <PaymentMethod />
   <Currency {clickedPayeeCurrency}/>
-  <TopicDivision />
+  <TopicDivision on:topicDivisionSelected={handlePoNumberUpdate}/>
   <ReportingBudgetLine />
   <PnpLocation />
-  <RequestedBy />
+  <RequestedBy on:requesterChange={handlePoNumberUpdate}/>
   <ApprovedBy />
-  <PoNumber />
+  <PoNumber {poNumberActual}/>
   <SubmitPoButton />
 </form>
 

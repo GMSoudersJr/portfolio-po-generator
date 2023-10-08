@@ -1,5 +1,9 @@
 <script lang="ts">
   import { poNumber } from "$lib/strings/poForm";
+  import type { PoFormPoNumber } from "$lib/classes";
+
+  export let poNumberActual: PoFormPoNumber;
+  $: value = Object.values(poNumberActual).join('-');
 </script>
 
 <label for={poNumber.id}>
@@ -7,8 +11,9 @@
   <input
     class={poNumber.class}
     id={poNumber.id}
-    type={poNumber.type}
+    type="text"
     name={poNumber.name}
+    value={value}
     required
   >
 </label>

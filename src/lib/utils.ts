@@ -14,7 +14,7 @@ function formatString(stringToBeFormatted: string): string {
 	}
 };
 
-export function todayDateString(): string | number | null | undefined {
+export function todayDateString(): string {
 	let result: string = "";
 	const date = new Date();
 	const year: string = date.getFullYear().toString();
@@ -151,7 +151,7 @@ export async function generateKeypair() {
 };
 
 export function formatPoNumberDateString(date: string) {
-	const dateArray = date.split('-');
+	const dateArray = date?.split('-');
 	let twoDigitDay = dateArray.at(2);
 	let twoDigitMonth = dateArray.at(1);
 	let twoDigitYear = dateArray.at(0)?.slice(2);
@@ -159,23 +159,23 @@ export function formatPoNumberDateString(date: string) {
 	return dateString;
 };
 
-export function changeToPascalCase(someString:string) {
-	let trimmedString = someString.trim();
-	let arrayOfStrings = trimmedString.split(' ');
-	arrayOfStrings.forEach((word) => {
-		word.toLowerCase();
-		word.at(0)?.toUpperCase();
+export function changeToPascalCase(someString:string | undefined) {
+	let arrayOfStrings = someString?.toLowerCase().trim().split(' ');
+	let arrayOfCapitalizedStrings = arrayOfStrings?.map((word) => {
+		let capitalizedFirstLetter = word.at(0)?.toUpperCase();
+		let theRestOfTheWord = word.substring(1);
+		let capitalizedWord = capitalizedFirstLetter?.concat(theRestOfTheWord);
+		return capitalizedWord
 	});
-	const pascalCasedString = arrayOfStrings.join('');
+	const pascalCasedString = arrayOfCapitalizedStrings?.join('');
 	return pascalCasedString;
 };
 
-export function getInitials(name: string) {
-	let trimmedName = name.trim();
-	let arrayOfStrings = trimmedName.split(' ');
-	let initialsArray = arrayOfStrings.map((name) => {
-		name.at(0)?.toUpperCase();
+export function getInitials(name: string | undefined) {
+	let arrayOfStrings = name?.trim().split(' ');
+	let initialsArray = arrayOfStrings?.map((name) => {
+		return name.at(0)?.toUpperCase();
 	});
-	let initials = initialsArray.join('');
+	let initials = initialsArray?.join('');
 	return initials;
 };
