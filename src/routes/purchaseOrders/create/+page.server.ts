@@ -2,8 +2,8 @@ import type { Actions } from './$types';
 
 export const actions = {
 	add: async ({ request }) => {
-		const formData = await request.formData();
+		const formDataObject = Object.fromEntries(await request.formData());
 
-		console.log(formData);
+		console.log(formDataObject);
 	}
 } satisfies Actions

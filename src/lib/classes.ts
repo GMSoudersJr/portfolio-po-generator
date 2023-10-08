@@ -21,6 +21,51 @@ export class User {
 	}
 };
 
+class ProductServiceDescriptionAndPrice {
+	[index: string]: string | undefined;
+	description: string | undefined;
+	price: string | undefined;
+}
+
+export class Po {
+	[index: string]: string | number | ProductServiceDescriptionAndPrice[] | undefined;
+	payee_id: string | undefined;
+	poNumber: string | undefined;
+	dueDate: string | undefined;
+	createdDate: string | undefined;
+	pnpLocation: string | undefined;
+	topicDivision: string | undefined;
+	reportingBudgetLine: string | undefined;
+	productsOrServicesDescriptionsAndPrices: ProductServiceDescriptionAndPrice[] = [];
+	tax: string | undefined;
+	total: string | undefined;
+
+	constructor(
+	payee_id: string | undefined,
+	poNumber: string | undefined,
+	dueDate: string | undefined,
+	createdDate: string | undefined,
+	pnpLocation: string | undefined,
+	topicDivision: string | undefined,
+	reportingBudgetLine: string | undefined,
+	productsOrServicesDescriptionsAndPrices: ProductServiceDescriptionAndPrice[],
+	tax: string | undefined,
+	total: string | undefined,
+
+	) {
+		this.payee_id = payee_id;
+		this.poNumber = poNumber;
+		this.dueDate = dueDate;
+		this.createdDate = createdDate;
+		this.pnpLocation = pnpLocation;
+		this.topicDivision = topicDivision;
+		this.reportingBudgetLine = reportingBudgetLine;
+		this.productsOrServicesDescriptionsAndPrices = productsOrServicesDescriptionsAndPrices
+		this.tax = tax;
+		this.total = total;
+	}
+}
+
 export class Payee {
 	beneficiaryName: string | undefined;
 	typeOfPayee: string | undefined;
