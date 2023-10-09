@@ -16,6 +16,33 @@ const payeeCollection = db.collection('payees');
 const poCollection = db.collection('pos');
 const users = db.collection('users');
 
+export async function getAllPos() {
+	const aggregate = [
+		{
+			$project: {
+				_id: {
+					$toString: "$_id"
+				},
+				poNumber: 1,
+				topic: 1,
+				taxRate: 1,
+				currency: 1,
+				topicDivision: 1,
+				reportingBudgetLine: 1,
+			}
+		}
+	];
+	try {
+		await client.connect();
+		console.log("Successfully connected to the database to get POs.");
+	} catch (error) {
+		console.log("There was an error getting POs from the database.", error)
+	} finally {
+		await client.close();
+		console.log("Closed the database connection @getAllPos.")
+	}
+}
+
 export async function addPoToTheDatabase(po: Po) {
 	try {
 		await client.connect();
@@ -87,7 +114,6 @@ export async function findUser(username: string|undefined) {
 		await client.close();
 		console.log("Closed connection for getting a user.");
 	}
-
 }
 
 export async function getPayeesWithMinimalInfo() {

@@ -24,7 +24,7 @@
     grid-template-rows: min-content;
     justify-content: center;
     align-items: center;
-    background-color: #259259;
+    background-color: #F1F1F1;
   }
 
 </style>

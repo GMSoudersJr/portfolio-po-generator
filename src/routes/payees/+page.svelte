@@ -17,10 +17,12 @@
 <main class="page-container">
 {#if payees}
   <section class="available-payees-section">
-    <h4 class="available-payees-title">
-      Payees
+    <div class="available-payees-title">
+      <h4>
+        Payees
+      </h4>
       <GotoFormButton {pathUrl}/>
-    </h4>
+    </div>
     <PayeeCards
       on:clickedPayee={handleClickedPayee}
       {payees}
