@@ -10,8 +10,8 @@
 	import RoutingNumber from "./RoutingNumber.svelte";
 	import SubmitButton from "./SubmitButton.svelte";
 	import SwiftCodeOrIbanNumber from "./SwiftCodeOrIbanNumber.svelte";
-	import TopicDivision from "../../purchaseOrders/create/TopicDivision.svelte";
-	import ReportingBudgetLine from "../../purchaseOrders/create/ReportingBudgetLine.svelte";
+	import TopicDivision from "./TopicDivision.svelte";
+	import ReportingBudgetLine from "./ReportingBudgetLine.svelte";
 </script>
 
 <form

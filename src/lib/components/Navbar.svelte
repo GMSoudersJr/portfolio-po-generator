@@ -16,7 +16,7 @@
       <a class="nav-link" href="/payees">Payees</a>
     </li>
     <li>
-      <a class="nav-link" href="/purchaseOrders/create">Purchase Orders</a>
+      <a class="nav-link" href="/purchaseOrders">Purchase Orders</a>
     </li>
     <li>
       <form class="nav-link" action="/logout" method="POST">

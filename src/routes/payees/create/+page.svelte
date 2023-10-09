@@ -6,19 +6,26 @@
   export let form: ActionData;
 </script>
 
-<div class="page-container">
-  <PayeeForm />
-  {#if form?.success}
+<main class="page-container">
+  <div class="form">
+    <PayeeForm />
+    {#if form?.success}
     <p class="form-success">{form.message}</p>
-  {/if}
-</div>
+    {/if}
+  </div>
+</main>
 
 <style>
   .page-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr minmax(400px, 1fr) 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+    ". form .";
+  }
+  .form {
+    grid-area: form;
   }
   .form-success {
     color: #04AA6D;

@@ -6,9 +6,6 @@
   console.log(payees);
 </script>
 
-<h6 class="available-payees-title">
-  Available Payees:
-</h6>
 <section class="cards">
   {#each payees as payee (payee._id)}
     {#if payee.shouldBeShown}
@@ -28,10 +25,6 @@
 
 
 <style>
-  .available-payees-title {
-    padding-top: 1rem;
-    padding-left: 1rem;
-  }
   .cards {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));

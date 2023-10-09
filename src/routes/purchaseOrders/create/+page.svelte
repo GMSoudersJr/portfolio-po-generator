@@ -4,7 +4,7 @@
 	import PayeeCards from "./PayeeCards.svelte";
 	import PoForm from "./PoForm.svelte";
 	import type {PoFormPoNumber} from "$lib/classes";
-	import {dueDate, requestedBy, topicDivision} from "$lib/strings/poForm";
+	import {dueDate, reportBudgetLine, requestedBy, topicDivision} from "$lib/strings/poForm";
 
   export let data: PageData;
 
@@ -39,15 +39,26 @@
     const taxRate = event.detail.payee.taxRate;
     const currency = event.detail.payee.currency;
     const payeeTopicDivision = event.detail.payee.topicDivision;
-    const reportingBudgetLine = event.detail.payee.reportingBudgetLine;
+    const payeeReportingBudgetLine = event.detail.payee.reportingBudgetLine;
     clickedPayeeName = payeeName;
     clickedPayee_id = _id;
     clickedPayeeTaxRate = taxRate;
     clickedPayeeCurrency = currency;
     clickedPayeeTopicDivision = payeeTopicDivision;
-    clickedPayeeReportingBudgetLine = reportingBudgetLine;
+    clickedPayeeReportingBudgetLine = payeeReportingBudgetLine;
 
-    poFormPoNumber.topicDivision = changeToPascalCase(payeeTopicDivision);
+    if (!payeeReportingBudgetLine) {
+      clickedPayeeReportingBudgetLine = reportBudgetLine.options.at(0)?.value!;
+    }
+
+    if (payeeTopicDivision) {
+      poFormPoNumber.topicDivision = changeToPascalCase(payeeTopicDivision);
+      clickedPayeeTopicDivision = payeeTopicDivision;
+    } else {
+      poFormPoNumber.topicDivision =
+        changeToPascalCase(topicDivision.options.at(0)?.value);
+      clickedPayeeTopicDivision = topicDivision.options.at(0)?.value!;
+    }
 
     payees?.forEach(payee => {
     const shouldBeShown = payee.beneficiaryName.toLowerCase().includes(payeeName.toLowerCase());
@@ -55,16 +66,23 @@
     });
     payees = payees;
   }
-
-
 </script>
 
 <div class="page-grid-container">
   <div class="available-payees">
+    <h6 class="available-payees-header">
+      Available Payees
+    </h6>
+    {#if payees}
     <PayeeCards
       on:clickedPayee={handleClickedPayee}
       {payees}
     />
+    {:else}
+    <p>
+      No payees yet
+    </p>
+    {/if}
   </div>
   <div class="po-form">
     <PoForm
@@ -86,7 +104,7 @@
     grid-template-columns: 1fr 2fr 1fr;
     grid-template-rows: auto;
     grid-template-areas:
-    "availablePayees poForm .";
+    ". poForm availablePayees";
     column-gap: 1rem;
   }
   .available-payees {
@@ -94,5 +112,9 @@
   }
   .po-form {
     grid-area: poForm;
+  }
+  .available-payees-header {
+    padding-top: 1rem;
+    padding-left: 1rem;
   }
 </style>

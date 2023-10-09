@@ -1,19 +1,25 @@
 <script lang="ts">
+import type { LayoutData } from "./$types";
 
- import type { LayoutData } from "./$types"; 
- export let data: LayoutData;
-
+  export let data: LayoutData;
 </script>
 
 <nav class="sub-navbar">
   <ul>
     <li>
-      <a class="nav-link" href="/payees/create">Create a new payee</a>
+      <a class="nav-link" href="/purchaseOrders/create">
+        Create a new Purchase Order
+      </a>
     </li>
   </ul>
 </nav>
 
-<slot />
+<aside>
+</aside>
+
+<main>
+  <slot />
+</main>
 
 <style>
   ul {
