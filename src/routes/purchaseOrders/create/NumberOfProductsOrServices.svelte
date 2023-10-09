@@ -19,13 +19,13 @@
   </p>
   <button
     type="button"
-    class="po-number-button increment"
+    class="products-button increment"
     on:click={numberOfProductsOrServices.increment}>
     +
   </button>
   <button
     type="button"
-    class="po-number-button decrement"
+    class="products-button decrement"
     on:click={handleDecrement}>
     -
   </button>
@@ -34,11 +34,12 @@
 <style>
   .number-and-button-container {
     display: grid;
-    grid-template-columns: 3fr 1fr;
-    grid-template-rows: repeat(2, auto);
+    grid-template-columns: 80% repeat(2, 1fr);
+    grid-template-rows: min-content;
     grid-template-areas:
-    "number increment"
-    "number decrement";
+    "number decrement increment";
+    justify-content: center;
+    align-items: center;
   }
   .number {
     grid-area: number;
@@ -46,11 +47,22 @@
   }
   .decrement {
     grid-area: decrement;
+    place-self: center;
   }
   .increment {
     grid-area: increment;
+    place-self: center;
   }
-  .po-number-button {
-    color: blue;
+  .products-button {
+    height: 100%;
+    font-size: 1rem;
+    font-weight: 550;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    justify-content: center;
+    align-items: center;
   }
 </style>
