@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { changeToPascalCase, formatPoNumberDateString, getInitials, updateArrayOfNumbers } from "$lib/utils";
+  import { updateArrayOfNumbers } from "$lib/utils";
   import { numberOfProductsOrServices } from "$lib/stores";
 	import ApprovedBy from "./ApprovedBy.svelte";
 	import CreatedDate from "./CreatedDate.svelte";
@@ -21,21 +21,20 @@
 	import Total from "./Total.svelte";
 	import PoSummary from "./PoSummary.svelte";
 	import type {PoFormPoNumber} from "$lib/classes";
-	import {dueDate, requestedBy, topicDivision} from "$lib/strings/poForm";
 
   $: arrayOfNumbers = updateArrayOfNumbers($numberOfProductsOrServices);
   interface SubtotalObject {
     [index: string]: number;
   }
 
-
   const subtotalObject: SubtotalObject = {};
-  const poFormPoNumber: PoFormPoNumber = {
-    dueDate: formatPoNumberDateString(dueDate.value),
-    summary: "",
-    topicDivision: changeToPascalCase(topicDivision.options.at(0)?.value),
-    requesterInitials: getInitials(requestedBy.options.at(0)?.value)
-  };
+
+  function handlePoNumberUpdate(event: CustomEvent) {
+    const key: string = event.detail.poNumber.key;
+    const value = event.detail.poNumber.value;
+    poFormPoNumber[`${key}`] = value;
+    console.log(poFormPoNumber);
+  }
 
   function resetPriceForRemovedProduct() {
     subtotalObject[`price${arrayOfNumbers.length}`] = 0
@@ -47,19 +46,13 @@
     subtotalObject[priceFor] = priceInput;
   }
 
-  function handlePoNumberUpdate(event: CustomEvent) {
-    const key: string = event.detail.poNumber.key;
-    const value = event.detail.poNumber.value;
-    poFormPoNumber[`${key}`] = value;
-    console.log(poFormPoNumber);
-  }
-
   export let clickedPayeeName = "";
   export let clickedPayeeTaxRate = 0;
   export let clickedPayee_id = "";
   export let clickedPayeeCurrency = "";
   export let clickedPayeeTopicDivision = "";
   export let clickedPayeeReportingBudgetLine = "";
+  export let poFormPoNumber: PoFormPoNumber;
 
   $: subtotalActual = Object.values(subtotalObject).reduce((accumulator, currentValue) => accumulator + currentValue, 0);
   $: taxActual = +clickedPayeeTaxRate * +subtotalActual;
@@ -76,37 +69,53 @@
     {clickedPayeeName}
     {clickedPayee_id}
   />
-  <PoSummary on:summaryInput={handlePoNumberUpdate}/>
+  <PoSummary
+    on:summaryInput={handlePoNumberUpdate}
+  />
   <NumberOfProductsOrServices
     on:removalOfProductOrService={resetPriceForRemovedProduct}
   />
   {#each arrayOfNumbers as d}
     <ProductAndPrice
-      number={(d).toString()}
       on:priceInput={handlePriceInput}
+      number={(d).toString()}
     />
   {/each}
   <Subtotal
     {subtotalActual}
   />
-  <TaxRate {clickedPayeeTaxRate}/>
-  <Tax {taxActual}/>
-  <Total {totalActual}/>
-  <DueDate on:dueDateLoad={handlePoNumberUpdate} />
+  <TaxRate
+    {clickedPayeeTaxRate}
+  />
+  <Tax
+    {taxActual}
+  />
+  <Total
+    {totalActual}
+  />
+  <DueDate
+    on:dueDateLoad={handlePoNumberUpdate}
+  />
   <CreatedDate />
   <PaymentMethod />
-  <Currency {clickedPayeeCurrency}/>
+  <Currency
+    {clickedPayeeCurrency}
+  />
   <TopicDivision
-    {clickedPayeeTopicDivision}
     on:topicDivisionSelected={handlePoNumberUpdate}
+    {clickedPayeeTopicDivision}
   />
   <ReportingBudgetLine
     {clickedPayeeReportingBudgetLine}
   />
   <PnpLocation />
-  <RequestedBy on:requesterChange={handlePoNumberUpdate}/>
+  <RequestedBy
+    on:requesterChange={handlePoNumberUpdate}
+  />
   <ApprovedBy />
-  <PoNumber {poNumberActual}/>
+  <PoNumber
+    {poNumberActual}
+  />
   <SubmitPoButton />
 </form>
 
