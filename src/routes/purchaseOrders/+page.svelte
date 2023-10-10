@@ -27,6 +27,12 @@
 </div>
 
 <style>
+  .page-container {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: repeat(2, auto);
+    row-gap: 1em;;
+  }
   .purchase-order-header {
     padding-top: 1rem;
     padding-left: 1rem;
@@ -35,6 +41,12 @@
     grid-template-rows: min-content;
     column-gap: 0.5rem;
     align-items: center;
+  }
+  .pos-overview {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    justify-content: center;
   }
 </style>
 

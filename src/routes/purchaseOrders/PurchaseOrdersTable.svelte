@@ -51,7 +51,12 @@
 
 <style>
   table {
-    width: 100%;
+    width: max-content;
+  }
+  table, th, td, tr {
+    border: 0.1rem solid #999;
+    border-collapse: collapse;
+    padding: 0.18em 0.25em;
   }
   .table-header {
     font-size: 0.8rem;
@@ -60,17 +65,25 @@
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: min-content;
+    align-items: center;
+    border: none;
   }
   .table-row-grid {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
+    border: none;
+  }
+  .description, .price {
+    border: none;
   }
   td {
     font-size: 0.6rem;
   }
   td.total, td.tax {
     text-align: right;
+  }
+  td.dueDate, td.createdDate, td.pnpLocation {
+    text-align: center;
   }
 </style>
