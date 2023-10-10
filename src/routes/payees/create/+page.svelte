@@ -8,10 +8,10 @@
 
 <main class="page-container">
   <div class="form">
-    <PayeeForm />
     {#if form?.success}
     <p class="form-success">{form.message}</p>
     {/if}
+    <PayeeForm />
   </div>
 </main>
 
@@ -29,5 +29,6 @@
   }
   .form-success {
     color: #04AA6D;
+    text-align: center;
   }
 </style>

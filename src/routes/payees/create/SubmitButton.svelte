@@ -6,7 +6,7 @@
   type="submit"
   name="submit"
   id="submitPayee"
-  value="Add a New Payee"
+  value="Submit"
 >
 
 <style>
@@ -17,6 +17,7 @@
     cursor: pointer;
     border: none;
     padding: 16px 32px;
+    font-size: 1rem;
   }
 </style>
 
