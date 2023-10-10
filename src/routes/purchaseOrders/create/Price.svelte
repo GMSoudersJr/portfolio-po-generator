@@ -29,7 +29,7 @@
     name={`${price.name}${number}`}
     min="0"
     bind:value={value}
-    required={number == "1"}
+    required
     on:input={handleChange}
   >
 </label>

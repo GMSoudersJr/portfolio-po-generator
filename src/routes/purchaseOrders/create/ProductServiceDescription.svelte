@@ -11,7 +11,7 @@
     id={`${productServiceDescription.id}${number}`}
     type={productServiceDescription.type}
     name={`${productServiceDescription.name}${number}`}
-    required={number == "1"}
+    required
   >
 </label>
 
