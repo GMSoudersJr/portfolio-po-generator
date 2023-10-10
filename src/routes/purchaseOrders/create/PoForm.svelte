@@ -21,6 +21,7 @@
 	import Total from "./Total.svelte";
 	import PoSummary from "./PoSummary.svelte";
 	import type {PoFormPoNumber} from "$lib/classes";
+  import type { ActionData } from "./$types";
 
   $: arrayOfNumbers = updateArrayOfNumbers($numberOfProductsOrServices);
   interface SubtotalObject {
@@ -53,6 +54,7 @@
   export let clickedPayeeTopicDivision = "";
   export let clickedPayeeReportingBudgetLine = "";
   export let poFormPoNumber: PoFormPoNumber;
+  export let form: ActionData;
 
   $: subtotalActual = Object.values(subtotalObject).reduce((accumulator, currentValue) => accumulator + currentValue, 0);
   $: taxActual = +clickedPayeeTaxRate * +subtotalActual;
@@ -60,6 +62,12 @@
   $: poNumberActual = poFormPoNumber;
 </script>
 
+{#if form?.success}
+  <p class="success-message">{form.message}</p>
+{/if}
+{#if form?.error}
+  <p class="error-message">{form.message}</p>
+{/if}
 <form
   method="post"
   action="?/add"
@@ -120,6 +128,10 @@
 </form>
 
 <style>
+  .success-message {
+  text-align: center;
+    color: #259259;
+  }
   form {
     width: 100%;
     padding-top: 1rem;

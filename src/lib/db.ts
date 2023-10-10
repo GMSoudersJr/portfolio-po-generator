@@ -14,9 +14,9 @@ const client = new MongoClient(DB_URI, {
 const db = client.db(DB_NAME);
 const payeeCollection = db.collection('payees');
 const poCollection = db.collection('pos');
-const users = db.collection('users');
+const usersCollection = db.collection('users');
 
-export async function getAllPos() {
+export async function getPosForOverview() {
 	const aggregate = [
 		{
 			$project: {
@@ -24,19 +24,30 @@ export async function getAllPos() {
 					$toString: "$_id"
 				},
 				poNumber: 1,
-				topic: 1,
-				taxRate: 1,
-				currency: 1,
+				payeeName: 1,
+				dueDate: 1,
+				createdDate: 1,
+				pnpLocation: 1,
 				topicDivision: 1,
 				reportingBudgetLine: 1,
+				tax: 1,
+				total: 1,
+				paymentMethod: 1,
+				productsOrServicesDescriptionsAndPrices: 1,
+				requestedBy: 1,
+				approvedBy: 1,
 			}
 		}
 	];
 	try {
 		await client.connect();
-		console.log("Successfully connected to the database to get POs.");
+		console.log("Successfully connected to the database to get POs for the overview.");
+		const posForOverview = await poCollection
+			.aggregate(aggregate)
+			.toArray();
+			return posForOverview;
 	} catch (error) {
-		console.log("There was an error getting POs from the database.", error)
+		console.log("There was an error getting POs for the overview from the database.", error)
 	} finally {
 		await client.close();
 		console.log("Closed the database connection @getAllPos.")
@@ -60,7 +71,7 @@ export async function registerNewUser(user: User) {
 	try {
 		await client.connect();
 		console.log("Successfully connected to the database to register a user.");
-		const registeredUser = (await users.insertOne(user)).acknowledged;
+		const registeredUser = (await usersCollection.insertOne(user)).acknowledged;
 		return registeredUser;
 	} catch (error) {
 		console.error("There was an error registering a user for PO Generator", error)
@@ -104,7 +115,7 @@ export async function findUser(username: string|undefined) {
 	try {
 		await client.connect();
 		console.log("Connected to database to get a user.")
-		const user = await users
+		const user = await usersCollection
 			.aggregate(aggregate)
 			.toArray();
 		return user[0];

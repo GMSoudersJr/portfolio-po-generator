@@ -19,15 +19,15 @@
   </p>
   <button
     type="button"
-    class="products-button increment"
-    on:click={numberOfProductsOrServices.increment}>
-    +
-  </button>
-  <button
-    type="button"
     class="products-button decrement"
     on:click={handleDecrement}>
     -
+  </button>
+  <button
+    type="button"
+    class="products-button increment"
+    on:click={numberOfProductsOrServices.increment}>
+    +
   </button>
 </div>
 
@@ -49,9 +49,17 @@
     grid-area: decrement;
     place-self: center;
   }
+  .decrement:focus, .decrement:hover {
+    background-color: #100;
+    color: #FFF;
+  }
   .increment {
     grid-area: increment;
     place-self: center;
+  }
+  .increment:focus, .increment:hover {
+    background-color: #259259;
+    color: #FFF;
   }
   .products-button {
     height: 100%;

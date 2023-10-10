@@ -5,7 +5,7 @@ import type { Actions } from './$types';
 import type { ProductOrServiceDescriptionAndPrice } from '$lib/classes';
 import {formatDateForPo} from '$lib/utils';
 import {addPoToTheDatabase} from '$lib/db';
-import {json} from '@sveltejs/kit';
+import {fail, json} from '@sveltejs/kit';
 
 export const actions = {
 	add: async ({ request }) => {
@@ -39,6 +39,7 @@ export const actions = {
 			currency,
 			dueDate,
 			payee_id,
+			payeeName,
 			paymentMethod,
 			pnpLocation,
 			poNumber,
@@ -55,6 +56,7 @@ export const actions = {
 
 		const po = new Po(
 			new ObjectId(payee_id.toString()),
+			payeeName.toString(),
 			paymentMethod.toString(),
 			poNumber.toString(),
 			formatDateForPo(dueDate.toString()),
@@ -78,10 +80,7 @@ export const actions = {
 				message: `Added ${poNumber} to the database!`
 			}
 		} else {
-			return {
-				success: successfullyAddedPo,
-				message: `${poNumber} not added to the database.`
-			}
+			return fail(400, { error: true, message: "Something went wrong." })
 		}
 	}
 } satisfies Actions

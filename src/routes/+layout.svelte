@@ -2,9 +2,11 @@
   import { page } from '$app/stores';
   import Navbar from '$lib/components/Navbar.svelte';
   import '../app.css';
+
+  $: loggedInUser = $page.data.user
 </script>
 
-{#if  $page.data.user}
+{#if loggedInUser}
   <Navbar />
 {/if}
 <slot />

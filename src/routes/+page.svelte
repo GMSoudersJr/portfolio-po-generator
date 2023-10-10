@@ -8,11 +8,11 @@
 </script>
 
 <div class="page-container">
-  {#if $page.data.user}
-    <HomePage />
-    {:else}
-    <LoginPage {form}/>
-  {/if}
+{#if $page.data.user}
+  <HomePage />
+  {:else}
+  <LoginPage {form}/>
+{/if}
 </div>
 
 <style>

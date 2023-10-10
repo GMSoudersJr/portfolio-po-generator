@@ -32,6 +32,7 @@ export class ProductOrServiceDescriptionAndPrice {
 export class Po {
 	[index: string]: string | number | ProductOrServiceDescriptionAndPrice[] | ObjectId | undefined;
 	payee_id: ObjectId | undefined;
+	payeeName: string | undefined;
 	paymentMethod: string | undefined;
 	poNumber: string | undefined;
 	dueDate: string | undefined;
@@ -47,6 +48,7 @@ export class Po {
 
 	constructor(
 	payee_id: ObjectId | undefined,
+	payeeName: string | undefined,
 	paymentMethod: string | undefined,
 	poNumber: string | undefined,
 	dueDate: string | undefined,
@@ -61,6 +63,7 @@ export class Po {
 	approvedBy: string | undefined,
 	) {
 		this.payee_id = payee_id;
+		this.payeeName = payeeName;
 		this.paymentMethod = paymentMethod;
 		this.poNumber = poNumber;
 		this.dueDate = dueDate;

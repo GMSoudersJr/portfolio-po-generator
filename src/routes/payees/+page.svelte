@@ -11,7 +11,7 @@
 
   const pathUrl = '/payees/create';
   export let data: PageData;
-   $: ({payees} = data);
+  $: ({payees} = data);
 </script>
 
 <main class="page-container">

@@ -1,12 +1,13 @@
 <script lang="ts">
   import { changeToPascalCase, formatPoNumberDateString, getInitials, updateArrayOfNumbers } from "$lib/utils";
-	import type { PageData } from "./$types";
+	import type { PageData, ActionData } from "./$types";
 	import PayeeCards from "./PayeeCards.svelte";
 	import PoForm from "./PoForm.svelte";
 	import type {PoFormPoNumber} from "$lib/classes";
 	import {dueDate, reportBudgetLine, requestedBy, topicDivision} from "$lib/strings/poForm";
 
   export let data: PageData;
+  export let form: ActionData;
 
   $: ({ payees } = data);
 
@@ -94,6 +95,7 @@
       {clickedPayeeTopicDivision}
       {clickedPayeeReportingBudgetLine}
       {poFormPoNumber}
+      {form}
     />
   </div>
 </div>

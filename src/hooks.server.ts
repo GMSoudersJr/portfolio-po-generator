@@ -9,7 +9,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 	if ( accessToken ) {
 		jwt.verify(accessToken, ACCESS_TOKEN_SECRET, (error, payload) => {
 			if (error) {
-				throw redirect(302, '/');
+				throw redirect(302, '/login');
 			}
 			if (payload) {
 				event.locals.user = {
@@ -18,25 +18,23 @@ export const handle: Handle = async ({ event, resolve }) => {
 				}
 			}
 		})
-		return await resolve(event);
+	} else {
+		event.locals.user = undefined;
 	}
 
 	if ( event.url.pathname.startsWith('/whoLovesYou') ) {
 		return new Response('You know who')
 	}
 
-
 	if ( event.url.pathname.startsWith('/purchaseOrders') ) {
-		console.log("HOOKS PURCHASE ORDERS pathname", event.url.pathname);
 		if (!event.locals.user) {
-			throw redirect(302, '/')
+			throw redirect(302, '/login')
 		}
 	}
 
 	if ( event.url.pathname.startsWith('/payees') ) {
-		console.log("HOOKS PAYEES pathname", event.url.pathname);
 		if (!event.locals.user) {
-			throw redirect(302, '/')
+			throw redirect(302, '/login')
 		}
 	}
 
@@ -46,7 +44,6 @@ export const handle: Handle = async ({ event, resolve }) => {
 	let end = performance.now();
 	let responseTime = end - start;
 	console.log(`HOOKS PERFORMANCE - Response from ${route} took ${responseTime.toFixed(2)} ms`);
-	console.log("HOOKS PATHNAME", event.url.pathname)
 
 	return response;
 }

@@ -16,9 +16,11 @@
       collection.
     </li>
     <li>
-      To add new Payees or Purchase orders, click this button.
+      To add new <strong><em>Payees</em></strong> and
+      <em><strong>Purchase Orders</strong></em> click a button
+      that looks like this:
     </li>
-    <GotoFormButton pathUrl="/" />
+    <GotoFormButton pathUrl="/" /><sub>this one does not do anything</sub>
   </ul>
   <section class="payee-form-description">
     <h3>Payee Form</h3>
