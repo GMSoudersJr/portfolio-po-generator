@@ -1,5 +1,5 @@
 import { DB_URI, DB_NAME } from "$env/static/private";
-import { MongoClient, ServerApiVersion } from "mongodb";
+import { MongoClient, ObjectId, ServerApiVersion } from "mongodb";
 import type { Payee, User } from "./utils";
 import type {Po} from "./classes";
 
@@ -15,6 +15,52 @@ const db = client.db(DB_NAME);
 const payeeCollection = db.collection('payees');
 const poCollection = db.collection('pos');
 const usersCollection = db.collection('users');
+
+export async function getPoForPdfGeneration(po_id: string) {
+	const aggregate = [
+		{
+			'$match': {
+				'_id': new ObjectId(po_id)
+			}
+		}, {
+			'$lookup': {
+				'from': 'payees',
+				'localField': 'payee_id',
+				'foreignField': '_id',
+				'pipeline': [
+					{
+						'$project': {
+							'_id': 0,
+							'typeOfPayee': 0,
+							'taxRate': 0,
+							'reportingBudgetLine': 0,
+							'topicDivision': 0,
+							'currency': 0,
+						}
+					}
+				],
+				'as': 'payeeData'
+			}
+		}, {
+			'$project': {
+				'_id': 0,
+				'payee_id': 0,
+				'payeeName': 0
+			}
+		}
+	];
+	try {
+		await client.connect();
+		console.log("Successfully connected to the database to get a PO for PDF generation.");
+		const poDocument = await poCollection.aggregate(aggregate).toArray();
+		return poDocument[0];
+	} catch (error) {
+		console.log("There was an error getting a PO for PDF generation.", error)
+	} finally {
+		await client.close();
+		console.log("Closed the database connection @getPoForPdfGeneration.")
+	}
+}
 
 export async function getPosForOverview() {
 	const aggregate = [

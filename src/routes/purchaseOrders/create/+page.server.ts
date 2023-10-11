@@ -1,11 +1,18 @@
 import {Po} from '$lib/classes';
 import { ObjectId } from 'mongodb';
 import { productServiceDescription, price } from '$lib/strings/poForm';
-import type { Actions } from './$types';
+import type { Actions, PageServerLoad } from './$types';
 import type { ProductOrServiceDescriptionAndPrice } from '$lib/classes';
 import {formatDateForPo} from '$lib/utils';
-import {addPoToTheDatabase} from '$lib/db';
+import {addPoToTheDatabase, getPayeesWithMinimalInfo} from '$lib/db';
 import {fail, json, redirect} from '@sveltejs/kit';
+
+export const load: PageServerLoad = async () =>{
+	return {
+		payees: await getPayeesWithMinimalInfo()
+	}
+}
+
 
 export const actions = {
 	add: async ({ request, url }) => {

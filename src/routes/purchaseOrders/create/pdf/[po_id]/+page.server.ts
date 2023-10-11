@@ -1,9 +1,10 @@
+import {getPoForPdfGeneration} from '$lib/db';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ params }) => {
-	console.log(params);
-
+	const po_id = params.po_id;
+	
 	return {
-		data: "Hello"
+		poPdfData:  await getPoForPdfGeneration(po_id)
 	}
 }

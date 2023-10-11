@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import {section1, section2, section3} from "$lib/strings/poTemplate";
 	import AdditionalNotes from "./AdditionalNotes.svelte";
   import ApprovedBy from "./ApprovedBy.svelte";
@@ -14,7 +14,7 @@
   import Title from "./Title.svelte";
 </script>
 
-<div class="page-container">
+<div id="pdfTemplate" class="page-container">
 
   <section class="title">
     <Title />
@@ -132,6 +132,7 @@
     align-self: end;
   }
   .page-container {
+    background-color: #FFF;
     width: 21cm;
     height: 29.7cm;
     display: grid;
