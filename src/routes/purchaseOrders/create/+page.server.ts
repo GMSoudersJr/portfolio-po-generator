@@ -5,10 +5,10 @@ import type { Actions } from './$types';
 import type { ProductOrServiceDescriptionAndPrice } from '$lib/classes';
 import {formatDateForPo} from '$lib/utils';
 import {addPoToTheDatabase} from '$lib/db';
-import {fail, json} from '@sveltejs/kit';
+import {fail, json, redirect} from '@sveltejs/kit';
 
 export const actions = {
-	add: async ({ request }) => {
+	add: async ({ request, url }) => {
 		const formData = await request.formData();
 		const iterableFormData = formData.entries();
 
@@ -73,12 +73,9 @@ export const actions = {
 		// TODO get the descriptions and prices
 		
 		console.log(po);
-		const successfullyAddedPo = await addPoToTheDatabase(po);
-		if ( successfullyAddedPo ) {
-			return {
-				success: successfullyAddedPo,
-				message: `Added ${poNumber} to the database!`
-			}
+		const successfullyAddedPo_id = await addPoToTheDatabase(po);
+		if ( successfullyAddedPo_id ) {
+			throw redirect(303, `${url.pathname}/pdf/${successfullyAddedPo_id}`)
 		} else {
 			return fail(400, { error: true, message: "Something went wrong." })
 		}

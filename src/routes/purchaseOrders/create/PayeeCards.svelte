@@ -3,7 +3,6 @@
 	import type { Document } from "mongodb";
 
   export let payees: Document[];
-  console.log(payees);
 </script>
 
 <section class="cards">

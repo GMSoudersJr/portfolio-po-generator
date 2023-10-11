@@ -58,8 +58,8 @@ export async function addPoToTheDatabase(po: Po) {
 	try {
 		await client.connect();
 		console.log("Successfully connected to the database to add a po.");
-		const addedPo = (await poCollection.insertOne(po)).acknowledged;
-		return addedPo;
+		const addedPo_id = (await poCollection.insertOne(po)).insertedId.toString();
+		return addedPo_id;
 	} catch (error) {
 		console.log("There was an error adding a po to the database.", error)
 	} finally {
