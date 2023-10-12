@@ -1,19 +1,26 @@
-<script>
+<script lang="ts">
 	import AddressLine from "./AddressLine.svelte";
 	import DateLine from "./DateLine.svelte";
 	import PayableToLine from "./PayableToLine.svelte";
 	import PnpLocationLine from "./PnpLocationLine.svelte";
 	import ReportingBudgetLineLine from "./ReportingBudgetLineLine.svelte";
 	import TopicDivisionLine from "./TopicDivisionLine.svelte";
+
+  export let createdDate = "";
+  export let topicDivision = "";
+  export let reportingBudgetLine = "";
+  export let pnpLocation = "";
+  export let payeeName = ""
+  export let homeAddress = "";
 </script>
 
 <section class="grid-container">
-  <DateLine />
-  <TopicDivisionLine />
-  <ReportingBudgetLineLine />
-  <PnpLocationLine />
-  <PayableToLine />
-  <AddressLine />
+  <DateLine {createdDate}/>
+  <TopicDivisionLine {topicDivision}/>
+  <ReportingBudgetLineLine {reportingBudgetLine}/>
+  <PnpLocationLine {pnpLocation}/>
+  <PayableToLine {payeeName}/>
+  <AddressLine {homeAddress}/>
 </section>
 
 

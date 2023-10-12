@@ -1,28 +1,28 @@
-<script>
+<script lang="ts">
   import {
-    address,
-    required
+    pdfTemplateAddressString,
+    pdfTemplateRequiredString
   } from "$lib/strings/poTemplate";
 
-  export let addressActualLine1 = "wherever it is";
-  export let addressActualLine2 = "I will come to you";
+  export let homeAddress = "wherever it is";
+  export let homeAddressLine2 = "";
 </script>
 
 <div class="grid-container">
   <div class="address-label required-line">
     <h5 class="address-text section1-data-label">
-      {address}
+      {pdfTemplateAddressString}
     </h5>
     <p class="required warning">
-      {required}
+      {pdfTemplateRequiredString}
     </p>
     <h5>:</h5>
   </div>
   <p class="address-actual-line-1 section1-data-actual">
-    {addressActualLine1}
+    {homeAddress ?? ""}
   </p>
   <p class="address-actual-line-2 section1-data-actual">
-    {addressActualLine2}
+    {homeAddressLine2 ?? ""}
   </p>
 </div>
 

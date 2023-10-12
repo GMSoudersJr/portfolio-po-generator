@@ -1,16 +1,16 @@
-<script>
-  import { paymentMethod } from "$lib/strings/poTemplate";
+<script lang="ts">
+  import { pdfTemplatePaymentMethodString } from "$lib/strings/poTemplate";
 
-  export let actualPaymentMethod = "Wire";
+  export let paymentMethod = "Wire";
 </script>
 
 <div class="grid-container">
   <h5 class="payment-method-label">
-    {paymentMethod}:
+    {pdfTemplatePaymentMethodString}:
   </h5>
 
   <p class="payment-method-actual">
-   {actualPaymentMethod}
+   {paymentMethod ?? ""}
   </p>
 </div>
 <style>

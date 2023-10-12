@@ -1,24 +1,24 @@
-<script>
+<script lang="ts">
   import {
-    bankName,
-    required
+    pdfTemplateBankNameString,
+    pdfTemplateRequiredString
   } from "$lib/strings/poTemplate";
 
-  export let bankNameActual = "Shinhan Bank";
+  export let bankName = "Shinhan Bank";
 </script>
 
 <div class="grid-container">
   <div class="bank-name-label required-line">
     <h5 class="bank-name-text section3-data-label">
-      {bankName}
+      {pdfTemplateBankNameString}
     </h5>
     <p class="required warning">
-      {required}
+      {pdfTemplateRequiredString}
     </p>
     <h5>:</h5>
   </div>
   <p class="bank-name-actual section3-data-actual">
-    {bankNameActual}
+    {bankName ?? ""}
   </p>
 </div>
 

@@ -1,27 +1,43 @@
-<script>
+<script lang="ts">
 	import ProductSvcDescriptionLine from "./ProductSVCDescriptionLine.svelte";
   import ProductSvcDescriptionTitle from "./ProductSVCDescriptionTitle.svelte";
 	import TotalLine from "./TotalLine.svelte";
 	import WithholdingTaxOrVat from "./WithholdingTaxOrVat.svelte";
+  interface ProductDescriptionAndPrice {
+    productOrServiceDescription: string;
+    price: string;
+  }
+  const filler: ProductDescriptionAndPrice = {
+    productOrServiceDescription: "",
+    price: ""
+  }
 
-  export let productServices = [
-    {description: "Service One", price: 0},
-    {description: "Service Two", price: 0},
-    {description: "Service Three", price: 0},
-    {description: "Service Four", price: 0},
+  export let productsOrServicesDescriptionsAndPrices = [
+    {productOrServiceDescription: "Service One", price: ""},
+    {productOrServiceDescription: "Service Two", price: ""},
+    {productOrServiceDescription: "Service Three", price: ""},
+    {productOrServiceDescription: "Service Four", price: ""},
   ];
+
+
+  while (productsOrServicesDescriptionsAndPrices.length < 4) {
+    productsOrServicesDescriptionsAndPrices.push(filler);
+  }
+
+  export let tax = "0";
+  export let total = "$ 1,000,000,000";
 </script>
 
 <section class="grid-container">
   <ProductSvcDescriptionTitle />
-  {#each productServices as productOrService}
+  {#each productsOrServicesDescriptionsAndPrices as entry}
     <ProductSvcDescriptionLine
-      description={productOrService.description}
-      price={productOrService.price}
+      description={entry.productOrServiceDescription}
+      price={entry.price}
     />
   {/each}
-  <WithholdingTaxOrVat />
-  <TotalLine />
+  <WithholdingTaxOrVat {tax}/>
+  <TotalLine {total}/>
 </section>
 
 

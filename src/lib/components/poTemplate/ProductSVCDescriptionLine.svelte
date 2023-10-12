@@ -1,16 +1,16 @@
-<script>
+<script lang="ts">
   export let description = "";
-  export let price = 0;
+  export let price = "";
 </script>
 
 <div class="grid-container">
   <div class="description">
     <p class="product-service-description">
-      {description}
+      {description ?? ""}
     </p>
   </div>
   <p class="amount">
-    {price}
+    {price ?? ""}
   </p>
 </div>
 
@@ -40,7 +40,7 @@
     border-top: 1px solid black;
     display: grid;
     grid-template-columns: 1fr 16.5%;
-    grid-template-rows: auto;
+    grid-template-rows: 17.6px;
     grid-template-areas:
     "description amount";
   }

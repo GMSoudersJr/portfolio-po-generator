@@ -1,17 +1,17 @@
-<script>
-	import {total} from "$lib/strings/poTemplate";
+<script lang="ts">
+	import {pdfTemplateTotalString} from "$lib/strings/poTemplate";
 
-  export let totalActual = "6665400";
+  export let total = "6665400";
 </script>
 
 <div class="grid-container">
   <div class="total">
     <h5 class="total-label">
-      {total}
+      {pdfTemplateTotalString}
     </h5>
   </div>
   <p class="amount">
-    {totalActual}
+    {total}
   </p>
 </div>
 

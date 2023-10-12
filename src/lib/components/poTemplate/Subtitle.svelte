@@ -1,9 +1,9 @@
-<script>
-  import { subtitle } from "$lib/strings/poTemplate";
+<script lang="ts">
+  import { pdfTemplateSubtitleString } from "$lib/strings/poTemplate";
 </script>
 
 <h4>
-  {subtitle}
+  {pdfTemplateSubtitleString}
 </h4>
 
 <style>

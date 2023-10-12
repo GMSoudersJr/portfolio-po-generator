@@ -1,24 +1,24 @@
-<script>
+<script lang="ts">
   import {
-    payableTo,
-    required
+    pdfTemplatePayableToString,
+    pdfTemplateRequiredString
   } from "$lib/strings/poTemplate";
 
-  export let payableToActual = "Rachel Chung";
+  export let payeeName = "";
 </script>
 
 <div class="grid-container">
   <div class="payable-to-label required-line">
     <h5 class="payable-to-text section1-data-label">
-      {payableTo}
+      {pdfTemplatePayableToString}
     </h5>
     <p class="required warning">
-      {required}
+      {pdfTemplateRequiredString}
     </p>
     <h5>:</h5>
   </div>
   <p class="payable-to-actual section1-data-actual">
-    {payableToActual}
+    {payeeName ?? ""}
   </p>
 </div>
 

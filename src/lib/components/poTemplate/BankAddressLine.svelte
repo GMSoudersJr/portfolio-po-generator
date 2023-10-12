@@ -1,36 +1,36 @@
-<script>
+<script lang="ts">
   import {
-    bankAddress,
-    physicalAddress,
-    required
+    pdfTemplateBankAddressString,
+    pdfTemplatePhysicalAddressString,
+    pdfTemplateRequiredString
   } from "$lib/strings/poTemplate";
 
-  export let bankAddressActualLine1 = "Some place";
-  export let bankAddressActualLine2 = "where money";
-  export let bankAddressActualLine3 = "is stored";
+  export let bankAddress = "Some place";
+  export let bankAddressLine2 = "";
+  export let bankAddressLine3 = "";
 </script>
 
 <div class="grid-container">
   <div class="bank-address-label required-line">
     <h5 class="bank-address-text section3-data-label">
-      {bankAddress}
+      {pdfTemplateBankAddressString}
     </h5>
     <p class="required warning">
-      {required}
+      {pdfTemplateRequiredString}
     </p>
     <h5>:</h5>
   </div>
   <p class="physical-address-warning warning">
-    {physicalAddress}
+    {pdfTemplatePhysicalAddressString}
   </p>
   <p class="bank-address-actual-line1 section3-data-actual">
-    {bankAddressActualLine1}
+    {bankAddress ?? ""}
   </p>
   <p class="bank-address-actual-line2 section3-data-actual">
-    {bankAddressActualLine2}
+    {bankAddressLine2 ?? ""}
   </p>
   <p class="bank-address-actual-line3 section3-data-actual">
-    {bankAddressActualLine3}
+    {bankAddressLine3 ?? ""}
   </p>
 </div>
 
@@ -59,7 +59,7 @@
   .grid-container {
     display: grid;
     grid-template-columns: 33% 1fr;
-    grid-template-rows: repeat(3, auto);
+    grid-template-rows: repeat(3, 1fr);
     grid-template-areas:
     "bankAddressLabel bankAddressActualLine1"
     "physicalAddressWarning bankAddressActualLine2"

@@ -1,5 +1,9 @@
 <script lang="ts">
-	import {section1, section2, section3} from "$lib/strings/poTemplate";
+  import {
+    pdfTemplateSection1String,
+    pdfTemplateSection2String,
+    pdfTemplateSection3String
+  } from "$lib/strings/poTemplate";
 	import AdditionalNotes from "./AdditionalNotes.svelte";
   import ApprovedBy from "./ApprovedBy.svelte";
   import DueBy from "./DueBy.svelte";
@@ -12,6 +16,35 @@
 	import Section3 from "./Section3.svelte";
 	import Subtitle from "./Subtitle.svelte";
   import Title from "./Title.svelte";
+
+  export let poPdfData;
+  const {
+    approvedBy,
+    createdDate,
+    dueDate,
+    payeeData,
+    paymentMethod,
+    pnpLocation,
+    productsOrServicesDescriptionsAndPrices,
+    poNumber,
+    reportingBudgetLine,
+    requestedBy,
+    tax,
+    topicDivision,
+    total
+  } = poPdfData;
+
+  const {
+    bankAccountNumber,
+    bankAddress,
+    bankName,
+    beneficiaryName: payeeName,
+    homeAddress,
+    iban,
+    nationalIdOrBusinessRegistrationNumber,
+    routingNumber,
+    swiftCode
+  } = payeeData[0];
 </script>
 
 <div id="pdfTemplate" class="page-container">
@@ -25,48 +58,70 @@
   </section>
 
   <section class="payment-method">
-    <PaymentMethod />
+    <PaymentMethod {paymentMethod}/>
   </section>
 
   <section class="due-by">
-    <DueBy />
+    <DueBy {dueDate}/>
   </section>
 
   <section class="po-number">
-    <PoNumber />
+    <PoNumber {poNumber}/>
   </section>
 
   <section class="section-1-label section-label">
-    {section1}
+    {pdfTemplateSection1String}
   </section>
   <section class="section1">
-    <Section1 />
+    <Section1
+      {createdDate}
+      {topicDivision}
+      {reportingBudgetLine}
+      {pnpLocation}
+      {payeeName}
+      {homeAddress}
+    />
   </section>
 
   <section class="section-2-label section-label">
-    {section2}
+    {pdfTemplateSection2String}
   </section>
   <section class="section2">
-    <Section2 />
+    <Section2
+      {productsOrServicesDescriptionsAndPrices}
+      {tax}
+      {total}
+    />
   </section>
 
   <section class="section-3-label section-label">
-    {section3}
+    {pdfTemplateSection3String}
   </section>
   <section class="section3">
-    <Section3 />
+    <Section3
+      {payeeName}
+      {bankName}
+      {bankAccountNumber}
+      {bankAddress}
+      {iban}
+      {routingNumber}
+      {swiftCode}
+    />
   </section>
 
   <section class="additional-notes">
-    <AdditionalNotes />
+    <AdditionalNotes
+      {nationalIdOrBusinessRegistrationNumber}
+    />
+
   </section>
 
   <section class="requested-by">
-    <RequestedBy />
+    <RequestedBy {requestedBy}/>
   </section>
 
   <section class="approved-by">
-    <ApprovedBy />
+    <ApprovedBy {approvedBy}/>
   </section>
 
   <section class="footer">

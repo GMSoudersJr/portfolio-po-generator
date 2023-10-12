@@ -1,15 +1,15 @@
-<script>
-  import { dueBy } from "$lib/strings/poTemplate";
+<script lang="ts">
+  import { pdfTemplateDueByString } from "$lib/strings/poTemplate";
 
   export let dueDate = "DD/MM/YYYY"
 </script>
 
 <div class="grid-container">
   <h5 class="due-by item-a">
-    {dueBy}:
+    {pdfTemplateDueByString}:
   </h5>
   <p class="due-date item-b">
-    {dueDate}
+    {dueDate ?? ""}
   </p>
 </div>
 

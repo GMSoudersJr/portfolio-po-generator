@@ -1,24 +1,24 @@
-<script>
+<script lang="ts">
   import {
-    pnpLocation,
-    required
+    pdfTemplatePnpLocationString,
+    pdfTemplateRequiredString
   } from "$lib/strings/poTemplate";
 
-  export let pnpLocationActual = "Korea";
+  export let pnpLocation = "Korea";
 </script>
 
 <div class="grid-container">
   <div class="pnp-location-label required-line">
     <h5 class="pnp-location-text section1-data-label">
-      {pnpLocation}
+      {pdfTemplatePnpLocationString}
     </h5>
     <p class="required warning">
-      {required}
+      {pdfTemplateRequiredString}
     </p>
     <h5>:</h5>
   </div>
   <p class="pnp-location-actual section1-data-actual">
-    {pnpLocationActual}
+    {pnpLocation ?? ""}
   </p>
 </div>
 

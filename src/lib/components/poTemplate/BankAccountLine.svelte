@@ -1,32 +1,41 @@
-<script>
+<script lang="ts">
   import {
-    bankAccountNumberOrIban,
-    forMexicoAccounts,
-    required
+    pdfTemplateBankAccountNumberOrIbanString,
+    pdfTemplateForMexicoAccountsString,
+    pdfTemplateRequiredString
   } from "$lib/strings/poTemplate";
 
-  export let bankAcountNumberOfIbanActual = "883244923348";
+  export let bankAccountNumber = "883244923348";
+  export let iban = "RU0204452560040702810412345678901";
 </script>
 
 <div class="grid-container">
   <div class="bank-account-label required-line">
     <h5 class="bank-account-text section3-data-label">
-      {bankAccountNumberOrIban}
+      {pdfTemplateBankAccountNumberOrIbanString}
     </h5>
     <p class="required warning">
-      {required}
+      {pdfTemplateRequiredString}
     </p>
     <h5>:</h5>
   </div>
   <p class="for-mexico-accounts warning">
-    {forMexicoAccounts}
+    {pdfTemplateForMexicoAccountsString}
   </p>
   <p class="bank-account-actual section3-data-actual">
-    {bankAcountNumberOfIbanActual}
+    {bankAccountNumber ?? ""}
+  </p>
+  <p class="iban-actual section3-data-actual">
+    {iban ?? ""}
   </p>
 </div>
 
 <style>
+  .iban-actual {
+    grid-area: iban;
+    padding-left: 0.15em;
+    border-bottom: 1px solid black;
+  }
   .for-mexico-accounts {
     grid-area: forMexicoAccounts;
     padding-left: 0.15em;
@@ -42,11 +51,11 @@
   }
   .grid-container {
     display: grid;
-    grid-template-columns: 33% 1fr;
+    grid-template-columns: 33% repeat(2, 1fr);
     grid-template-rows: auto auto;
     grid-template-areas:
-    "bankAccountLabel bankAccountActual"
-    "forMexicoAccounts .";
+    "bankAccountLabel bankAccountActual iban"
+    "forMexicoAccounts . .";
     row-gap: 0.25em;
     margin: 0.25em 0;
   }

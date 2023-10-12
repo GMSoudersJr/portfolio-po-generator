@@ -1,24 +1,24 @@
-<script>
+<script lang="ts">
   import {
-    reportingBudgetLine,
-    required
+    pdfTemplateReportingBudgetLineString,
+    pdfTemplateRequiredString
   } from "$lib/strings/poTemplate";
 
-  export let reportingBudgetLineActual = "Acquisitions";
+  export let reportingBudgetLine = "Acquisitions";
 </script>
 
 <div class="grid-container">
   <div class="reporting-budget-line-label required-line">
     <h5 class="reporting-budget-line-text section1-data-label">
-      {reportingBudgetLine}
+      {pdfTemplateReportingBudgetLineString}
     </h5>
     <p class="required warning">
-      {required}
+      {pdfTemplateRequiredString}
     </p>
     <h5>:</h5>
   </div>
   <p class="reporting-budget-line-actual section1-data-actual">
-    {reportingBudgetLineActual}
+    {reportingBudgetLine ?? ""}
   </p>
 </div>
 

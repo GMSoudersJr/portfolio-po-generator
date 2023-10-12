@@ -1,21 +1,24 @@
-<script>
-  import { requestedBy, required } from "$lib/strings/poTemplate";
-  export let requestedByName = "Rachel Chung";
+<script lang="ts">
+  import {
+    pdfTemplateRequestedByString,
+    pdfTemplateRequiredString
+  } from "$lib/strings/poTemplate";
+  export let requestedBy = "Rachel Chung";
 </script>
 
 <div class="grid-container">
   <div class="requested-label required-line">
     <h5 class="requested-by-label">
-      {requestedBy}
+      {pdfTemplateRequestedByString}
     </h5>
     <p class="required warning">
-      {required}
+      {pdfTemplateRequiredString}
     </p>
     <h5>:</h5>
   </div>
 
   <p class="requested-name">
-    {requestedByName}
+    {requestedBy ?? ""}
   </p>
 </div>
 

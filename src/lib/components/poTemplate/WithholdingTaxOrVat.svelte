@@ -1,17 +1,17 @@
 <script>
-	import {withholdingTaxOrVat} from "$lib/strings/poTemplate";
+	import { pdfTemplateWithholdingTaxOrVatString } from "$lib/strings/poTemplate";
 
-  export let withholdingTaxOrVatActual = "66654";
+  export let tax = "66654";
 </script>
 
 <div class="grid-container">
   <div class="withholding-tax-vat">
     <p class="withholding-tax-vat-label">
-      {withholdingTaxOrVat}
+      {pdfTemplateWithholdingTaxOrVatString}
     </p>
   </div>
   <h5 class="amount">
-    {withholdingTaxOrVatActual}
+    {tax}
   </h5>
 </div>
 

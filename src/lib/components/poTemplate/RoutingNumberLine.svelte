@@ -1,32 +1,32 @@
-<script>
+<script lang="ts">
   import {
-    routingABAOrSwift,
-    routingMessage,
-    required
+    pdfTemplateRoutingABAOrSwiftString,
+    pdfTemplateRoutingMessageString,
+    pdfTemplateRequiredString
   } from "$lib/strings/poTemplate";
 
-  export let routingNumberActual = "2343200094";
-  export let swiftCodeActual = "FRBBUS6S";
+  export let routingNumber = "123456789";
+  export let swiftCode = "AAAA-BB-CC-123";
 </script>
 
 <div class="grid-container">
   <div class="routing-number-label required-line">
     <h5 class="routing-number-text section3-data-label">
-      {routingABAOrSwift}
+      {pdfTemplateRoutingABAOrSwiftString}
     </h5>
     <p class="required warning">
-      {required}
+      {pdfTemplateRequiredString}
     </p>
     <h5>:</h5>
   </div>
   <p class="routing-message warning">
-    {routingMessage}
+    {pdfTemplateRoutingMessageString}
   </p>
   <p class="routing-number-actual section3-data-actual">
-    {routingNumberActual}
+    {routingNumber ?? ""}
   </p>
   <p class="swift-code-actual section3-data-actual">
-    {swiftCodeActual}
+    {swiftCode ?? ""}
   </p>
 </div>
 

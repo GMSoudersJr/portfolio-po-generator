@@ -1,10 +1,10 @@
-<script>
-  import { title } from '$lib/strings/poTemplate'
+<script lang="ts">
+  import { pdfTemplateTitleString } from '$lib/strings/poTemplate'
 </script>
 
 <section class="title">
   <h1>
-    {title}
+    {pdfTemplateTitleString}
   </h1>
 </section>
 

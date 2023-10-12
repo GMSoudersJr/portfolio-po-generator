@@ -1,24 +1,24 @@
-<script>
+<script lang="ts">
   import {
-    beneficiaryName,
-    required
+    pdfTemplateBeneficiaryNameString,
+    pdfTemplateRequiredString
   } from "$lib/strings/poTemplate";
 
-  export let beneficiaryNameActual = "Rachel Chung";
+  export let payeeName = "Rachel Chung";
 </script>
 
 <div class="grid-container">
   <div class="beneficiary-name-label required-line">
     <h5 class="beneficiary-name-text section3-data-label">
-      {beneficiaryName}
+      {pdfTemplateBeneficiaryNameString}
     </h5>
     <p class="required warning">
-      {required}
+      {pdfTemplateRequiredString}
     </p>
     <h5>:</h5>
   </div>
   <p class="beneficiary-name-actual section3-data-actual">
-    {beneficiaryNameActual}
+    {payeeName ?? ""}
   </p>
 </div>
 

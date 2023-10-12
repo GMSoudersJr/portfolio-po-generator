@@ -1,33 +1,33 @@
-<script>
+<script lang="ts">
   import {
-    poNumber,
-    poNumberFormat,
-    poNumberFormatExample,
-    required
+    pdfTemplatePoNumberString,
+    pdfTemplatePoNumberFormatString,
+    pdfTemplatePoNumberFormatExampleString,
+    pdfTemplateRequiredString
   } from "$lib/strings/poTemplate";
 
-  export let poNumberActual = "020922-Freelance-General-RC"
+  export let poNumber = "020922-Freelance-General-RC"
 </script>
 
 <div class="grid-container">
   <div class="po-label required-line">
     <h5 class="po-number-text">
-      {poNumber}
+      {pdfTemplatePoNumberString}
     </h5>
     <p class="required warning">
-      {required}
+      {pdfTemplateRequiredString}
     </p>
     <h5>:</h5>
   </div>
   <div class=" po-number-area">
     <p class="po-number-actual">
-      {poNumberActual}
+      {poNumber ?? ""}
     </p>
     <p class="po-number-format">
-      {poNumberFormat}
+      {pdfTemplatePoNumberFormatString}
     </p>
     <p class="po-number-example">
-      {poNumberFormatExample}
+      {pdfTemplatePoNumberFormatExampleString}
     </p>
   </div>
 </div>

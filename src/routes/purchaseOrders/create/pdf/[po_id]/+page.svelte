@@ -9,11 +9,12 @@
 
   export let data: PageData;
   console.log(data);
+  const { poPdfData } = data;
 </script>
 
 <main class="pdf-generator-container">
   <section class="pdf-template" id="pdf-template-container">
-    <PoTemplate />
+    <PoTemplate {poPdfData}/>
   </section>
   <button
     class="pdf-button"

@@ -1,19 +1,33 @@
-<script>
+<script lang="ts">
 	import BankAccountLine from "./BankAccountLine.svelte";
 	import BankAddressLine from "./BankAddressLine.svelte";
   import BankingInformation from "./BankingInformation.svelte";
 	import BankNameLine from "./BankNameLine.svelte";
 	import BeneficiaryNameLine from "./BeneficiaryNameLine.svelte";
 	import RoutingNumberLine from "./RoutingNumberLine.svelte";
+
+  export let payeeName = "";
+  export let bankName = "";
+  export let bankAccountNumber = "";
+  export let iban = "";
+  export let bankAddress = "";
+  export let routingNumber = "";
+  export let swiftCode = "";
 </script>
 
 <section class="grid-container">
   <BankingInformation />
-  <BeneficiaryNameLine />
-  <BankNameLine />
-  <BankAccountLine />
-  <BankAddressLine />
-  <RoutingNumberLine />
+  <BeneficiaryNameLine {payeeName}/>
+  <BankNameLine {bankName}/>
+  <BankAccountLine
+    {bankAccountNumber}
+    {iban}
+  />
+  <BankAddressLine {bankAddress}/>
+  <RoutingNumberLine
+    {routingNumber}
+    {swiftCode}
+  />
 </section>
 
 

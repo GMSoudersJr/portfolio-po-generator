@@ -1,9 +1,9 @@
-<script>
-  import { importantMessage } from '$lib/strings/poTemplate'
+<script lang="ts">
+  import { pdfTemplateImportantMessageString } from '$lib/strings/poTemplate'
 </script>
 
 <p class="warning">
-  {importantMessage}
+  {pdfTemplateImportantMessageString}
 </p>
 
 <style>

@@ -1,21 +1,25 @@
-<script>
-  import { approvedBy, required } from "$lib/strings/poTemplate";
-  export let approvedByName = "Rachel Chung";
+<script lang="ts">
+  import {
+    pdfTemplateApprovedByString,
+    pdfTemplateRequiredString
+  } from "$lib/strings/poTemplate";
+
+  export let approvedBy = "Rachel Chung";
 </script>
 
 <div class="grid-container">
   <div class="approved-label required-line">
     <h5 class="approved-by-label">
-      {approvedBy}
+      {pdfTemplateApprovedByString}
     </h5>
     <p class="required warning">
-      {required}
+      {pdfTemplateRequiredString}
     </p>
     <h5>:</h5>
   </div>
 
   <p class="approved-name">
-    {approvedByName}
+    {approvedBy ?? ""}
   </p>
 </div>
 

@@ -1,17 +1,17 @@
-<script>
+<script lang="ts">
   import {
-    bankingInformation,
-    forWirePaymentsOnly
+    pdfTemplateBankingInformationString,
+    pdfTemplateForWirePaymentsOnlyString
   } from "$lib/strings/poTemplate";
 </script>
 
 <div class="grid-container">
   <div class="title">
     <h5 class="section-data-title">
-      {bankingInformation}
+      {pdfTemplateBankingInformationString}
     </h5>
     <p class="warning">
-      {forWirePaymentsOnly}
+      {pdfTemplateForWirePaymentsOnlyString}
     </p>
   </div>
 </div>

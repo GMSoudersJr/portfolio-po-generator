@@ -1,24 +1,24 @@
-<script>
+<script lang="ts">
   import {
-    date,
-    required
+    pdfTemplateDateString,
+    pdfTemplateRequiredString
   } from "$lib/strings/poTemplate";
 
-  export let dateActual = "020922";
+  export let createdDate = "ddmmyyyy";
 </script>
 
 <div class="grid-container">
   <div class="date-label required-line">
     <h5 class="date-text section1-data-label">
-      {date}
+      {pdfTemplateDateString}
     </h5>
     <p class="required warning">
-      {required}
+      {pdfTemplateRequiredString}
     </p>
     <h5>:</h5>
   </div>
   <p class="date-actual section1-data-actual">
-    {dateActual}
+    {createdDate ?? ""}
   </p>
 </div>
 

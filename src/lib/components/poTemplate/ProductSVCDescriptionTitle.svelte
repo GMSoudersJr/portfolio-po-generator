@@ -1,17 +1,17 @@
-<script>
+<script lang="ts">
   import {
-    ifEventRelated,
-    productServiceDescription
+    pdfTemplateIfEventRelatedString,
+    pdfTemplateProductServiceDescriptionString
   } from "$lib/strings/poTemplate";
 </script>
 
 <div class="grid-container">
   <div class="description">
     <h5 class="section2-data-label">
-      {productServiceDescription}
+      {pdfTemplateProductServiceDescriptionString}
     </h5>
     <p class="warning">
-      {ifEventRelated}
+      {pdfTemplateIfEventRelatedString}
     </p>
   </div>
 </div>

@@ -1,24 +1,24 @@
-<script>
+<script lang="ts">
   import {
-    topicDivision,
-    required
+    pdfTemplateTopicDivisionString,
+    pdfTemplateRequiredString
   } from "$lib/strings/poTemplate";
 
-  export let topicDivisionActual = "General";
+  export let topicDivision = "General";
 </script>
 
 <div class="grid-container">
   <div class="topic-division-label required-line">
     <h5 class="date-text section1-data-label">
-      {topicDivision}
+      {pdfTemplateTopicDivisionString}
     </h5>
     <p class="required warning">
-      {required}
+      {pdfTemplateRequiredString}
     </p>
     <h5>:</h5>
   </div>
   <p class="topic-division-actual section1-data-actual">
-    {topicDivisionActual}
+    {topicDivision ?? ""}
   </p>
 </div>
 
