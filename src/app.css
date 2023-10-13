@@ -11,6 +11,7 @@
   --fontSizeSectionDataTitle: 0.75em; /* 9pt */
   --fontSizeSectionDataLabel: 0.75em; /* 9pt */
   --fontSizeSectionDataActual: 0.75em;/* 9pt */
+  --letterSpacingForAllCaps: -0.02em;
   --fontSizeRequiredWarning: 0.67em; /* 8pt */
   --fontSizePoFormatAndExample: 0.67em; /* 8pt */
   --fontSizePaymentMethodActualAndMoney: 0.81em; /* 10pt */
@@ -42,6 +43,9 @@
   align-items: center;
   justify-self: left;
   column-gap: 0.1em;
+}
+.section1-data-label {
+  letter-spacing: var(--letterSpacingForAllCaps);
 }
 .section1-data-label,
 .section3-data-label {

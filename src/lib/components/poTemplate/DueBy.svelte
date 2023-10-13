@@ -5,10 +5,10 @@
 </script>
 
 <div class="grid-container">
-  <h5 class="due-by item-a">
+  <h5 class="due-by">
     {pdfTemplateDueByString}:
   </h5>
-  <p class="due-date item-b">
+  <p class="due-date">
     {dueDate ?? ""}
   </p>
 </div>
@@ -17,6 +17,7 @@
   .due-by {
     grid-area: dueBy;
     font-size: var(--fontSizeSectionDataLabel);
+    letter-spacing: var(--letterSpacingForAllCaps);
   }
   .due-date {
     grid-area: dueDate;

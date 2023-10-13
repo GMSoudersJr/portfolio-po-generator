@@ -26,6 +26,7 @@
   }
   .total-label {
     font-size: var(--fontSizeSectionDataLabel);
+    letter-spacing: var(--letterSpacingForAllCaps);
   }
   .amount {
     grid-area: amount;

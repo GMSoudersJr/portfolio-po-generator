@@ -1,11 +1,7 @@
 <script lang="ts">
   import PoTemplate from "$lib/components/poTemplate/PoTemplate.svelte";
   import type { PageData } from "./$types";
-
-  async function handleClick() {
-    // TODO make it a pdf
-    console.log("PDF-it");
-  }
+	import PdfButton from "./PdfButton.svelte";
 
   export let data: PageData;
   console.log(data);
@@ -16,14 +12,7 @@
   <section class="pdf-template" id="pdf-template-container">
     <PoTemplate {poPdfData}/>
   </section>
-  <button
-    class="pdf-button"
-    type="button"
-    id="pdf-button"
-    on:click={handleClick}
-  >
-    PDF-it
-  </button>
+  <PdfButton />
 </main>
 
 <style>

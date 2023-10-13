@@ -24,6 +24,7 @@
   }
   .section-data-title {
     font-size: var(--fontSizeSectionDataTitle);
+    letter-spacing: var(--letterSpacingForAllCaps);
   }
   .grid-container {
     display: grid;

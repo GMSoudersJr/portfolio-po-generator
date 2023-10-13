@@ -17,6 +17,9 @@
 </div>
 
 <style>
+  .section2-data-label {
+    letter-spacing: var(--letterSpacingForAllCaps);
+  }
   .description {
     grid-area: description;
     border-right: 1px solid black;

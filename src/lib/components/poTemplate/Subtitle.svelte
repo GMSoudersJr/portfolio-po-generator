@@ -13,6 +13,7 @@
     font-size: var(--fontSizePoSubtitle);
     font-weight: 700;
     margin: 0.25em 0;
+    padding: 3px 0;
   }
 </style>
 

@@ -29,6 +29,7 @@
   }
   .requested-by-label {
     font-size: var(--fontSizeRequestedBy);
+    letter-spacing: -0.011rem;
   }
   .requested-name {
     grid-area: requestedName;

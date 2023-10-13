@@ -30,6 +30,7 @@
   }
   .approved-by-label {
     font-size: var(--fontSizeApprovedBy);
+    letter-spacing: var(--letterSpacingForAllCaps);
   }
   .approved-name {
     grid-area: approvedName;

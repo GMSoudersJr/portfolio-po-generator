@@ -49,6 +49,7 @@
   }
   .po-number-text {
     font-size: var(--fontSizeSectionDataLabel);
+    letter-spacing: var(--letterSpacingForAllCaps);
   }
   .po-number-area {
     grid-area: poNumberArea;
