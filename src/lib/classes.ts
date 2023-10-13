@@ -85,7 +85,7 @@ export class Payee {
 	bankName: string | undefined;
 	bankAccountNumber: string | undefined;
 	nationalIdOrBusinessRegistrationNumber: string | undefined;
-	homeAddress: Uint8Array | undefined;
+	homeAddress: string | undefined;
 	bankAddress: string | undefined;
 	routingNumber: string | undefined;
 	swiftCode: string | undefined;

@@ -77,8 +77,8 @@ export const actions = {
 		if ( formHomeAddressData == "" ) {
 			payee.homeAddress = undefined;
 		} else {
-			payee.homeAddress = await encryptTheData((await generateKeypair()).publicKey, formHomeAddressData);
-			//payee.homeAddress = formHomeAddressData;
+			//payee.homeAddress = await encryptTheData((await generateKeypair()).publicKey, formHomeAddressData);
+			payee.homeAddress = formHomeAddressData;
 		}
 
 		if ( formBankAddressData == "" ) {
