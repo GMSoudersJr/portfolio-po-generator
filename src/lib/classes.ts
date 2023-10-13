@@ -33,16 +33,16 @@ export class Po {
 	[index: string]: string | number | ProductOrServiceDescriptionAndPrice[] | ObjectId | undefined;
 	payee_id: ObjectId | undefined;
 	payeeName: string | undefined;
-	paymentMethod: string | undefined;
 	poNumber: string | undefined;
-	dueDate: string | undefined;
-	createdDate: string | undefined;
-	pnpLocation: string | undefined;
-	topicDivision: string | undefined;
-	reportingBudgetLine: string | undefined;
+	productsOrServicesDescriptionsAndPrices: ProductOrServiceDescriptionAndPrice[] = [];
 	tax: string | undefined;
 	total: string | undefined;
-	productsOrServicesDescriptionsAndPrices: ProductOrServiceDescriptionAndPrice[] = [];
+	paymentMethod: string | undefined;
+	reportingBudgetLine: string | undefined;
+	topicDivision: string | undefined;
+	pnpLocation: string | undefined;
+	createdDate: string | undefined;
+	dueDate: string | undefined;
 	requestedBy: string | undefined;
 	approvedBy: string | undefined;
 
@@ -93,6 +93,7 @@ export class Payee {
 	currency: string | undefined;
 	reportingBudgetLine: string | undefined;
 	topicDivision: string | undefined;
+	iban: string | undefined;
 
 	constructor(
 		beneficiaryName: string | undefined,
@@ -117,6 +118,7 @@ export class Payee {
 		this.bankAddress = undefined;
 		this.routingNumber = undefined;
 		this.swiftCode = undefined;
+		this.iban = undefined;
 	}
 };
 

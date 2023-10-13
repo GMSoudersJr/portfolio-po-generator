@@ -1,9 +1,9 @@
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt';
-import{ ACCESS_TOKEN_SECRET, ID_TOKEN_SECRET } from '$env/static/private';
+import{ ACCESS_TOKEN_SECRET, DECRYPT_SECRET, ID_TOKEN_SECRET } from '$env/static/private';
 import { redirect, fail } from '@sveltejs/kit';
-import {findUser} from '$lib/db';
-import {trimTheFormData} from '$lib/utils';
+import {findUser, updateUser} from '$lib/db';
+import {generateKeypair, trimTheFormData} from '$lib/utils';
 import {AccessPayload} from '$lib/classes';
 import type { PageServerLoad, Actions } from './$types';
 
@@ -38,6 +38,29 @@ export const actions = {
 			return fail(401, {username, incorrect: true, message: "Invalid credentials"})
 		}
 		
+		if (!foundUser.publicKey) {
+			const userKeyPair = await generateKeypair();
+			const { publicKey, privateKey } = userKeyPair;
+
+			const decryptionPayload ={
+				_id: foundUser._id,
+				privateKey
+			}
+
+			const decryptionToken = jwt.sign(decryptionPayload, DECRYPT_SECRET, {
+				expiresIn: '1m'
+			});
+
+			cookies.set('decryptionToken', decryptionToken, {
+				httpOnly: true,
+				maxAge: 60,
+				secure: true,
+				path: '/'
+			});
+
+			await updateUser(foundUser._id, publicKey)
+
+		}
 		/*
 		const accessPayload = new AccessPayload(
 			foundUser._id,
@@ -50,6 +73,7 @@ export const actions = {
 			firstName: foundUser.firstName,
 			username: foundUser.username,
 		};
+
 		/*
 		const idPayload = {
 			_id: foundUser._id

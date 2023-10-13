@@ -7,7 +7,7 @@ export enum PoTableHeadings {
 	pnpLocation = "P&P Location",
 	topicDivision = "Topic / Division",
 	reportingBudgetLine = "Reporting / Budget Line",
-	tax = "Tax",
+	tax = "Taxes",
 	total= "Total",
 	productsOrServicesDescriptionsAndPrices = "Product / SVC Description and Price",
 	requestedBy = "Requested By",

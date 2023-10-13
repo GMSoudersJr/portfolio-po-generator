@@ -6,6 +6,7 @@ import {
 	homeAddress,
 	bankName,
 	bankAccountNumber,
+	iban,
 	bankAddress,
 	routingNumber,
 	SwiftCodeOrIbanNumber,
@@ -26,7 +27,7 @@ const routingNumberNameString = routingNumber.name;
 const swiftCodeOrIbanNumberNameString = SwiftCodeOrIbanNumber.name;
 const reportingBudgetLineNameString = reportBudgetLine.name;
 const topicDivisionNameString = topicDivision.name;
-const taxRateNameString = "taxRate";
+const ibanNameString = iban.name;
 const currencyNameString= "currency";
 
 export const actions = {
@@ -48,6 +49,7 @@ export const actions = {
 		const payeeTaxRate = payeeTypeAndTax.options.filter((option) => option.value == formPayeeTypeData);
 		const formReportingBudgetLineData = trimTheFormData(data.get(reportingBudgetLineNameString));
 		const formTopicDivisionData = trimTheFormData(data.get(topicDivisionNameString));
+		const formIbanData = trimTheFormData(data.get(ibanNameString.toString()));
 		const taxRate = payeeTaxRate[0].taxRate;
 
 		const payee = new Payee(
@@ -95,6 +97,12 @@ export const actions = {
 			payee.swiftCode = undefined;
 		} else {
 			payee.swiftCode = formSwiftCodeData;
+		}
+
+		if ( formIbanData == "" ) {
+			payee.iban = undefined;
+		} else {
+			payee.iban = formIbanData;
 		}
 
 		const databaseResponse = await addPayee(payee);

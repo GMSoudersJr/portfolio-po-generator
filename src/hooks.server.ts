@@ -1,10 +1,23 @@
 import jwt from 'jsonwebtoken';
-import { ACCESS_TOKEN_SECRET } from '$env/static/private';
+import { ACCESS_TOKEN_SECRET, DECRYPT_SECRET } from '$env/static/private';
 
 import { redirect, type Handle } from '@sveltejs/kit';
 
 export const handle: Handle = async ({ event, resolve }) => {
 	const accessToken = event.cookies.get('accessToken');
+	const decryptToken = event.cookies.get('decryptToken');
+
+	if (decryptToken) {
+		jwt.verify(decryptToken, DECRYPT_SECRET, (error, payload) => {
+			if (error) {
+				console.log("Decryption error");
+			}
+			if (payload) {
+				console.log("THE DECRYPTION KEY IS HERE");
+				event.locals.decryptionKey = payload.privateKey
+			}
+		})
+	};
 
 	if ( accessToken ) {
 		jwt.verify(accessToken, ACCESS_TOKEN_SECRET, (error, payload) => {
@@ -44,6 +57,6 @@ export const handle: Handle = async ({ event, resolve }) => {
 	let end = performance.now();
 	let responseTime = end - start;
 	console.log(`HOOKS PERFORMANCE - Response from ${route} took ${responseTime.toFixed(2)} ms`);
-
+	console.log(event.locals);
 	return response;
 }

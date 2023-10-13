@@ -13,7 +13,9 @@ declare global {
 				name: string | undefined
 				firstName: string | undefined
 			} | undefined
+			decryptionKey: CryptoKey | undefined
 
+			/*
 			overviewPos: {
 				approvedBy: string | undefined
 				createdDate: string | undefined
@@ -29,6 +31,7 @@ declare global {
 				_id: string | undefined
 				productsOrServicesDescriptionsAndPrices: ProductOrServiceDescriptionAndPrice[]
 			} | undefined
+			*/
 		}
 		/*
 		interface PageData {

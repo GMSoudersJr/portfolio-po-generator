@@ -78,6 +78,22 @@ export const bankAccountNumber = {
 	],
 };
 
+export const iban = {
+	class: "form-input",
+	id: "iban",
+	label: "IBAN",
+	name: "iban",
+	type: "text",
+	options: [
+		{
+			id: "iban",
+			name: "iban",
+			text: "IBAN",
+			class: "form-input"
+		},
+	],
+};
+
 export const routingNumber = {
 	class: "form-input",
 	id: "routingNumber",

@@ -1,10 +1,17 @@
 <script lang="ts">
-  import PoTemplate from '$lib/components/poTemplate/PoTemplate.svelte'; 
   import { page } from '$app/stores';
   import HomePage from './HomePage.svelte';
   import LoginPage from './LoginPage.svelte';
   import type { ActionData } from './login/$types';
+	import {onMount} from 'svelte';
   export let form: ActionData;
+
+  onMount(async () => {
+    localStorage.setItem("hello", "world")
+    const ls = localStorage.getItem("hello");
+    console.log(ls);
+  })
+
 </script>
 
 <div class="page-container">

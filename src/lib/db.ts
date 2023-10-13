@@ -155,6 +155,7 @@ export async function findUser(username: string|undefined) {
 				firstName: 1,
 				password: 1,
 				username: 1,
+				publicKey: 1,
 			}
 		}
 	];
@@ -171,6 +172,29 @@ export async function findUser(username: string|undefined) {
 		await client.close();
 		console.log("Closed connection for getting a user.");
 	}
+};
+
+export async function updateUser(user_id: string, publicKey: CryptoKey) {
+	try {
+		await client.connect();
+		console.log("Connected to database to update a user.")
+		await usersCollection
+			.findOneAndUpdate(
+				{
+					_id: new ObjectId(user_id)
+				}, {
+					$set: {
+						publicKey: publicKey
+					}
+				});
+	} catch (error) {
+		console.log("Error updating the user.", error);
+	} finally {
+		await client.close();
+		console.log("Closed connection for updating a user.");
+	}
+
+
 }
 
 export async function getPayeesWithMinimalInfo() {

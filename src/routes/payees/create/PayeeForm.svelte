@@ -12,6 +12,7 @@
 	import SwiftCodeOrIbanNumber from "./SwiftCodeOrIbanNumber.svelte";
 	import TopicDivision from "./TopicDivision.svelte";
 	import ReportingBudgetLine from "./ReportingBudgetLine.svelte";
+	import Iban from "./Iban.svelte";
 </script>
 
 <form
@@ -27,6 +28,7 @@
   <HomeAddress />
   <BankName />
   <BankAccountNumber />
+  <Iban />
   <BankAddress />
   <RoutingNumber />
   <SwiftCodeOrIbanNumber />
