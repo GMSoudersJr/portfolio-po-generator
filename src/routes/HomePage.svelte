@@ -33,8 +33,8 @@
         A form <strong>cannot </strong>be submitted without all required fields.
       </li>
       <li>
-        Some fields will be encrypted, so it will take a few seconds for the
-        process to finish. Therefore, please <em>be patient.</em>
+        <strike>Some fields will be encrypted, so it will take a few seconds for the
+        process to finish. Therefore, please <em>be patient.</em></strike>
       </li>
       <li>
         <strong>Do not click the Submit button more than once!</strong>
