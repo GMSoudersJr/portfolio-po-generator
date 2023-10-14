@@ -87,13 +87,19 @@
         <strong>PO#</strong> will be formatted and generated automatically with your
         summary input.  It is <em>customizable</em>, though.
       </li>
+      <li>
+        After submission, you will be redirected to the populated PO
+      </li>
     </ul>
   </section>
   <section>
     <h3>PDF Generation</h3>
     <ul>
       <li>
-        TBD
+        Review the PO
+      </li>
+      <li>
+        Click the "PDF-it" button to download the pdf!
       </li>
     </ul>
   </section>
