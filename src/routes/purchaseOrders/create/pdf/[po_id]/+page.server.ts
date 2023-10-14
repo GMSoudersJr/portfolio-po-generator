@@ -6,6 +6,7 @@ export const load: PageServerLoad = async ({ params }) => {
 	const poPdfData = await getPoForPdfGeneration(po_id);
 	console.log(poPdfData);
 	return {
-		poPdfData
+		poPdfData,
+		po_id
 	}
 }

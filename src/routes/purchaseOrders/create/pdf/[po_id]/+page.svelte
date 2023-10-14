@@ -6,13 +6,14 @@
   export let data: PageData;
   console.log(data);
   const { poPdfData } = data;
+  const fileName = `${poPdfData?.poNumber}-${data.po_id}`;
 </script>
 
 <main class="pdf-generator-container">
   <section class="pdf-template" id="pdf-template-container">
     <PoTemplate {poPdfData}/>
   </section>
-  <PdfButton />
+  <PdfButton {fileName}/>
 </main>
 
 <style>

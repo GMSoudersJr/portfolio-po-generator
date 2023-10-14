@@ -14,6 +14,7 @@ declare global {
 				firstName: string | undefined
 			} | undefined
 			decryptionKey: CryptoKey | undefined
+			po_id: string | undefined
 
 			/*
 			overviewPos: {
