@@ -19,9 +19,6 @@
     </p>
     <h5>:</h5>
   </div>
-  <p class="for-mexico-accounts warning">
-    {pdfTemplateForMexicoAccountsString}
-  </p>
   <p class="bank-account-actual section3-data-actual">
     {bankAccountNumber ?? ""}
   </p>
@@ -36,10 +33,6 @@
     padding-left: 0.15em;
     border-bottom: 1px solid black;
   }
-  .for-mexico-accounts {
-    grid-area: forMexicoAccounts;
-    padding-left: 0.15em;
-  }
   .bank-account-label {
     display: flex;
     grid-area: bankAccountLabel;
@@ -52,10 +45,9 @@
   .grid-container {
     display: grid;
     grid-template-columns: 33% repeat(2, 1fr);
-    grid-template-rows: auto auto;
+    grid-template-rows: auto;
     grid-template-areas:
-    "bankAccountLabel bankAccountActual iban"
-    "forMexicoAccounts . .";
+    "bankAccountLabel bankAccountActual iban";
     row-gap: 0.25em;
     margin: 0.25em 0;
   }
