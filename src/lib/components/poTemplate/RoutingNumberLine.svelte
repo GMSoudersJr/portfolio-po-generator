@@ -1,6 +1,6 @@
 <script lang="ts">
   import {
-    pdfTemplateRoutingABAOrSwiftString,
+    pdfTemplateRoutingOrABAString,
     pdfTemplateRoutingMessageString,
     pdfTemplateRequiredString
   } from "$lib/strings/poTemplate";
@@ -12,7 +12,7 @@
 <div class="grid-container">
   <div class="routing-number-label required-line">
     <h5 class="routing-number-text section3-data-label">
-      {pdfTemplateRoutingABAOrSwiftString}
+      {pdfTemplateRoutingOrABAString}
     </h5>
     <p class="required warning">
       {pdfTemplateRequiredString}
@@ -24,9 +24,6 @@
   </p>
   <p class="routing-number-actual section3-data-actual">
     {routingNumber ?? ""}
-  </p>
-  <p class="swift-code-actual section3-data-actual">
-    {swiftCode ?? ""}
   </p>
 </div>
 
@@ -44,17 +41,13 @@
     grid-area: routingNumberActual;
     border-bottom: 1px solid black;
   }
-  .swift-code-actual {
-    grid-area: swiftCodeActual;
-    border-bottom: 1px solid black;
-  }
   .grid-container {
     display: grid;
-    grid-template-columns: 33% 1fr 16.5%;
+    grid-template-columns: 33% 1fr;
     grid-template-rows: repeat(2, auto);
     grid-template-areas:
-    "routingNumberLabel routingNumberActual swiftCodeActual"
-    "routingMessage . .";
+    "routingNumberLabel routingNumberActual"
+    "routingMessage .";
     row-gap: 0.25em;
     margin: 0.25em 0;
   }

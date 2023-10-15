@@ -5,6 +5,7 @@
 	import BankNameLine from "./BankNameLine.svelte";
 	import BeneficiaryNameLine from "./BeneficiaryNameLine.svelte";
 	import RoutingNumberLine from "./RoutingNumberLine.svelte";
+	import SwiftCodeLine from "./SwiftCodeLine.svelte";
 
   export let payeeName = "";
   export let bankName = "";
@@ -24,10 +25,8 @@
     {iban}
   />
   <BankAddressLine {bankAddress}/>
-  <RoutingNumberLine
-    {routingNumber}
-    {swiftCode}
-  />
+  <RoutingNumberLine {routingNumber} />
+  <SwiftCodeLine {swiftCode} />
 </section>
 
 

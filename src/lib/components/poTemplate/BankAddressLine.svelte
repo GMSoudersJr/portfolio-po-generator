@@ -1,7 +1,6 @@
 <script lang="ts">
   import {
     pdfTemplateBankAddressString,
-    pdfTemplatePhysicalAddressString,
     pdfTemplateRequiredString
   } from "$lib/strings/poTemplate";
 
@@ -49,7 +48,7 @@
     grid-template-areas:
     "bankAddressLabel bankAddressActualLine1"
     ". bankAddressActualLine2";
-    row-gap: 0.25em;
+    row-gap: 0.5rem;
     margin: 0.25em 0;
   }
 </style>
