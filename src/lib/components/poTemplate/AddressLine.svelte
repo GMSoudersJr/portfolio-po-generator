@@ -48,7 +48,7 @@
     "addressLabel addressActualLine1"
     ". addressActualLine2"
     "none none";
-    row-gap: 0.3em;
+    row-gap: 0.5em;
     margin: 0.25em 0;
   }
 </style>

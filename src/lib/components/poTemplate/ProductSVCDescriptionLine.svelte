@@ -41,6 +41,7 @@
     display: grid;
     grid-template-columns: 1fr 16.5%;
     grid-template-rows: 17.6px;
+    grid-template-rows: 1.3rem;
     grid-template-areas:
     "description amount";
   }
