@@ -20,17 +20,11 @@
     </p>
     <h5>:</h5>
   </div>
-  <p class="physical-address-warning warning">
-    {pdfTemplatePhysicalAddressString}
-  </p>
   <p class="bank-address-actual-line1 section3-data-actual">
     {bankAddress ?? ""}
   </p>
   <p class="bank-address-actual-line2 section3-data-actual">
     {bankAddressLine2 ?? ""}
-  </p>
-  <p class="bank-address-actual-line3 section3-data-actual">
-    {bankAddressLine3 ?? ""}
   </p>
 </div>
 
@@ -38,10 +32,6 @@
   .bank-address-label {
     display: flex;
     grid-area: bankAddressLabel;
-    padding-left: 0.15em;
-  }
-  .physical-address-warning {
-    grid-area: physicalAddressWarning;
     padding-left: 0.15em;
   }
   .bank-address-actual-line1 {
@@ -52,18 +42,13 @@
     grid-area: bankAddressActualLine2;
     border-bottom: 1px solid black;
   }
-  .bank-address-actual-line3 {
-    grid-area: bankAddressActualLine3;
-    border-bottom: 1px solid black;
-  }
   .grid-container {
     display: grid;
     grid-template-columns: 33% 1fr;
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     grid-template-areas:
     "bankAddressLabel bankAddressActualLine1"
-    "physicalAddressWarning bankAddressActualLine2"
-    ". bankAddressActualLine3";
+    ". bankAddressActualLine2";
     row-gap: 0.25em;
     margin: 0.25em 0;
   }
