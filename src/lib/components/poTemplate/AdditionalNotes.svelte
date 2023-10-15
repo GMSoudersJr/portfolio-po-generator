@@ -18,9 +18,6 @@
   <p class="additional-notes-line1">
     {nationalIdOrBusinessRegistrationNumber ?? ""}
   </p>
-  <p class="additional-notes-line2">
-    {additionalNotes ?? ""}
-  </p>
 </div>
 
 <style>
@@ -33,11 +30,6 @@
   }
   .additional-notes-line1 {
     grid-area: line1;
-    border-bottom: 1px solid black;
-    font-size: var(--fontSizeSectionDataActual);
-  }
-  .additional-notes-line2 {
-    grid-area: line2;
     border-bottom: 1px solid black;
     font-size: var(--fontSizeSectionDataActual);
   }

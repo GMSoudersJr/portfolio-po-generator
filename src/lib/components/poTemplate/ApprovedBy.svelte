@@ -29,13 +29,13 @@
     grid-area: approvedBy;
   }
   .approved-by-label {
-    font-size: var(--fontSizeApprovedBy);
+    font-size: var(--fontSizeRequestedBy);
     letter-spacing: var(--letterSpacingForAllCaps);
   }
   .approved-name {
     grid-area: approvedName;
     border-bottom: 3px solid black;
-    font-size: var(--fontSizeApprovedBy);
+    font-size: var(--fontSizeRequestedBy);
   }
   .grid-container {
     display: grid;
