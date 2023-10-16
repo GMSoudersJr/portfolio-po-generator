@@ -22,6 +22,7 @@
     grid-area: paymentMethodActual;
     justify-self: start;
     font-size: var(--fontSizePaymentMethodActualAndMoney);
+    padding-left: 0.15rem;
   }
   .grid-container {
     display: grid;
@@ -30,6 +31,5 @@
     grid-template-areas:
     "paymentMethodLabel paymentMethodActual";
     margin: 0.25em 0;
-    column-gap: 0.25rem;
   }
 </style>
