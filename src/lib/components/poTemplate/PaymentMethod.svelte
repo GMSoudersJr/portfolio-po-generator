@@ -8,7 +8,6 @@
   <h5 class="payment-method-label">
     {pdfTemplatePaymentMethodString}:
   </h5>
-
   <p class="payment-method-actual">
    {paymentMethod ?? ""}
   </p>
@@ -31,5 +30,6 @@
     grid-template-areas:
     "paymentMethodLabel paymentMethodActual";
     margin: 0.25em 0;
+    column-gap: 0.25rem;
   }
 </style>
