@@ -1,19 +1,19 @@
 <script lang="ts">
+  import PdfMakeButton from "$lib/components/poTemplate/PdfMakeButton.svelte";
   import PoTemplate from "$lib/components/poTemplate/PoTemplate.svelte";
   import type { PageData } from "./$types";
-	import PdfButton from "./PdfButton.svelte";
 
   export let data: PageData;
   console.log(data);
   const { poPdfData } = data;
-  const fileName = `${poPdfData?.poNumber}-${data.po_id}`;
+  const fileName = `${poPdfData?.poNumber}`;
 </script>
 
 <main class="pdf-generator-container">
   <section class="pdf-template" id="pdf-template-container">
     <PoTemplate {poPdfData}/>
   </section>
-  <PdfButton {fileName}/>
+  <PdfMakeButton {fileName}/>
 </main>
 
 <style>
