@@ -1,7 +1,7 @@
 import { DB_URI, DB_NAME } from "$env/static/private";
 import { MongoClient, ObjectId, ServerApiVersion } from "mongodb";
-import type { Payee, User } from "./utils";
-import type {Po} from "./classes";
+import type { User } from "./utils";
+import type { Payee, Po } from "./classes";
 
 const client = new MongoClient(DB_URI, {
 	serverApi: {
@@ -193,8 +193,6 @@ export async function updateUser(user_id: string, publicKey: CryptoKey) {
 		await client.close();
 		console.log("Closed connection for updating a user.");
 	}
-
-
 }
 
 export async function getPayeesWithMinimalInfo() {

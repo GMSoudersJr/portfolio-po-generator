@@ -1,8 +1,8 @@
 <script lang="ts">
   import { currency } from "$lib/strings/poForm";
 
-  export let clickedPayeeCurrency: string = "$"
-  $: selected = clickedPayeeCurrency || "$";
+  export let clickedPayeeCurrency: string = currency.options[0].value;
+  $: selected = clickedPayeeCurrency || "krw";
 </script>
 
 <label for={currency.id}>
@@ -16,11 +16,10 @@
   >
     {#each currency.options as entry (entry.id)}
       <option
-        value={entry.symbol}
+        value={entry.value}
       >
-        {entry.abbreviation}
+        {entry.symbol} - {entry.abbreviation}
       </option>
-
     {/each}
   </select>
 </label>

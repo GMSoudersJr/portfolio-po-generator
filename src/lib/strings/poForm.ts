@@ -366,25 +366,25 @@ export const currency = {
 			abbreviation: "KRW",
 			id: "koreanWon",
 			symbol: "₩",
-			value: "KRW",
+			value: "krw",
 		},
 		{
 			abbreviation: "USD",
 			id: "americanDollar",
 			symbol: "$",
-			value: "USD",
+			value: "usd",
 		},
 		{
 			abbreviation: "EUR",
 			id: "euEuro",
 			symbol: "€",
-			value: "EUR",
+			value: "eur",
 		},
 		{
 			abbreviation: "BTC",
 			id: "bitcoin",
 			symbol: "₿",
-			value: "BTC",
+			value: "btc",
 		},
 	]
 };

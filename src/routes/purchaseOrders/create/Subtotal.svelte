@@ -2,6 +2,7 @@
   import { subtotal } from "$lib/strings/poForm";
 
   export let subtotalActual: number;
+  $: value = subtotalActual;
 </script>
 
 <label for={subtotal.id}>
@@ -11,8 +12,7 @@
     id={subtotal.id}
     type="number"
     name={subtotal.name}
-    disabled
-    bind:value={subtotalActual}
+    bind:value={value}
   >
 </label>
 

@@ -9,7 +9,7 @@ import {
 	iban,
 	bankAddress,
 	routingNumber,
-	SwiftCodeOrIbanNumber,
+	SwiftCode,
 } from '$lib/strings/payeeForm';
 import { reportBudgetLine, topicDivision } from '$lib/strings/poForm';
 import { encryptTheData, generateKeypair, trimTheFormData} from '$lib/utils';
@@ -24,7 +24,7 @@ const bankNameString = bankName.name;
 const bankAccountNumberNameString = bankAccountNumber.name;
 const bankAddressNameString = bankAddress.name;
 const routingNumberNameString = routingNumber.name;
-const swiftCodeOrIbanNumberNameString = SwiftCodeOrIbanNumber.name;
+const swiftCodeNameString = SwiftCode.name;
 const reportingBudgetLineNameString = reportBudgetLine.name;
 const topicDivisionNameString = topicDivision.name;
 const ibanNameString = iban.name;
@@ -44,7 +44,7 @@ export const actions = {
 		const formBankAccountNumberData = trimTheFormData(data.get(bankAccountNumberNameString));
 		const formBankAddressData = trimTheFormData(data.get(bankAddressNameString));
 		const formRoutingNumberData = trimTheFormData(data.get(routingNumberNameString));
-		const formSwiftCodeData = trimTheFormData(data.get(swiftCodeOrIbanNumberNameString));
+		const formSwiftCodeData = trimTheFormData(data.get(swiftCodeNameString));
 		const formCurrencyData = trimTheFormData(data.get(currencyNameString));
 		const payeeTaxRate = payeeTypeAndTax.options.filter((option) => option.value == formPayeeTypeData);
 		const formReportingBudgetLineData = trimTheFormData(data.get(reportingBudgetLineNameString));

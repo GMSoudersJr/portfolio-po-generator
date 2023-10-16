@@ -9,7 +9,7 @@
   import PayeeType from "./PayeeType.svelte";
 	import RoutingNumber from "./RoutingNumber.svelte";
 	import SubmitButton from "./SubmitButton.svelte";
-	import SwiftCodeOrIbanNumber from "./SwiftCodeOrIbanNumber.svelte";
+	import SwiftCode from "./SwiftCode.svelte";
 	import TopicDivision from "./TopicDivision.svelte";
 	import ReportingBudgetLine from "./ReportingBudgetLine.svelte";
 	import Iban from "./Iban.svelte";
@@ -31,7 +31,7 @@
   <Iban />
   <BankAddress />
   <RoutingNumber />
-  <SwiftCodeOrIbanNumber />
+  <SwiftCode />
   <SubmitButton />
 </form>
 

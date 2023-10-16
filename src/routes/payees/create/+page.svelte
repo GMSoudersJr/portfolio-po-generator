@@ -26,9 +26,11 @@
   }
   .form {
     grid-area: form;
+    padding: 2rem 0;
   }
   .form-success {
     color: #04AA6D;
     text-align: center;
+    padding-bottom: 0.5rem;
   }
 </style>

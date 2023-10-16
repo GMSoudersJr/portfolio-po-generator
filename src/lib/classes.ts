@@ -24,9 +24,9 @@ export class User {
 };
 
 export class ProductOrServiceDescriptionAndPrice {
-	[index: string]: string | undefined;
+	[index: string]: string | number | undefined;
 	productOrServiceDescription: string | undefined;
-	price: string | undefined;
+	price: number | undefined;
 }
 
 export class Po {
@@ -35,8 +35,9 @@ export class Po {
 	payeeName: string | undefined;
 	poNumber: string | undefined;
 	productsOrServicesDescriptionsAndPrices: ProductOrServiceDescriptionAndPrice[] = [];
-	tax: string | undefined;
-	total: string | undefined;
+	subtotal: number | undefined;
+	tax: number | undefined;
+	total: number | undefined;
 	paymentMethod: string | undefined;
 	reportingBudgetLine: string | undefined;
 	topicDivision: string | undefined;
@@ -56,11 +57,12 @@ export class Po {
 	pnpLocation: string | undefined,
 	topicDivision: string | undefined,
 	reportingBudgetLine: string | undefined,
-	tax: string | undefined,
-	total: string | undefined,
+	tax: number | undefined,
+	total: number | undefined,
 	productsOrServicesDescriptionsAndPrices: ProductOrServiceDescriptionAndPrice[],
 	requestedBy: string | undefined,
 	approvedBy: string | undefined,
+	subtotal: number | undefined
 	) {
 		this.payee_id = payee_id;
 		this.payeeName = payeeName;
@@ -76,6 +78,7 @@ export class Po {
 		this.productsOrServicesDescriptionsAndPrices = productsOrServicesDescriptionsAndPrices;
 		this.requestedBy = requestedBy;
 		this.approvedBy = approvedBy;
+		this.subtotal = subtotal;
 	}
 };
 
