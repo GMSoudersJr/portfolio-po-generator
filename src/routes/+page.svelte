@@ -24,14 +24,12 @@
 
 <style>
   .page-container {
-    height: calc(100vh - 47px);
-    width: 100vw;
+    width: 100%;
     display: grid;
     grid-template-columns: max-content;
     grid-template-rows: min-content;
     justify-content: center;
     align-items: center;
-    background-color: #F1F1F1;
   }
 
 </style>

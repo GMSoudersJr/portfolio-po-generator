@@ -1,5 +1,4 @@
 <script>
-	import GotoFormButton from "$lib/components/GotoFormButton.svelte";
 
 </script>
 
@@ -107,22 +106,24 @@
 
 <style>
   .home-page {
-    height: 100%;
     width: 100%;
     display: grid;
-    grid-template-columns: 600px;
+    grid-template-columns: 90vw;
     grid-template-rows: auto;
     justify-content: center;
     align-items: center;
     row-gap: 2em;
-    padding-top: 2em;
+    padding: 2em 0;
   }
   .header {
     color: #259;
     letter-spacing: -0.02rem;
-    line-height: 1.2rem;
   }
-  section {
-    background: linear-gradient(90deg, #F1F1F1 70%, #FFF, #F1F1F1);
+  @media screen and (min-width: 480px) {
+    .home-page {
+      width: 600px;
+      grid-template-columns: 600px;
+      line-height: 1.2rem;
+    }
   }
 </style>
