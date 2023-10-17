@@ -38,6 +38,7 @@ export class Po {
 	subtotal: number | undefined;
 	tax: number | undefined;
 	total: number | undefined;
+	currency: string | undefined;
 	paymentMethod: string | undefined;
 	reportingBudgetLine: string | undefined;
 	topicDivision: string | undefined;
@@ -59,6 +60,7 @@ export class Po {
 	reportingBudgetLine: string | undefined,
 	tax: number | undefined,
 	total: number | undefined,
+	currency: string | undefined,
 	productsOrServicesDescriptionsAndPrices: ProductOrServiceDescriptionAndPrice[],
 	requestedBy: string | undefined,
 	approvedBy: string | undefined,
@@ -75,6 +77,7 @@ export class Po {
 		this.reportingBudgetLine = reportingBudgetLine;
 		this.tax = tax;
 		this.total = total;
+		this.currency = currency;
 		this.productsOrServicesDescriptionsAndPrices = productsOrServicesDescriptionsAndPrices;
 		this.requestedBy = requestedBy;
 		this.approvedBy = approvedBy;

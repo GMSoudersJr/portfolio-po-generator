@@ -76,12 +76,14 @@ export async function getPosForOverview() {
 				pnpLocation: 1,
 				topicDivision: 1,
 				reportingBudgetLine: 1,
+				subtotal: 1,
 				tax: 1,
 				total: 1,
 				paymentMethod: 1,
 				productsOrServicesDescriptionsAndPrices: 1,
 				requestedBy: 1,
 				approvedBy: 1,
+				currency: 1,
 			}
 		}
 	];

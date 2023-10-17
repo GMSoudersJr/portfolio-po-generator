@@ -1,6 +1,6 @@
 <script lang="ts">
   export let description = "";
-  export let price = "";
+  export let price: number;
 </script>
 
 <div class="grid-container">
@@ -10,7 +10,7 @@
     </p>
   </div>
   <p class="amount">
-    {price ?? ""}
+    {price.toLocaleString('en-US') ?? ""}
   </p>
 </div>
 

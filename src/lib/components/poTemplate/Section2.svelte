@@ -5,18 +5,18 @@
 	import WithholdingTaxOrVat from "./WithholdingTaxOrVat.svelte";
   interface ProductDescriptionAndPrice {
     productOrServiceDescription: string;
-    price: string;
+    price: number;
   }
   const filler: ProductDescriptionAndPrice = {
     productOrServiceDescription: "",
-    price: ""
+    price: 0
   }
 
   export let productsOrServicesDescriptionsAndPrices = [
-    {productOrServiceDescription: "Service One", price: ""},
-    {productOrServiceDescription: "Service Two", price: ""},
-    {productOrServiceDescription: "Service Three", price: ""},
-    {productOrServiceDescription: "Service Four", price: ""},
+    {productOrServiceDescription: "Service One", price: 259},
+    {productOrServiceDescription: "Service Two", price: 259},
+    {productOrServiceDescription: "Service Three", price: 259},
+    {productOrServiceDescription: "Service Four", price: 259}
   ];
 
 
@@ -24,8 +24,9 @@
     productsOrServicesDescriptionsAndPrices.push(filler);
   }
 
-  export let tax = "0";
-  export let total = "$ 1,000,000,000";
+  export let currency = "krw";
+  export let tax = 0;
+  export let total = 1000000000;
 </script>
 
 <section class="grid-container">

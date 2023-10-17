@@ -26,7 +26,13 @@
       {#each Object.entries(po) as entry}
         {#if entry[0] != "_id" && entry[0] != "productsOrServicesDescriptionsAndPrices" }
         <td class={entry[0]}>
-          {entry[1]}
+          {#if entry[0] == "currency"}
+            {entry[1].toUpperCase()}
+          {:else if entry[0] == "subtotal" || entry[0] == "tax" || entry[0] == "total"}
+            {entry[1].toLocaleString('en-US')}
+          {:else}
+            {entry[1]}
+          {/if}
         </td>
         {/if}
         {#if entry[0] == "productsOrServicesDescriptionsAndPrices"}
@@ -37,7 +43,7 @@
                 {product.productOrServiceDescription}
               </td>
               <td class="price">
-               {product.price}
+               {product.price.toLocaleString('en-US')}
               </td>
             </tr>
           {/each}
@@ -56,7 +62,7 @@
   table, th, td, tr {
     border: 0.1rem solid #999;
     border-collapse: collapse;
-    padding: 0.18em 0.25em;
+    padding: 0.18em 0.3em;
   }
   .table-header {
     font-size: 0.8rem;
@@ -80,10 +86,15 @@
   td {
     font-size: 0.6rem;
   }
-  td.total, td.tax {
+  td.total, td.tax, td.subtotal {
     text-align: right;
+    padding: 0.18em 0.25em;
+    padding-left: 0.5rem;
   }
-  td.dueDate, td.createdDate, td.pnpLocation {
+  td.dueDate,
+  td.createdDate,
+  td.pnpLocation,
+  td.paymentMethod {
     text-align: center;
   }
 </style>

@@ -1,7 +1,7 @@
 <script>
 	import { pdfTemplateWithholdingTaxOrVatString } from "$lib/strings/poTemplate";
 
-  export let tax = "66654";
+  export let tax = 66654;
 </script>
 
 <div class="grid-container">
@@ -11,7 +11,7 @@
     </p>
   </div>
   <h5 class="amount">
-    {tax}
+    {tax.toLocaleString('en-US')}
   </h5>
 </div>
 

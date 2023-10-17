@@ -1,7 +1,13 @@
 <script lang="ts">
 	import {pdfTemplateTotalString} from "$lib/strings/poTemplate";
+  import { currency as currencyObject } from "$lib/strings/poForm";
 
-  export let total = "6665400";
+  export let currency = "krw";
+  let currencySymbol = currencyObject.options.filter((entry) => entry.value ==
+                                               currency)[0].symbol;
+  console.log(currencySymbol);
+  export let total = 6665400;
+  let totalString = `${currencySymbol} ${total.toLocaleString('en-US')}`
 </script>
 
 <div class="grid-container">
@@ -11,7 +17,7 @@
     </h5>
   </div>
   <p class="amount">
-    {total}
+    {totalString}
   </p>
 </div>
 

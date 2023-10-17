@@ -74,6 +74,7 @@ export const actions = {
 			reportingBudgetLine.toString(),
 			Number.parseFloat(tax.toString()),
 			Number.parseFloat(total.toString()),
+			currency.toString(),
 			productsOrServicesDescriptionsAndPrices,
 			requestedBy.toString(),
 			approvedBy.toString(),

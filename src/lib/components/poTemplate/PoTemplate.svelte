@@ -21,6 +21,7 @@
   const {
     approvedBy,
     createdDate,
+    currency,
     dueDate,
     payeeData,
     paymentMethod,
@@ -90,6 +91,7 @@
     <Section2
       {productsOrServicesDescriptionsAndPrices}
       {tax}
+      {currency}
       {total}
     />
   </section>
