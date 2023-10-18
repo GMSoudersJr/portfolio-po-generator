@@ -13,7 +13,7 @@ declare global {
 				name: string | undefined
 				firstName: string | undefined
 			} | undefined
-			decryptionKey: CryptoKey | undefined
+			key: ArrayBuffer
 			po_id: string | undefined
 
 			/*

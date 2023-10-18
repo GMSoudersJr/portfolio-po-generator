@@ -176,7 +176,7 @@ export async function findUser(username: string|undefined) {
 	}
 };
 
-export async function updateUser(user_id: string, publicKey: CryptoKey) {
+export async function updateUser(user_id: string) {
 	try {
 		await client.connect();
 		console.log("Connected to database to update a user.")
@@ -186,7 +186,7 @@ export async function updateUser(user_id: string, publicKey: CryptoKey) {
 					_id: new ObjectId(user_id)
 				}, {
 					$set: {
-						publicKey: publicKey
+						key: true
 					}
 				});
 	} catch (error) {

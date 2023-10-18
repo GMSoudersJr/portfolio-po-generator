@@ -7,9 +7,8 @@
   export let form: ActionData;
 
   onMount(async () => {
-    localStorage.setItem("hello", "world")
-    const ls = localStorage.getItem("hello");
-    console.log(ls);
+    localStorage.setItem("key", $page.data.key)
+    console.log("HOME PAGE on mount", $page.data);
   })
 
 </script>

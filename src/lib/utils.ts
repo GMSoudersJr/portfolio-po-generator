@@ -109,7 +109,7 @@ export class Payee {
 };
 
 let ciphterText;
-
+let iv;
 function getDataEncoding(data: string | undefined) {
 	let enc = new TextEncoder();
 	return enc.encode(data);
@@ -118,9 +118,11 @@ function getDataEncoding(data: string | undefined) {
 
 export async function encryptTheData(key: CryptoKey, data: string | undefined) {
 	let encoded = getDataEncoding(data);
+	iv = crypto.getRandomValues((new Uint8Array(12)));
 	ciphterText = await crypto.subtle.encrypt(
 		{
-			name: "RSA-OAEP"
+			name: "AES-GCM",
+			iv: iv
 		},
 		key,
 		encoded
@@ -128,13 +130,24 @@ export async function encryptTheData(key: CryptoKey, data: string | undefined) {
 
 	let buffer = new Uint8Array(ciphterText, 0, 5);
 
-	return buffer;
+	return {
+		buffer,
+		ciphterText,
+		iv
+	};
 };
 
-export async function decryptTheData(key: CryptoKey, data: Uint8Array) {
+export async function exportCryptoKey(key: CryptoKey) {
+	const exported = await crypto.subtle.exportKey("jwk", key);
+	console.log("EXPORTING KEY", exported)
+	return exported;
+}
+
+export async function decryptTheData(key: CryptoKey, data: ArrayBuffer, iv: ArrayBuffer) {
 	let decrypted = await crypto.subtle.decrypt(
 		{
-			name: "RSA-OAEP"
+			name: "AES-GCM",
+			iv: iv
 		},
 		key,
 		data
@@ -146,26 +159,19 @@ export async function decryptTheData(key: CryptoKey, data: Uint8Array) {
 	return decryptedText;
 };
 
-export async function generateKeypair() {
-	const keyPair = await crypto.subtle.generateKey(
+export async function generateCryptoKey() {
+	const key = await crypto.subtle.generateKey(
 		{
-			name: "RSA-OAEP",
-			modulusLength: 4096,
-			publicExponent: new Uint8Array([1, 0, 1]),
-			hash: "SHA-256",
+			name: "AES-GCM",
+			length: 256,
 		}, 
 		true,
 		["encrypt", "decrypt"]
 	);
 
-	console.log("Generating keypair", keyPair);
+	console.log("Generating crypto key", key);
 
-	const { privateKey, publicKey } = keyPair;
-
-	return {
-		privateKey,
-		publicKey
-	}
+	return key
 };
 
 export function changeToPascalCase(someString:string | undefined) {

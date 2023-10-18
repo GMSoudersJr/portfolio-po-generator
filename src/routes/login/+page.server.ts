@@ -1,9 +1,9 @@
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt';
-import{ ACCESS_TOKEN_SECRET, DECRYPT_SECRET, ID_TOKEN_SECRET } from '$env/static/private';
+import{ ACCESS_TOKEN_SECRET, DECRYPT_SECRET, ENCRYPT_SECRET, ID_TOKEN_SECRET } from '$env/static/private';
 import { redirect, fail } from '@sveltejs/kit';
 import {findUser, updateUser} from '$lib/db';
-import {generateKeypair, trimTheFormData} from '$lib/utils';
+import {exportCryptoKey, generateCryptoKey, trimTheFormData} from '$lib/utils';
 import {AccessPayload} from '$lib/classes';
 import type { PageServerLoad, Actions } from './$types';
 
@@ -20,6 +20,7 @@ export const actions = {
 		const formData = Object.fromEntries(await request.formData());
 		const { username, password } = formData;
 		const foundUser = await findUser(trimTheFormData(username));
+		console.log(foundUser);
 
 		if ( !username ) {
 			return fail(401, {username, missing: true, message: "Username empty."})
@@ -38,28 +39,22 @@ export const actions = {
 			return fail(401, {username, incorrect: true, message: "Invalid credentials"})
 		}
 		
-		if (!foundUser.publicKey) {
-			const userKeyPair = await generateKeypair();
-			const { publicKey, privateKey } = userKeyPair;
-
-			const decryptionPayload ={
+		if (!foundUser.key) {
+			const userKey = await generateCryptoKey();
+			const exportedCryptoKey = await exportCryptoKey(userKey);
+			await updateUser(foundUser._id)
+			const keyPayload = {
 				_id: foundUser._id,
-				privateKey
+				key: exportedCryptoKey
 			}
 
-			const decryptionToken = jwt.sign(decryptionPayload, DECRYPT_SECRET, {
-				expiresIn: '1m'
-			});
-
-			cookies.set('decryptionToken', decryptionToken, {
+			const cryptionToken = jwt.sign(keyPayload, ENCRYPT_SECRET, {expiresIn: '12m'});
+			cookies.set('cryptionToken', cryptionToken, {
 				httpOnly: true,
-				maxAge: 60,
+				maxAge: 60 * 120,
 				secure: true,
 				path: '/'
 			});
-
-			await updateUser(foundUser._id, publicKey)
-
 		}
 		/*
 		const accessPayload = new AccessPayload(

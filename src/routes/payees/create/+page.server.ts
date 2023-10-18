@@ -12,7 +12,7 @@ import {
 	SwiftCode,
 } from '$lib/strings/payeeForm';
 import { reportBudgetLine, topicDivision } from '$lib/strings/poForm';
-import { encryptTheData, generateKeypair, trimTheFormData} from '$lib/utils';
+import { decryptTheData, encryptTheData, trimTheFormData} from '$lib/utils';
 import { Payee } from '$lib/classes';
 import {addPayee} from '$lib/db';
 
@@ -31,8 +31,9 @@ const ibanNameString = iban.name;
 const currencyNameString= "currency";
 
 export const actions = {
-	add: async ({ request }) => {
+	add: async ({ request, locals }) => {
 		const data = await request.formData();
+		console.log("PAYEES locals", locals)
 
 		const formBeneficiaryNameData = trimTheFormData(data.get(beneficiaryNameString));
 		const formPayeeTypeData = trimTheFormData(data.get(payeeTypeNameString));
@@ -63,14 +64,29 @@ export const actions = {
 			formTopicDivisionData
 		);
 
-		
-
 		// TODO National ID or Business Registraion Number needs to be encrypted.
 		if ( formNationalIdOrBusinessRegistraionData == "" ) {
 			payee.nationalIdOrBusinessRegistrationNumber = undefined;
 		} else {
-			payee.nationalIdOrBusinessRegistrationNumber =
-				formNationalIdOrBusinessRegistraionData;
+			try {
+				const importedKey = await crypto.subtle.importKey(
+					"jwk",
+					locals.key,
+					{
+						name: "AES-GCM",
+						length: 256,
+					},
+					true,
+					['decrypt', 'encrypt']
+				)
+				let encryptedNatId = await encryptTheData(importedKey, formNationalIdOrBusinessRegistraionData);
+				console.log("ENCRYPTED DATA", encryptedNatId.buffer);
+				let decryptedNatId = await decryptTheData(importedKey, encryptedNatId.ciphterText, encryptedNatId.iv)
+				console.log("DECRYPTED DATA", decryptedNatId);
+			} catch(error) {
+				console.log(error);
+			}
+			payee.nationalIdOrBusinessRegistrationNumber = formNationalIdOrBusinessRegistraionData;
 		}
 
 		// TODO home address needs to be encrypted
