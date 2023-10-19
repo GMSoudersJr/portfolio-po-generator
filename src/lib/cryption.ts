@@ -6,7 +6,7 @@ function getDataEncoding(data: string | undefined) {
 export async function encryptTheData(key: CryptoKey, data: string | undefined) {
 	let encoded = getDataEncoding(data);
 	let iv = crypto.getRandomValues((new Uint8Array(12)));
-	let ciphterText = await crypto.subtle.encrypt(
+	let cipherText = await crypto.subtle.encrypt(
 		{
 			name: "AES-GCM",
 			iv: iv
@@ -15,11 +15,11 @@ export async function encryptTheData(key: CryptoKey, data: string | undefined) {
 		encoded
 	);
 
-	let buffer = new Uint8Array(ciphterText, 0, 5);
+	let buffer = new Uint8Array(cipherText, 0, 5);
 
 	return {
 		buffer,
-		ciphterText,
+		cipherText,
 		iv
 	};
 };

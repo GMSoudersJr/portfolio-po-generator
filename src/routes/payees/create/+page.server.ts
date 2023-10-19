@@ -32,9 +32,9 @@ const ibanNameString = iban.name;
 const currencyNameString= "currency";
 
 export const actions = {
-	add: async ({ request, locals }) => {
+	add: async ({ request, locals, url }) => {
 		const data = await request.formData();
-		console.log("PAYEES locals", locals)
+		console.log(`${url.pathname.toString()} LOCALS`, locals)
 
 		const formBeneficiaryNameData = trimTheFormData(data.get(beneficiaryNameString));
 		const formPayeeTypeData = trimTheFormData(data.get(payeeTypeNameString));
@@ -84,10 +84,13 @@ export const actions = {
 					importedKey,
 					formNationalIdOrBusinessRegistrationData
 				);
+				// TODO
+				// the iv and cipherText need to be saved to the database from the
+				// encrypted data.
 				console.log("ENCRYPTED DATA", encryptedNatId.buffer);
 				let decryptedNatId = await decryptTheData(
 					importedKey,
-					encryptedNatId.ciphterText,
+					encryptedNatId.cipherText,
 					encryptedNatId.iv
 				)
 				console.log("DECRYPTED DATA", decryptedNatId);

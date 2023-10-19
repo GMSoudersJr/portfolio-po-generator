@@ -8,7 +8,7 @@ import { exportCryptoKey, generateCryptoKey } from '$lib/cryption';
 import type { PageServerLoad, Actions } from './$types';
 import type { JwtPayload } from 'jsonwebtoken';
 
-export const load: PageServerLoad = async ({ locals, url }) => {
+export const load: PageServerLoad = async ({ locals }) => {
 	return {
 		user: locals.user,
 		title: "Login Page",
@@ -39,11 +39,13 @@ export const actions = {
 		if ( !correctPassword ) {
 			return fail(401, {username, incorrect: true, message: "Invalid credentials"})
 		}
-		
+
 		if (!foundUser.key) {
+			console.log("This user does not have an encryption key, yet.")
 			const cryptionKey = await generateCryptoKey();
 			const exportedCryptoKey = await exportCryptoKey(cryptionKey);
 			await updateUser(foundUser._id)
+
 			const keyPayload: JwtPayload = {
 				_id: foundUser._id,
 				key: exportedCryptoKey
