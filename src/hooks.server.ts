@@ -17,6 +17,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 				event.locals.key = payload.key
 			}
 		})
+		
 	};
 
 	if ( accessToken ) {
@@ -57,6 +58,5 @@ export const handle: Handle = async ({ event, resolve }) => {
 	let end = performance.now();
 	let responseTime = end - start;
 	console.log(`HOOKS PERFORMANCE - Response from ${route} took ${responseTime.toFixed(2)} ms`);
-	console.log(event.locals);
 	return response;
 }

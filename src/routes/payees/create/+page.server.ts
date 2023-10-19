@@ -12,9 +12,10 @@ import {
 	SwiftCode,
 } from '$lib/strings/payeeForm';
 import { reportBudgetLine, topicDivision } from '$lib/strings/poForm';
-import { decryptTheData, encryptTheData, trimTheFormData} from '$lib/utils';
+import { trimTheFormData } from '$lib/utils';
+import { decryptTheData, encryptTheData } from '$lib/cryption';
 import { Payee } from '$lib/classes';
-import {addPayee} from '$lib/db';
+import { addPayee } from '$lib/db';
 
 const beneficiaryNameString = beneficiaryName.name;
 const payeeTypeNameString = payeeTypeAndTax.name;
@@ -37,7 +38,7 @@ export const actions = {
 
 		const formBeneficiaryNameData = trimTheFormData(data.get(beneficiaryNameString));
 		const formPayeeTypeData = trimTheFormData(data.get(payeeTypeNameString));
-		const formNationalIdOrBusinessRegistraionData =
+		const formNationalIdOrBusinessRegistrationData =
 			trimTheFormData(data.get(nationaIdOrBusinessRegistrationNameString))
 		const formHomeAddressData = trimTheFormData(data.get(homeAddressNameString));
 		const formBankNameData = trimTheFormData(data.get(bankNameString));
@@ -65,7 +66,7 @@ export const actions = {
 		);
 
 		// TODO National ID or Business Registraion Number needs to be encrypted.
-		if ( formNationalIdOrBusinessRegistraionData == "" ) {
+		if ( formNationalIdOrBusinessRegistrationData == "" ) {
 			payee.nationalIdOrBusinessRegistrationNumber = undefined;
 		} else {
 			try {
@@ -79,14 +80,21 @@ export const actions = {
 					true,
 					['decrypt', 'encrypt']
 				)
-				let encryptedNatId = await encryptTheData(importedKey, formNationalIdOrBusinessRegistraionData);
+				let encryptedNatId = await encryptTheData(
+					importedKey,
+					formNationalIdOrBusinessRegistrationData
+				);
 				console.log("ENCRYPTED DATA", encryptedNatId.buffer);
-				let decryptedNatId = await decryptTheData(importedKey, encryptedNatId.ciphterText, encryptedNatId.iv)
+				let decryptedNatId = await decryptTheData(
+					importedKey,
+					encryptedNatId.ciphterText,
+					encryptedNatId.iv
+				)
 				console.log("DECRYPTED DATA", decryptedNatId);
 			} catch(error) {
 				console.log(error);
 			}
-			payee.nationalIdOrBusinessRegistrationNumber = formNationalIdOrBusinessRegistraionData;
+			payee.nationalIdOrBusinessRegistrationNumber = formNationalIdOrBusinessRegistrationData;
 		}
 
 		// TODO home address needs to be encrypted

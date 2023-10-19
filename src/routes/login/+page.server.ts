@@ -1,11 +1,12 @@
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt';
-import{ ACCESS_TOKEN_SECRET, DECRYPT_SECRET, ENCRYPT_SECRET, ID_TOKEN_SECRET } from '$env/static/private';
+import{ ACCESS_TOKEN_SECRET, ENCRYPT_SECRET } from '$env/static/private';
 import { redirect, fail } from '@sveltejs/kit';
 import {findUser, updateUser} from '$lib/db';
-import {exportCryptoKey, generateCryptoKey, trimTheFormData} from '$lib/utils';
-import {AccessPayload} from '$lib/classes';
+import { trimTheFormData } from '$lib/utils';
+import { exportCryptoKey, generateCryptoKey } from '$lib/cryption';
 import type { PageServerLoad, Actions } from './$types';
+import type { JwtPayload } from 'jsonwebtoken';
 
 export const load: PageServerLoad = async ({ locals, url }) => {
 	return {
@@ -40,15 +41,15 @@ export const actions = {
 		}
 		
 		if (!foundUser.key) {
-			const userKey = await generateCryptoKey();
-			const exportedCryptoKey = await exportCryptoKey(userKey);
+			const cryptionKey = await generateCryptoKey();
+			const exportedCryptoKey = await exportCryptoKey(cryptionKey);
 			await updateUser(foundUser._id)
-			const keyPayload = {
+			const keyPayload: JwtPayload = {
 				_id: foundUser._id,
 				key: exportedCryptoKey
 			}
 
-			const cryptionToken = jwt.sign(keyPayload, ENCRYPT_SECRET, {expiresIn: '12m'});
+			const cryptionToken = jwt.sign(keyPayload, ENCRYPT_SECRET, {expiresIn: '120m'});
 			cookies.set('cryptionToken', cryptionToken, {
 				httpOnly: true,
 				maxAge: 60 * 120,

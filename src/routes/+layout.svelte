@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { page } from '$app/stores';
+  import { navigating, page } from '$app/stores';
   import Navbar from '$lib/components/Navbar.svelte';
   import '../app.css';
 
@@ -8,6 +8,9 @@
 
 {#if loggedInUser}
   <Navbar />
+{/if}
+{#if $navigating}
+  Navigating...
 {/if}
 <slot />
 
