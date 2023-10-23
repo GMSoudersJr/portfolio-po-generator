@@ -13,6 +13,8 @@
 	import TopicDivision from "./TopicDivision.svelte";
 	import ReportingBudgetLine from "./ReportingBudgetLine.svelte";
 	import Iban from "./Iban.svelte";
+
+  export let key: CryptoKey;
 </script>
 
 <form
@@ -23,15 +25,15 @@
   <PayeeType />
   <TopicDivision />
   <ReportingBudgetLine />
-  <NationalIdOrBusinessRegistration />
+  <NationalIdOrBusinessRegistration {key}/>
   <Currency />
-  <HomeAddress />
-  <BankName />
-  <BankAccountNumber />
-  <Iban />
-  <BankAddress />
-  <RoutingNumber />
-  <SwiftCode />
+  <HomeAddress {key}/>
+  <BankName {key}/>
+  <BankAccountNumber {key}/>
+  <Iban {key}/>
+  <BankAddress {key}/>
+  <RoutingNumber {key}/>
+  <SwiftCode {key}/>
   <SubmitButton />
 </form>
 

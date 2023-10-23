@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { payeeTypeAndTax } from "$lib/strings/payeeForm"
 </script>
 

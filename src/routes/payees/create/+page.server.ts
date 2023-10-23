@@ -42,7 +42,6 @@ export const actions = {
 			trimTheFormData(data.get(nationaIdOrBusinessRegistrationNameString))
 		const formHomeAddressData = trimTheFormData(data.get(homeAddressNameString));
 		const formBankNameData = trimTheFormData(data.get(bankNameString));
-		// TODO Bank Account Number needs to be encrypted.
 		const formBankAccountNumberData = trimTheFormData(data.get(bankAccountNumberNameString));
 		const formBankAddressData = trimTheFormData(data.get(bankAddressNameString));
 		const formRoutingNumberData = trimTheFormData(data.get(routingNumberNameString));
@@ -65,46 +64,15 @@ export const actions = {
 			formTopicDivisionData
 		);
 
-		// TODO National ID or Business Registraion Number needs to be encrypted.
 		if ( formNationalIdOrBusinessRegistrationData == "" ) {
 			payee.nationalIdOrBusinessRegistrationNumber = undefined;
 		} else {
-			try {
-				const importedKey = await crypto.subtle.importKey(
-					"jwk",
-					locals.key,
-					{
-						name: "AES-GCM",
-						length: 256,
-					},
-					true,
-					['decrypt', 'encrypt']
-				)
-				let encryptedNatId = await encryptTheData(
-					importedKey,
-					formNationalIdOrBusinessRegistrationData
-				);
-				// TODO
-				// the iv and cipherText need to be saved to the database from the
-				// encrypted data.
-				console.log("ENCRYPTED DATA", encryptedNatId.buffer);
-				let decryptedNatId = await decryptTheData(
-					importedKey,
-					encryptedNatId.cipherText,
-					encryptedNatId.iv
-				)
-				console.log("DECRYPTED DATA", decryptedNatId);
-			} catch(error) {
-				console.log(error);
-			}
 			payee.nationalIdOrBusinessRegistrationNumber = formNationalIdOrBusinessRegistrationData;
 		}
 
-		// TODO home address needs to be encrypted
 		if ( formHomeAddressData == "" ) {
 			payee.homeAddress = undefined;
 		} else {
-			//payee.homeAddress = await encryptTheData((await generateKeypair()).publicKey, formHomeAddressData);
 			payee.homeAddress = formHomeAddressData;
 		}
 

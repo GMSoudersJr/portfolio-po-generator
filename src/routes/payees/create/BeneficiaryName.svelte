@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { beneficiaryName } from "$lib/strings/payeeForm";
 </script>
 
