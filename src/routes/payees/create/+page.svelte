@@ -1,6 +1,4 @@
 <script lang="ts">
-	import {onMount} from "svelte";
-
   import type { ActionData, PageData} from "./$types";
   import PayeeForm from "./PayeeForm.svelte";
 

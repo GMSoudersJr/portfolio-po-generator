@@ -30,6 +30,20 @@ export async function exportCryptoKey(key: CryptoKey) {
 	return exported;
 }
 
+export async function importCryptoKey(keyData: ArrayBuffer) {
+	const importedKey = await crypto.subtle.importKey(
+		"jwk",
+		keyData,
+		{
+			name: "AES-GCM",
+			length: 256
+		},
+		true,
+		['encrypt', 'decrypt']
+	);
+	return importedKey
+}
+
 export async function generateCryptoKey() {
 	const key = await crypto.subtle.generateKey(
 		{
