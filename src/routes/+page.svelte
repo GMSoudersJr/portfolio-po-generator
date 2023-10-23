@@ -3,18 +3,8 @@
   import HomePage from './HomePage.svelte';
   import LoginPage from './LoginPage.svelte';
   import type { ActionData } from './login/$types';
-  import {onMount} from 'svelte';
 
   export let form: ActionData;
-
-  onMount(async () => {
-    if ( $page.data.key ) {
-      localStorage.setItem("key", $page.data.key)
-    } else {
-      throw alert("there is no key");
-    }
-    console.log("HOME PAGE on mount", $page?.data);
-  })
 
 </script>
 

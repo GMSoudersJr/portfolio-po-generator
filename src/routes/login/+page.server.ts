@@ -40,25 +40,6 @@ export const actions = {
 			return fail(401, {username, incorrect: true, message: "Invalid credentials"})
 		}
 
-		if (!foundUser.key) {
-			console.log("This user does not have an encryption key, yet.")
-			const cryptionKey = await generateCryptoKey();
-			const exportedCryptoKey = await exportCryptoKey(cryptionKey);
-			await updateUser(foundUser._id)
-
-			const keyPayload: JwtPayload = {
-				_id: foundUser._id,
-				key: exportedCryptoKey
-			}
-
-			const cryptionToken = jwt.sign(keyPayload, ENCRYPT_SECRET, {expiresIn: '120m'});
-			cookies.set('cryptionToken', cryptionToken, {
-				httpOnly: true,
-				maxAge: 60 * 120,
-				secure: true,
-				path: '/'
-			});
-		}
 		/*
 		const accessPayload = new AccessPayload(
 			foundUser._id,

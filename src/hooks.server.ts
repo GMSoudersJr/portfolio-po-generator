@@ -5,20 +5,6 @@ import { redirect, type Handle } from '@sveltejs/kit';
 
 export const handle: Handle = async ({ event, resolve }) => {
 	const accessToken = event.cookies.get('accessToken');
-	const cryptionToken = event.cookies.get('cryptionToken');
-
-	if (cryptionToken) {
-		jwt.verify(cryptionToken, ENCRYPT_SECRET, (error, payload) => {
-			if (error) {
-				console.log("Decryption error");
-			}
-			if (payload) {
-				console.log("THE KEY IS HERE", payload);
-				event.locals.key = payload.key
-			}
-		})
-		
-	};
 
 	if ( accessToken ) {
 		jwt.verify(accessToken, ACCESS_TOKEN_SECRET, (error, payload) => {
