@@ -19,3 +19,4 @@ function createNumberOfPOS() {
 
 export const numberOfProductsOrServices = createNumberOfPOS();
 export const numberOfPOS = createNumberOfPOS();
+export const cryptionKeyFileName = writable("");

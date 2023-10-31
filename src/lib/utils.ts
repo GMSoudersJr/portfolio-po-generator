@@ -128,3 +128,27 @@ export function getInitials(name: string | undefined) {
 	let initials = initialsArray?.join('');
 	return initials;
 };
+
+export function splitEncrypted(encrypted: string) {
+    let encryptedArray = encrypted.split(',');
+
+    let ivStringArray = encryptedArray.splice(-12);
+    let ivNumberArray = ivStringArray.map(entry =>
+                                         Number.parseInt(entry));
+    let ivArrayBuffer = new ArrayBuffer(ivNumberArray.length);
+    let ivDataView = new DataView(ivArrayBuffer);
+    for ( let i = 0; i < ivNumberArray.length; i++ ) {
+        ivDataView.setUint8(i, ivNumberArray[i]);
+    }
+
+    let cipherTextStringArray = encryptedArray;
+    let cipherNumberArray = cipherTextStringArray.map(entry =>
+                                            Number.parseInt(entry));
+    let cipherArrayBuffer = new ArrayBuffer(cipherNumberArray.length);
+    let cipherDataView = new DataView(cipherArrayBuffer);
+    for ( let i = 0; i < cipherNumberArray.length; i++ ) {
+        cipherDataView.setUint8(i, cipherNumberArray[i]);
+    }
+
+    return { cipherArrayBuffer, ivArrayBuffer }
+}

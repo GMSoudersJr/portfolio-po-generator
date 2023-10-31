@@ -1,4 +1,5 @@
 <script lang="ts">
+  import KeyCards from "$lib/components/KeyCards.svelte";
   import type { ActionData, PageData} from "./$types";
 	import GenerateCryptionButton from "./GenerateCryptionButton.svelte";
 	import ImportKey from "./ImportKey.svelte";

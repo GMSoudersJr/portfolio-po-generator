@@ -4,14 +4,16 @@
   import type { PageData } from "./$types";
 
   export let data: PageData;
-  console.log(data);
   const { poPdfData } = data;
   const fileName = `${poPdfData?.poNumber}`;
+
 </script>
 
 <main class="pdf-generator-container">
   <section class="pdf-template" id="pdf-template-container">
-    <PoTemplate {poPdfData}/>
+    <PoTemplate
+      {poPdfData}
+    />
   </section>
   <PdfMakeButton {fileName}/>
 </main>

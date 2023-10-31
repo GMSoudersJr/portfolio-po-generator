@@ -34,7 +34,6 @@
     const key: string = event.detail.poNumber.key;
     const value = event.detail.poNumber.value;
     poFormPoNumber[`${key}`] = value;
-    console.log(poFormPoNumber);
   }
 
   function resetPriceForRemovedProduct() {

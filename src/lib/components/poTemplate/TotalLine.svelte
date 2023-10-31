@@ -5,7 +5,6 @@
   export let currency = "krw";
   let currencySymbol = currencyObject.options.filter((entry) => entry.value ==
                                                currency)[0].symbol;
-  console.log(currencySymbol);
   export let total = 6665400;
   let totalString = `${currencySymbol} ${total.toLocaleString('en-US')}`
 </script>

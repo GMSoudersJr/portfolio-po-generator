@@ -59,14 +59,14 @@ export async function generateCryptoKey() {
 	return key
 };
 
-export async function decryptTheData(key: CryptoKey, data: ArrayBuffer, iv: ArrayBuffer) {
+export async function decryptTheData(key: CryptoKey, cipherText: ArrayBuffer, iv: ArrayBuffer) {
 	let decrypted = await crypto.subtle.decrypt(
 		{
 			name: "AES-GCM",
 			iv: iv
 		},
 		key,
-		data
+		cipherText
 	);
 
 	let dec = new TextDecoder();

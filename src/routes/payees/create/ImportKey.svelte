@@ -1,26 +1,31 @@
 <script lang="ts">
     import {importCryptoKey} from "$lib/cryption";
+    import { openDB, addToDb } from "$lib/indexedDb";
 
   import { createEventDispatcher } from "svelte";
 
   const dispatch = createEventDispatcher();
   async function handleChange(event: Event) {
-    let theFile: string;
+    let theFile: File;
     const input = event.target as HTMLInputElement;
     let selectedFiles = input.files;
-    console.log("SelectedFiles", selectedFiles)
     if ( selectedFiles && selectedFiles.length > 0 ) {
-      theFile = await selectedFiles[0].text();
-      const importedKey = await importCryptoKey(JSON.parse(theFile));
+      theFile = selectedFiles[0];
+      const fileText = await selectedFiles[0].text();
+      const importedKey = await importCryptoKey(JSON.parse(fileText));
       dispatch('importedKey', {
         importedKey
       });
+      await openDB();
+      await addToDb(theFile);
+      const fileName = theFile.name;
+      localStorage.setItem("cryptionKeyFileName", fileName);
     } else {
       const importedKey = undefined;
       console.log("Clicked cancel");
       dispatch('importedKey', {
         importedKey
-      })
+      });
     }
   }
 </script>

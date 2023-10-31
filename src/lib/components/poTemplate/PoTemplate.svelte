@@ -16,6 +16,91 @@
 	import Section3 from "./Section3.svelte";
 	import Subtitle from "./Subtitle.svelte";
   import Title from "./Title.svelte";
+  import { decryptTheData } from "$lib/cryption";
+  import { splitEncrypted } from "$lib/utils";
+
+	import {onMount} from "svelte";
+  let cryptionKey: CryptoKey | undefined;
+  let db: IDBDatabase;
+  const dbName = "CryptionKey";
+  const dbVersion = 1;
+  const objectStoreName = "Encryption_Decryption_Key";
+
+  onMount(async() => {
+    const cryptionKeyFileName = localStorage.getItem("cryptionKeyFileName")
+    if (cryptionKeyFileName) {
+
+      const request = window.indexedDB.open(dbName, dbVersion);
+      request.onerror = (event) => {
+        alert(`@getKey: ${request.error}`);
+      }
+      request.onsuccess = async (event) => {
+        db = await (event.target as IDBRequest).result;
+        const transaction = db.transaction(objectStoreName);
+        transaction.oncomplete =  (event) => {
+          alert("Transaction Complete");
+        }
+        const objectStore = transaction.objectStore(objectStoreName);
+        const request = objectStore.get(cryptionKeyFileName);
+        request.onerror = (event) => {
+          alert(`Error getting ${cryptionKeyFileName}'s key.`)
+        }
+        request.onsuccess = async (event) => {
+          const result = await (event.target as IDBRequest).result;
+          alert(`Successfully got "${cryptionKeyFileName}" from the database.`)
+          cryptionKey = await result.key;
+          if ( cryptionKey ) {
+            key = cryptionKey
+            async function decryptDataFromDatabase(databaseEncrypted: string) {
+              const cipherAndIv = splitEncrypted(databaseEncrypted);
+              const decryptedText = await decryptTheData(
+                key,
+                cipherAndIv.cipherArrayBuffer,
+                cipherAndIv.ivArrayBuffer
+              )
+              return decryptedText;
+            }
+            if ( homeAddress ) {
+              decryptedHomeAddress = await decryptDataFromDatabase(homeAddress);
+            }
+            if ( bankName ) {
+              decryptedBankName = await decryptDataFromDatabase(bankName);
+            }
+            if ( bankAccountNumber ) {
+              decryptedBankAccountNumber = await decryptDataFromDatabase(bankAccountNumber);
+            }
+            if ( bankAddress ) {
+              decryptedBankAddress = await decryptDataFromDatabase(bankAddress);
+            }
+            if ( iban ) {
+              decryptedIban = await decryptDataFromDatabase(iban);
+            }
+            if ( nationalIdOrBusinessRegistrationNumber ) {
+              decryptedNationalIdOrBusinessRegistrationNumber =
+                await decryptDataFromDatabase(nationalIdOrBusinessRegistrationNumber);
+            }
+            if ( routingNumber ) {
+              decryptedRoutingNumber = await decryptDataFromDatabase(routingNumber);
+            }
+            if ( swiftCode ) {
+              decryptedSwiftCode = await decryptDataFromDatabase(swiftCode);
+            }
+          }
+        }
+      }
+    }
+  });
+
+  let decryptedHomeAddress = "";
+  let decryptedBankName = "";
+  let decryptedBankAccountNumber = "";
+  let decryptedBankAddress = "";
+  let decryptedIban = "";
+  let decryptedNationalIdOrBusinessRegistrationNumber = "";
+  let decryptedRoutingNumber = "";
+  let decryptedSwiftCode = "";
+
+  let key: CryptoKey;
 
   export let poPdfData;
   const {
@@ -80,7 +165,7 @@
       {reportingBudgetLine}
       {pnpLocation}
       {payeeName}
-      {homeAddress}
+      homeAddress={decryptedHomeAddress}
     />
   </section>
 
@@ -102,18 +187,18 @@
   <section class="section3">
     <Section3
       {payeeName}
-      {bankName}
-      {bankAccountNumber}
-      {bankAddress}
-      {iban}
-      {routingNumber}
-      {swiftCode}
+      bankName={decryptedBankName}
+      bankAccountNumber={decryptedBankAccountNumber}
+      bankAddress={decryptedBankAddress}
+      iban={decryptedIban}
+      routingNumber={decryptedRoutingNumber}
+      swiftCode={decryptedSwiftCode}
     />
   </section>
 
   <section class="additional-notes">
     <AdditionalNotes
-      {nationalIdOrBusinessRegistrationNumber}
+      nationalIdOrBusinessRegistrationNumber={decryptedNationalIdOrBusinessRegistrationNumber}
     />
 
   </section>

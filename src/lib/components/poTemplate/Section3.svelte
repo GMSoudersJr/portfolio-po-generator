@@ -19,7 +19,9 @@
 <section class="grid-container">
   <BankingInformation />
   <BeneficiaryNameLine {payeeName}/>
-  <BankNameLine {bankName}/>
+  <BankNameLine
+    {bankName}
+  />
   <BankAccountLine
     {bankAccountNumber}
     {iban}
