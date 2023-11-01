@@ -1,6 +1,6 @@
 <script lang="ts">
 	import {onMount} from "svelte";
-  import type { ActionData, PageData} from "./$types";
+  import type { ActionData } from "./$types";
 	import GenerateCryptionButton from "./GenerateCryptionButton.svelte";
 	import ImportKey from "./ImportKey.svelte";
   import PayeeForm from "./PayeeForm.svelte";
@@ -11,7 +11,6 @@
   const dbVersion = 1;
   const objectStoreName = "Encryption_Decryption_Key";
 
-  export let data: PageData;
   export let form: ActionData;
   let key: CryptoKey;
   let importedCryptionKeyFileName: string | null;
