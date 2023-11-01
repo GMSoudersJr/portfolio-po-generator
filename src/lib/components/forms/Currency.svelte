@@ -18,7 +18,7 @@
       <option
         value={entry.value}
       >
-        {entry.symbol} - {entry.abbreviation}
+        {entry.abbreviation} - {entry.symbol}
       </option>
     {/each}
   </select>

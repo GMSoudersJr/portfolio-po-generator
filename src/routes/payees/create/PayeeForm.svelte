@@ -1,4 +1,7 @@
 <script lang="ts">
+  import { beneficiaryName } from "$lib/strings/payeeForm";
+  import { enhance } from "$app/forms";
+  import { afterNavigate } from "$app/navigation";
   import BankAccountNumber from "./BankAccountNumber.svelte";
   import BankAddress from "./BankAddress.svelte";
   import BankName from "./BankName.svelte";
@@ -14,12 +17,18 @@
 	import ReportingBudgetLine from "./ReportingBudgetLine.svelte";
 	import Iban from "./Iban.svelte";
 
+  afterNavigate(() => {
+    const to_focus = document.getElementById(beneficiaryName.id)
+    to_focus?.focus();
+  })
+
   export let key: CryptoKey;
 </script>
 
 <form
   method="post"
   action="?/add"
+  use:enhance
 >
   <BeneficiaryName />
   <PayeeType />

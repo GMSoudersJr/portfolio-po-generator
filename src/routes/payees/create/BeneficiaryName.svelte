@@ -10,6 +10,7 @@
     type={beneficiaryName.type}
     name={beneficiaryName.name}
     required
+    autocomplete="name"
   >
 </label>
 

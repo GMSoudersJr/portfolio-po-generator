@@ -7,7 +7,7 @@
 
   export let key: CryptoKey;
   $: encryptedValue = "";
-  async function handleChange(event: Event) {
+  async function handleInput(event: Event) {
       const target = event.target as HTMLInputElement;
       let encryptedData = await encryptTheData(key, target.value)
       let cipherText = encryptedData.cipherText;
@@ -30,7 +30,7 @@
     class={bankAccountNumber.class}
     type={bankAccountNumber.type}
     id={bankAccountNumber.id}
-    on:change={handleChange}
+    on:input={handleInput}
     required
   >
 </label>

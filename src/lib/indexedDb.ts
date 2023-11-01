@@ -15,12 +15,12 @@ export async function openDB() {
 
         const cryptionKeyObjectStore = db
             .createObjectStore(objectStoreName, {keyPath: "fileName"});
-        alert(`Upgrade called on database: ${db.name} version: ${db.version}`);
+        //alert(`Upgrade called on database: ${db.name} version: ${db.version}`);
     }
 
     request.onsuccess = (event) => {
         db = (event.target as IDBRequest).result;
-        alert(`Success called on database: ${db.name} version: ${db.version}`);
+        //alert(`Success called on database: ${db.name} version: ${db.version}`);
     }
 }
 
@@ -41,15 +41,15 @@ export async function addToDb(file: File) {
             console.log("Error @addToDb transaction");
         }
         transaction.oncomplete = (event) => {
-            alert("All data added");
+            alert(`Successfully imported ${file.name}`);
         }
         const objectStore = transaction.objectStore(objectStoreName);
         const request = objectStore.put(key)
         request.onsuccess = (event) => {
-            alert("Successfully added the key");
+            //alert("Successfully added the key");
         }
         request.onerror = (event) => {
-            alert(`Error @addToDb transaction request ${request.error}`)
+            alert(`Error importing ${file.name}: ${request.error}`)
         }
     }
 }

@@ -12,17 +12,18 @@
     if ( selectedFiles && selectedFiles.length > 0 ) {
       theFile = selectedFiles[0];
       const fileText = await selectedFiles[0].text();
+      const fileName = theFile.name;
+      localStorage.setItem("cryptionKeyFileName", fileName);
       const importedKey = await importCryptoKey(JSON.parse(fileText));
       dispatch('importedKey', {
-        importedKey
+        importedKey,
+        fileName
       });
       await openDB();
       await addToDb(theFile);
-      const fileName = theFile.name;
-      localStorage.setItem("cryptionKeyFileName", fileName);
     } else {
       const importedKey = undefined;
-      console.log("Clicked cancel");
+      localStorage.clear();
       dispatch('importedKey', {
         importedKey
       });
