@@ -13,7 +13,6 @@ import {
 } from '$lib/strings/payeeForm';
 import { reportBudgetLine, topicDivision } from '$lib/strings/poForm';
 import { trimTheFormData } from '$lib/utils';
-import { decryptTheData, encryptTheData } from '$lib/cryption';
 import { Payee } from '$lib/classes';
 import { addPayee } from '$lib/db';
 
@@ -104,7 +103,7 @@ export const actions = {
 
 		return {
 			success: databaseResponse,
-			message: `Added ${payee.beneficiaryName} to the database!`
+			message: `Added ${payee.beneficiaryName} to Payees!`
 		};
 	}
 } satisfies Actions;

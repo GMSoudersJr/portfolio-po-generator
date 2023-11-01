@@ -17,11 +17,6 @@
 	import ReportingBudgetLine from "./ReportingBudgetLine.svelte";
 	import Iban from "./Iban.svelte";
 
-  afterNavigate(() => {
-    const to_focus = document.getElementById(beneficiaryName.id)
-    to_focus?.focus();
-  })
-
   export let key: CryptoKey;
 </script>
 
