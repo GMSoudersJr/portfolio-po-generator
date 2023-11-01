@@ -32,13 +32,13 @@
 
       const request = window.indexedDB.open(dbName, dbVersion);
       request.onerror = (event) => {
-        alert(`@getKey: ${request.error}`);
+        alert(`There was an error getting the key: ${request.error}`);
       }
       request.onsuccess = async (event) => {
         db = await (event.target as IDBRequest).result;
         const transaction = db.transaction(objectStoreName);
         transaction.oncomplete =  (event) => {
-          alert("Transaction Complete");
+          alert(`Please check your work before PDF-ing It!`);
         }
         const objectStore = transaction.objectStore(objectStoreName);
         const request = objectStore.get(cryptionKeyFileName);
@@ -47,7 +47,6 @@
         }
         request.onsuccess = async (event) => {
           const result = await (event.target as IDBRequest).result;
-          alert(`Successfully got "${cryptionKeyFileName}" from the database.`)
           cryptionKey = await result.key;
           if ( cryptionKey ) {
             key = cryptionKey
