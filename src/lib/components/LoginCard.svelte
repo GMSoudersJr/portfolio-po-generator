@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type {ActionData} from "../../routes/login/$types";
 
-
   export let form: ActionData;
 </script>
 
@@ -19,7 +18,6 @@
       name="username"
       id="login-username"
       value={form?.username ?? ''}
-      autocomplete="username"
     >
   </label>
   <label for="login-password">

@@ -9,7 +9,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 	if ( accessToken ) {
 		jwt.verify(accessToken, ACCESS_TOKEN_SECRET, (error, payload) => {
 			if (error) {
-				throw redirect(302, '/login');
+				throw redirect(302, '/');
 			}
 			if (payload) {
 				event.locals.user = {
@@ -28,13 +28,13 @@ export const handle: Handle = async ({ event, resolve }) => {
 
 	if ( event.url.pathname.startsWith('/purchaseOrders') ) {
 		if (!event.locals.user) {
-			throw redirect(302, '/login')
+			throw redirect(302, '/')
 		}
 	}
 
 	if ( event.url.pathname.startsWith('/payees') ) {
 		if (!event.locals.user) {
-			throw redirect(302, '/login')
+			throw redirect(302, '/')
 		}
 	}
 

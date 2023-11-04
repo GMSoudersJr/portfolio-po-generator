@@ -5,7 +5,7 @@
 </script>
 
 <main class="login-page">
-	<h1 class="header">Log back in!</h1>
+	<h1 class="header">Login please</h1>
 	<LoginCard {form}/>
 </main>
 

@@ -2,11 +2,9 @@ import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt';
 import{ ACCESS_TOKEN_SECRET, ENCRYPT_SECRET } from '$env/static/private';
 import { redirect, fail } from '@sveltejs/kit';
-import {findUser, updateUser} from '$lib/db';
+import {findUser} from '$lib/db';
 import { trimTheFormData } from '$lib/utils';
-import { exportCryptoKey, generateCryptoKey } from '$lib/cryption';
 import type { PageServerLoad, Actions } from './$types';
-import type { JwtPayload } from 'jsonwebtoken';
 
 export const load: PageServerLoad = async ({ locals }) => {
 	return {
