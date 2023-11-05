@@ -1,4 +1,7 @@
 <script lang="ts">
+	import {openDB} from "$lib/indexedDb";
+  import KeyHandler from "$lib/components/KeyHandler.svelte";
+
 	import {onMount} from "svelte";
   import type { ActionData } from "./$types";
 	import GenerateCryptionButton from "./GenerateCryptionButton.svelte";
@@ -16,6 +19,7 @@
   let importedCryptionKeyFileName: string | null;
 
   onMount(async() => {
+    await openDB();
     const cryptionKeyFileName = localStorage.getItem("cryptionKeyFileName");
     if (cryptionKeyFileName) {
       importedCryptionKeyFileName = cryptionKeyFileName;
@@ -40,13 +44,16 @@
 
         request.onsuccess = async (event) => {
           const result = await (event.target as IDBRequest).result;
-          cryptionKey = await result.key;
-          if ( cryptionKey ) {
-            key = cryptionKey
+          if ( result ) {
+            cryptionKey = await result.key;
+            if ( cryptionKey ) {
+              key = cryptionKey
+            }
           }
+          console.log(result);
         }
       }
-    }  
+    }
   });
 
   async function handleImportKey(event: CustomEvent) {
@@ -57,10 +64,11 @@
 
 <main class="page-container">
   <div class="key-container">
-    <GenerateCryptionButton />
-    <ImportKey
+    {#if !importedCryptionKeyFileName || !key}
+    <KeyHandler
       on:importedKey={handleImportKey}
     />
+    {/if}
   </div>
   {#if importedCryptionKeyFileName && key}
   <div class="form">
@@ -74,18 +82,16 @@
 
 <style>
   .key-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(1, min-content);
-    row-gap: 1rem;
+    justify-self: center;
+    padding-top: 2rem;
     grid-area: key;
-    padding: 2rem;
   }
   .page-container {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr minmax(400px, 1fr) 1fr;
     grid-template-rows: auto;
+    column-gap: 1rem;
     grid-template-areas:
     "key form .";
   }

@@ -1,7 +1,5 @@
 <script lang="ts">
-  import { beneficiaryName } from "$lib/strings/payeeForm";
   import { enhance } from "$app/forms";
-  import { afterNavigate } from "$app/navigation";
   import BankAccountNumber from "./BankAccountNumber.svelte";
   import BankAddress from "./BankAddress.svelte";
   import BankName from "./BankName.svelte";

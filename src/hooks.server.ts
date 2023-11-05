@@ -9,6 +9,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 	if ( accessToken ) {
 		jwt.verify(accessToken, ACCESS_TOKEN_SECRET, (error, payload) => {
 			if (error) {
+				event.locals.user = undefined;
 				throw redirect(302, '/');
 			}
 			if (payload) {

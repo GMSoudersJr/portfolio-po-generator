@@ -133,7 +133,6 @@
   }
   form {
     width: 100%;
-    padding-top: 1rem;
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto;

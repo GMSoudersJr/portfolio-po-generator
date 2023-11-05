@@ -7,7 +7,7 @@ let db: IDBDatabase;
 export async function openDB() {
     const request = window.indexedDB.open(dbName, dbVersion);
     request.onerror = (event) => {
-        alert(`@createDB: ${request.error}`);
+        alert(`Error @createDB: ${request.error}`);
     }
 
     request.onupgradeneeded = (event) => {
@@ -15,12 +15,12 @@ export async function openDB() {
 
         const cryptionKeyObjectStore = db
             .createObjectStore(objectStoreName, {keyPath: "fileName"});
-        //alert(`Upgrade called on database: ${db.name} version: ${db.version}`);
+        alert(`Upgrade called on database: ${db.name} version: ${db.version}`);
     }
 
     request.onsuccess = (event) => {
         db = (event.target as IDBRequest).result;
-        //alert(`Success called on database: ${db.name} version: ${db.version}`);
+        alert(`Success called on database: ${db.name} version: ${db.version}`);
     }
 }
 

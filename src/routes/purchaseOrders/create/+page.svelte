@@ -1,13 +1,23 @@
 <script lang="ts">
+  import { onMount } from "svelte";
   import { changeToPascalCase, formatPoNumberDateString, getInitials, updateArrayOfNumbers } from "$lib/utils";
 	import type { PageData, ActionData } from "./$types";
 	import PayeeCards from "./PayeeCards.svelte";
 	import PoForm from "./PoForm.svelte";
 	import type {PoFormPoNumber} from "$lib/classes";
 	import {dueDate, reportBudgetLine, requestedBy, topicDivision} from "$lib/strings/poForm";
+	import KeyHandler from "$lib/components/KeyHandler.svelte";
+	import {openDB} from "$lib/indexedDb";
 
   export let data: PageData;
   export let form: ActionData;
+
+  let cryptionKey: CryptoKey | undefined;
+  let db: IDBDatabase;
+  const dbName = "CryptionKey";
+  const dbVersion = 1;
+  const objectStoreName = "Encryption_Decryption_Key";
+
 
   $: ({ payees } = data);
 
@@ -67,9 +77,73 @@
     });
     payees = payees;
   }
+
+  let key: CryptoKey;
+  let importedCryptionKeyFileName: string | null;
+
+  onMount(async() => {
+    await openDB();
+    const cryptionKeyFileName = localStorage.getItem("cryptionKeyFileName");
+    if (cryptionKeyFileName) {
+      importedCryptionKeyFileName = cryptionKeyFileName;
+
+      const request = window.indexedDB.open(dbName, dbVersion);
+      request.onerror = (event) => {
+        alert(`There was an error getting the key: ${request.error}`);
+      }
+      request.onsuccess = async (event) => {
+        db = await (event.target as IDBRequest).result;
+        const transaction = db.transaction(objectStoreName);
+
+        transaction.oncomplete =  (event) => {
+          alert(`Reusing the same key`);
+        }
+        const objectStore = transaction.objectStore(objectStoreName);
+        const request = objectStore.get(cryptionKeyFileName);
+
+        request.onerror = (event) => {
+          alert(`Error getting ${cryptionKeyFileName}'s key.`)
+        }
+
+        request.onsuccess = async (event) => {
+          const result = await (event.target as IDBRequest).result;
+          cryptionKey = await result.key;
+          if ( cryptionKey ) {
+            key = cryptionKey
+          }
+        }
+      }
+    }  
+  });
+
+  async function handleImportKey(event: CustomEvent) {
+    key = event.detail.importedKey;
+    importedCryptionKeyFileName = event.detail.fileName;
+  }
 </script>
 
 <div class="page-grid-container">
+  <div class="key-container">
+    {#if !importedCryptionKeyFileName || !key}
+    <KeyHandler
+      on:importedKey={handleImportKey}
+    />
+    {/if}
+  </div>
+  {#if  importedCryptionKeyFileName && key}
+  <div class="po-form">
+    <PoForm
+      on:searching={handleSearch}
+      {clickedPayeeName}
+      {clickedPayee_id}
+      {clickedPayeeTaxRate}
+      {clickedPayeeCurrency}
+      {clickedPayeeTopicDivision}
+      {clickedPayeeReportingBudgetLine}
+      {poFormPoNumber}
+      {form}
+    />
+  </div>
   <div class="available-payees">
     <h6 class="available-payees-header">
       Available Payees
@@ -85,28 +159,26 @@
     </p>
     {/if}
   </div>
-  <div class="po-form">
-    <PoForm
-      on:searching={handleSearch}
-      {clickedPayeeName}
-      {clickedPayee_id}
-      {clickedPayeeTaxRate}
-      {clickedPayeeCurrency}
-      {clickedPayeeTopicDivision}
-      {clickedPayeeReportingBudgetLine}
-      {poFormPoNumber}
-      {form}
-    />
-  </div>
+  {/if}
 </div>
 
 <style>
+  .available-payees-header {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 10px;
+  }
+  .key-container {
+    justify-self: center;
+    padding-top: 2rem;
+    grid-area: key;
+  }
   .page-grid-container {
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-columns: 1fr minmax(400px, 1fr) 1fr;
     grid-template-rows: auto;
     grid-template-areas:
-    ". poForm availablePayees";
+    "key poForm availablePayees";
     column-gap: 1rem;
   }
   .available-payees {
@@ -114,9 +186,10 @@
   }
   .po-form {
     grid-area: poForm;
+    padding: 2rem 0;
   }
   .available-payees-header {
-    padding-top: 1rem;
+    padding-top: 2rem;
     padding-left: 1rem;
   }
 </style>

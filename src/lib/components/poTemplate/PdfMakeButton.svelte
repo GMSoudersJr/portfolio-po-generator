@@ -11,7 +11,6 @@
         scale: 2
       });
       const data = canvas.toDataURL();
-      console.dir(window.devicePixelRatio)
       const docDefinition = {
         pageSize: 'A4',
         pageOrientation: 'portrait',

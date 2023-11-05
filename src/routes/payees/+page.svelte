@@ -1,6 +1,5 @@
 <script lang="ts">
   import PayeeCards from "../purchaseOrders/create/PayeeCards.svelte";
-  import { page } from "$app/stores";
   import type { PageData } from "./$types";
 	import {goto} from "$app/navigation";
   import GotoFormButton from "$lib/components/GotoFormButton.svelte";
@@ -50,5 +49,6 @@
     grid-template-rows: min-content;
     column-gap: 0.5rem;
     align-items: center;
+    justify-content: center;
   }
 </style>
