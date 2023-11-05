@@ -17,6 +17,7 @@
     </h4>
     <GotoFormButton {pathUrl}/>
   </div>
+  {#if overviewPos && overviewPos.length > 0}
   <main class="pos-overview">
     {#await overviewPos}
       <p>Loading...</p>
@@ -24,6 +25,7 @@
       <PurchaseOrdersTable {overviewPos} />
     {/await}
   </main>
+  {/if}
 </div>
 
 <style>

@@ -4,6 +4,7 @@
 	import type {Document} from "mongodb";
 
   export let overviewPos: Document[] | undefined;
+
   $: headers = Object.keys(overviewPos?.at(0));
   $: overviewHeaders = headers.map((header) => {
     return PoTableHeadings[header];
