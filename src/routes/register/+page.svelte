@@ -17,7 +17,7 @@
 
 <style>
   .registration-container {
-    height: calc(100vh - 47px);
+    height: calc(100vh);
     width:100vw;
     display: grid;
     grid-template-columns: max-content;
@@ -33,5 +33,11 @@
     letter-spacing: -0.02rem;
     line-height: 1.2rem;
     text-align: center;
+  }
+  .message {
+    text-align: center;
+    color: #259259;
+    font-size: 1rem;
+    font-weight: 600;;
   }
 </style>
