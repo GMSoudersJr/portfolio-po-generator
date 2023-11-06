@@ -4,14 +4,6 @@ export const beneficiaryName = {
 	label: "Beneficiary Name",
 	name: "beneficiaryName",
 	type: "text",
-	options: [
-		{
-			id: "beneficiaryName",
-			name: "beneficiaryName",
-			text: "Beneficiary Name",
-			class: "form-input"
-		}
-	]
 };
 
 export const homeAddress = {
@@ -20,14 +12,6 @@ export const homeAddress = {
 	label: "Home Address",
 	name: "homeAddress",
 	type: "text",
-	options: [
-		{
-			id: "homeAddress",
-			name: "homeAddress",
-			text: "Home Address",
-			class: "form-input"
-		}
-	]
 };
 
 export const bankName = {
@@ -36,14 +20,6 @@ export const bankName = {
 	label: "Bank Name",
 	name: "bankName",
 	type: "text",
-	options: [
-		{
-			id: "bankName",
-			name: "bankName",
-			text: "Bank Name",
-			class: "form-input"
-		}
-	]
 };
 
 export const bankAddress = {
@@ -52,14 +28,6 @@ export const bankAddress = {
 	label: "Bank Address",
 	name: "bankAddress",
 	type: "text",
-	options: [
-		{
-			id: "bankAddress",
-			name: "bankAddress",
-			text: "Bank Address",
-			class: "form-input"
-		}
-	]
 };
 
 export const bankAccountNumber = {
@@ -68,14 +36,6 @@ export const bankAccountNumber = {
 	label: "Bank Account #",
 	name: "bankAccountNumber",
 	type: "text",
-	options: [
-		{
-			id: "bankAccountNumber",
-			name: "bankAccountNumber",
-			text: "Bank Account #",
-			class: "form-input"
-		},
-	],
 };
 
 export const iban = {
@@ -84,14 +44,6 @@ export const iban = {
 	label: "IBAN",
 	name: "iban",
 	type: "text",
-	options: [
-		{
-			id: "iban",
-			name: "iban",
-			text: "IBAN",
-			class: "form-input"
-		},
-	],
 };
 
 export const routingNumber = {
@@ -100,14 +52,6 @@ export const routingNumber = {
 	label: "Routing / ABA #",
 	name: "routingNumber",
 	type: "text",
-	options: [
-		{
-			id: "routingNumber",
-			name: "routingNumber",
-			text: "Routing #",
-			class: "form-input"
-		},
-	],
 };
 
 export const SwiftCode = {
@@ -116,14 +60,6 @@ export const SwiftCode = {
 	label: "Swift Code",
 	name: "swiftCode",
 	type: "text",
-	options: [
-		{
-			id: "swiftCode",
-			name: "swiftCode",
-			text: "Swift Code",
-			class: "form-input"
-		},
-	],
 };
 
 export const nationaIdOrBusinessRegistration = {
@@ -132,14 +68,6 @@ export const nationaIdOrBusinessRegistration = {
 	label: "National ID or Business Registration #",
 	name: "nationalIdOrBusinessRegistration",
 	type: "text",
-	options: [
-		{
-			id: "nationalIdOrBusinessRegistration",
-			name: "nationalIdOrBusinessRegistration",
-			text: "National ID or Business Registration",
-			class: "form-input"
-		},
-	],
 };
 
 export const payeeTypeAndTax = {
@@ -162,21 +90,15 @@ export const payeeTypeAndTax = {
 			taxRate: 0,
 		},
 		{
-			id: "freelancerKoreaLongTerm",
-			value: "Freelancer (Korea Long-Term)",
-			text: "Freelancer (Korea Long-Term)",
+			id: "freelancerDomesticLongTerm",
+			value: "Freelancer (Domestic Long-Term)",
+			text: "Freelancer (Domestic Long-Term)",
 			taxRate: 0,
 		},
 		{
-			id: "freelancerKoreaOneOff",
-			value: "Freelancer (Korea One-Off)",
-			text: "Freelancer (Korea One-Off)",
-			taxRate: 0,
-		},
-		{
-			id: "plugAndPlay",
-			value: "Plug and Play",
-			text: "Plug and Play",
+			id: "freelancerDomesticOneOff",
+			value: "Freelancer (Domestic One-Off)",
+			text: "Freelancer (Domestic One-Off)",
 			taxRate: 0,
 		},
 		{
@@ -186,9 +108,9 @@ export const payeeTypeAndTax = {
 			taxRate: 0,
 		},
 		{
-			id: "vendorKorea",
-			value: "Vendor (Korea)",
-			text: "Vendor (Korea)",
+			id: "vendorDomestic",
+			value: "Vendor (Domestic)",
+			text: "Vendor (Domestic)",
 			taxRate: 0.1,
 		},
 	]
