@@ -11,12 +11,8 @@
 <div class="grid-container">
   <div class="swift-code-label required-line">
     <h5 class="swift-code-text section3-data-label">
-      {pdfTemplateSwiftString}
+      {pdfTemplateSwiftString}:
     </h5>
-    <p class="required warning">
-      {pdfTemplateRequiredString}
-    </p>
-    <h5>:</h5>
   </div>
   <p class="swift-message warning">
     {pdfTemplateSwiftMessageString}

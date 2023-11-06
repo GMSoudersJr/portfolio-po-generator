@@ -4,7 +4,7 @@ export enum PoTableHeadings {
 	paymentMethod = "Method",
 	dueDate = "Due",
 	createdDate = "Created",
-	pnpLocation = "Location",
+	location = "Location",
 	topicDivision = "Topic / Division",
 	reportingBudgetLine = "Reporting / Budget Line",
 	subtotal = "Sub",

@@ -30,11 +30,11 @@
   color: var(--warningRed);
   font-size: var(--fontSizeRequiredWarning);
 }
-.required, .warning {
+.warning {
   font-style: italic;
 }
 .required {
-  font-size: 0.5em;
+  font-size: 1em;
   font-weight: 600;
 }
 .required-line {
@@ -44,12 +44,10 @@
   justify-self: left;
   column-gap: 0.1em;
 }
-.section1-data-label {
-  letter-spacing: var(--letterSpacingForAllCaps);
-}
 .section1-data-label,
 .section3-data-label {
   font-size: var(--fontSizeSectionDataLabel);
+  letter-spacing: var(--letterSpacingForAllCaps);
 }
 .section1-data-actual,
 .section3-data-actual {

@@ -11,12 +11,8 @@
 <div class="grid-container">
   <div class="address-label required-line">
     <h5 class="address-text section1-data-label">
-      {pdfTemplateAddressString}
+      {pdfTemplateAddressString}:
     </h5>
-    <p class="required warning">
-      {pdfTemplateRequiredString}
-    </p>
-    <h5>:</h5>
   </div>
   <p class="address-actual-line-1 section1-data-actual">
     {homeAddress ?? ""}

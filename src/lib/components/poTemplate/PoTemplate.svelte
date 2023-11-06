@@ -1,9 +1,4 @@
 <script lang="ts">
-  import {
-    pdfTemplateSection1String,
-    pdfTemplateSection2String,
-    pdfTemplateSection3String
-  } from "$lib/strings/poTemplate";
 	import AdditionalNotes from "./AdditionalNotes.svelte";
   import ApprovedBy from "./ApprovedBy.svelte";
   import DueBy from "./DueBy.svelte";
@@ -109,7 +104,7 @@
     dueDate,
     payeeData,
     paymentMethod,
-    pnpLocation,
+    location,
     productsOrServicesDescriptionsAndPrices,
     poNumber,
     reportingBudgetLine,
@@ -154,23 +149,17 @@
     <PoNumber {poNumber}/>
   </section>
 
-  <section class="section-1-label section-label">
-    {pdfTemplateSection1String}
-  </section>
   <section class="section1">
     <Section1
       {createdDate}
       {topicDivision}
       {reportingBudgetLine}
-      {pnpLocation}
+      {location}
       {payeeName}
       homeAddress={decryptedHomeAddress}
     />
   </section>
 
-  <section class="section-2-label section-label">
-    {pdfTemplateSection2String}
-  </section>
   <section class="section2">
     <Section2
       {productsOrServicesDescriptionsAndPrices}
@@ -180,9 +169,6 @@
     />
   </section>
 
-  <section class="section-3-label section-label">
-    {pdfTemplateSection3String}
-  </section>
   <section class="section3">
     <Section3
       {payeeName}
@@ -232,26 +218,11 @@
   .po-number {
     grid-area: poNumber;
   }
-  .section-label {
-    font-size: var(--fontSizeSectionLabel);
-  }
-  .section-1-label{
-    grid-area: section1Label;
-    padding-top: calc(0.25em + 2px);
-  }
   .section1 {
     grid-area: section1;
   }
-  .section-2-label{
-    grid-area: section2Label;
-    padding-top: calc(0.25em + 2px);
-  }
   .section2 {
     grid-area: section2;
-  }
-  .section-3-label{
-    grid-area: section3Label;
-    padding-top: calc(0.25em + 2px);
   }
   .section3 {
     grid-area: section3;
@@ -286,9 +257,9 @@
     ". paymentMethod"
     ". dueBy"
     ". poNumber"
-    "section1Label section1"
-    "section2Label section2"
-    "section3Label section3"
+    ". section1"
+    ". section2"
+    ". section3"
     ". additionalNotes"
     ". requestedBy"
     ". approvedBy"

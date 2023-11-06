@@ -30,11 +30,5 @@
   .pdf-template {
     grid-area: pdfTemplate;
   }
-  .pdf-button {
-    grid-area: pdfButton;
-    font-size: 2em;
-    border-radius: 50%;
-    aspect-ratio: 1 / 1;
-  }
 </style>
 

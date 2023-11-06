@@ -305,7 +305,7 @@ export const createdDate = {
 	value: todayDateString(),
 };
 
-export const pnpLocation = {
+export const businessLocation = {
 	class: "form-input",
 	id: "location",
 	label: "Location",
@@ -315,22 +315,22 @@ export const pnpLocation = {
 		{
 			id: "korea",
 			text: "Korea",
-			value: "korea",
+			value: "Korea",
 		},
 		{
 			id: "usa",
 			text: "USA",
-			value: "usa",
+			value: "USA",
 		},
 		{
 			id: "japan",
 			text: "Japan",
-			value: "japan",
+			value: "Japan",
 		},
 		{
 			id: "india",
 			text: "India",
-			value: "india",
+			value: "India",
 		},
 		{
 			id: "springfield",
@@ -340,7 +340,7 @@ export const pnpLocation = {
 		{
 			id: "canada",
 			text: "Canada",
-			value: "canada",
+			value: "Canada",
 		},
 	]
 };

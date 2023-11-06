@@ -38,7 +38,10 @@
     />
   {/each}
   <WithholdingTaxOrVat {tax}/>
-  <TotalLine {total}/>
+  <TotalLine
+    {currency}
+    {total}
+  />
 </section>
 
 

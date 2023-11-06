@@ -8,7 +8,7 @@
 	import NumberOfProductsOrServices from "./NumberOfProductsOrServices.svelte";
 	import PayeeName from "./PayeeName.svelte";
 	import PaymentMethod from "./PaymentMethod.svelte";
-	import PnpLocation from "./PnpLocation.svelte";
+	import Location from "./Location.svelte";
 	import PoNumber from "./PoNumber.svelte";
 	import ProductAndPrice from "./ProductAndPrice.svelte";
 	import ReportingBudgetLine from "./ReportingBudgetLine.svelte";
@@ -115,7 +115,7 @@
   <ReportingBudgetLine
     {clickedPayeeReportingBudgetLine}
   />
-  <PnpLocation />
+  <Location />
   <RequestedBy
     on:requesterChange={handlePoNumberUpdate}
   />

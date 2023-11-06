@@ -12,12 +12,8 @@
 <div class="grid-container">
   <div class="routing-number-label required-line">
     <h5 class="routing-number-text section3-data-label">
-      {pdfTemplateRoutingOrABAString}
+      {pdfTemplateRoutingOrABAString}:
     </h5>
-    <p class="required warning">
-      {pdfTemplateRequiredString}
-    </p>
-    <h5>:</h5>
   </div>
   <p class="routing-message warning">
     {pdfTemplateRoutingMessageString}

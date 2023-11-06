@@ -73,7 +73,7 @@ export async function getPosForOverview() {
 				payeeName: 1,
 				dueDate: 1,
 				createdDate: 1,
-				pnpLocation: 1,
+				location: 1,
 				topicDivision: 1,
 				reportingBudgetLine: 1,
 				subtotal: 1,

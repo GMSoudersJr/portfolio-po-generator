@@ -1,35 +1,37 @@
 <script lang="ts">
+	import {businessLocation} from "$lib/strings/poForm";
+
   import {
-    pdfTemplatePnpLocationString,
+    pdfTemplateLocationString,
     pdfTemplateRequiredString
   } from "$lib/strings/poTemplate";
 
-  export let pnpLocation = "Korea";
+  export let location = "Korea";
 </script>
 
 <div class="grid-container">
-  <div class="pnp-location-label required-line">
-    <h5 class="pnp-location-text section1-data-label">
-      {pdfTemplatePnpLocationString}
+  <div class="location-label required-line">
+    <h5 class="location-text section1-data-label">
+      {pdfTemplateLocationString}
     </h5>
     <p class="required warning">
       {pdfTemplateRequiredString}
     </p>
     <h5>:</h5>
   </div>
-  <p class="pnp-location-actual section1-data-actual">
-    {pnpLocation ?? ""}
+  <p class="location-actual section1-data-actual">
+    {location ?? ""}
   </p>
 </div>
 
 <style>
-  .pnp-location-label {
+  .location-label {
     display: flex;
-    grid-area: pnpLocationLabel;
+    grid-area: locationLabel;
     padding-left: 0.15em;
   }
-  .pnp-location-actual {
-    grid-area: pnpLocationActual;
+  .location-actual {
+    grid-area: locationActual;
     border-bottom: 1px solid black;
   }
   .grid-container {
@@ -37,7 +39,7 @@
     grid-template-columns: 33% 1fr;
     grid-template-rows: 1fr;
     grid-template-areas:
-    "pnpLocationLabel pnpLocationActual";
+    "locationLabel locationActual";
     margin: 0.25em 0;
   }
 </style>

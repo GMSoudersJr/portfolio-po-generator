@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type {Po} from "$lib/classes";
   import { PoTableHeadings } from "$lib/enums";
 	import type {Document} from "mongodb";
 

@@ -12,12 +12,8 @@
 <div class="grid-container">
   <div class="bank-address-label required-line">
     <h5 class="bank-address-text section3-data-label">
-      {pdfTemplateBankAddressString}
+      {pdfTemplateBankAddressString}:
     </h5>
-    <p class="required warning">
-      {pdfTemplateRequiredString}
-    </p>
-    <h5>:</h5>
   </div>
   <p class="bank-address-actual-line1 section3-data-actual">
     {bankAddress ?? ""}

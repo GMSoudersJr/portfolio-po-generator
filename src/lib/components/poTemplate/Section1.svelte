@@ -2,14 +2,14 @@
 	import AddressLine from "./AddressLine.svelte";
 	import DateLine from "./DateLine.svelte";
 	import PayableToLine from "./PayableToLine.svelte";
-	import PnpLocationLine from "./PnpLocationLine.svelte";
+	import LocationLine from "./LocationLine.svelte";
 	import ReportingBudgetLineLine from "./ReportingBudgetLineLine.svelte";
 	import TopicDivisionLine from "./TopicDivisionLine.svelte";
 
   export let createdDate = "";
   export let topicDivision = "";
   export let reportingBudgetLine = "";
-  export let pnpLocation = "";
+  export let location = "";
   export let payeeName = ""
   export let homeAddress = "";
 </script>
@@ -18,7 +18,7 @@
   <DateLine {createdDate}/>
   <TopicDivisionLine {topicDivision}/>
   <ReportingBudgetLineLine {reportingBudgetLine}/>
-  <PnpLocationLine {pnpLocation}/>
+  <LocationLine {location}/>
   <PayableToLine {payeeName}/>
   <AddressLine {homeAddress}/>
 </section>
