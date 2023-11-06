@@ -18,6 +18,7 @@
       name="username"
       id="login-username"
       value={form?.username ?? ''}
+      autocomplete="username"
     >
   </label>
   <label for="login-password">

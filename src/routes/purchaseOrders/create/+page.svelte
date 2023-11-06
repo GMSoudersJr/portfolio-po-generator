@@ -148,13 +148,13 @@
     <h6 class="available-payees-header">
       Available Payees
     </h6>
-    {#if payees}
+    {#if payees && payees.length > 0}
     <PayeeCards
       on:clickedPayee={handleClickedPayee}
       {payees}
     />
     {:else}
-    <p>
+    <p class="no-payees">
       No payees yet
     </p>
     {/if}
@@ -188,7 +188,8 @@
     grid-area: poForm;
     padding: 2rem 0;
   }
-  .available-payees-header {
+  .available-payees-header,
+  .no-payees {
     padding-top: 2rem;
     padding-left: 1rem;
   }

@@ -62,6 +62,12 @@
         download or import one.
       </li>
       <li>
+        You will be alerted about the status of imported keys.
+      </li>
+      <li>
+        You must have an imported key in order to create a payee.
+      </li>
+      <li>
         The fields you asked for are required.
       </li>
       <li>
@@ -90,7 +96,13 @@
         download or import one.
       </li>
       <li>
-        There is a grid of cards showing all payees to the right of the form.
+        You will be alerted about the status imported keys.
+      </li>
+      <li>
+        You must have an imported key in order to create a PO.
+      </li>
+      <li>
+        There is a grid of cards showing all payees 📇 to the right of the form.
       </li>
       <li>
         <strong>Payee Name</strong> is a search input. It will filter the payee cards.
@@ -167,3 +179,4 @@
     }
   }
 </style>
+

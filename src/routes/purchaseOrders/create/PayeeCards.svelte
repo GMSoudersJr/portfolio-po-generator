@@ -27,7 +27,11 @@
   .cards {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-rows: auto;
     gap: 0.25rem;
+    justify-content: center;
+    align-items: center;
     padding: 1rem;
+    justify-self: center;
   }
 </style>

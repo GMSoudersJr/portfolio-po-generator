@@ -12,9 +12,9 @@
 
 <div class="page-container">
   <div class="purchase-order-header">
-    <h4>
+    <h2>
       Purchase Orders
-    </h4>
+    </h2>
     <GotoFormButton {pathUrl}/>
   </div>
   {#if overviewPos && overviewPos.length > 0}
@@ -25,10 +25,17 @@
       <PurchaseOrdersTable {overviewPos} />
     {/await}
   </main>
+  {:else}
+    <h3 class="no-pos">
+      No POs yet
+    </h3>
   {/if}
 </div>
 
 <style>
+  .no-pos {
+    text-align: center;
+  }
   .page-container {
     display: grid;
     grid-template-columns: auto;
@@ -37,7 +44,6 @@
   }
   .purchase-order-header {
     padding-top: 1rem;
-    padding-left: 1rem;
     display: grid;
     grid-template-columns: repeat(2, max-content);
     grid-template-rows: min-content;
@@ -52,4 +58,5 @@
     justify-content: center;
   }
 </style>
+
 
