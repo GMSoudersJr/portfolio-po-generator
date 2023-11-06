@@ -123,14 +123,19 @@ export const topicDivision = {
 			value: "General",
 		},
 		{
-			id: "governmentKorea",
-			text: "Government Korea",
-			value: "Government Korea",
+			id: "government",
+			text: "Government",
+			value: "Government",
 		},
 		{
-			id: "smartCitiesKorea",
-			text: "Smart Cities Korea",
-			value: "Smart Cities Korea",
+			id: "techHubInternational",
+			text: "Tech Hub International",
+			value: "Tech Hub International",
+		},
+		{
+			id: "techHubDomestic",
+			text: "Tech Hub Domestic",
+			value: "Tech Hub Domestic",
 		},
 	]
 };
@@ -163,9 +168,9 @@ export const reportBudgetLine = {
 			value: "Entertainment",
 		},
 		{
-			id: "expoDay",
-			text: "Expo Day",
-			value: "Expo Day",
+			id: "exhibitionDay",
+			text: "Exhibition Day",
+			value: "Exhibition Day",
 		},
 		{
 			id: "externalEvents",
@@ -302,15 +307,40 @@ export const createdDate = {
 
 export const pnpLocation = {
 	class: "form-input",
-	id: "pnpLocation",
-	label: "PNP Location",
-	name: "pnpLocation",
+	id: "location",
+	label: "Location",
+	name: "location",
 	type: "select",
 	options: [
 		{
-			id: "pnpKorea",
-			text: "PNP - Korea",
-			value: "PNP - Korea",
+			id: "korea",
+			text: "Korea",
+			value: "korea",
+		},
+		{
+			id: "usa",
+			text: "USA",
+			value: "usa",
+		},
+		{
+			id: "japan",
+			text: "Japan",
+			value: "japan",
+		},
+		{
+			id: "india",
+			text: "India",
+			value: "india",
+		},
+		{
+			id: "springfield",
+			text: "Springfield",
+			value: "Springfield",
+		},
+		{
+			id: "canada",
+			text: "Canada",
+			value: "canada",
 		},
 	]
 };
@@ -323,9 +353,14 @@ export const requestedBy = {
 	type: "select",
 	options: [
 		{
-			id: "rachelChung",
-			text: "Rachel Chung",
-			value: "Rachel Chung",
+			id: "bartSimpson",
+			text: "Bart Simpson",
+			value: "Bart Simpson",
+		},
+		{
+			id: "lisaSimpson",
+			text: "Lisa Simpson",
+			value: "Lisa Simpson",
 		},
 	]
 };
@@ -338,19 +373,19 @@ export const approvedBy = {
 	type: "select",
 	options: [
 		{
-			id: "phillipVincent",
-			text: "Phillip Vincent",
-			value: "Phillip Vincent",
+			id: "homerSimpson",
+			text: "Homer Simpson",
+			value: "Homer Simpson",
 		},
 		{
-			id: "miguelBello",
-			text: "Miguel Bello",
-			value: "Miguel Bello",
+			id: "margeSimpson",
+			text: "Marge Simpson",
+			value: "Marge Simpson",
 		},
 		{
-			id: "brandonJoe",
-			text: "Brandon Joe",
-			value: "Brandon Joe",
+			id: "mrBurns",
+			text: "Mr. Burns",
+			value: "Mr. Burns",
 		},
 	]
 };

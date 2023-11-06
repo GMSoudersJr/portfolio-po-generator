@@ -26,14 +26,12 @@
 
 <label for={bankAddress.id}>
   {bankAddress.label}:
-  {#each bankAddress.options as entry (entry.id)}
-    <input
-      type={bankAddress.type}
-      id={bankAddress.id}
-      class={bankAddress.class}
-      on:input={handleInput}
-    >
-  {/each}
+  <input
+    type={bankAddress.type}
+    id={bankAddress.id}
+    class={bankAddress.class}
+    on:input={handleInput}
+  >
   </label>
 <input
     type="hidden"

@@ -42,7 +42,7 @@ export class Po {
 	paymentMethod: string | undefined;
 	reportingBudgetLine: string | undefined;
 	topicDivision: string | undefined;
-	pnpLocation: string | undefined;
+	location: string | undefined;
 	createdDate: string | undefined;
 	dueDate: string | undefined;
 	requestedBy: string | undefined;
@@ -55,7 +55,7 @@ export class Po {
 	poNumber: string | undefined,
 	dueDate: string | undefined,
 	createdDate: string | undefined,
-	pnpLocation: string | undefined,
+	location: string | undefined,
 	topicDivision: string | undefined,
 	reportingBudgetLine: string | undefined,
 	tax: number | undefined,
@@ -72,7 +72,7 @@ export class Po {
 		this.poNumber = poNumber;
 		this.dueDate = dueDate;
 		this.createdDate = createdDate;
-		this.pnpLocation = pnpLocation;
+		this.location = location;
 		this.topicDivision = topicDivision;
 		this.reportingBudgetLine = reportingBudgetLine;
 		this.tax = tax;

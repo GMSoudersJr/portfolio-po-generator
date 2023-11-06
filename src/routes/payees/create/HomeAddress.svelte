@@ -26,14 +26,12 @@
 
 <label for={homeAddress.id}>
   {homeAddress.label}:
-  {#each homeAddress.options as entry (entry.id)}
-    <input
-      type={homeAddress.type}
-      id={homeAddress.id}
-      class={homeAddress.class}
-      on:input={handleInput}
-    >
-  {/each}
+  <input
+    type={homeAddress.type}
+    id={homeAddress.id}
+    class={homeAddress.class}
+    on:input={handleInput}
+  >
 </label>
 <input
     type="hidden"

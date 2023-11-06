@@ -26,14 +26,12 @@
 
 <label for={routingNumber.id}>
   {routingNumber.label}:
-  {#each routingNumber.options as entry (entry.id)}
   <input
     class={routingNumber.class}
     type={routingNumber.type}
     id={routingNumber.id}
     on:input={handleInput}
   >
-  {/each}
 </label>
 <input
     type="hidden"
