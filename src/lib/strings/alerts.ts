@@ -1,0 +1,9 @@
+export const warning =  `Warning ⚠`;
+export const error = `Error ❌`;
+export const success = `Success ✔`;
+export const step1 = `Step 1: 📥 a New Cryption Key 🔐 `;
+export const step2 = `Step 2: 📤 an Existing Cryption Key 🔐`;
+export const transactionComplete = `IndexedDB transaction complete.  \nYou got this 😀`;
+export const noFileName = "No previous cryption file name found 🔍"
+export const ifTheyHaveKey = "If you have a key, jump to step 2."
+export const ifTheyNeedNewKey = "If you need a new key, do step 1, then step 2."

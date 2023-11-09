@@ -1,18 +1,30 @@
 <script lang="ts">
-	import {openDB} from "$lib/indexedDb";
+  import {
+    error,
+    ifTheyHaveKey,
+    ifTheyNeedNewKey,
+    noFileName,
+    step1,
+    step2,
+    success,
+    transactionComplete,
+    warning,
+  } from '$lib/strings/alerts'
+
+  import {
+    openDB,
+    dbName,
+    dbVersion,
+    objectStoreName
+  } from "$lib/indexedDb";
   import KeyHandler from "$lib/components/KeyHandler.svelte";
 
 	import {onMount} from "svelte";
   import type { ActionData } from "./$types";
-	import GenerateCryptionButton from "./GenerateCryptionButton.svelte";
-	import ImportKey from "./ImportKey.svelte";
   import PayeeForm from "./PayeeForm.svelte";
 
   let cryptionKey: CryptoKey | undefined;
   let db: IDBDatabase;
-  const dbName = "CryptionKey";
-  const dbVersion = 1;
-  const objectStoreName = "Encryption_Decryption_Key";
 
   export let form: ActionData;
   let key: CryptoKey;
@@ -26,20 +38,26 @@
 
       const request = window.indexedDB.open(dbName, dbVersion);
       request.onerror = (event) => {
-        alert(`There was an error getting the key: ${request.error}`);
+        alert(`${error}
+              \nCould not connect to IndexedDB: \n{request.error}`);
       }
       request.onsuccess = async (event) => {
         db = await (event.target as IDBRequest).result;
         const transaction = db.transaction(objectStoreName);
 
         transaction.oncomplete =  (event) => {
-          alert(`Reusing the same key`);
+          alert(transactionComplete);
         }
         const objectStore = transaction.objectStore(objectStoreName);
         const request = objectStore.get(cryptionKeyFileName);
 
         request.onerror = (event) => {
-          alert(`Error getting ${cryptionKeyFileName}'s key.`)
+          console.log(request);
+          alert(`${error}
+                \n Could not get ${cryptionKeyFileName}'s key.
+                \n${ifTheyHaveKey}\n${ifTheyNeedNewKey}
+                \n${step1}
+                \n${step2}`);
         }
 
         request.onsuccess = async (event) => {
@@ -48,11 +66,25 @@
             cryptionKey = await result.key;
             if ( cryptionKey ) {
               key = cryptionKey
+              alert(`${success}
+                    \nUsing previous key: ${cryptionKeyFileName}`);
             }
+          } else {
+            alert(`${warning}
+               \n${cryptionKeyFileName} was not found in the IndexedDB.
+               \nDatabase: ${db.name} \nVersion: ${db.version}
+                \n${ifTheyHaveKey}\n${ifTheyNeedNewKey}
+               \n${step1}
+               \n${step2}`);
           }
-          console.log(result);
         }
       }
+    } else {
+      alert(`${warning}
+         \n${noFileName}
+                \n${ifTheyHaveKey}\n${ifTheyNeedNewKey}
+         \n${step1}
+         \n${step2}`);
     }
   });
 

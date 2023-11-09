@@ -15,6 +15,8 @@
       const fileName = theFile.name;
       localStorage.setItem("cryptionKeyFileName", fileName);
       const importedKey = await importCryptoKey(JSON.parse(fileText));
+      alert(`Success ✔
+            \nImported: ${fileName}`);
       dispatch('importedKey', {
         importedKey,
         fileName
@@ -57,12 +59,13 @@
   input[type="file"]::file-selector-button {
     padding: 0.2rem 0.4rem;
     border-radius: 0.2rem;
-    background-color: #A29BFE;
+    background-color: #259259;
+    color: #fff;
     transition: 1s;
   }
 
   input[type="file"]::file-selector-button:hover {
-    background-color: #81ECEC;
+    background-color: #39FF14;
     border: 2px solid #00CEC9;
   }
 </style>

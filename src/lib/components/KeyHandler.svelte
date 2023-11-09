@@ -4,10 +4,10 @@
 </script>
 
 <section class="key-container">
+  <GenerateCryptionButton />
   <ImportKey
     on:importedKey
   />
-  <GenerateCryptionButton />
 </section>
 
 <style>

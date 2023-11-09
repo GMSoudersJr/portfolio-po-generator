@@ -1,13 +1,14 @@
 import { importCryptoKey} from "./cryption";
-const dbName = "CryptionKey";
-const dbVersion = 1;
-const objectStoreName = "Encryption_Decryption_Key";
+export const dbName = "CryptionKey";
+export const dbVersion = 1;
+export const objectStoreName = "Encryption_Decryption_Key";
 const fileExtension = ".jwk";
 let db: IDBDatabase;
 export async function openDB() {
     const request = window.indexedDB.open(dbName, dbVersion);
     request.onerror = (event) => {
-        alert(`Error @createDB: ${request.error}`);
+        alert(`Error ❌
+              \nIndexedDB: \n${request.error}`);
     }
 
     request.onupgradeneeded = (event) => {
@@ -15,12 +16,15 @@ export async function openDB() {
 
         const cryptionKeyObjectStore = db
             .createObjectStore(objectStoreName, {keyPath: "fileName"});
-        alert(`Upgrade called on database: ${db.name} version: ${db.version}`);
+        alert(`Success ✔
+              \nIndexedDB database: ${db.name} \nUpgraded to version: ${db.version}`);
     }
 
     request.onsuccess = (event) => {
         db = (event.target as IDBRequest).result;
-        alert(`Success called on database: ${db.name} version: ${db.version}`);
+        alert(`Success ✔
+              \nConnected to IndexedDB!
+              \nDatabase: ${db.name} \nVersion: ${db.version}`);
     }
 }
 
@@ -32,24 +36,30 @@ export async function addToDb(file: File) {
     }
     const request = window.indexedDB.open(dbName, dbVersion);
     request.onerror = (event) => {
-        alert(`@addToDb: ${request.error}`);
+        alert(`Error adding data to IndexedDB: \n\t${request.error}`);
     }
     request.onsuccess = (event) => {
         db = (event.target as IDBRequest).result;
         const transaction = db.transaction(objectStoreName, "readwrite");
         transaction.onerror = (event) => {
-            console.log("Error @addToDb transaction");
+            console.log(`Transaction Error: \n\t${transaction.error}`);
         }
         transaction.oncomplete = (event) => {
-            alert(`Successfully imported ${file.name}`);
+          alert(`IndexedDB transaction complete.
+                \nYou got this 😀`);
         }
         const objectStore = transaction.objectStore(objectStoreName);
         const request = objectStore.put(key)
         request.onsuccess = (event) => {
-            //alert("Successfully added the key");
+            alert(`Success ✔
+                  \nAdded: ${file.name}
+                  \nto IndexedDB: ${transaction.db.name} \nVersion: ${transaction.db.version}`);
         }
         request.onerror = (event) => {
-            alert(`Error importing ${file.name}: ${request.error}`)
+            alert(`Error ❌
+                  \n${file.name} not added to IndexedDB.
+                  \n${request.error}
+                  \nPlease try again.`);
         }
     }
 }
