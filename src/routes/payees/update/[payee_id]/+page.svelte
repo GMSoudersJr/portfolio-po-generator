@@ -98,6 +98,7 @@
     key = event.detail.importedKey;
     importedCryptionKeyFileName = event.detail.fileName;
   }
+  $: purpose = data.purpose;
 </script>
 
 <main class="page-container">
@@ -114,6 +115,7 @@
     <p class="form-success">{form.message}</p>
     {/if}
     <PayeeForm
+      {purpose}
       {payeeData}
       {key}
     />

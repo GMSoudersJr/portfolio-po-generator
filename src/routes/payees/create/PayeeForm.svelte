@@ -28,6 +28,9 @@
   import type { Document } from "mongodb";
   import { decryptTheData } from "$lib/cryption";
   import { splitEncrypted } from "$lib/utils";
+	import UpdateButton from './UpdateButton.svelte';
+	import DeleteButton from './DeleteButton.svelte';
+	import ButtonContainer from './ButtonContainer.svelte';
 
   let cryptionKey: CryptoKey | undefined;
   let db: IDBDatabase;
@@ -108,6 +111,7 @@
 
   export let key: CryptoKey;
   export let payeeData: Document | undefined;
+  export let purpose = ['create'];
 </script>
 
 <form
@@ -152,7 +156,7 @@
     {decryptedSwiftCode}
     {key}
   />
-  <SubmitButton />
+  <ButtonContainer {purpose} />
 </form>
 
 
