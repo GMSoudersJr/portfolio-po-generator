@@ -5,8 +5,10 @@
 
   const dispatch = createEventDispatcher();
 
+  export let decryptedBankAccountNumber: string;
   export let key: CryptoKey;
   $: encryptedValue = "";
+  $: value = decryptedBankAccountNumber || "";
   async function handleInput(event: Event) {
       const target = event.target as HTMLInputElement;
       let encryptedData = await encryptTheData(key, target.value)
@@ -28,9 +30,10 @@
   {bankAccountNumber.label}:
   <input
     class={bankAccountNumber.class}
-    type={bankAccountNumber.type}
+    type="text"
     id={bankAccountNumber.id}
     on:input={handleInput}
+    bind:value={value}
     required
   >
 </label>

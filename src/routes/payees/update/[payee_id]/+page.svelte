@@ -1,4 +1,7 @@
 <script lang="ts">
+  import PayeeForm from "../../create/PayeeForm.svelte";
+  import KeyHandler from "$lib/components/KeyHandler.svelte";
+  import type { PageData } from "./$types";
   import {
     error,
     greeting,
@@ -19,10 +22,8 @@
     objectStoreName
   } from "$lib/indexedDb";
 
-  import KeyHandler from "$lib/components/KeyHandler.svelte";
 	import {onMount} from "svelte";
-  import type { ActionData } from "./$types";
-  import PayeeForm from "./PayeeForm.svelte";
+  import type { ActionData } from "../../create/$types";
 
   let cryptionKey: CryptoKey | undefined;
   let db: IDBDatabase;
@@ -47,7 +48,8 @@
         const transaction = db.transaction(objectStoreName);
 
         transaction.oncomplete =  (event) => {
-          alert(transactionComplete);
+          alert(`${transactionComplete}
+                \nDecrypting Data...`);
         }
         const objectStore = transaction.objectStore(objectStoreName);
         const request = objectStore.get(cryptionKeyFileName);
@@ -89,11 +91,13 @@
     }
   });
 
+
+  export let data: PageData;
+  const payeeData = data.payeeData;
   async function handleImportKey(event: CustomEvent) {
     key = event.detail.importedKey;
     importedCryptionKeyFileName = event.detail.fileName;
   }
-  const payeeData = undefined;
 </script>
 
 <main class="page-container">

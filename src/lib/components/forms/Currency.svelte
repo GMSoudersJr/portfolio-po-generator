@@ -2,7 +2,8 @@
   import { currency } from "$lib/strings/poForm";
 
   export let clickedPayeeCurrency: string = currency.options[0].value;
-  $: selected = clickedPayeeCurrency || "krw";
+  export let value: string;
+  $: selected = value || clickedPayeeCurrency || "krw";
 </script>
 
 <label for={currency.id}>

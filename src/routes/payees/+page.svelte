@@ -4,8 +4,9 @@
 	import {goto} from "$app/navigation";
   import GotoFormButton from "$lib/components/GotoFormButton.svelte";
 
-  async function handleClickedPayee() {
-    await goto('/purchaseOrders/create');
+  async function handleClickedPayee(event: CustomEvent) {
+    const payee_id = event.detail.payee._id;
+    await goto(`/payees/update/${payee_id}`);
   }
 
   const pathUrl = '/payees/create';

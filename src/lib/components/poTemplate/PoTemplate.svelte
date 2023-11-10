@@ -13,13 +13,15 @@
   import Title from "./Title.svelte";
   import { decryptTheData } from "$lib/cryption";
   import { splitEncrypted } from "$lib/utils";
+  import {
+    dbName,
+    dbVersion,
+    objectStoreName
+  } from "$lib/indexedDb";
 
 	import {onMount} from "svelte";
   let cryptionKey: CryptoKey | undefined;
   let db: IDBDatabase;
-  const dbName = "CryptionKey";
-  const dbVersion = 1;
-  const objectStoreName = "Encryption_Decryption_Key";
 
   onMount(async() => {
     const cryptionKeyFileName = localStorage.getItem("cryptionKeyFileName")

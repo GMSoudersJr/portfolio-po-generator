@@ -1,7 +1,8 @@
 <script lang="ts">
   import { reportBudgetLine } from "$lib/strings/poForm";
 
-  $: selected = reportBudgetLine.options.at(0)?.value;
+  export let value: string;
+  $: selected = value || reportBudgetLine.options.at(0)?.value;
 </script>
 
 <label for={reportBudgetLine.id}>

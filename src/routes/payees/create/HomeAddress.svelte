@@ -5,8 +5,11 @@
 
   const dispatch = createEventDispatcher();
 
+  export let decryptedHomeAddress: string;
   export let key: CryptoKey;
+
   $: encryptedValue = "";
+  $: value = decryptedHomeAddress || "";
   async function handleInput(event: Event) {
       const target = event.target as HTMLInputElement;
       let encryptedData = await encryptTheData(key, target.value)
@@ -27,9 +30,10 @@
 <label for={homeAddress.id}>
   {homeAddress.label}:
   <input
-    type={homeAddress.type}
+    type="text"
     id={homeAddress.id}
     class={homeAddress.class}
+    bind:value={value}
     on:input={handleInput}
   >
 </label>

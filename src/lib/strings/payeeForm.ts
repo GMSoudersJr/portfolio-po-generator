@@ -78,10 +78,28 @@ export const payeeTypeAndTax = {
 	type: "select",
 	options: [
 		{
-			id: "employee",
-			value: "Employee",
-			text: "Employee",
-			taxRate: 0,
+			id: "employeeFulltime",
+			value: "Employee (Full-time)",
+			text: "Employee (Full-time)",
+			taxRate: 0.1,
+		},
+		{
+			id: "employeeParttime",
+			value: "Employee (Part-time)",
+			text: "Employee (Part-time)",
+			taxRate: 0.15,
+		},
+		{
+			id: "employeeSeasonal",
+			value: "Employee (Seasonal)",
+			text: "Employee (Seasonal)",
+			taxRate: 0.3,
+		},
+		{
+			id: "employeeTemporary",
+			value: "Employee (Temporary)",
+			text: "Employee (Temporary)",
+			taxRate: 0.3,
 		},
 		{
 			id: "freelancerAbroad",
@@ -93,13 +111,19 @@ export const payeeTypeAndTax = {
 			id: "freelancerDomesticLongTerm",
 			value: "Freelancer (Domestic Long-Term)",
 			text: "Freelancer (Domestic Long-Term)",
-			taxRate: 0,
+			taxRate: 0.1,
 		},
 		{
 			id: "freelancerDomesticOneOff",
 			value: "Freelancer (Domestic One-Off)",
 			text: "Freelancer (Domestic One-Off)",
 			taxRate: 0,
+		},
+		{
+			id: "independentContractor",
+			value: "Independent Contractor",
+			text: "Independent Contractor",
+			taxRate: 0.2,
 		},
 		{
 			id: "vendorAbroad",

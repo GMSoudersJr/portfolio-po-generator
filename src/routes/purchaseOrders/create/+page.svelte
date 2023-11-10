@@ -1,6 +1,7 @@
 <script lang="ts">
   import {
     error,
+    greeting,
     ifTheyHaveKey,
     ifTheyNeedNewKey,
     noFileName,
@@ -144,7 +145,7 @@
         }
       }
     } else {
-      alert(`${warning}
+      alert(`${greeting}
          \n${noFileName}
          \n${ifTheyHaveKey}\n${ifTheyNeedNewKey}
          \n${step1}

@@ -5,8 +5,10 @@
 
   const dispatch = createEventDispatcher();
 
+  export let decryptedIban: string;
   export let key: CryptoKey;
   $: encryptedValue = "";
+  $: value = decryptedIban || "";
   async function handleInput(event: Event) {
       const target = event.target as HTMLInputElement;
       let encryptedData = await encryptTheData(key, target.value)
@@ -28,8 +30,9 @@
   {iban.label}:
   <input
     class={iban.class}
-    type={iban.type}
+    type="text"
     id={iban.id}
+    bind:value={value}
     on:input={handleInput}
   >
 </label>

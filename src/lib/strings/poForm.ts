@@ -118,24 +118,29 @@ export const topicDivision = {
 	type: "select",
 	options: [
 		{
-			id: "general",
-			text: "General",
-			value: "General",
+			id: "accountingAndFinance",
+			text: "Accounting / Finance",
+			value: "Accounting / Finance",
 		},
 		{
-			id: "government",
-			text: "Government",
-			value: "Government",
+			id: "customerService",
+			text: "Customer Service",
+			value: "Customer Service",
 		},
 		{
-			id: "techHubInternational",
-			text: "Tech Hub International",
-			value: "Tech Hub International",
+			id: "manufacturing",
+			text: "Manufacturing",
+			value: "Manufacturing",
 		},
 		{
-			id: "techHubDomestic",
-			text: "Tech Hub Domestic",
-			value: "Tech Hub Domestic",
+			id: "marketing",
+			text: "Marketing",
+			value: "Marketing",
+		},
+		{
+			id: "researchAndDevelopment",
+			text: "Research & Development",
+			value: "Research & Development",
 		},
 	]
 };

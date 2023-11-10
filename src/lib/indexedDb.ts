@@ -1,4 +1,11 @@
 import { importCryptoKey} from "./cryption";
+import {
+    connected,
+    deleteDatabaseError,
+    deleteDatabaseSuccess,
+    error,
+    success,
+} from "./strings/alerts";
 export const dbName = "CryptionKey";
 export const dbVersion = 1;
 export const objectStoreName = "Encryption_Decryption_Key";
@@ -16,17 +23,50 @@ export async function openDB() {
 
         const cryptionKeyObjectStore = db
             .createObjectStore(objectStoreName, {keyPath: "fileName"});
-        alert(`Success ✔
+        alert(`${success}
               \nIndexedDB database: ${db.name} \nUpgraded to version: ${db.version}`);
     }
 
     request.onsuccess = (event) => {
         db = (event.target as IDBRequest).result;
-        alert(`Success ✔
-              \nConnected to IndexedDB!
+        alert(`${success}
+              \n${connected}
               \nDatabase: ${db.name} \nVersion: ${db.version}`);
     }
-}
+};
+
+export function deleteFromIndexedDB(fileName: string) {
+    const request = window.indexedDB.open(dbName, dbVersion);
+    request.onerror = (event) => {
+        alert(`${error}
+              \nCould not delete ${fileName}
+              \nDatabase: ${dbName} \nVersion: ${dbVersion}`)
+    }
+    request.onsuccess = (event) => {
+        db = (event.target as IDBRequest).result;
+        const request = db
+            .transaction(objectStoreName, "readwrite")
+            .objectStore(objectStoreName)
+            .delete(fileName);
+            request.onsuccess = (event) => {
+                alert(`${success}
+                      \nRemoved ${fileName} from IndexedDB.
+                      \n${dbName} \n{dbVersion}`);
+            }
+    }
+};
+
+export function deleteDB() {
+    const DBDeleteRequest = window.indexedDB.deleteDatabase(dbName);
+    DBDeleteRequest.onerror = (event) => {
+        alert(`${error}
+              \n${deleteDatabaseError}`)
+    }
+    DBDeleteRequest.onsuccess = (event) => {
+        alert(`${success}
+              \n${deleteDatabaseSuccess}`)
+    }
+};
 
 export async function addToDb(file: File) {
     const cryptionKey = await importCryptoKey(JSON.parse(await file.text()));
@@ -62,7 +102,7 @@ export async function addToDb(file: File) {
                   \nPlease try again.`);
         }
     }
-}
+};
 
 export async function existingKeys() {
     const request = window.indexedDB.open(dbName, dbVersion);
@@ -106,7 +146,7 @@ export async function existingKeys() {
             }
         }
     }
-}
+};
 
 export async function getKey(fileName: string) {
     const request = window.indexedDB.open(dbName, dbVersion);
@@ -139,4 +179,4 @@ export async function getKey(fileName: string) {
         console.log(cryptionKey);
         return cryptionKey;
     }
-}
+};

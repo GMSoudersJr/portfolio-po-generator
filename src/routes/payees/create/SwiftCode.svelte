@@ -5,8 +5,10 @@
 
   const dispatch = createEventDispatcher();
 
+  export let decryptedSwiftCode: string;
   export let key: CryptoKey;
   $: encryptedValue = "";
+  $: value = decryptedSwiftCode || "";
   async function handleInput(event: Event) {
       const target = event.target as HTMLInputElement;
       let encryptedData = await encryptTheData(key, target.value)
@@ -28,8 +30,9 @@
   {SwiftCode.label}:
   <input
     class={SwiftCode.class}
-    type={SwiftCode.type}
+    type="text"
     id={SwiftCode.id}
+    bind:value={value}
     on:input={handleInput}
   >
 </label>

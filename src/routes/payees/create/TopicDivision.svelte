@@ -17,7 +17,8 @@
     })
   }
 
-  $: selected = topicDivision.options.at(0)?.value;
+  export let value: string;
+  $: selected = value || topicDivision.options.at(0)?.value;
 </script>
 
 <label for={topicDivision.id}>

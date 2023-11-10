@@ -5,8 +5,10 @@
 
   const dispatch = createEventDispatcher();
 
+  export let decryptedRoutingNumber: string;
   export let key: CryptoKey;
   $: encryptedValue = "";
+  $: value = decryptedRoutingNumber || "";
   async function handleInput(event: Event) {
       const target = event.target as HTMLInputElement;
       let encryptedData = await encryptTheData(key, target.value)
@@ -28,8 +30,9 @@
   {routingNumber.label}:
   <input
     class={routingNumber.class}
-    type={routingNumber.type}
+    type="text"
     id={routingNumber.id}
+    bind:value={value}
     on:input={handleInput}
   >
 </label>

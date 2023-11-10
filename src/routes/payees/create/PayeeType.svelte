@@ -1,5 +1,8 @@
 <script lang="ts">
   import { payeeTypeAndTax } from "$lib/strings/payeeForm"
+
+  export let value: string;
+  $: selected = value || payeeTypeAndTax.options.at(0)?.value;
 </script>
 
 <label for={payeeTypeAndTax.id}>
@@ -8,6 +11,7 @@
     class={payeeTypeAndTax.class}
     name={payeeTypeAndTax.name}
     id={payeeTypeAndTax.id}
+    bind:value={selected}
     required
   >
     {#each payeeTypeAndTax.options as payeeType (payeeType.id)}

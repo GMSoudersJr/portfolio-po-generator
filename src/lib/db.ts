@@ -16,6 +16,31 @@ const payeeCollection = db.collection('payees');
 const poCollection = db.collection('pos');
 const usersCollection = db.collection('users');
 
+export async function getPayee(payee_id: string) {
+	const aggregate = [
+		{
+			'$match': {
+				'_id': new ObjectId(payee_id)
+			}
+		}, {
+			$project: {
+				_id: 0
+			}
+		}
+	];
+	try {
+		await client.connect();
+		console.log("Successfully connected to the database to get a payee.");
+		const payeeDocument = await payeeCollection.aggregate(aggregate).toArray();
+		return payeeDocument[0];
+	} catch (error) {
+		console.log("There was an error getting the payee.", error)
+	} finally {
+		await client.close();
+		console.log("Closed the database connection @getPayee.")
+	}
+}
+
 export async function getPoForPdfGeneration(po_id: string) {
 	const aggregate = [
 		{
