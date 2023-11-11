@@ -51,7 +51,7 @@
   .payee-card {
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: auto;
+    grid-template-rows: auto-fill;
     grid-template-areas:
     "header"
     "body";

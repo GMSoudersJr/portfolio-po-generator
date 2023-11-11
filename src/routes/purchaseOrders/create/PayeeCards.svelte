@@ -30,8 +30,8 @@
     grid-template-rows: auto;
     gap: 0.25rem;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
     padding: 1rem;
-    justify-self: center;
+
   }
 </style>
