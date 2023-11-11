@@ -7,7 +7,7 @@
 
   export let decryptedBankAddress: string;
   export let key: CryptoKey;
-  $: encryptedValue = "";
+  export let encryptedValue: string;
   $: value = decryptedBankAddress || "";
   async function handleInput(event: Event) {
       const target = event.target as HTMLInputElement;

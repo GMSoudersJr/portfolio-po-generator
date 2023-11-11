@@ -6,8 +6,8 @@
   const dispatch = createEventDispatcher();
 
   export let decryptedNationalIdOrBusinessRegistrationNumber: string;
+  export let encryptedValue: string;
   export let key: CryptoKey;
-  $: encryptedValue = "";
   async function handleInput(event: Event) {
       const target = event.target as HTMLInputElement;
       let encryptedData = await encryptTheData(key, target.value)
@@ -33,6 +33,7 @@
     type="text"
     id={nationaIdOrBusinessRegistration.id}
     bind:value={value}
+    name="unencryptedNatIdBusReg"
     on:input={handleInput}
   >
 </label>

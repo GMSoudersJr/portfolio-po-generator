@@ -7,8 +7,8 @@
 
   export let decryptedHomeAddress: string;
   export let key: CryptoKey;
+  export let encryptedValue: string;
 
-  $: encryptedValue = "";
   $: value = decryptedHomeAddress || "";
   async function handleInput(event: Event) {
       const target = event.target as HTMLInputElement;

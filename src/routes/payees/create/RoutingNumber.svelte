@@ -7,7 +7,7 @@
 
   export let decryptedRoutingNumber: string;
   export let key: CryptoKey;
-  $: encryptedValue = "";
+  export let encryptedValue: string;
   $: value = decryptedRoutingNumber || "";
   async function handleInput(event: Event) {
       const target = event.target as HTMLInputElement;

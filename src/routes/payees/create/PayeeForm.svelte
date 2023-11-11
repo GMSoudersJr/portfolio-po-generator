@@ -20,7 +20,6 @@
 	import NationalIdOrBusinessRegistration from "./NationalIDOrBusinessRegistration.svelte";
   import PayeeType from "./PayeeType.svelte";
 	import RoutingNumber from "./RoutingNumber.svelte";
-	import SubmitButton from "./SubmitButton.svelte";
 	import SwiftCode from "./SwiftCode.svelte";
 	import TopicDivision from "./TopicDivision.svelte";
 	import ReportingBudgetLine from "./ReportingBudgetLine.svelte";
@@ -28,8 +27,6 @@
   import type { Document } from "mongodb";
   import { decryptTheData } from "$lib/cryption";
   import { splitEncrypted } from "$lib/utils";
-	import UpdateButton from './UpdateButton.svelte';
-	import DeleteButton from './DeleteButton.svelte';
 	import ButtonContainer from './ButtonContainer.svelte';
 
   let cryptionKey: CryptoKey | undefined;
@@ -46,7 +43,7 @@
         db = await (event.target as IDBRequest).result;
         const transaction = db.transaction(objectStoreName);
         transaction.oncomplete =  (event) => {
-          alert(transactionComplete);
+          //alert(transactionComplete);
         }
         const objectStore = transaction.objectStore(objectStoreName);
         const request = objectStore.get(cryptionKeyFileName);
@@ -124,35 +121,43 @@
   <TopicDivision value={payeeData?.topicDivision}/>
   <ReportingBudgetLine value={payeeData?.reportingBudgetLine}/>
   <NationalIdOrBusinessRegistration
+    encryptedValue = {payeeData?.nationalIdOrBusinessRegistrationNumber}
     {decryptedNationalIdOrBusinessRegistrationNumber}
     {key}
   />
   <Currency value={payeeData?.currency}/>
   <HomeAddress
+    encryptedValue = {payeeData?.homeAddress}
     {decryptedHomeAddress}
     {key}
   />
   <BankName
+    encryptedValue = {payeeData?.bankName}
     {decryptedBankName}
     {key}
   />
   <BankAccountNumber
+    encryptedValue = {payeeData?.bankAccountNumber}
     {decryptedBankAccountNumber}
     {key}
   />
   <Iban
+    encryptedValue = {payeeData?.iban}
     {decryptedIban}
     {key}
   />
   <BankAddress
+    encryptedValue = {payeeData?.bankAddress}
     {decryptedBankAddress}
     {key}
   />
   <RoutingNumber
+    encryptedValue = {payeeData?.routingNumber}
     {decryptedRoutingNumber}
     {key}
   />
   <SwiftCode
+    encryptedValue = {payeeData?.swiftCode}
     {decryptedSwiftCode}
     {key}
   />

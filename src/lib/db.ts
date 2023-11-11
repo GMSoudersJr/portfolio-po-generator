@@ -16,6 +16,32 @@ const payeeCollection = db.collection('payees');
 const poCollection = db.collection('pos');
 const usersCollection = db.collection('users');
 
+export async function deletePayee(payee_id: string) {
+	const aggregate = [
+		{
+			'$match': {
+				'_id': new ObjectId(payee_id)
+			}
+		}, {
+			$project: {
+				_id: 0
+			}
+		}
+	];
+	const payeeToDelete = { _id: new ObjectId(payee_id) }
+	try {
+		await client.connect();
+		console.log("Successfully connected to the database to delete a payee.");
+		const deletedPayee = await payeeCollection.findOneAndDelete(payeeToDelete);
+		return deletedPayee;
+	} catch (error) {
+		console.log("There was an error getting the payee to delete.", error)
+	} finally {
+		await client.close();
+		console.log("Closed the database connection @deletePayee.")
+	}
+};
+
 export async function getPayee(payee_id: string) {
 	const aggregate = [
 		{
@@ -39,7 +65,7 @@ export async function getPayee(payee_id: string) {
 		await client.close();
 		console.log("Closed the database connection @getPayee.")
 	}
-}
+};
 
 export async function getPoForPdfGeneration(po_id: string) {
 	const aggregate = [
@@ -85,7 +111,7 @@ export async function getPoForPdfGeneration(po_id: string) {
 		await client.close();
 		console.log("Closed the database connection @getPoForPdfGeneration.")
 	}
-}
+};
 
 export async function getPosForOverview() {
 	const aggregate = [
@@ -125,7 +151,7 @@ export async function getPosForOverview() {
 		await client.close();
 		console.log("Closed the database connection @getAllPos.")
 	}
-}
+};
 
 export async function addPoToTheDatabase(po: Po) {
 	try {
@@ -138,7 +164,7 @@ export async function addPoToTheDatabase(po: Po) {
 	} finally {
 		await client.close();
 	}
-}
+};
 
 export async function registerNewUser(user: User) {
 	try {
@@ -152,8 +178,8 @@ export async function registerNewUser(user: User) {
 		await client.close();
 		console.log("Closed the database connection @registerUser.")
 	}
+};
 
-}
 export async function addPayee(payee: Payee) {
 	try {
 		await client.connect();
@@ -166,7 +192,33 @@ export async function addPayee(payee: Payee) {
 		await client.close();
 		console.log("Closed the payee database connection.")
 	}
-}
+};
+
+export async function updatePayee(payee: Payee, payee_id: string) {
+	const filter = { _id: new ObjectId(payee_id) };
+	try {
+		await client.connect();
+		console.log("Successfully connected to the database.")
+		const result = await payeeCollection.findOneAndReplace(
+			filter,
+			payee,
+			{
+				returnDocument: "after",
+				upsert: true,
+				projection: {
+					_id: {
+						$toString: "$_id"
+					}
+				}
+			})
+		return result
+	} catch (error) {
+		console.log("Error adding a payee", error)
+	} finally {
+		await client.close();
+		console.log("Closed the payee database connection.")
+	}
+};
 
 export async function findUser(username: string|undefined) {
 	const aggregate = [

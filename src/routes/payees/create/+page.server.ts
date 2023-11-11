@@ -33,7 +33,6 @@ const currencyNameString= "currency";
 export const actions = {
 	add: async ({ request, locals, url }) => {
 		const data = await request.formData();
-		console.log(`${url.pathname.toString()} LOCALS`, locals)
 
 		const formBeneficiaryNameData = trimTheFormData(data.get(beneficiaryNameString));
 		const formPayeeTypeData = trimTheFormData(data.get(payeeTypeNameString));
