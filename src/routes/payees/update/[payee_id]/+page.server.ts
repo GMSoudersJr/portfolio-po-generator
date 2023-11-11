@@ -35,7 +35,6 @@ export const actions = {
 	update: async ({ params, request }) => {
 		const payee_id = params.payee_id.toString();
 		const data = await request.formData();
-		console.log(data);
 		const formBeneficiaryNameData = trimTheFormData(data.get(beneficiaryNameString));
 		const formPayeeTypeData = trimTheFormData(data.get(payeeTypeNameString));
 		const formNationalIdOrBusinessRegistrationData =
