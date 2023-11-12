@@ -57,6 +57,7 @@
     "body";
     row-gap: 0.25rem;
     padding: 0.5rem;
+    justify-content: center;
   }
   .header {
     grid-area: header;
