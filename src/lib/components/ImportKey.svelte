@@ -1,7 +1,6 @@
 <script lang="ts">
-    import {importCryptoKey} from "$lib/cryption";
-    import { openDB, addToDb } from "$lib/indexedDb";
-
+  import { importCryptoKey } from "$lib/cryption";
+  import { openDB, addToDb } from "$lib/indexedDb";
   import { createEventDispatcher } from "svelte";
 
   const dispatch = createEventDispatcher();
@@ -23,6 +22,10 @@
       });
       await openDB();
       await addToDb(theFile);
+      let keyDialog = document.getElementById("key-dialog") as HTMLDialogElement;
+      if (keyDialog) {
+        keyDialog.close();
+      }
     } else {
       const importedKey = undefined;
       localStorage.clear();
@@ -35,7 +38,7 @@
 
 <div class="import-key-container" >
   <label for="import-key">
-    📤 an Existing Cryption Key 🔐:
+    📤 Import an Existing Cryption Key 🔐:
   </label>
   <input
     type="file"
@@ -52,9 +55,9 @@
   }
   .import-key-container {
     display: grid;
-    grid-template-columns: min-content;
+    grid-template-columns: max-content;
     grid-template-rows: repeat(2, min-content);
-    row-gap: 0.5rem;
+    row-gap: 0.6rem;
   }
   input[type="file"]::file-selector-button {
     padding: 0.2rem 0.4rem;
@@ -63,7 +66,6 @@
     color: #fff;
     transition: 1s;
   }
-
   input[type="file"]::file-selector-button:hover {
     background-color: #39FF14;
     border: 2px solid #00CEC9;

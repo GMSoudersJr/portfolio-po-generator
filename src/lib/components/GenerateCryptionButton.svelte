@@ -9,7 +9,7 @@
   class="cryption-key-button"
   on:click={handleClick}
 >
-  📥 a New Cryption Key 🔐
+  📥 Download a New Cryption Key 🔐
 </button>
 
 <style>

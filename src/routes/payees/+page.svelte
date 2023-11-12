@@ -1,13 +1,82 @@
 <script lang="ts">
+  import {
+    error,
+    success,
+  } from '$lib/strings/alerts'
+
   import PayeeCards from "../purchaseOrders/create/PayeeCards.svelte";
   import type { PageData } from "./$types";
 	import {goto} from "$app/navigation";
   import GotoFormButton from "$lib/components/GotoFormButton.svelte";
+	import {onMount} from "svelte";
+  import {
+    openDB,
+    dbName,
+    dbVersion,
+    objectStoreName
+  } from "$lib/indexedDb";
+	import KeyDialog from '$lib/components/KeyDialog.svelte';
+
+  let db: IDBDatabase;
+  let cryptionKey: CryptoKey | undefined;
+  let key: CryptoKey;
+  let cryptionKeyFileName: IDBValidKey;
+
 
   async function handleClickedPayee(event: CustomEvent) {
     const payee_id = event.detail.payee._id;
     await goto(`/payees/update/${payee_id}`);
   }
+
+  onMount(async() => {
+    cryptionKeyFileName = localStorage.getItem("cryptionKeyFileName") as IDBValidKey;
+    const keyDialog = document.getElementById("key-dialog") as HTMLDialogElement;
+    if (cryptionKeyFileName) {
+      await openDB();
+      const request = window.indexedDB.open(dbName, dbVersion);
+      request.onerror = (event) => {
+        alert(`${error}
+              \nCould not connect to IndexedDB: \n{request.error}`);
+      }
+      request.onsuccess = async (event) => {
+        db = await (event.target as IDBRequest).result;
+        const transaction = db.transaction(objectStoreName);
+
+        transaction.oncomplete =  (event) => {
+          console.log("Transaction complete on Payee Page.");
+        }
+        const objectStore = transaction.objectStore(objectStoreName);
+        const request = objectStore.get(cryptionKeyFileName);
+
+        request.onerror = (event) => {
+          if (keyDialog) {
+            keyDialog.showModal();
+          }
+        }
+
+        request.onsuccess = async (event) => {
+          const result = await (event.target as IDBRequest).result;
+          if ( result ) {
+            cryptionKey = await result.key;
+            if ( cryptionKey ) {
+              key = cryptionKey;
+              keyDialog.close();
+              alert(`${success}
+                    \nUsing Cryption Key: ${cryptionKeyFileName}`);
+            }
+          } else {
+            if (keyDialog) {
+              keyDialog.showModal();
+            }
+          }
+        }
+      }
+    } else {
+      if (keyDialog) {
+        keyDialog.showModal();
+      }
+    }
+  });
 
   const pathUrl = '/payees/create';
   export let data: PageData;
@@ -22,6 +91,7 @@
     <GotoFormButton {pathUrl}/>
   </div>
   <section class="available-payees-section">
+  <KeyDialog />
   {#if payees && payees.length > 0}
     <PayeeCards
       on:clickedPayee={handleClickedPayee}

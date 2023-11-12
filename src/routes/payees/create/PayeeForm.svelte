@@ -31,6 +31,7 @@
 
   let cryptionKey: CryptoKey | undefined;
   let db: IDBDatabase;
+
   onMount(async() => {
     const cryptionKeyFileName = localStorage.getItem("cryptionKeyFileName")
     if (cryptionKeyFileName) {
@@ -69,27 +70,31 @@
                 await decryptDataFromDatabase(payeeData.nationalIdOrBusinessRegistrationNumber);
             }
             if ( payeeData?.homeAddress ) {
-              decryptedHomeAddress = await decryptDataFromDatabase(payeeData.homeAddress);
+              decryptedHomeAddress =
+                await decryptDataFromDatabase(payeeData.homeAddress);
             }
             if ( payeeData?.bankName ) {
-              decryptedBankName = await decryptDataFromDatabase(payeeData.bankName);
+              decryptedBankName =
+                await decryptDataFromDatabase(payeeData.bankName);
             }
             if ( payeeData?.bankAccountNumber ) {
-              decryptedBankAccountNumber = await
-              decryptDataFromDatabase(payeeData.bankAccountNumber);
+              decryptedBankAccountNumber =
+                await decryptDataFromDatabase(payeeData.bankAccountNumber);
             }
             if ( payeeData?.iban ) {
               decryptedIban = await decryptDataFromDatabase(payeeData.iban);
             }
             if ( payeeData?.bankAddress ) {
-              decryptedBankAddress = await decryptDataFromDatabase(payeeData.bankAddress);
+              decryptedBankAddress =
+                await decryptDataFromDatabase(payeeData.bankAddress);
             }
             if ( payeeData?.routingNumber ) {
-              decryptedRoutingNumber = await
-              decryptDataFromDatabase(payeeData.routingNumber);
+              decryptedRoutingNumber =
+                await decryptDataFromDatabase(payeeData.routingNumber);
             }
             if ( payeeData?.swiftCode ) {
-              decryptedSwiftCode = await decryptDataFromDatabase(payeeData.swiftCode);
+              decryptedSwiftCode =
+                await decryptDataFromDatabase(payeeData.swiftCode);
             }
           }
         }

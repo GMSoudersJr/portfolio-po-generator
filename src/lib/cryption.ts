@@ -60,18 +60,22 @@ export async function generateCryptoKey() {
 };
 
 export async function decryptTheData(key: CryptoKey, cipherText: ArrayBuffer, iv: ArrayBuffer) {
-	let decrypted = await crypto.subtle.decrypt(
-		{
-			name: "AES-GCM",
-			iv: iv
-		},
-		key,
-		cipherText
-	);
+	try {
+		let decrypted = await crypto.subtle.decrypt(
+			{
+				name: "AES-GCM",
+				iv: iv
+			},
+			key,
+			cipherText
+		);
 
-	let dec = new TextDecoder();
-	let decryptedText = dec.decode(decrypted);
+		let dec = new TextDecoder();
+		let decryptedText = dec.decode(decrypted);
 
-	return decryptedText;
+		return decryptedText;
+	} catch (error) {
+		return "Invalid Key"
+	}
 };
 

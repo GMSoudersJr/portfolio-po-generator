@@ -1,18 +1,10 @@
 <script lang="ts">
   import PayeeForm from "../../create/PayeeForm.svelte";
-  import KeyHandler from "$lib/components/KeyHandler.svelte";
   import type { PageData } from "./$types";
   import {
     error,
-    greeting,
-    ifTheyHaveKey,
-    ifTheyNeedNewKey,
-    noFileName,
-    step1,
-    step2,
     success,
     transactionComplete,
-    warning,
   } from '$lib/strings/alerts'
 
   import {
@@ -24,6 +16,7 @@
 
 	import {onMount} from "svelte";
   import type { ActionData } from "../../create/$types";
+	import KeyDialog from "$lib/components/KeyDialog.svelte";
 
   let cryptionKey: CryptoKey | undefined;
   let db: IDBDatabase;
@@ -35,6 +28,7 @@
   onMount(async() => {
     await openDB();
     const cryptionKeyFileName = localStorage.getItem("cryptionKeyFileName");
+    const keyDialog = document.getElementById("key-dialog") as HTMLDialogElement;
     if (cryptionKeyFileName) {
       importedCryptionKeyFileName = cryptionKeyFileName;
 
@@ -55,12 +49,9 @@
         const request = objectStore.get(cryptionKeyFileName);
 
         request.onerror = (event) => {
-          console.log(request);
-          alert(`${error}
-                \n Could not get ${cryptionKeyFileName}'s key.
-                \n${ifTheyHaveKey}\n${ifTheyNeedNewKey}
-                \n${step1}
-                \n${step2}`);
+          if (keyDialog) {
+            keyDialog.showModal();
+          }
         }
 
         request.onsuccess = async (event) => {
@@ -69,45 +60,33 @@
             cryptionKey = await result.key;
             if ( cryptionKey ) {
               key = cryptionKey
+              keyDialog.close();
               alert(`${success}
-                    \nUsing previous key: ${cryptionKeyFileName}`);
+                    \nUsing Cryption Key: ${cryptionKeyFileName}`);
             }
           } else {
-            alert(`${warning}
-               \n${cryptionKeyFileName} was not found in the IndexedDB.
-               \nDatabase: ${db.name} \nVersion: ${db.version}
-                \n${ifTheyHaveKey}\n${ifTheyNeedNewKey}
-               \n${step1}
-               \n${step2}`);
+            if (keyDialog) {
+              keyDialog.showModal();
+            }
           }
         }
       }
     } else {
-      alert(`${greeting}
-         \n${noFileName}
-         \n${ifTheyHaveKey}\n${ifTheyNeedNewKey}
-         \n${step1}
-         \n${step2}`);
+      if (keyDialog) {
+        keyDialog.showModal();
+      }
     }
   });
 
 
   export let data: PageData;
   const payeeData = data.payeeData;
-  async function handleImportKey(event: CustomEvent) {
-    key = event.detail.importedKey;
-    importedCryptionKeyFileName = event.detail.fileName;
-  }
   $: purpose = data.purpose;
 </script>
 
 <main class="page-container">
   <div class="key-container">
-    {#if !importedCryptionKeyFileName || !key}
-    <KeyHandler
-      on:importedKey={handleImportKey}
-    />
-    {/if}
+    <KeyDialog />
   </div>
   {#if importedCryptionKeyFileName && key}
   <div class="form">
