@@ -17,4 +17,7 @@
     padding: 12px 15px;
     font-size: 1rem;
   }
+  .cryption-key-button:hover {
+    cursor: pointer;
+  }
 </style>

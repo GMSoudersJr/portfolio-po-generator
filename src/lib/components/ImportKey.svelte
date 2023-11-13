@@ -38,7 +38,7 @@
 
 <div class="import-key-container" >
   <label for="import-key">
-    📤 Import an Existing Cryption Key 🔐:
+    📤 Import an Existing Cryption Key 🔐
   </label>
   <input
     type="file"
@@ -54,10 +54,14 @@
     font-size: 1rem;
   }
   .import-key-container {
+    width: 303px;
+    background-color: #f1f1f1;
     display: grid;
     grid-template-columns: max-content;
     grid-template-rows: repeat(2, min-content);
     row-gap: 0.6rem;
+    border-radius: 1px;
+    padding: 6px 12px;
   }
   input[type="file"]::file-selector-button {
     padding: 0.2rem 0.4rem;
@@ -69,5 +73,6 @@
   input[type="file"]::file-selector-button:hover {
     background-color: #39FF14;
     border: 2px solid #00CEC9;
+    cursor: pointer;
   }
 </style>

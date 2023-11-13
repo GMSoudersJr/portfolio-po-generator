@@ -115,9 +115,14 @@ export const actions = {
 	delete: async ({ request, params }) => {
 		console.log(params);
 		const payee_idToDelete = params.payee_id.toString();
-		const databaseResponse = await deletePayee(payee_idToDelete);
-		if (databaseResponse) {
-			throw redirect(301, '/payees/')
+		const deletedPayee = await deletePayee(payee_idToDelete);
+		if (deletedPayee) {
+			throw redirect(301, `/payees/`)
+		}
+		return {
+			data: deletedPayee,
+			success: true,
+			message: `Successfully deleted payee.`
 		}
 	}
 } satisfies Actions;

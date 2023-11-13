@@ -15,7 +15,7 @@
   } from "$lib/indexedDb";
 
 	import {onMount} from "svelte";
-  import type { ActionData } from "../../create/$types";
+  import type { ActionData } from "./$types";
 	import KeyDialog from "$lib/components/KeyDialog.svelte";
 
   let cryptionKey: CryptoKey | undefined;
@@ -24,6 +24,7 @@
   export let form: ActionData;
   let key: CryptoKey;
   let importedCryptionKeyFileName: string | null;
+
 
   onMount(async() => {
     await openDB();
@@ -78,7 +79,6 @@
     }
   });
 
-
   export let data: PageData;
   const payeeData = data.payeeData;
   $: purpose = data.purpose;
@@ -86,7 +86,6 @@
 
 <main class="page-container">
   <div class="key-container">
-    <KeyDialog />
   </div>
   {#if importedCryptionKeyFileName && key}
   <div class="form">
@@ -96,10 +95,10 @@
     <PayeeForm
       {purpose}
       {payeeData}
-      {key}
     />
   </div>
   {/if}
+  <KeyDialog />
 </main>
 
 <style>

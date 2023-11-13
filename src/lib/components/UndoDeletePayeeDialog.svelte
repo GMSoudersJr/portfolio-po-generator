@@ -1,46 +1,27 @@
 <script lang="ts">
   import {
-    greeting,
-    directions,
-	  directionsHeading,
-	  stepsHeading,
+    undoDeletePayeeHeader,
+    undoDeletionQuestion,
   } from "$lib/strings/dialogs";
+	import type {Document} from "mongodb";
 
-	import GenerateCryptionButton from "./GenerateCryptionButton.svelte";
-	import ImportKey from "./ImportKey.svelte";
+	import UndoDeletePayeeButton from "./UndoDeletePayeeButton.svelte";
+  export let payeeToUndelete: Document | undefined;
 
 </script>
 
 <dialog
-  class="key-dialog"
-  id="key-dialog"
+  class="dialog key-dialog"
+  id="undo-payee-deletion-dialog"
 >
   <h1 class="greeting header">
-    {greeting}
+    {undoDeletePayeeHeader}
   </h1>
   <div class="directions-container">
-  <h3 class="header">{directionsHeading}</h3>
-    <ul>
-      {#each directions as direction}
-        <li class="directions">
-          { direction }
-        </li>
-      {/each}
-    </ul>
+    <h3 class="header">{undoDeletionQuestion}</h3>
   </div>
-  <div class="steps">
-    <h3 class="header">{stepsHeading}</h3>
-    <ol>
-      <li>
-        <GenerateCryptionButton />
-      </li>
-      <li>
-        <ImportKey  on:importedKey/>
-      </li>
-    </ol>
-  </div>
-  <div class="go-home">
-    <a href="/">Back to Home</a>
+  <div class="button-container">
+    <UndoDeletePayeeButton {payeeToUndelete}/>
   </div>
 </dialog>
 

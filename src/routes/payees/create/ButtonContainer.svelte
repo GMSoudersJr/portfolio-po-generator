@@ -3,8 +3,7 @@
 	import SubmitButton from "./SubmitButton.svelte";
   import UpdateButton from "./UpdateButton.svelte";
 
-
-  export let purpose: string[];
+  export let purpose: string[] = ['create'];
 </script>
 
 <div class="button-container">

@@ -8,3 +8,8 @@ export const directions = [
 	"If you already have a Cryption Key 🔐, import it using step 2."
 ];
 export const stepsHeading = "'Cryption Key 🔐' Steps:";
+
+export const undoDeletePayeeHeader = "Successful Deletion";
+export const undoDeletionQuestion = "Would you like to undo your deletion?";
+export const undoButtonText = "Undo";
+export const confirmButtonText = "Confirm";

@@ -1,5 +1,5 @@
 import { DB_URI, DB_NAME } from "$env/static/private";
-import { MongoClient, ObjectId, ServerApiVersion } from "mongodb";
+import { MongoClient, ObjectId, ServerApiVersion, type Document } from "mongodb";
 import type { User } from "./utils";
 import type { Payee, Po } from "./classes";
 
@@ -16,23 +16,37 @@ const payeeCollection = db.collection('payees');
 const poCollection = db.collection('pos');
 const usersCollection = db.collection('users');
 
+export async function undoDeletePayee(document: Document) {
+	document._id = new ObjectId(document._id);
+	try {
+		await client.connect();
+		console.log("Successfully connected to the database to undo delete a payee.");
+		const undoneDeletedPayee = await payeeCollection.insertOne(document);
+		return undoneDeletedPayee.acknowledged;
+	} catch (error) {
+		console.log("There was an error getting the undoing delete a payee.", error)
+	} finally {
+		await client.close();
+		console.log("Closed the database connection @undoDeletePayee.")
+	}
+};
+
 export async function deletePayee(payee_id: string) {
-	const aggregate = [
-		{
-			'$match': {
-				'_id': new ObjectId(payee_id)
-			}
-		}, {
-			$project: {
-				_id: 0
-			}
-		}
-	];
 	const payeeToDelete = { _id: new ObjectId(payee_id) }
 	try {
 		await client.connect();
 		console.log("Successfully connected to the database to delete a payee.");
-		const deletedPayee = await payeeCollection.findOneAndDelete(payeeToDelete);
+		const deletedPayee =
+			await payeeCollection.findOneAndDelete(
+				payeeToDelete,
+				{
+					projection: {
+						_id: {
+							$toString: "$_id"
+						}
+					}
+				}
+		);
 		return deletedPayee;
 	} catch (error) {
 		console.log("There was an error getting the payee to delete.", error)

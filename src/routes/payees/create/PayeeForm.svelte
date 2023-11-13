@@ -4,11 +4,6 @@
     dbVersion,
     objectStoreName
   } from '$lib/indexedDb';
-  import {
-    error,
-    transactionComplete,
-    success,
-  } from "$lib/strings/alerts";
   import { onMount } from 'svelte';
   import { enhance } from "$app/forms";
   import BankAccountNumber from "./BankAccountNumber.svelte";
@@ -111,9 +106,10 @@
   let decryptedRoutingNumber: string;
   let decryptedSwiftCode: string;
 
-  export let key: CryptoKey;
+  let key: CryptoKey;
   export let payeeData: Document | undefined;
   export let purpose = ['create'];
+  $: disableButtons = ['true'];
 </script>
 
 <form
