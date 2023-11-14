@@ -1,4 +1,6 @@
 <script lang="ts">
+	import {goto} from "$app/navigation";
+
   import { importCryptoKey } from "$lib/cryption";
   import { openDB, addToDb } from "$lib/indexedDb";
   import { createEventDispatcher } from "svelte";
@@ -22,9 +24,16 @@
       });
       await openDB();
       await addToDb(theFile);
-      let keyDialog = document.getElementById("key-dialog") as HTMLDialogElement;
+      let keyDialog =
+        document.getElementById("key-dialog") as HTMLDialogElement;
       if (keyDialog) {
         keyDialog.close();
+      }
+      let invalidKeyDialog =
+        document.getElementById("invalid-key-dialog") as HTMLDialogElement;
+      if (invalidKeyDialog) {
+        invalidKeyDialog.close();
+        goto('/payees/');
       }
     } else {
       const importedKey = undefined;

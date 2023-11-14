@@ -10,25 +10,28 @@
   import BankAddress from "./BankAddress.svelte";
   import BankName from "./BankName.svelte";
   import BeneficiaryName from "./BeneficiaryName.svelte";
-	import Currency from "$lib/components/forms/Currency.svelte";
-	import HomeAddress from "./HomeAddress.svelte";
-	import NationalIdOrBusinessRegistration from "./NationalIDOrBusinessRegistration.svelte";
+  import Currency from "$lib/components/forms/Currency.svelte";
+  import HomeAddress from "./HomeAddress.svelte";
+  import NationalIdOrBusinessRegistration from "./NationalIDOrBusinessRegistration.svelte";
   import PayeeType from "./PayeeType.svelte";
-	import RoutingNumber from "./RoutingNumber.svelte";
-	import SwiftCode from "./SwiftCode.svelte";
-	import TopicDivision from "./TopicDivision.svelte";
-	import ReportingBudgetLine from "./ReportingBudgetLine.svelte";
-	import Iban from "./Iban.svelte";
+  import RoutingNumber from "./RoutingNumber.svelte";
+  import SwiftCode from "./SwiftCode.svelte";
+  import TopicDivision from "./TopicDivision.svelte";
+  import ReportingBudgetLine from "./ReportingBudgetLine.svelte";
+  import Iban from "./Iban.svelte";
   import type { Document } from "mongodb";
   import { decryptTheData } from "$lib/cryption";
   import { splitEncrypted } from "$lib/utils";
-	import ButtonContainer from './ButtonContainer.svelte';
+  import ButtonContainer from './ButtonContainer.svelte';
 
   let cryptionKey: CryptoKey | undefined;
   let db: IDBDatabase;
+  let invalidKeyDialog: HTMLDialogElement;
 
   onMount(async() => {
     const cryptionKeyFileName = localStorage.getItem("cryptionKeyFileName")
+    let invalidKeyDialog =
+      document.getElementById("invalid-key-dialog") as HTMLDialogElement;
     if (cryptionKeyFileName) {
 
       const request = window.indexedDB.open(dbName, dbVersion);
@@ -91,6 +94,19 @@
               decryptedSwiftCode =
                 await decryptDataFromDatabase(payeeData.swiftCode);
             }
+            if (
+                decryptedNationalIdOrBusinessRegistrationNumber.includes("Invalid Key") ||
+                decryptedHomeAddress.includes("Invalid Key") ||
+                decryptedBankName.includes("Invalid Key") ||
+                decryptedBankAccountNumber.includes("Invalid Key") ||
+                decryptedIban.includes("Invalid Key") ||
+                decryptedBankAddress.includes("Invalid Key") ||
+                decryptedRoutingNumber.includes("Invalid Key") ||
+                decryptedSwiftCode.includes("Invalid Key")
+              ) {
+                purpose = ['Invalid Key'];
+                invalidKeyDialog.showModal();
+              }
           }
         }
       }
@@ -109,7 +125,6 @@
   let key: CryptoKey;
   export let payeeData: Document | undefined;
   export let purpose = ['create'];
-  $: disableButtons = ['true'];
 </script>
 
 <form

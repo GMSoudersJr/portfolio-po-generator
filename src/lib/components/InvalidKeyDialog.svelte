@@ -1,28 +1,27 @@
 <script lang="ts">
   import {
-    greeting,
-    directions,
-	  directionsHeading,
 	  stepsHeading,
+	  invalidKeyDirectionsHeading,
+	  invalidKeyDirections,
+	  invalidKeyGreeting,
   } from "$lib/strings/dialogs";
 
 	import GenerateCryptionButton from "./GenerateCryptionButton.svelte";
 	import ImportKey from "./ImportKey.svelte";
+
 </script>
 
 <dialog
-  class="key-dialog"
-  id="key-dialog"
+  class="dialog invalid-key-dialog"
+  id="invalid-key-dialog"
 >
   <h2 class="greeting header">
-    {greeting}
+    {invalidKeyGreeting}
   </h2>
   <div class="directions-container">
-    <h4 class="header">
-      {directionsHeading}
-    </h4>
+  <h4 class="header">{invalidKeyDirectionsHeading}</h4>
     <ul>
-      {#each directions as direction}
+      {#each invalidKeyDirections as direction}
         <li class="directions">
           { direction }
         </li>
@@ -30,7 +29,7 @@
     </ul>
   </div>
   <div class="steps">
-    <h4 class="header">{stepsHeading}</h4>
+    <h3 class="header">{stepsHeading}</h3>
     <ol>
       <li>
         <GenerateCryptionButton />
@@ -40,13 +39,18 @@
       </li>
     </ol>
   </div>
-  <div class="go-home">
-    <a href="/">Back to Home</a>
+  <div class="navigation-container">
+    <div class="go-home">
+      <a href="/">Back to Home</a>
+    </div>
+    <div class="go-payees">
+      <a href="/payees/">Back to Payees</a>
+    </div>
   </div>
 </dialog>
 
 <style>
-  .key-dialog[open] {
+  .invalid-key-dialog[open] {
     width: 694px;
     left: 50%;
     top: 25%;
@@ -54,15 +58,19 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(4, min-content);
-    row-gap: 1rem;
+    row-gap: 1.2rem;
     padding: 1rem 2rem;
   }
   h2 {
     line-height: 100%;
-    color: #259;
   }
-  .go-home {
-    justify-self: end;
+  .navigation-container {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: 1fr;
+    justify-content: end;
+    align-items: baseline;
+    column-gap: 2rem;
   }
   .header {
     letter-spacing: -0.02rem;

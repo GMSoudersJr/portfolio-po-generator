@@ -15,7 +15,6 @@
     dbVersion,
     objectStoreName
   } from "$lib/indexedDb";
-	import KeyDialog from '$lib/components/KeyDialog.svelte';
 
   let db: IDBDatabase;
   let cryptionKey: CryptoKey | undefined;
@@ -31,6 +30,10 @@
   onMount(async() => {
     cryptionKeyFileName = localStorage.getItem("cryptionKeyFileName") as IDBValidKey;
     const keyDialog = document.getElementById("key-dialog") as HTMLDialogElement;
+    const invalidKeyDialog = document.getElementById("invalid-key-dialog") as HTMLDialogElement;
+    if ( invalidKeyDialog ) {
+      invalidKeyDialog.close();
+    }
     if (cryptionKeyFileName) {
       await openDB();
       const request = window.indexedDB.open(dbName, dbVersion);
@@ -91,7 +94,6 @@
     <GotoFormButton {pathUrl}/>
   </div>
   <section class="available-payees-section">
-  <KeyDialog />
   {#if payees && payees.length > 0}
     <PayeeCards
       on:clickedPayee={handleClickedPayee}
