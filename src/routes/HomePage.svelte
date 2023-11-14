@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import {
     cryptionBullets,
     navigationBullets,
@@ -11,7 +11,6 @@
     poFormHeading,
     pdfGenerationHeading
   } from "$lib/strings/homepage";
-
 </script>
 
 <main class="home-page">

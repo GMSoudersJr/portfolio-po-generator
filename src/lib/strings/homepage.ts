@@ -35,8 +35,8 @@ export const poFormBullets = [
 		<em>disabled</em>.  You cannot update them!`,
 	`<strong>Due Date</strong> and <strong>Created Date</strong> will be formatted
 		server-side.`,
-	`<strong>PO#</strong> will be formatted and generated automatically with your
-		summary input.  It is <em>customizable</em>, though.`,
+	`<strong>PO#</strong> will be auto-generated with your <strong>Summary</strong>
+		input, but remains editable.`,
 	`After submission, you will be redirected to your auto-completed PO.`,
 ];
 export const pdfGenerationHeading = `PDF Generation 📄`;
