@@ -41,6 +41,7 @@
     grid-template-columns: auto;
     grid-template-rows: repeat(2, auto);
     row-gap: 1em;
+    padding: 0 1rem;
   }
   .purchase-order-header {
     padding-top: 1rem;
@@ -55,7 +56,8 @@
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto;
-    justify-content: center;
+    justify-content: left;
+    overflow-x: scroll;
   }
 </style>
 
