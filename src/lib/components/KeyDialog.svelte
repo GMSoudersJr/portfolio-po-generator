@@ -48,8 +48,9 @@
   .key-dialog[open] {
     width: 694px;
     height: calc(694px / 1.618);
-    left: calc(50% - 347px);
-    top: calc(30% - 100px);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     display: grid;
     grid-template-columns: max-content;
     grid-template-rows: auto-fill;
