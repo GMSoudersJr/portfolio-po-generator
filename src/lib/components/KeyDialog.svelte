@@ -47,14 +47,14 @@
 
 <style>
   .key-dialog[open] {
-    width: 694px;
+    width: 600px;
     left: 50%;
     top: 25%;
     transform: translate(-50%, -25%);
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(4, min-content);
-    row-gap: 1rem;
+    row-gap: 1.2rem;
     padding: 1rem 2rem;
   }
   h2 {

@@ -51,7 +51,7 @@
 
 <style>
   .invalid-key-dialog[open] {
-    width: 694px;
+    width: 600px;
     left: 50%;
     top: 25%;
     transform: translate(-50%, -25%);

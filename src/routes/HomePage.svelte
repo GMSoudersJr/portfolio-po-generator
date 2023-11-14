@@ -1,4 +1,16 @@
 <script>
+  import {
+    cryptionBullets,
+    navigationBullets,
+    payeeFormBullets,
+    pdfGenerationBullets,
+    poFormBullets,
+    navigationHeading,
+    cryptionHeading,
+    payeeFormHeading,
+    poFormHeading,
+    pdfGenerationHeading
+  } from "$lib/strings/homepage";
 
 </script>
 
@@ -10,148 +22,54 @@
     Making something a little less dreadful.
   </p>
   <section>
-    <h3>Navigation</h3>
+    <h3>{navigationHeading}</h3>
     <ul>
+      {#each navigationBullets as item}
       <li>
-        The navbar navigates you to a page that shows all entries for that
-        selection.
+        {@html item}
       </li>
-      <li>
-        To add new <strong><em>Payees</em></strong> and
-        <em><strong>Purchase Orders</strong></em> click the "+" button
-      </li>
+      {/each}
     </ul>
   </section>
   <section class="cryption-description">
-    <h3>Encryption / Decryption</h3>
+    <h3>{cryptionHeading}</h3>
     <ul>
+      {#each cryptionBullets as item}
       <li>
-        You will need to click the "📥 a New Cryption Key 🔐" to generate
-        your secret key. <strong>Hopefully</strong>, you will only need to do
-        this once.
+        {@html item}
       </li>
-      <li>
-        Next, you will need to import the key so it can be used for encryption.
-      </li>
-      <li>
-        Click on "📤 an Existing Cryption Key 🔐:" to select the file to
-        import.
-      </li>
-      <li>
-        The key is used to encrypt sensitive data before transmission to the
-        database.
-      </li>
-      <li>
-        The key is also used to decrypt that data when it is returned from the
-        database.
-      </li>
-      <li>
-        If you lose your key, there will be no way to get decrypt the
-        data. Therefore, you will need to make a new one and make new payee
-        entries.
-      </li>
-
+      {/each}
     </ul>
 
   </section>
   <section class="payee-form-description">
-    <h3>Payee Form</h3>
+    <h3>{payeeFormHeading}</h3>
     <ul>
+      {#each payeeFormBullets as item}
       <li>
-        If no "Cryption Key" is detected, you will be prompted to either
-        download or import one.
+        {@html item}
       </li>
-      <li>
-        You will be alerted about the status of imported keys.
-      </li>
-      <li>
-        You must have an imported key in order to create a payee.
-      </li>
-      <li>
-        The fields you asked for are required.
-      </li>
-      <li>
-        A form <strong>cannot </strong>be submitted without all required fields.
-      </li>
-      <li>
-        Some fields will be encrypted, so it will take a few seconds for the
-        process to finish. Therefore, please <em>be patient.</em>
-      </li>
-      <li>
-        <strong>Do not click the Submit button more than once!</strong>
-      </li>
-      <li>
-        The form will reset upon successful submission.
-      </li>
-      <li>
-        After submitting payees, navigate to Purchase Orders!
-      </li>
+      {/each}
     </ul>
   </section>
   <section class="po-form-description">
-    <h3>Purchase Order Form</h3>
+    <h3>{poFormHeading}</h3>
     <ul>
+      {#each poFormBullets as item}
       <li>
-        If no "Cryption Key" is detected, you will be prompted to either
-        download or import one.
+        {@html item}
       </li>
-      <li>
-        You will be alerted about the status imported keys.
-      </li>
-      <li>
-        You must have an imported key in order to create a PO.
-      </li>
-      <li>
-        There is a grid of cards showing all payees 📇 to the right of the form.
-      </li>
-      <li>
-        <strong>Payee Name</strong> is a search input. It will filter the payee cards.
-      </li>
-      <ul>
-        <li>
-          There is an "X" that will clear the field. Backspace will also work.
-        </li>
-      </ul>
-      <li>
-        <strong>YOU NEED TO CLICK A CARD</strong> for its data to auto-populate:
-        <ul>
-          <li>
-            <strong>Currency</strong> - <em>customizable</em>
-          </li>
-          <li>
-            <strong>Topic / Division</strong> - <em>customizable</em>
-          </li>
-          <li>
-            <strong>Reporting / Budget Line</strong> - <em>customizable</em>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <strong>Subtotal</strong> and <strong>Tax Rate</strong> are <em>disabled</em>.
-        You cannot update them!
-      </li>
-      <li>
-        <strong>Due Date</strong> and <strong>Created Date</strong> will be formatted
-        server-side.
-      </li>
-      <li>
-        <strong>PO#</strong> will be formatted and generated automatically with your
-        summary input.  It is <em>customizable</em>, though.
-      </li>
-      <li>
-        After submission, you will be redirected to the populated PO
-      </li>
+      {/each}
     </ul>
   </section>
   <section>
-    <h3>PDF Generation</h3>
+    <h3>{pdfGenerationHeading}</h3>
     <ul>
+      {#each pdfGenerationBullets as item}
       <li>
-        Review the PO
+        {@html item}
       </li>
-      <li>
-        Click the "PDF-it" button to download the pdf!
-      </li>
+      {/each}
     </ul>
   </section>
 </main>
@@ -166,6 +84,9 @@
     align-items: center;
     row-gap: 2em;
     padding: 2em 0;
+  }
+  li {
+    line-height: 1.3rem;
   }
   .header {
     color: #259;
