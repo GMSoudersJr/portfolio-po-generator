@@ -15,6 +15,11 @@
     dbVersion,
     objectStoreName
   } from "$lib/indexedDb";
+  import {
+    toasts,
+  } from "svelte-toasts";
+	import type {ToastType} from 'svelte-toasts/types/common';
+	import Toast from '$lib/components/Toast.svelte';
 
   let db: IDBDatabase;
   let cryptionKey: CryptoKey | undefined;
@@ -25,6 +30,24 @@
     const payee_id = event.detail.payee._id;
     await goto(`/payees/update/${payee_id}`);
   }
+
+  const showToast = (
+    typeString: ToastType,
+    titleString: string,
+    descriptionString: string,
+  ) => {
+    const toast = toasts.add({
+      title: titleString,
+      description: descriptionString,
+      duration: 5000,
+      showProgress: true,
+      placement: 'bottom-right',
+      type: typeString,
+      theme: "dark",
+      onClick: () => {},
+      onRemove: () => {},
+    });
+  };
 
   onMount(async() => {
     cryptionKeyFileName = localStorage.getItem("cryptionKeyFileName") as IDBValidKey;
@@ -37,15 +60,18 @@
       await openDB();
       const request = window.indexedDB.open(dbName, dbVersion);
       request.onerror = (event) => {
-        alert(`${error}
-              \nCould not connect to IndexedDB: \n{request.error}`);
+        showToast(
+          "error",
+          "IndexedDB",
+          `Could not connect to IndexedDB:\n${request.error}`
+        );
       }
       request.onsuccess = async (event) => {
         db = await (event.target as IDBRequest).result;
         const transaction = db.transaction(objectStoreName);
 
         transaction.oncomplete =  (event) => {
-          console.log("Transaction complete on Payee Page.");
+          showToast( "info", "IndexedDB", "IndexedDB transaction complete.");
         }
         const objectStore = transaction.objectStore(objectStoreName);
         const request = objectStore.get(cryptionKeyFileName);
@@ -63,8 +89,7 @@
             if ( cryptionKey ) {
               key = cryptionKey;
               keyDialog.close();
-              alert(`${success}
-                    \nUsing Cryption Key: ${cryptionKeyFileName}`);
+              showToast( "success", "Success", `Using Cryption Key: ${cryptionKeyFileName}`);
             }
           } else {
             if (keyDialog) {
@@ -102,8 +127,9 @@
     <h3 class="no-payees">
       Add Payees to see them here
     </h3>
-{/if}
+  {/if}
   </section>
+  <Toast />
 </main>
 
 <style>
