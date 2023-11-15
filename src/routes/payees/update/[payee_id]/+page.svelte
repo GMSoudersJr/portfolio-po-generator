@@ -2,12 +2,6 @@
   import PayeeForm from "../../create/PayeeForm.svelte";
   import type { PageData } from "./$types";
   import {
-    error,
-    success,
-    transactionComplete,
-  } from '$lib/strings/alerts'
-
-  import {
     openDB,
     dbName,
     dbVersion,
@@ -17,6 +11,8 @@
 	import {onMount} from "svelte";
   import type { ActionData } from "./$types";
 	import KeyDialog from "$lib/components/KeyDialog.svelte";
+  import { showToast } from "$lib/utils";
+	import Toast from "$lib/components/Toast.svelte";
 
   let cryptionKey: CryptoKey | undefined;
   let db: IDBDatabase;
@@ -35,16 +31,18 @@
 
       const request = window.indexedDB.open(dbName, dbVersion);
       request.onerror = (event) => {
-        alert(`${error}
-              \nCould not connect to IndexedDB: \n{request.error}`);
+        showToast(
+          "error",
+          "IndexedDB",
+          `Could not connect to IndexedDB:\n${request.error}`
+        );
       }
       request.onsuccess = async (event) => {
         db = await (event.target as IDBRequest).result;
         const transaction = db.transaction(objectStoreName);
 
         transaction.oncomplete =  (event) => {
-          alert(`${transactionComplete}
-                \nDecrypting Data...`);
+          showToast( "info", "IndexedDB", `IndexedDB transaction complete.\nDecrypting Data...`);
         }
         const objectStore = transaction.objectStore(objectStoreName);
         const request = objectStore.get(cryptionKeyFileName);
@@ -62,8 +60,7 @@
             if ( cryptionKey ) {
               key = cryptionKey
               keyDialog.close();
-              alert(`${success}
-                    \nUsing Cryption Key: ${cryptionKeyFileName}`);
+              showToast( "success", "Success", `Using Cryption Key: ${cryptionKeyFileName}`);
             }
           } else {
             if (keyDialog) {
@@ -93,10 +90,12 @@
     <PayeeForm
       {purpose}
       {payeeData}
+      {key}
     />
   </div>
   {/if}
   <KeyDialog />
+  <Toast />
 </main>
 
 <style>

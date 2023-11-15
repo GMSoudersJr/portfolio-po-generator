@@ -1,3 +1,24 @@
+import { toasts } from "svelte-toasts";
+import type {ToastType} from 'svelte-toasts/types/common';
+
+export const showToast = (
+	typeString: ToastType,
+	titleString: string,
+	descriptionString: string,
+) => {
+	const toast = toasts.add({
+		title: titleString,
+		description: descriptionString,
+		duration: 5000,
+		showProgress: true,
+		placement: 'bottom-right',
+		type: typeString,
+		theme: "dark",
+		onClick: () => {},
+		onRemove: () => {},
+	});
+};
+
 export function formatPoNumberDateString(date: string) {
 	const dateArray = date?.split('-');
 	let twoDigitDay = dateArray.at(2);

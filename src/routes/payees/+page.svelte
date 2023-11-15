@@ -1,9 +1,4 @@
 <script lang="ts">
-  import {
-    error,
-    success,
-  } from '$lib/strings/alerts';
-
   import PayeeCards from "../purchaseOrders/create/PayeeCards.svelte";
   import type { PageData } from "./$types";
 	import {goto} from "$app/navigation";
@@ -15,11 +10,8 @@
     dbVersion,
     objectStoreName
   } from "$lib/indexedDb";
-  import {
-    toasts,
-  } from "svelte-toasts";
-	import type {ToastType} from 'svelte-toasts/types/common';
 	import Toast from '$lib/components/Toast.svelte';
+  import { showToast } from "$lib/utils";
 
   let db: IDBDatabase;
   let cryptionKey: CryptoKey | undefined;
@@ -30,24 +22,6 @@
     const payee_id = event.detail.payee._id;
     await goto(`/payees/update/${payee_id}`);
   }
-
-  const showToast = (
-    typeString: ToastType,
-    titleString: string,
-    descriptionString: string,
-  ) => {
-    const toast = toasts.add({
-      title: titleString,
-      description: descriptionString,
-      duration: 5000,
-      showProgress: true,
-      placement: 'bottom-right',
-      type: typeString,
-      theme: "dark",
-      onClick: () => {},
-      onRemove: () => {},
-    });
-  };
 
   onMount(async() => {
     cryptionKeyFileName = localStorage.getItem("cryptionKeyFileName") as IDBValidKey;

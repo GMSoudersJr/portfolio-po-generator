@@ -11,6 +11,11 @@
     dbVersion,
     objectStoreName
   } from "$lib/indexedDb";
+  import {
+    toasts,
+  } from "svelte-toasts";
+	import type {ToastType} from 'svelte-toasts/types/common';
+	import Toast from '$lib/components/Toast.svelte';
 
 	import {onMount} from "svelte";
   import type { ActionData } from "./$types";
@@ -23,6 +28,24 @@
   let key: CryptoKey;
   let importedCryptionKeyFileName: string | null;
 
+  const showToast = (
+    typeString: ToastType,
+    titleString: string,
+    descriptionString: string,
+  ) => {
+    const toast = toasts.add({
+      title: titleString,
+      description: descriptionString,
+      duration: 5000,
+      showProgress: true,
+      placement: 'bottom-right',
+      type: typeString,
+      theme: "dark",
+      onClick: () => {},
+      onRemove: () => {},
+    });
+  };
+
   onMount(async() => {
     await openDB();
     const cryptionKeyFileName = localStorage.getItem("cryptionKeyFileName");
@@ -32,15 +55,18 @@
 
       const request = window.indexedDB.open(dbName, dbVersion);
       request.onerror = (event) => {
-        alert(`${error}
-              \nCould not connect to IndexedDB: \n{request.error}`);
+        showToast(
+          "error",
+          "IndexedDB",
+          `Could not connect to IndexedDB:\n${request.error}`
+        );
       }
       request.onsuccess = async (event) => {
         db = await (event.target as IDBRequest).result;
         const transaction = db.transaction(objectStoreName);
 
         transaction.oncomplete =  (event) => {
-          alert(transactionComplete);
+          showToast( "info", "IndexedDB", "IndexedDB transaction complete.");
         }
         const objectStore = transaction.objectStore(objectStoreName);
         const request = objectStore.get(cryptionKeyFileName);
@@ -58,8 +84,7 @@
             if ( cryptionKey ) {
               key = cryptionKey
               keyDialog.close();
-              alert(`${success}
-                    \nUsing Cryption Key: ${cryptionKeyFileName}`);
+              showToast( "success", "Success", `Using Cryption Key: ${cryptionKeyFileName}`);
             }
           } else {
             if (keyDialog) {
@@ -90,6 +115,7 @@
     />
   </div>
   {/if}
+  <Toast />
 </main>
 
 <style>
