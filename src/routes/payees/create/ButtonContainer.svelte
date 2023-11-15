@@ -1,5 +1,6 @@
 <script lang="ts">
 	import DeleteButton from "./DeleteButton.svelte";
+	import GoBackButton from "./GoBackButton.svelte";
 	import SubmitButton from "./SubmitButton.svelte";
   import UpdateButton from "./UpdateButton.svelte";
 
@@ -10,8 +11,10 @@
 {#if purpose.includes('update') || purpose.includes('delete')}
     <UpdateButton />
     <DeleteButton />
-  {:else}
+  {:else if purpose.includes('create')}
     <SubmitButton />
+  {:else}
+    <GoBackButton />
 {/if}
 </div>
 

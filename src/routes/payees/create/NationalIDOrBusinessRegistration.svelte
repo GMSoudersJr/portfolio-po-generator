@@ -5,6 +5,7 @@
 
   const dispatch = createEventDispatcher();
 
+  export let disabled: boolean;
   export let decryptedNationalIdOrBusinessRegistrationNumber: string;
   export let encryptedValue: string;
   export let key: CryptoKey;
@@ -35,6 +36,7 @@
     bind:value={value}
     name="unencryptedNatIdBusReg"
     on:input={handleInput}
+    {disabled}
   >
 </label>
 <input

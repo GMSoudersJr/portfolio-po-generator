@@ -75,12 +75,7 @@
     }
   });
 
-  async function handleImportKey(event: CustomEvent) {
-    key = event.detail.importedKey;
-    importedCryptionKeyFileName = event.detail.fileName;
-  }
   const payeeData = undefined;
-
 </script>
 
 <main class="page-container">

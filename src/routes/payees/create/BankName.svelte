@@ -8,6 +8,7 @@
   export let key: CryptoKey;
   export let decryptedBankName: string;
   export let encryptedValue: string;
+  export let disabled: boolean;
   $: value = decryptedBankName || "";
   async function handleInput(event: Event) {
       const target = event.target as HTMLInputElement;
@@ -35,6 +36,7 @@
     on:input={handleInput}
     bind:value={value}
     required
+    {disabled}
   >
 </label>
 <input

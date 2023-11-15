@@ -75,7 +75,7 @@ export async function decryptTheData(key: CryptoKey, cipherText: ArrayBuffer, iv
 
 		return decryptedText;
 	} catch (error) {
-		return "Invalid Key"
+		return "Invalid Key";
 	}
 };
 

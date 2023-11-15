@@ -2,6 +2,7 @@
   import { payeeTypeAndTax } from "$lib/strings/payeeForm"
 
   export let value: string;
+  export let disabled: boolean;
   $: selected = value || payeeTypeAndTax.options.at(0)?.value;
 </script>
 
@@ -13,6 +14,7 @@
     id={payeeTypeAndTax.id}
     bind:value={selected}
     required
+    {disabled}
   >
     {#each payeeTypeAndTax.options as payeeType (payeeType.id)}
       <option

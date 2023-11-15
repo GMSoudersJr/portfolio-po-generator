@@ -3,6 +3,7 @@
 
   export let clickedPayeeCurrency: string = currency.options[0].value;
   export let value: string;
+  export let disabled: boolean;
   $: selected = value || clickedPayeeCurrency || "krw";
 </script>
 
@@ -14,6 +15,7 @@
     id={currency.id}
     required
     bind:value={selected}
+    {disabled}
   >
     {#each currency.options as entry (entry.id)}
       <option

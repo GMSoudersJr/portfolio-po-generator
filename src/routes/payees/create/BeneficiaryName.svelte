@@ -2,6 +2,7 @@
   import { beneficiaryName } from "$lib/strings/payeeForm";
 
   export let value: string;
+  export let disabled: boolean;
 </script>
 
 <label for={beneficiaryName.id}>
@@ -14,6 +15,7 @@
     bind:value={value}
     required
     autocomplete="name"
+    {disabled}
   >
 </label>
 

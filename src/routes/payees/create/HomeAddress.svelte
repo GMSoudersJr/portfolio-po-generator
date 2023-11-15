@@ -8,6 +8,7 @@
   export let decryptedHomeAddress: string;
   export let key: CryptoKey;
   export let encryptedValue: string;
+  export let disabled: boolean;
 
   $: value = decryptedHomeAddress || "";
   async function handleInput(event: Event) {
@@ -35,6 +36,7 @@
     class={homeAddress.class}
     bind:value={value}
     on:input={handleInput}
+    {disabled}
   >
 </label>
 <input

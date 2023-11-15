@@ -139,10 +139,6 @@
     }
   });
 
-  async function handleImportKey(event: CustomEvent) {
-    key = event.detail.importedKey;
-    importedCryptionKeyFileName = event.detail.fileName;
-  }
 </script>
 
 <div class="page-grid-container">

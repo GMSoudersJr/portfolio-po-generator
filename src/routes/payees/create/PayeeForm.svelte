@@ -26,7 +26,6 @@
 
   let cryptionKey: CryptoKey | undefined;
   let db: IDBDatabase;
-  let invalidKeyDialog: HTMLDialogElement;
 
   onMount(async() => {
     const cryptionKeyFileName = localStorage.getItem("cryptionKeyFileName")
@@ -95,16 +94,18 @@
                 await decryptDataFromDatabase(payeeData.swiftCode);
             }
             if (
-                decryptedNationalIdOrBusinessRegistrationNumber.includes("Invalid Key") ||
-                decryptedHomeAddress.includes("Invalid Key") ||
                 decryptedBankName.includes("Invalid Key") ||
-                decryptedBankAccountNumber.includes("Invalid Key") ||
-                decryptedIban.includes("Invalid Key") ||
-                decryptedBankAddress.includes("Invalid Key") ||
-                decryptedRoutingNumber.includes("Invalid Key") ||
-                decryptedSwiftCode.includes("Invalid Key")
+                decryptedBankAccountNumber.includes("Invalid Key")
               ) {
-                purpose = ['Invalid Key'];
+                decryptedNationalIdOrBusinessRegistrationNumber = "NOPE";
+                decryptedHomeAddress = "NOPE";
+                decryptedBankName = "NOPE";
+                decryptedBankAccountNumber = "NOPE";
+                decryptedIban = "NOPE";
+                decryptedBankAddress = "NOPE";
+                decryptedRoutingNumber = "NOPE";
+                decryptedSwiftCode = "NOPE";
+                purpose = ['disabled'];
                 invalidKeyDialog.showModal();
               }
           }
@@ -122,9 +123,10 @@
   let decryptedRoutingNumber: string;
   let decryptedSwiftCode: string;
 
-  let key: CryptoKey;
+  export let key: CryptoKey;
   export let payeeData: Document | undefined;
   export let purpose = ['create'];
+  $: disabled = purpose.includes('disabled');
 </script>
 
 <form
@@ -132,50 +134,73 @@
   action="?/add"
   use:enhance
 >
-  <BeneficiaryName value={payeeData?.beneficiaryName}/>
-  <PayeeType value={payeeData?.typeOfPayee} />
-  <TopicDivision value={payeeData?.topicDivision}/>
-  <ReportingBudgetLine value={payeeData?.reportingBudgetLine}/>
+  <BeneficiaryName
+    value={payeeData?.beneficiaryName}
+    {disabled}
+  />
+  <PayeeType
+    value={payeeData?.typeOfPayee}
+    {disabled}
+  />
+  <TopicDivision
+    value={payeeData?.topicDivision}
+    {disabled}
+  />
+  <ReportingBudgetLine
+    value={payeeData?.reportingBudgetLine}
+    {disabled}
+  />
   <NationalIdOrBusinessRegistration
     encryptedValue = {payeeData?.nationalIdOrBusinessRegistrationNumber}
     {decryptedNationalIdOrBusinessRegistrationNumber}
     {key}
+    {disabled}
   />
-  <Currency value={payeeData?.currency}/>
+  <Currency
+    value={payeeData?.currency}
+    {disabled}
+  />
   <HomeAddress
     encryptedValue = {payeeData?.homeAddress}
     {decryptedHomeAddress}
     {key}
+    {disabled}
   />
   <BankName
     encryptedValue = {payeeData?.bankName}
     {decryptedBankName}
     {key}
+    {disabled}
   />
   <BankAccountNumber
     encryptedValue = {payeeData?.bankAccountNumber}
     {decryptedBankAccountNumber}
     {key}
+    {disabled}
   />
   <Iban
     encryptedValue = {payeeData?.iban}
     {decryptedIban}
     {key}
+    {disabled}
   />
   <BankAddress
     encryptedValue = {payeeData?.bankAddress}
     {decryptedBankAddress}
     {key}
+    {disabled}
   />
   <RoutingNumber
     encryptedValue = {payeeData?.routingNumber}
     {decryptedRoutingNumber}
     {key}
+    {disabled}
   />
   <SwiftCode
     encryptedValue = {payeeData?.swiftCode}
     {decryptedSwiftCode}
     {key}
+    {disabled}
   />
   <ButtonContainer {purpose} />
 </form>

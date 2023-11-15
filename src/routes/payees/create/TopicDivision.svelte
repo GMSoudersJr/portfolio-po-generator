@@ -18,6 +18,7 @@
   }
 
   export let value: string;
+  export let disabled: boolean;
   $: selected = value || topicDivision.options.at(0)?.value;
 </script>
 
@@ -32,6 +33,7 @@
     on:change={handleTopicDivisionSelected}
     on:input={handleTopicDivisionSelected}
     required
+    {disabled}
   >
     {#each topicDivision.options as entry (entry.id)}
       <option

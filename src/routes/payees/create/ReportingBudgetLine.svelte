@@ -2,6 +2,7 @@
   import { reportBudgetLine } from "$lib/strings/poForm";
 
   export let value: string;
+  export let disabled: boolean;
   $: selected = value || reportBudgetLine.options.at(0)?.value;
 </script>
 
@@ -13,6 +14,7 @@
     id={reportBudgetLine.id}
     required
     bind:value={selected}
+    {disabled}
   >
     {#each reportBudgetLine.options as entry (entry.id)}
       <option
