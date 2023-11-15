@@ -1,5 +1,5 @@
 <script lang="ts">
-	import {goto} from "$app/navigation";
+	import { goto } from "$app/navigation";
 
   import { importCryptoKey } from "$lib/cryption";
   import { openDB, addToDb } from "$lib/indexedDb";
@@ -27,13 +27,16 @@
       let keyDialog =
         document.getElementById("key-dialog") as HTMLDialogElement;
       if (keyDialog) {
+        console.dir(keyDialog)
         keyDialog.close();
+        await goto(keyDialog.baseURI);
       }
       let invalidKeyDialog =
         document.getElementById("invalid-key-dialog") as HTMLDialogElement;
       if (invalidKeyDialog) {
+        console.dir(invalidKeyDialog)
         invalidKeyDialog.close();
-        goto('/payees/');
+        await goto(invalidKeyDialog.baseURI);
       }
     } else {
       const importedKey = undefined;

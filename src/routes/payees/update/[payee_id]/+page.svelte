@@ -85,8 +85,6 @@
 </script>
 
 <main class="page-container">
-  <div class="key-container">
-  </div>
   {#if importedCryptionKeyFileName && key}
   <div class="form">
     {#if form?.success}

@@ -1,15 +1,8 @@
 <script lang="ts">
   import {
     error,
-    greeting,
-    ifTheyHaveKey,
-    ifTheyNeedNewKey,
-    noFileName,
-    step1,
-    step2,
     success,
     transactionComplete,
-    warning,
   } from '$lib/strings/alerts'
 
   import {
@@ -20,13 +13,12 @@
   } from "$lib/indexedDb";
 
   import { onMount } from "svelte";
-  import { changeToPascalCase, formatPoNumberDateString, getInitials, updateArrayOfNumbers } from "$lib/utils";
+  import { changeToPascalCase, formatPoNumberDateString, getInitials } from "$lib/utils";
 	import type { PageData, ActionData } from "./$types";
 	import PayeeCards from "./PayeeCards.svelte";
 	import PoForm from "./PoForm.svelte";
 	import type {PoFormPoNumber} from "$lib/classes";
 	import {dueDate, reportBudgetLine, requestedBy, topicDivision} from "$lib/strings/poForm";
-	import KeyHandler from "$lib/components/KeyHandler.svelte";
   export let data: PageData;
   export let form: ActionData;
 
@@ -98,6 +90,7 @@
   onMount(async() => {
     await openDB();
     const cryptionKeyFileName = localStorage.getItem("cryptionKeyFileName");
+    const keyDialog = document.getElementById("key-dialog") as HTMLDialogElement;
     if (cryptionKeyFileName) {
       importedCryptionKeyFileName = cryptionKeyFileName;
 
@@ -117,12 +110,9 @@
         const request = objectStore.get(cryptionKeyFileName);
 
         request.onerror = (event) => {
-          console.log(request);
-          alert(`${error}
-                \n Could not get ${cryptionKeyFileName}'s key.
-                \n${ifTheyHaveKey}\n${ifTheyNeedNewKey}
-                \n${step1}
-                \n${step2}`);
+          if (keyDialog) {
+            keyDialog.showModal();
+          }
         }
 
         request.onsuccess = async (event) => {
@@ -131,25 +121,21 @@
             cryptionKey = await result.key;
             if ( cryptionKey ) {
               key = cryptionKey
+              keyDialog.close();
               alert(`${success}
                     \nUsing previous key: ${cryptionKeyFileName}`);
             }
           } else {
-            alert(`${warning}
-               \n${cryptionKeyFileName} was not found in the IndexedDB.
-               \nDatabase: ${db.name} \nVersion: ${db.version}
-               \n${ifTheyHaveKey}\n${ifTheyNeedNewKey}
-               \n${step1}
-               \n${step2}`);
+            if (keyDialog) {
+              keyDialog.showModal();
+            }
           }
         }
       }
     } else {
-      alert(`${greeting}
-         \n${noFileName}
-         \n${ifTheyHaveKey}\n${ifTheyNeedNewKey}
-         \n${step1}
-         \n${step2}`);
+      if (keyDialog) {
+        keyDialog.showModal();
+      }
     }
   });
 
@@ -160,14 +146,7 @@
 </script>
 
 <div class="page-grid-container">
-  <div class="key-container">
-    {#if !importedCryptionKeyFileName || !key}
-    <KeyHandler
-      on:importedKey={handleImportKey}
-    />
-    {/if}
-  </div>
-  {#if  importedCryptionKeyFileName && key}
+  {#if importedCryptionKeyFileName && key}
   <div class="po-form">
     <PoForm
       on:searching={handleSearch}

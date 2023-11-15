@@ -2,7 +2,7 @@
   import {
     error,
     success,
-  } from '$lib/strings/alerts'
+  } from '$lib/strings/alerts';
 
   import PayeeCards from "../purchaseOrders/create/PayeeCards.svelte";
   import type { PageData } from "./$types";
@@ -20,7 +20,6 @@
   let cryptionKey: CryptoKey | undefined;
   let key: CryptoKey;
   let cryptionKeyFileName: IDBValidKey;
-
 
   async function handleClickedPayee(event: CustomEvent) {
     const payee_id = event.detail.payee._id;

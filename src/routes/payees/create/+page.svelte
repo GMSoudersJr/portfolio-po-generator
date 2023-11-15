@@ -15,7 +15,6 @@
 	import {onMount} from "svelte";
   import type { ActionData } from "./$types";
   import PayeeForm from "./PayeeForm.svelte";
-	import KeyDialog from '$lib/components/KeyDialog.svelte';
 
   let cryptionKey: CryptoKey | undefined;
   let db: IDBDatabase;
@@ -85,11 +84,6 @@
 </script>
 
 <main class="page-container">
-  <div class="key-container">
-    {#if !importedCryptionKeyFileName || !key}
-      <KeyDialog />
-    {/if}
-  </div>
   {#if importedCryptionKeyFileName && key}
   <div class="form">
     {#if form?.success}

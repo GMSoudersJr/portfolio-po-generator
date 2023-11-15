@@ -2,7 +2,76 @@
 	import GotoFormButton from "$lib/components/GotoFormButton.svelte";
   import type { PageData } from "./$types";
   import PurchaseOrdersTable from "./PurchaseOrdersTable.svelte";
+  import {
+    dbName,
+    dbVersion,
+    objectStoreName,
+    openDB,
+  } from "$lib/indexedDb";
+  import {
+    error,
+    success,
+  } from "$lib/strings/alerts";
+  import { onMount } from "svelte";
 
+  let db: IDBDatabase;
+  let cryptionKey: CryptoKey | undefined;
+  let key: CryptoKey;
+  let cryptionKeyFileName: IDBValidKey;
+
+  onMount(async() => {
+    cryptionKeyFileName = localStorage.getItem("cryptionKeyFileName") as IDBValidKey;
+    const keyDialog = document.getElementById("key-dialog") as HTMLDialogElement;
+    const invalidKeyDialog = document.getElementById("invalid-key-dialog") as HTMLDialogElement;
+    if ( invalidKeyDialog ) {
+      invalidKeyDialog.close();
+    }
+    if (cryptionKeyFileName) {
+      await openDB();
+      const request = window.indexedDB.open(dbName, dbVersion);
+      request.onerror = (event) => {
+        alert(`${error}
+              \nCould not connect to IndexedDB: \n{request.error}`);
+      }
+      request.onsuccess = async (event) => {
+        db = await (event.target as IDBRequest).result;
+        const transaction = db.transaction(objectStoreName);
+
+        transaction.oncomplete =  (event) => {
+          console.log("Transaction complete on Payee Page.");
+        }
+        const objectStore = transaction.objectStore(objectStoreName);
+        const request = objectStore.get(cryptionKeyFileName);
+
+        request.onerror = (event) => {
+          if (keyDialog) {
+            keyDialog.showModal();
+          }
+        }
+
+        request.onsuccess = async (event) => {
+          const result = await (event.target as IDBRequest).result;
+          if ( result ) {
+            cryptionKey = await result.key;
+            if ( cryptionKey ) {
+              key = cryptionKey;
+              keyDialog.close();
+              alert(`${success}
+                    \nUsing Cryption Key: ${cryptionKeyFileName}`);
+            }
+          } else {
+            if (keyDialog) {
+              keyDialog.showModal();
+            }
+          }
+        }
+      }
+    } else {
+      if (keyDialog) {
+        keyDialog.showModal();
+      }
+    }
+  });
 
   const pathUrl = '/purchaseOrders/create';
   export let data: PageData;
