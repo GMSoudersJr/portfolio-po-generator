@@ -13,6 +13,9 @@
     success,
   } from "$lib/strings/alerts";
   import { onMount } from "svelte";
+  import { showToast } from "$lib/utils";
+  import Toast from "$lib/components/Toast.svelte";
+	import {crytptionTitle} from "$lib/strings/toasts";
 
   let db: IDBDatabase;
   let cryptionKey: CryptoKey | undefined;
@@ -30,8 +33,11 @@
       await openDB();
       const request = window.indexedDB.open(dbName, dbVersion);
       request.onerror = (event) => {
-        alert(`${error}
-              \nCould not connect to IndexedDB: \n{request.error}`);
+        showToast(
+          "error",
+          "Error",
+          `Could not connect to IndexedDB: \n${request.error}`
+        );
       }
       request.onsuccess = async (event) => {
         db = await (event.target as IDBRequest).result;
@@ -56,8 +62,11 @@
             if ( cryptionKey ) {
               key = cryptionKey;
               keyDialog.close();
-              alert(`${success}
-                    \nUsing Cryption Key: ${cryptionKeyFileName}`);
+              showToast(
+                "info",
+                crytptionTitle,
+                `Will use ${cryptionKeyFileName}`
+              );
             }
           } else {
             if (keyDialog) {
@@ -99,6 +108,7 @@
       No POs yet
     </h3>
   {/if}
+  <Toast />
 </div>
 
 <style>

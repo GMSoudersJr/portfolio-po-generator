@@ -42,7 +42,11 @@
         const transaction = db.transaction(objectStoreName);
 
         transaction.oncomplete =  (event) => {
-          showToast( "info", "IndexedDB", `IndexedDB transaction complete.\nDecrypting Data...`);
+          showToast(
+            "info",
+            "IndexedDB",
+            `IndexedDB transaction complete.`
+          );
         }
         const objectStore = transaction.objectStore(objectStoreName);
         const request = objectStore.get(cryptionKeyFileName);
@@ -60,7 +64,11 @@
             if ( cryptionKey ) {
               key = cryptionKey
               keyDialog.close();
-              showToast( "success", "Success", `Using Cryption Key: ${cryptionKeyFileName}`);
+              showToast(
+                "success",
+                "Success",
+                `Using Cryption Key: ${cryptionKeyFileName}`
+              );
             }
           } else {
             if (keyDialog) {
@@ -79,6 +87,7 @@
   export let data: PageData;
   const payeeData = data.payeeData;
   $: purpose = data.purpose;
+  console.log(form);
 </script>
 
 <main class="page-container">

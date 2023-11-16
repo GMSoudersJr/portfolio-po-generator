@@ -2,7 +2,7 @@
 	import LoginCard from "$lib/components/LoginCard.svelte";
   import type { ActionData } from "./$types";
 
-  export let form: ActionData;
+  let form: ActionData;
 
 </script>
 

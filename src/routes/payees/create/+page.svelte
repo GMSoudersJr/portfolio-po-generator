@@ -1,25 +1,17 @@
 <script lang="ts">
   import {
-    error,
-    success,
-    transactionComplete,
-  } from '$lib/strings/alerts'
-
-  import {
     openDB,
     dbName,
     dbVersion,
     objectStoreName
   } from "$lib/indexedDb";
-  import {
-    toasts,
-  } from "svelte-toasts";
-	import type {ToastType} from 'svelte-toasts/types/common';
 	import Toast from '$lib/components/Toast.svelte';
+  import { showToast } from '$lib/utils';
 
 	import {onMount} from "svelte";
   import type { ActionData } from "./$types";
   import PayeeForm from "./PayeeForm.svelte";
+	import {crytptionTitle} from "$lib/strings/toasts";
 
   let cryptionKey: CryptoKey | undefined;
   let db: IDBDatabase;
@@ -27,24 +19,6 @@
   export let form: ActionData;
   let key: CryptoKey;
   let importedCryptionKeyFileName: string | null;
-
-  const showToast = (
-    typeString: ToastType,
-    titleString: string,
-    descriptionString: string,
-  ) => {
-    const toast = toasts.add({
-      title: titleString,
-      description: descriptionString,
-      duration: 5000,
-      showProgress: true,
-      placement: 'bottom-right',
-      type: typeString,
-      theme: "dark",
-      onClick: () => {},
-      onRemove: () => {},
-    });
-  };
 
   onMount(async() => {
     await openDB();
@@ -66,7 +40,7 @@
         const transaction = db.transaction(objectStoreName);
 
         transaction.oncomplete =  (event) => {
-          showToast( "info", "IndexedDB", "IndexedDB transaction complete.");
+          console.log("Create Payee IndexedDB transaction complete.")
         }
         const objectStore = transaction.objectStore(objectStoreName);
         const request = objectStore.get(cryptionKeyFileName);
@@ -84,7 +58,7 @@
             if ( cryptionKey ) {
               key = cryptionKey
               keyDialog.close();
-              showToast( "success", "Success", `Using Cryption Key: ${cryptionKeyFileName}`);
+              showToast( "info", crytptionTitle, `Will use ${cryptionKeyFileName}`);
             }
           } else {
             if (keyDialog) {

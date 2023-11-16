@@ -4,6 +4,9 @@
   import { importCryptoKey } from "$lib/cryption";
   import { openDB, addToDb } from "$lib/indexedDb";
   import { createEventDispatcher } from "svelte";
+  import { showToast } from "$lib/utils";
+  import Toast from "$lib/components/Toast.svelte";
+	import {cryptionKeyTitle} from "$lib/strings/toasts";
 
   const dispatch = createEventDispatcher();
   async function handleChange(event: Event) {
@@ -16,8 +19,11 @@
       const fileName = theFile.name;
       localStorage.setItem("cryptionKeyFileName", fileName);
       const importedKey = await importCryptoKey(JSON.parse(fileText));
-      alert(`Success ✔
-            \nImported: ${fileName}`);
+      showToast(
+        "success",
+        cryptionKeyTitle,
+        `Imported: ${fileName}`
+      )
       dispatch('importedKey', {
         importedKey,
         fileName
@@ -27,16 +33,22 @@
       let keyDialog =
         document.getElementById("key-dialog") as HTMLDialogElement;
       if (keyDialog) {
-        console.dir(keyDialog)
         keyDialog.close();
-        await goto(keyDialog.baseURI);
+        if ( keyDialog.baseURI.includes("payees") ) {
+          await goto('/payees/');
+        } else {
+          await goto(keyDialog.baseURI);
+        }
       }
       let invalidKeyDialog =
         document.getElementById("invalid-key-dialog") as HTMLDialogElement;
       if (invalidKeyDialog) {
-        console.dir(invalidKeyDialog)
         invalidKeyDialog.close();
-        await goto(invalidKeyDialog.baseURI);
+        if ( invalidKeyDialog.baseURI.includes("payees") ) {
+          await goto('/payees/');
+        } else {
+          await goto(invalidKeyDialog.baseURI);
+        }
       }
     } else {
       const importedKey = undefined;
@@ -59,6 +71,7 @@
     id="import-key"
     on:change={handleChange}
   >
+    <Toast />
 </div>
 
 <style>

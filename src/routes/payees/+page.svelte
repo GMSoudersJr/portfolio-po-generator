@@ -12,6 +12,7 @@
   } from "$lib/indexedDb";
 	import Toast from '$lib/components/Toast.svelte';
   import { showToast } from "$lib/utils";
+  import { crytptionTitle } from "$lib/strings/toasts";
 
   let db: IDBDatabase;
   let cryptionKey: CryptoKey | undefined;
@@ -45,7 +46,7 @@
         const transaction = db.transaction(objectStoreName);
 
         transaction.oncomplete =  (event) => {
-          showToast( "info", "IndexedDB", "IndexedDB transaction complete.");
+          console.log("Payees page IndexedDB transaction complete.")
         }
         const objectStore = transaction.objectStore(objectStoreName);
         const request = objectStore.get(cryptionKeyFileName);
@@ -63,7 +64,7 @@
             if ( cryptionKey ) {
               key = cryptionKey;
               keyDialog.close();
-              showToast( "success", "Success", `Using Cryption Key: ${cryptionKeyFileName}`);
+              showToast( "info", crytptionTitle, `Will use ${cryptionKeyFileName}`);
             }
           } else {
             if (keyDialog) {

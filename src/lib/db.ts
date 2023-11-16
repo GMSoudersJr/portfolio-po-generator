@@ -64,7 +64,23 @@ export async function getPayee(payee_id: string) {
 			}
 		}, {
 			$project: {
-				_id: 0
+				_id: {
+					'$toString': '$_id'
+				},
+				beneficiaryName: 1,
+				typeOfPayee: 1,
+				bankName: 1,
+				bankAccountNumber: 1,
+				nationalIdOrBusinessRegistrationNumber: 1,
+				homeAddress: 1,
+				bankAddress: 1,
+				routingNumber: 1,
+				swiftCode: 1,
+				taxRate: 1,
+				currency: 1,
+				reportingBudgetLine: 1,
+				topicDivision: 1,
+				iban: 1,
 			}
 		}
 	];

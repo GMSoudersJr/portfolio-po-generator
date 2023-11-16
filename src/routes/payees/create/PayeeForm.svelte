@@ -21,16 +21,16 @@
   import Iban from "./Iban.svelte";
   import type { Document } from "mongodb";
   import { decryptTheData } from "$lib/cryption";
-  import { splitEncrypted } from "$lib/utils";
+  import { showToastInvalidKey, splitEncrypted } from "$lib/utils";
   import ButtonContainer from './ButtonContainer.svelte';
+  import { showToast } from '$lib/utils';
+  import { dataDecryptedString, invalidKeyUsedString } from "$lib/strings/toasts";
 
   let cryptionKey: CryptoKey | undefined;
   let db: IDBDatabase;
 
   onMount(async() => {
     const cryptionKeyFileName = localStorage.getItem("cryptionKeyFileName")
-    let invalidKeyDialog =
-      document.getElementById("invalid-key-dialog") as HTMLDialogElement;
     if (cryptionKeyFileName) {
 
       const request = window.indexedDB.open(dbName, dbVersion);
@@ -62,6 +62,7 @@
               )
               return decryptedText;
             }
+            console.log(purpose);
             if ( payeeData?.nationalIdOrBusinessRegistrationNumber ) {
               decryptedNationalIdOrBusinessRegistrationNumber =
                 await decryptDataFromDatabase(payeeData.nationalIdOrBusinessRegistrationNumber);
@@ -93,21 +94,37 @@
               decryptedSwiftCode =
                 await decryptDataFromDatabase(payeeData.swiftCode);
             }
-            if (
-                decryptedBankName.includes("Invalid Key") ||
-                decryptedBankAccountNumber.includes("Invalid Key")
-              ) {
-                decryptedNationalIdOrBusinessRegistrationNumber = "NOPE";
-                decryptedHomeAddress = "NOPE";
-                decryptedBankName = "NOPE";
-                decryptedBankAccountNumber = "NOPE";
-                decryptedIban = "NOPE";
-                decryptedBankAddress = "NOPE";
-                decryptedRoutingNumber = "NOPE";
-                decryptedSwiftCode = "NOPE";
-                purpose = ['disabled'];
-                invalidKeyDialog.showModal();
+            if (purpose.includes('update')) {
+              try {
+                if (
+                    decryptedBankName.includes("Invalid Key") ||
+                    decryptedBankAccountNumber.includes("Invalid Key")
+                  ) {
+                    decryptedNationalIdOrBusinessRegistrationNumber = "NOPE";
+                    decryptedHomeAddress = "NOPE";
+                    decryptedBankName = "NOPE";
+                    decryptedBankAccountNumber = "NOPE";
+                    decryptedIban = "NOPE";
+                    decryptedBankAddress = "NOPE";
+                    decryptedRoutingNumber = "NOPE";
+                    decryptedSwiftCode = "NOPE";
+                    purpose = ['disabled'];
+                    showToastInvalidKey(
+                      "error",
+                      "Error",
+                      invalidKeyUsedString
+                    );
+                  } else {
+                    showToast(
+                      "success",
+                      "Success",
+                      dataDecryptedString
+                    );
+                  }
+              } catch (error) {
+                console.dir(error);
               }
+            }
           }
         }
       }
@@ -202,7 +219,10 @@
     {key}
     {disabled}
   />
-  <ButtonContainer {purpose} />
+  <ButtonContainer
+    {payeeData}
+    {purpose}
+  />
 </form>
 
 

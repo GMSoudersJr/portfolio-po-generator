@@ -60,6 +60,7 @@
     grid-template-rows: repeat(4, min-content);
     row-gap: 1.2rem;
     padding: 1rem 2rem;
+    overflow: hidden;
   }
   h2 {
     line-height: 100%;

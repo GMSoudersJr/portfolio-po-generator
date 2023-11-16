@@ -19,6 +19,9 @@
 	import PoForm from "./PoForm.svelte";
 	import type {PoFormPoNumber} from "$lib/classes";
 	import {dueDate, reportBudgetLine, requestedBy, topicDivision} from "$lib/strings/poForm";
+  import { showToast } from '$lib/utils';
+	import {cryptionKeyTitle, crytptionTitle, poFormCreateString} from '$lib/strings/toasts';
+	import {poFormHeading} from '$lib/strings/homepage';
   export let data: PageData;
   export let form: ActionData;
 
@@ -104,7 +107,11 @@
         const transaction = db.transaction(objectStoreName);
 
         transaction.oncomplete =  (event) => {
-          alert(transactionComplete);
+          showToast(
+            "success",
+            poFormHeading,
+            poFormCreateString
+          );
         }
         const objectStore = transaction.objectStore(objectStoreName);
         const request = objectStore.get(cryptionKeyFileName);
@@ -122,8 +129,11 @@
             if ( cryptionKey ) {
               key = cryptionKey
               keyDialog.close();
-              alert(`${success}
-                    \nUsing previous key: ${cryptionKeyFileName}`);
+              showToast(
+                "info",
+                crytptionTitle,
+                `Will use ${cryptionKeyFileName}`
+              );
             }
           } else {
             if (keyDialog) {

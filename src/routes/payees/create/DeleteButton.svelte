@@ -1,9 +1,24 @@
 <script lang="ts">
+	import {clickToUndo, deletedPayeeTitle} from "$lib/strings/toasts";
+  import { showToastUndoDelete } from "$lib/utils";
+	import type {Document} from "mongodb";
+
+  function handleClick() {
+    showToastUndoDelete(
+      "success",
+      deletedPayeeTitle,
+      clickToUndo,
+      payeeData
+    );
+  };
+
+  export let payeeData: Document | undefined;
 </script>
 
 <button
   class="delete-payee"
   formaction="?/delete"
+  on:click={handleClick}
 >
   Delete
 </button>
