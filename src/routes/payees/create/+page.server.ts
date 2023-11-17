@@ -15,6 +15,7 @@ import { reportBudgetLine, topicDivision } from '$lib/strings/poForm';
 import { trimTheFormData } from '$lib/utils';
 import { Payee } from '$lib/classes';
 import { addPayee } from '$lib/db';
+import {error, fail, redirect} from '@sveltejs/kit';
 
 const beneficiaryNameString = beneficiaryName.name;
 const payeeTypeNameString = payeeTypeAndTax.name;
@@ -99,10 +100,10 @@ export const actions = {
 		}
 
 		const databaseResponse = await addPayee(payee);
-
-		return {
-			success: databaseResponse,
-			message: `Added ${payee.beneficiaryName} to Payees!`
-		};
+		if ( databaseResponse ) {
+			throw redirect(301, '/payees/');
+		} else {
+			return fail(400, {payee, dbError: true})
+		}
 	}
 } satisfies Actions;

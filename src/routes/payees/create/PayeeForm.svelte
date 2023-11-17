@@ -14,7 +14,7 @@
     splitEncrypted
   } from "$lib/utils";
   import { onMount } from 'svelte';
-  import { enhance } from "$app/forms";
+  import { applyAction, enhance } from "$app/forms";
   import { showToast } from '$lib/utils';
   import { decryptTheData } from "$lib/cryption";
   import BankAccountNumber from "$lib/components/forms/payee/BankAccountNumber.svelte";
@@ -31,6 +31,8 @@
   import RoutingNumber from "$lib/components/forms/payee/RoutingNumber.svelte";
   import SwiftCode from "$lib/components/forms/payee/SwiftCode.svelte";
   import TopicDivision from "$lib/components/forms/payee/TopicDivision.svelte";
+	import type {SubmitFunction} from "@sveltejs/kit";
+	import {goto} from "$app/navigation";
 
   let cryptionKey: CryptoKey | undefined;
   let db: IDBDatabase;
@@ -151,12 +153,37 @@
   let payee_id = payeeData?._id;
   export let purpose = ['create'];
   $: disabled = purpose.includes('disabled');
+  const enhancement: SubmitFunction = async (
+    { formData, action }
+  ) => {
+    const payeeName = formData.get("beneficiaryName")?.toString();
+    const formAction = action.search;
+    let toastDescriptionString: string;
+    if ( formAction.includes('update') ) {
+      toastDescriptionString = `Updated ${payeeName}`
+    } else {
+      toastDescriptionString = `Added ${payeeName}.`
+    }
+    return async ({ result, update }) => {
+      console.log(result);
+      if ( result.type === 'redirect' ) {
+        await goto(result.location);
+        showToast(
+          "success",
+          `Form Submitted`,
+          toastDescriptionString
+        );
+      } else {
+        await applyAction(result);
+      }
+    };
+  }
 </script>
 
 <form
   method="post"
   action="?/add"
-  use:enhance
+  use:enhance={enhancement}
 >
   <BeneficiaryName
     value={payeeData?.beneficiaryName}
