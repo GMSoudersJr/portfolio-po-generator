@@ -64,7 +64,8 @@
             if ( cryptionKey ) {
               key = cryptionKey;
               keyDialog.close();
-              showToast( "info", crytptionTitle, `Will use ${cryptionKeyFileName}`);
+              console.log(`Will use ${cryptionKeyFileName}`)
+              //showToast( "info", crytptionTitle, `Will use ${cryptionKeyFileName}`);
             }
           } else {
             if (keyDialog) {

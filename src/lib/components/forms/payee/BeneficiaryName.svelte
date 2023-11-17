@@ -7,6 +7,7 @@
 
 <label for={beneficiaryName.id}>
   {beneficiaryName.label}:
+</label>
   <input
     class={beneficiaryName.class}
     id={beneficiaryName.id}
@@ -17,8 +18,6 @@
     autocomplete="name"
     {disabled}
   >
-</label>
 
 <style>
 </style>
-

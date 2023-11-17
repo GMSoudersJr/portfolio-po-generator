@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { goto } from "$app/navigation";
+	import { goto, invalidateAll } from "$app/navigation";
 
   import { importCryptoKey } from "$lib/cryption";
   import { openDB, addToDb } from "$lib/indexedDb";
@@ -30,24 +30,30 @@
       });
       await openDB();
       await addToDb(theFile);
+
       let keyDialog =
         document.getElementById("key-dialog") as HTMLDialogElement;
       if (keyDialog) {
         keyDialog.close();
         if ( keyDialog.baseURI.includes("payees") ) {
-          await goto('/payees/');
+          await goto('/payees/', {invalidateAll: true});
+        } else if ( keyDialog.baseURI.includes("purchaseOrders") ) {
+          await goto('/purchaseOrders/', {invalidateAll: true});
         } else {
-          await goto(keyDialog.baseURI);
+          await goto(keyDialog.baseURI, {invalidateAll: true});
         }
       }
+
       let invalidKeyDialog =
         document.getElementById("invalid-key-dialog") as HTMLDialogElement;
       if (invalidKeyDialog) {
         invalidKeyDialog.close();
         if ( invalidKeyDialog.baseURI.includes("payees") ) {
-          await goto('/payees/');
+          await goto('/payees/', {invalidateAll: true});
+        } else if ( invalidKeyDialog.baseURI.includes("purcahseOrders") ) {
+          await goto('/purchaseOrders/', {invalidateAll: true});
         } else {
-          await goto(invalidKeyDialog.baseURI);
+          await goto(invalidKeyDialog.baseURI, {invalidateAll: true});
         }
       }
     } else {

@@ -42,11 +42,7 @@
         const transaction = db.transaction(objectStoreName);
 
         transaction.oncomplete =  (event) => {
-          showToast(
-            "info",
-            "IndexedDB",
-            `IndexedDB transaction complete.`
-          );
+          console.log("Payee Update transaction complete.")
         }
         const objectStore = transaction.objectStore(objectStoreName);
         const request = objectStore.get(cryptionKeyFileName);
@@ -64,11 +60,7 @@
             if ( cryptionKey ) {
               key = cryptionKey
               keyDialog.close();
-              showToast(
-                "success",
-                "Success",
-                `Using Cryption Key: ${cryptionKeyFileName}`
-              );
+              console.log(`Payee Update Page using ${cryptionKeyFileName}`)
             }
           } else {
             if (keyDialog) {

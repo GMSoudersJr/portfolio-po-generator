@@ -8,10 +8,6 @@
     objectStoreName,
     openDB,
   } from "$lib/indexedDb";
-  import {
-    error,
-    success,
-  } from "$lib/strings/alerts";
   import { onMount } from "svelte";
   import { showToast } from "$lib/utils";
   import Toast from "$lib/components/Toast.svelte";
@@ -62,11 +58,7 @@
             if ( cryptionKey ) {
               key = cryptionKey;
               keyDialog.close();
-              showToast(
-                "info",
-                crytptionTitle,
-                `Will use ${cryptionKeyFileName}`
-              );
+              console.log(`PO Summary will use ${cryptionKeyFileName}`);
             }
           } else {
             if (keyDialog) {

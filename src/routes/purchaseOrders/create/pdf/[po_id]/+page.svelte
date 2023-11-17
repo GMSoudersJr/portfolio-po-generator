@@ -1,6 +1,6 @@
 <script lang="ts">
-  import PdfMakeButton from "$lib/components/poTemplate/PdfMakeButton.svelte";
-  import PoTemplate from "$lib/components/poTemplate/PoTemplate.svelte";
+  import PdfMakeButton from "$lib/components/poPublicTemplate/PdfMakeButton.svelte";
+  import PoTemplate from "$lib/components/poPublicTemplate/PoTemplate.svelte";
   import type { PageData } from "./$types";
 
   export let data: PageData;
