@@ -11,17 +11,24 @@ export const showToastUndoDelete = (
 	payeeToUnDelete: Document | undefined
 ) => {
 	toasts.clearAll();
-
 	const toast = toasts.add({
 		title: titleString,
 		description: descriptionString,
-		duration: 0,
+		duration: 5000,
 		showProgress: true,
 		placement: 'bottom-right',
 		type: typeString,
 		theme: "light",
-		onClick: () => {
-			console.dir(payeeToUnDelete);
+		onClick: async () => {
+			const response = await fetch('/api/payees/undoDelete', {
+				method: 'POST',
+				body: JSON.stringify(payeeToUnDelete),
+			});
+			const success = await response.json();
+			if (success) {
+				toasts.clearAll();
+				goto('/payees/', { invalidateAll: true });
+			}
 		},
 		onRemove: () => {},
 	});
@@ -35,7 +42,6 @@ export const showToastInvalidKey = (
 	toasts.clearAll();
 	const invalidKeyDialog =
 		document.getElementById("invalid-key-dialog") as HTMLDialogElement;
-
 	const toast = toasts.add({
 		title: titleString,
 		description: descriptionString,

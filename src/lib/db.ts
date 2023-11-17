@@ -17,7 +17,9 @@ const poCollection = db.collection('pos');
 const usersCollection = db.collection('users');
 
 export async function undoDeletePayee(document: Document) {
+	console.log("@undoDeletePayee before", document);
 	document._id = new ObjectId(document._id);
+	console.log("@undoDeletePayee after", document);
 	try {
 		await client.connect();
 		console.log("Successfully connected to the database to undo delete a payee.");
@@ -43,7 +45,21 @@ export async function deletePayee(payee_id: string) {
 					projection: {
 						_id: {
 							$toString: "$_id"
-						}
+						},
+						beneficiaryName: 1,
+						typeOfPayee: 1,
+						bankName: 1,
+						bankAccountNumber: 1,
+						nationalIdOrBusinessRegistrationNumber: 1,
+						homeAddress: 1,
+						bankAddress: 1,
+						routingNumber: 1,
+						swiftCode: 1,
+						taxRate: 1,
+						currency: 1,
+						reportingBudgetLine: 1,
+						topicDivision: 1,
+						iban: 1,
 					}
 				}
 		);

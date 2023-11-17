@@ -1,30 +1,36 @@
 <script lang="ts">
+  import type { Document } from "mongodb";
   import {
     dbName,
     dbVersion,
     objectStoreName
   } from '$lib/indexedDb';
+  import {
+    dataDecryptedString,
+    invalidKeyUsedString
+  } from "$lib/strings/toasts";
+  import {
+    showToastInvalidKey,
+    splitEncrypted
+  } from "$lib/utils";
   import { onMount } from 'svelte';
   import { enhance } from "$app/forms";
-  import BankAccountNumber from "./BankAccountNumber.svelte";
-  import BankAddress from "./BankAddress.svelte";
-  import BankName from "./BankName.svelte";
-  import BeneficiaryName from "./BeneficiaryName.svelte";
-  import Currency from "$lib/components/forms/Currency.svelte";
-  import HomeAddress from "./HomeAddress.svelte";
-  import NationalIdOrBusinessRegistration from "./NationalIDOrBusinessRegistration.svelte";
-  import PayeeType from "./PayeeType.svelte";
-  import RoutingNumber from "./RoutingNumber.svelte";
-  import SwiftCode from "./SwiftCode.svelte";
-  import TopicDivision from "./TopicDivision.svelte";
-  import ReportingBudgetLine from "./ReportingBudgetLine.svelte";
-  import Iban from "./Iban.svelte";
-  import type { Document } from "mongodb";
-  import { decryptTheData } from "$lib/cryption";
-  import { showToastInvalidKey, splitEncrypted } from "$lib/utils";
-  import ButtonContainer from './ButtonContainer.svelte';
   import { showToast } from '$lib/utils';
-  import { dataDecryptedString, invalidKeyUsedString } from "$lib/strings/toasts";
+  import { decryptTheData } from "$lib/cryption";
+  import BankAccountNumber from "$lib/components/forms/payee/BankAccountNumber.svelte";
+  import BankAddress from "$lib/components/forms/payee/BankAddress.svelte";
+  import BankName from "$lib/components/forms/payee/BankName.svelte";
+  import BeneficiaryName from "$lib/components/forms/payee/BeneficiaryName.svelte";
+  import ButtonContainer from '$lib/components/forms/payee/ButtonContainer.svelte';
+  import HomeAddress from "$lib/components/forms/payee/HomeAddress.svelte";
+  import Currency from "$lib/components/forms/Currency.svelte";
+  import Iban from "$lib/components/forms/payee/Iban.svelte";
+  import NationalIdOrBusinessRegistration from "$lib/components/forms/payee/NationalIDOrBusinessRegistration.svelte";
+  import PayeeType from "$lib/components/forms/payee/PayeeType.svelte";
+  import ReportingBudgetLine from "$lib/components/forms/payee/ReportingBudgetLine.svelte";
+  import RoutingNumber from "$lib/components/forms/payee/RoutingNumber.svelte";
+  import SwiftCode from "$lib/components/forms/payee/SwiftCode.svelte";
+  import TopicDivision from "$lib/components/forms/payee/TopicDivision.svelte";
 
   let cryptionKey: CryptoKey | undefined;
   let db: IDBDatabase;
@@ -142,6 +148,7 @@
 
   export let key: CryptoKey;
   export let payeeData: Document | undefined;
+  let payee_id = payeeData?._id;
   export let purpose = ['create'];
   $: disabled = purpose.includes('disabled');
 </script>
@@ -221,6 +228,7 @@
   />
   <ButtonContainer
     {payeeData}
+    {payee_id}
     {purpose}
   />
 </form>
