@@ -164,7 +164,7 @@
     } else {
       toastDescriptionString = `Added ${payeeName}.`
     }
-    return async ({ result, update }) => {
+    return async ({ result }) => {
       console.log(result);
       if ( result.type === 'redirect' ) {
         await goto(result.location);
