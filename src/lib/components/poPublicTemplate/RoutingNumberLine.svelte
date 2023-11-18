@@ -2,7 +2,6 @@
   import {
     pdfTemplateRoutingOrABAString,
     pdfTemplateRoutingMessageString,
-    pdfTemplateRequiredString
   } from "$lib/strings/poTemplate";
 
   export let routingNumber = "123456789";
@@ -15,9 +14,6 @@
       {pdfTemplateRoutingOrABAString}:
     </h5>
   </div>
-  <p class="routing-message warning">
-    {pdfTemplateRoutingMessageString}
-  </p>
   <p class="routing-number-actual section3-data-actual">
     {routingNumber ?? ""}
   </p>
@@ -29,10 +25,6 @@
     grid-area: routingNumberLabel;
     padding-left: 0.15em;
   }
-  .routing-message {
-    grid-area: routingMessage;
-    padding-left: 0.15em;
-  }
   .routing-number-actual {
     grid-area: routingNumberActual;
     border-bottom: 1px solid black;
@@ -40,10 +32,9 @@
   .grid-container {
     display: grid;
     grid-template-columns: 33% 1fr;
-    grid-template-rows: repeat(2, auto);
+    grid-template-rows: auto;
     grid-template-areas:
-    "routingNumberLabel routingNumberActual"
-    "routingMessage .";
+    "routingNumberLabel routingNumberActual";
     row-gap: 0.25em;
     margin: 0.25em 0;
   }

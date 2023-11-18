@@ -4,7 +4,7 @@
   import { importCryptoKey } from "$lib/cryption";
   import { openDB, addToDb } from "$lib/indexedDb";
   import { createEventDispatcher } from "svelte";
-  import { showToast } from "$lib/utils";
+  import { showToast } from "$lib/toasts";
   import Toast from "$lib/components/Toast.svelte";
 	import {cryptionKeyTitle} from "$lib/strings/toasts";
 

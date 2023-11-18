@@ -3,13 +3,11 @@
   import ApprovedBy from "./ApprovedBy.svelte";
   import DueBy from "./DueBy.svelte";
   import Footer from "./Footer.svelte";
-	import PaymentMethod from "./PaymentMethod.svelte";
 	import PoNumber from "./PoNumber.svelte";
 	import RequestedBy from "./RequestedBy.svelte";
 	import Section1 from "./Section1.svelte";
 	import Section2 from "./Section2.svelte";
 	import Section3 from "./Section3.svelte";
-	import Subtitle from "./Subtitle.svelte";
   import Title from "./Title.svelte";
   import { decryptTheData } from "$lib/cryption";
   import { splitEncrypted } from "$lib/utils";
@@ -20,8 +18,8 @@
   } from "$lib/indexedDb";
 
 	import {onMount} from "svelte";
-	import {showToast, showToastInvalidKey} from "$lib/toasts";
-	import {dataDecryptedString, invalidKeyUsedString} from "$lib/strings/toasts";
+	import { showToast, showToastInvalidKey } from "$lib/toasts";
+	import { invalidKeyUsedString } from "$lib/strings/toasts";
   let cryptionKey: CryptoKey | undefined;
   let db: IDBDatabase;
 
@@ -161,20 +159,12 @@
     <Title />
   </section>
 
-  <section class="subtitle">
-    <Subtitle />
-  </section>
-
-  <section class="payment-method">
-    <PaymentMethod {paymentMethod}/>
+  <section class="po-number">
+    <PoNumber {poNumber}/>
   </section>
 
   <section class="due-by">
     <DueBy {dueDate}/>
-  </section>
-
-  <section class="po-number">
-    <PoNumber {poNumber}/>
   </section>
 
   <section class="section1">
@@ -199,6 +189,7 @@
 
   <section class="section3">
     <Section3
+      {paymentMethod}
       {payeeName}
       bankName={decryptedBankName}
       bankAccountNumber={decryptedBankAccountNumber}
@@ -233,12 +224,6 @@
 <style>
   .title {
     grid-area: title;
-  }
-  .subtitle {
-    grid-area: subtitle;
-  }
-  .payment-method {
-    grid-area: paymentMethod;
   }
   .due-by {
     grid-area: dueBy;
@@ -277,22 +262,17 @@
     height: 29.7cm;
     display: grid;
     padding: 30px 45px;
-    grid-template-columns: auto 1fr;
-    grid-template-rows: repeat(4, min-content) repeat(3, auto) min-content;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, min-content);
+    gap: 0.5em;
     grid-template-areas:
-    ". title"
-    ". subtitle"
-    ". paymentMethod"
-    ". dueBy"
-    ". poNumber"
-    ". section1"
-    ". section2"
-    ". section3"
-    ". additionalNotes"
-    ". requestedBy"
-    ". approvedBy"
+    "title title"
+    "poNumber dueBy"
+    "section3 section1 "
+    "section2 section2"
+    "additionalNotes additionalNotes"
+    "requestedBy approvedBy"
     "footer footer";
-    column-gap: 0.12em;
   }
   @page {
     size: 21cm 29.7cm;

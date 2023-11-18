@@ -21,8 +21,7 @@
     border-right: 1px solid black;
     display: flex;
     justify-self: end;
-    padding-top: 0.25em;
-    padding-right: 0.15em;
+    padding: 0.5em 0.15em;
   }
   .withholding-tax-vat-label {
     font-size: var(--fontSizeSectionDataLabel);
@@ -31,8 +30,7 @@
     grid-area: amount;
     justify-self: end;
     font-size: var(--fontSizePaymentMethodActualAndMoney);
-    padding-top: 0.25em;
-    padding-right: 0.15em;
+    padding: 0.5em 0.15em;
   }
   .grid-container {
     border-top: 1px solid black;

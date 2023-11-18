@@ -11,7 +11,7 @@
 	import {onMount} from "svelte";
   import type { ActionData } from "./$types";
 	import KeyDialog from "$lib/components/KeyDialog.svelte";
-  import { showToast } from "$lib/utils";
+  import { showToast } from "$lib/toasts";
 	import Toast from "$lib/components/Toast.svelte";
 
   let cryptionKey: CryptoKey | undefined;

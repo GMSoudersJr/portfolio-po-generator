@@ -1,8 +1,6 @@
 <script lang="ts">
   import {
     pdfTemplatePoNumberString,
-    pdfTemplatePoNumberFormatString,
-    pdfTemplatePoNumberFormatExampleString,
     pdfTemplateRequiredString
   } from "$lib/strings/poTemplate";
 
@@ -11,10 +9,10 @@
 
 <div class="grid-container">
   <div class="po-label required-line">
-    <h5 class="po-number-text">
+    <h5 class="po-number-text label">
       {pdfTemplatePoNumberString}
     </h5>
-    <p class="required warning">
+    <p class="required warning label">
       {pdfTemplateRequiredString}
     </p>
     <h5>:</h5>
@@ -23,25 +21,10 @@
     <p class="po-number-actual">
       {poNumber ?? ""}
     </p>
-    <p class="po-number-format">
-      {pdfTemplatePoNumberFormatString}
-    </p>
-    <p class="po-number-example">
-      {pdfTemplatePoNumberFormatExampleString}
-    </p>
   </div>
 </div>
 
 <style>
-  .po-number-format,
-  .po-number-example {
-    color: var(--exampleCrimson);
-    font-size: var(--fontSizePoFormatAndExample);
-    font-size: 0.64em;
-    font-style: italic;
-    text-align: center;
-
-  }
   .po-label {
     display: flex;
     grid-area: poLabel;
@@ -59,6 +42,7 @@
   .po-number-actual {
     border-bottom: 1px solid black;
     font-size: var(--fontSizeSectionDataActual);
+    font-size: 1rem;
   }
   .grid-container {
     display: grid;
@@ -67,5 +51,8 @@
     grid-template-areas:
     "poLabel poNumberArea .";
     margin: 0.25em 0;
+  }
+  .label {
+    font-size: 1rem;
   }
 </style>

@@ -1,35 +1,35 @@
 <script lang="ts">
   import {
-    pdfTemplateBankNameString,
     pdfTemplateRequiredString
   } from "$lib/strings/poTemplate";
 
-  export let bankName = "Shinhan Bank";
+  export let value: string;
+  export let label: string;
 </script>
 
 <div class="grid-container">
-  <div class="bank-name-label required-line">
-    <h5 class="bank-name-text section3-data-label">
-      {pdfTemplateBankNameString}
+  <div class="payment-detail-label required-line">
+    <h5 class="payment-detail-text section3-data-label">
+      {label}
     </h5>
     <p class="required warning">
       {pdfTemplateRequiredString}
     </p>
     <h5>:</h5>
   </div>
-  <p class="bank-name-actual section3-data-actual">
-    {bankName ?? ""}
+  <p class="payment-detail-actual section3-data-actual">
+    {value ?? ""}
   </p>
 </div>
 
 <style>
-  .bank-name-label {
+  .payment-detail-label {
     display: flex;
-    grid-area: bankNameLabel;
+    grid-area: paymentDetailLabel;
     padding-left: 0.15em;
   }
-  .bank-name-actual {
-    grid-area: bankNameActual;
+  .payment-detail-actual {
+    grid-area: paymentDetailActual;
     border-bottom: 1px solid black;
   }
   .grid-container {
@@ -37,7 +37,8 @@
     grid-template-columns: 33% 1fr;
     grid-template-rows: 1fr;
     grid-template-areas:
-    "bankNameLabel bankNameActual";
+    "paymentDetailLabel paymentDetailActual";
     margin: 0.25em 0;
   }
 </style>
+

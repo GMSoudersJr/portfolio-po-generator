@@ -15,7 +15,7 @@
   } from "$lib/utils";
   import { onMount } from 'svelte';
   import { applyAction, enhance } from "$app/forms";
-  import { showToast } from '$lib/utils';
+  import { showToast } from '$lib/toasts';
   import { decryptTheData } from "$lib/cryption";
   import BankAccountNumber from "$lib/components/forms/payee/BankAccountNumber.svelte";
   import BankAddress from "$lib/components/forms/payee/BankAddress.svelte";

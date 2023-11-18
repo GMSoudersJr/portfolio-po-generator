@@ -50,7 +50,7 @@
   .grid-container {
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: repeat(7, auto);
+    grid-template-rows: repeat(auto-fill, auto);
     border: 2px solid black;
   }
 </style>

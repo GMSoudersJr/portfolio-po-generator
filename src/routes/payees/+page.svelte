@@ -11,8 +11,7 @@
     objectStoreName
   } from "$lib/indexedDb";
 	import Toast from '$lib/components/Toast.svelte';
-  import { showToast } from "$lib/utils";
-  import { crytptionTitle } from "$lib/strings/toasts";
+  import { showToast } from "$lib/toasts";
 
   let db: IDBDatabase;
   let cryptionKey: CryptoKey | undefined;

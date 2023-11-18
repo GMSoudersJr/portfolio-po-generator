@@ -2,7 +2,6 @@
   import {
     pdfTemplateSwiftString,
     pdfTemplateSwiftMessageString,
-    pdfTemplateRequiredString
   } from "$lib/strings/poTemplate";
 
   export let swiftCode = "AAAA-BB-CC-123";
@@ -14,9 +13,6 @@
       {pdfTemplateSwiftString}:
     </h5>
   </div>
-  <p class="swift-message warning">
-    {pdfTemplateSwiftMessageString}
-  </p>
   <p class="swift-code-actual section3-data-actual">
     {swiftCode ?? ""}
   </p>
@@ -28,10 +24,6 @@
     grid-area: swiftCodeLabel;
     padding-left: 0.15em;
   }
-  .swift-message {
-    grid-area: swiftMessage;
-    padding-left: 0.15em;
-  }
   .swift-code-actual {
     grid-area: swiftCodeActual;
     border-bottom: 1px solid black;
@@ -39,10 +31,9 @@
   .grid-container {
     display: grid;
     grid-template-columns: 33% 1fr;
-    grid-template-rows: repeat(2, auto);
+    grid-template-rows: auto;
     grid-template-areas:
-    "swiftCodeLabel swiftCodeActual"
-    "swiftMessage .";
+    "swiftCodeLabel swiftCodeActual";
     row-gap: 0.25em;
     margin: 0.25em 0;
   }

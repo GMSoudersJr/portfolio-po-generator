@@ -1,7 +1,6 @@
 <script lang="ts">
   import {
     pdfTemplateBankAddressString,
-    pdfTemplateRequiredString
   } from "$lib/strings/poTemplate";
 
   export let bankAddress = "Some place";

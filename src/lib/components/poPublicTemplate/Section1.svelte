@@ -5,6 +5,7 @@
 	import LocationLine from "./LocationLine.svelte";
 	import ReportingBudgetLineLine from "./ReportingBudgetLineLine.svelte";
 	import TopicDivisionLine from "./TopicDivisionLine.svelte";
+	import InternalInformation from "./InternalInformation.svelte";
 
   export let createdDate = "";
   export let topicDivision = "";
@@ -15,6 +16,7 @@
 </script>
 
 <section class="grid-container">
+  <InternalInformation />
   <DateLine {createdDate}/>
   <TopicDivisionLine {topicDivision}/>
   <ReportingBudgetLineLine {reportingBudgetLine}/>
@@ -31,6 +33,9 @@
     grid-template-columns: auto;
     grid-template-rows: repeat(6, auto);
     border: 2px solid black;
+    row-gap: 0.3rem;
+    padding: 0.1rem 0 1rem 0;
+    background-color: #F1F1F1;
   }
 </style>
 

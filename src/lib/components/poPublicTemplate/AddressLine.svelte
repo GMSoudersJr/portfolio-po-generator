@@ -1,7 +1,6 @@
 <script lang="ts">
   import {
     pdfTemplateAddressString,
-    pdfTemplateRequiredString
   } from "$lib/strings/poTemplate";
 
   export let homeAddress = "wherever it is";

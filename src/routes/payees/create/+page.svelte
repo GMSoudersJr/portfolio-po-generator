@@ -6,7 +6,7 @@
     objectStoreName
   } from "$lib/indexedDb";
 	import Toast from '$lib/components/Toast.svelte';
-  import { showToast } from '$lib/utils';
+  import { showToast } from '$lib/toasts';
 
 	import {onMount} from "svelte";
   import type { ActionData } from "./$types";
