@@ -20,15 +20,6 @@
   export let routingNumber = "";
   export let swiftCode = "";
 
-  console.log(bankAccountNumber);
-  let accountNumberIbanValue: string;
-  if ( bankAccountNumber.length > 0 && iban.length > 0 ) {
-    accountNumberIbanValue = `${bankAccountNumber} / ${iban}`;
-  } else if ( bankAccountNumber.length > 0 && iban.length == 0 ) {
-    accountNumberIbanValue = bankAccountNumber;
-  } else if ( bankAccountNumber.length == 0 && iban.length > 0 ) {
-    accountNumberIbanValue = iban;
-  }
 </script>
 
 <section class="grid-container">
@@ -47,7 +38,8 @@
   />
   <PaymentDetailsWidget
     label={pdfTemplateBankAccountNumberOrIbanString}
-    value={accountNumberIbanValue}
+    value={bankAccountNumber}
+    additionalValue={iban}
   />
   {#if  bankAddress}
   <PaymentDetailsWidget

@@ -1,6 +1,7 @@
 <script lang="ts">
   export let value: string;
   export let label: string;
+  export let additionalValue = "";
 </script>
 
 <div class="grid-container">
@@ -8,7 +9,11 @@
     {label}:
   </h5>
   <p class="value section3-data-actual">
-    {value}
+    {#if additionalValue}
+      {value} / {additionalValue}
+    {:else}
+      {value}
+    {/if}
   </p>
 </div>
 
