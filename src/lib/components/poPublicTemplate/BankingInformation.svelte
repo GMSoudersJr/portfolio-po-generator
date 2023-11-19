@@ -15,8 +15,10 @@
 <style>
   .title {
     grid-area: title;
-    display: flex;
-    column-gap: .2em;
+    background-color: #4CBB17;
+    border-radius: 12px;
+    padding: 8px;
+    text-align: center;
   }
   .section-data-title {
     font-size: var(--fontSizeSectionDataTitle);
@@ -24,7 +26,7 @@
   }
   .grid-container {
     display: grid;
-    grid-template-columns: auto;
+    grid-template-columns: 1fr;
     grid-template-rows: auto;
     grid-template-areas:
     "title";

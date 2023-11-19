@@ -10,41 +10,55 @@
 </script>
 
 <div class="grid-container">
-  <div class="total">
-    <h5 class="total-label">
+  <div class="label-container">
+    <h5 class="label">
       {pdfTemplateTotalString}
     </h5>
   </div>
-  <p class="amount">
-    {totalString}
-  </p>
+  <div class="amount-container">
+    <p class="amount">
+      {totalString}
+    </p>
+  </div>
 </div>
 
 <style>
-  .total {
-    grid-area: total;
-    border-right: 1px solid black;
-    display: flex;
-    justify-self: end;
-    padding: 0.5em 0.15em;
+  .grid-container {
+    display: grid;
+    grid-template-columns: 16.5% 16.5%;
+    grid-template-rows: 2em;
+    align-items: center;
+    justify-content: end;
+    column-gap: 0.5em;
+    grid-template-areas:
+    "label amount";
   }
-  .total-label {
+  .label-container {
+    grid-area: label;
+    display: flex;
+    justify-content: center;
+  }
+  .label {
     font-size: var(--fontSizeSectionDataLabel);
     letter-spacing: var(--letterSpacingForAllCaps);
   }
   .amount {
-    grid-area: amount;
-    justify-self: end;
     font-size: var(--fontSizePaymentMethodActualAndMoney);
     font-weight: 700;
     padding: 0.5em 0.15em;
   }
-  .grid-container {
-    border-top: 1px solid black;
-    display: grid;
-    grid-template-columns: 1fr 16.5%;
-    grid-template-rows: auto;
-    grid-template-areas:
-    "total amount";
+  .amount-container {
+    grid-area: amount;
+  }
+  .label-container,
+  .amount-container {
+    background-color: #F1F1F1;
+    border-radius: 12px;
+    text-align: center;
+    align-items: center;
+  }
+  .label,
+  .amount {
+    padding: 8px 0;
   }
 </style>

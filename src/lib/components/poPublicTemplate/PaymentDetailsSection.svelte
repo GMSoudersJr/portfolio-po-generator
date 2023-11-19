@@ -63,7 +63,6 @@
 
 <style>
   .grid-container {
-    background-color: #4CBB17;
     border-radius: 12px;
     display: grid;
     grid-template-columns: auto;

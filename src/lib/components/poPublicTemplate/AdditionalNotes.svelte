@@ -45,7 +45,6 @@
     font-size: var(--fontSizeSectionDataActual);
     background-color: #F1F1F1;
     border-radius: 12px;
-    width: 50%;
     text-align: center;
     padding: 1rem 0;
   }

@@ -1,8 +1,7 @@
 <script lang="ts">
 	import ProductSvcDescriptionLine from "./ProductSVCDescriptionLine.svelte";
   import ProductSvcDescriptionTitle from "./ProductSVCDescriptionTitle.svelte";
-	import TotalLine from "./TotalLine.svelte";
-	import WithholdingTaxOrVat from "./WithholdingTaxOrVat.svelte";
+	import TaxesAndTotalsSection from "./TaxesAndTotalsSection.svelte";
   interface ProductDescriptionAndPrice {
     productOrServiceDescription: string;
     price: number;
@@ -39,13 +38,12 @@
       price={entry.price}
     />
   {/each}
-  <WithholdingTaxOrVat {tax}/>
-  <TotalLine
-    {currency}
-    {total}
-  />
 </section>
-
+<TaxesAndTotalsSection
+  {tax}
+  {currency}
+  {total}
+/>
 <style>
   .grid-container {
     display: grid;

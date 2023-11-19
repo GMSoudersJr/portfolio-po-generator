@@ -20,6 +20,8 @@
 	import {onMount} from "svelte";
 	import { showToast, showToastInvalidKey } from "$lib/toasts";
 	import { invalidKeyUsedString } from "$lib/strings/toasts";
+	import ByWidget from "./ByWidget.svelte";
+	import {pdfTemplateApprovedByString, pdfTemplateRequestedByString} from "$lib/strings/poTemplate";
   let cryptionKey: CryptoKey | undefined;
   let db: IDBDatabase;
 
@@ -167,7 +169,7 @@
     <DueBy {dueDate}/>
   </section>
 
-  <section class="section1">
+  <section class="internal-use">
     <InternalUseSection
       {createdDate}
       {topicDivision}
@@ -178,7 +180,7 @@
     />
   </section>
 
-  <section class="section2">
+  <section class="descriptions-prices">
     <ProductServiceDescriptionPriceSection
       {productsOrServicesDescriptionsAndPrices}
       {tax}
@@ -187,7 +189,7 @@
     />
   </section>
 
-  <section class="section3">
+  <section class="payment-details">
     <PaymentDetailsSection
       {paymentMethod}
       {payeeName}
@@ -208,11 +210,17 @@
   </section>
 
   <section class="requested-by">
-    <RequestedBy {requestedBy}/>
+    <ByWidget
+      value={requestedBy}
+      label={pdfTemplateRequestedByString}
+    />
   </section>
 
   <section class="approved-by">
-    <ApprovedBy {approvedBy}/>
+    <ByWidget
+      value={approvedBy}
+      label={pdfTemplateApprovedByString}
+    />
   </section>
 
   <section class="footer">
@@ -231,14 +239,14 @@
   .po-number {
     grid-area: poNumber;
   }
-  .section1 {
-    grid-area: section1;
+  .internal-use {
+    grid-area: internalUse;
   }
-  .section2 {
-    grid-area: section2;
+  .descriptions-prices {
+    grid-area: descriptionPrices;
   }
-  .section3 {
-    grid-area: section3;
+  .payment-details {
+    grid-area: paymentDetails;
   }
   .additional-notes {
     grid-area: additionalNotes;
@@ -263,14 +271,14 @@
     display: grid;
     padding: 30px 45px;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(4, min-content);
+    grid-template-rows: repeat(5, min-content) 1fr min-content;
     gap: 0.5em;
     grid-template-areas:
     "title title"
     "poNumber dueBy"
-    "section3 section1 "
-    "section2 section2"
-    "additionalNotes additionalNotes"
+    "paymentDetails internalUse "
+    "descriptionPrices descriptionPrices"
+    "additionalNotes ."
     "requestedBy approvedBy"
     "footer footer";
   }

@@ -21,7 +21,7 @@
   .grid-container {
     display: grid;
     grid-template-columns: 33% 1fr;
-    grid-template-rows: auto;
+    grid-template-rows: repeat(auto-fill, 1fr);
     align-items: center;
     grid-template-areas:
     "label value";

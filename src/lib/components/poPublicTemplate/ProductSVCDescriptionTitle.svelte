@@ -36,16 +36,16 @@
     justify-self: stretch;
     text-align: center;
     background-color: #FFF44F;
+    background-color: #4CBB17;
     border-radius: 12px;
     padding: 8px 0;
   }
   .description-label {
     letter-spacing: var(--letterSpacingForAllCaps);
     grid-area: description;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
     background-color: #FFF44F;
+    background-color: #4CBB17;
     border-radius: 12px;
     padding: 8px;
   }

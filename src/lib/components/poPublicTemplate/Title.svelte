@@ -17,9 +17,9 @@
     font-size: 2rem;
     letter-spacing: var(--letterSpacingForAllCaps);
     padding: 15px;
+    color: #4CBB17;
   }
   .title {
-    background-color: #4CBB17;
     border-radius: 12px;
   }
 </style>

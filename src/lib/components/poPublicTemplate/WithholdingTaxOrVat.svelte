@@ -5,39 +5,53 @@
 </script>
 
 <div class="grid-container">
-  <div class="withholding-tax-vat">
-    <p class="withholding-tax-vat-label">
+  <div class="label-container">
+    <p class="label">
       {pdfTemplateWithholdingTaxOrVatString}
     </p>
   </div>
-  <h5 class="amount">
-    {tax.toLocaleString('en-US')}
-  </h5>
+  <div class="amount-container">
+    <h5 class="amount">
+      {tax.toLocaleString('en-US')}
+    </h5>
+  </div>
 </div>
 
 <style>
-  .withholding-tax-vat {
-    grid-area: withholdingTaxOrVat;
-    border-right: 1px solid black;
-    display: flex;
-    justify-self: end;
-    padding: 0.5em 0.15em;
+  .grid-container {
+    display: grid;
+    grid-template-columns: 16.5% 16.5%;
+    grid-template-rows: 2em;
+    align-items: center;
+    justify-content: end;
+    column-gap: 0.5em;
+    grid-template-areas:
+    "label amount";
   }
-  .withholding-tax-vat-label {
-    font-size: var(--fontSizeSectionDataLabel);
+  .label-container {
+    grid-area: label;
+    display: flex;
+    justify-content: center;
+  }
+  .amount-container {
+    grid-area: amount;
+  }
+  .label-container,
+  .amount-container {
+    background-color: #F1F1F1;
+    border-radius: 12px;
+    text-align: center;
+    align-items: center;
   }
   .amount {
-    grid-area: amount;
-    justify-self: end;
     font-size: var(--fontSizePaymentMethodActualAndMoney);
     padding: 0.5em 0.15em;
   }
-  .grid-container {
-    border-top: 1px solid black;
-    display: grid;
-    grid-template-columns: 1fr 16.5%;
-    grid-template-rows: auto;
-    grid-template-areas:
-    "withholdingTaxOrVat amount";
+  .label {
+    font-size: var(--fontSizeSectionDataLabel);
+  }
+  .label,
+  .amount {
+    padding: 8px 0;
   }
 </style>

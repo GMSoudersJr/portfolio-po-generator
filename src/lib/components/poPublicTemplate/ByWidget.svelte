@@ -1,15 +1,18 @@
 <script lang="ts">
-  import { pdfTemplateDueByString } from "$lib/strings/poTemplate";
-
-  export let dueDate = "DD/MM/YYYY"
+  export let value: string;
+  export let label: string;
 </script>
 
+
 <div class="grid-container">
-  <h5 class="label">
-    {pdfTemplateDueByString}:
-  </h5>
-  <p class="due-date">
-    {dueDate ?? ""}
+  <div class="label-container">
+    <h5 class="label">
+      {label}:
+    </h5>
+  </div>
+
+  <p class="value">
+    {value ?? ""}
   </p>
 </div>
 
@@ -17,26 +20,27 @@
   .grid-container {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: min-content 1fr;
     align-items: center;
     grid-template-areas:
-    "dueBy"
-    "dueDate";
+    "label"
+    "value";
   }
   .label {
-    display: flex;
-    grid-area: dueBy;
+    grid-area: label;
+    font-size: var(--fontSizeRequestedBy);
     letter-spacing: var(--letterSpacingForAllCaps);
     padding: 5px 0;
     font-size: 12px;
   }
-  .due-date {
-    grid-area: dueDate;
+  .value {
     background-color: #F1F1F1;
     border-radius: 12px;
     justify-self: stretch;
     text-align: center;
-    padding: 8px;
+    padding: 1.5em;
     font-size: var(--fontSizeSectionDataActual);
+    grid-area: value;
+    font-size: var(--fontSizeRequestedBy);
   }
 </style>
