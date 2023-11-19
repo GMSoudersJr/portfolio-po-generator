@@ -5,7 +5,7 @@
 </script>
 
 <div class="grid-container">
-  <h5 class="due-by">
+  <h5 class="label">
     {pdfTemplateDueByString}:
   </h5>
   <p class="due-date">
@@ -14,22 +14,29 @@
 </div>
 
 <style>
-  .due-by {
+  .label {
+    display: flex;
     grid-area: dueBy;
-    font-size: var(--fontSizeSectionDataLabel);
     letter-spacing: var(--letterSpacingForAllCaps);
+    padding: 5px 0;
+    font-size: 12px;
   }
   .due-date {
     grid-area: dueDate;
-    border-bottom: 1px solid black;
+    background-color: #F1F1F1;
+    border-radius: 12px;
+    justify-self: stretch;
+    text-align: center;
+    padding: 8px;
     font-size: var(--fontSizeSectionDataActual);
   }
   .grid-container {
     display: grid;
-    grid-template-columns: 33% 1fr 16.5%;
-    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    align-items: center;
     grid-template-areas:
-    "dueBy dueDate .";
-    margin: 0.25em 0;
+    "dueBy"
+    "dueDate";
   }
 </style>

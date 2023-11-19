@@ -5,10 +5,10 @@
   import Footer from "./Footer.svelte";
 	import PoNumber from "./PoNumber.svelte";
 	import RequestedBy from "./RequestedBy.svelte";
-	import Section1 from "./Section1.svelte";
-	import Section2 from "./Section2.svelte";
-	import Section3 from "./Section3.svelte";
   import Title from "./Title.svelte";
+  import PaymentDetailsSection from "$lib/components/poPublicTemplate/PaymentDetailsSection.svelte";
+  import InternalUseSection from "$lib/components/poPublicTemplate/InternalUseSection.svelte";
+  import ProductServiceDescriptionPriceSection from "$lib/components/poPublicTemplate/ProductServiceDescriptionPriceSection.svelte"
   import { decryptTheData } from "$lib/cryption";
   import { splitEncrypted } from "$lib/utils";
   import {
@@ -168,7 +168,7 @@
   </section>
 
   <section class="section1">
-    <Section1
+    <InternalUseSection
       {createdDate}
       {topicDivision}
       {reportingBudgetLine}
@@ -179,7 +179,7 @@
   </section>
 
   <section class="section2">
-    <Section2
+    <ProductServiceDescriptionPriceSection
       {productsOrServicesDescriptionsAndPrices}
       {tax}
       {currency}
@@ -188,7 +188,7 @@
   </section>
 
   <section class="section3">
-    <Section3
+    <PaymentDetailsSection
       {paymentMethod}
       {payeeName}
       bankName={decryptedBankName}

@@ -15,12 +15,24 @@
   <p class="national-id-business-registration-label warning">
     {pdfTemplateNationalIdOrBusinessRegString}
   </p>
-  <p class="additional-notes-line1">
-    {nationalIdOrBusinessRegistrationNumber ?? ""}
-  </p>
+  <div class="note-container">
+    <p class="additional-notes-line1">
+      {nationalIdOrBusinessRegistrationNumber ?? ""}
+    </p>
+  </div>
 </div>
 
 <style>
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, min-content) auto;
+    justify-content: center;
+    grid-template-areas:
+    "additionalNotesLabel"
+    "nationalIdOrBusinessRegistrationLabel"
+    "line1";
+  }
   .additional-notes-label {
     grid-area: additionalNotesLabel;
     font-size: var(--fontSizeSectionDataLabel);
@@ -28,18 +40,17 @@
   .national-id-business-registration-label {
     grid-area: nationalIdOrBusinessRegistrationLabel;
   }
-  .additional-notes-line1 {
+  .note-container {
     grid-area: line1;
-    border-bottom: 1px solid black;
     font-size: var(--fontSizeSectionDataActual);
+    background-color: #F1F1F1;
+    border-radius: 12px;
+    width: 50%;
+    text-align: center;
+    padding: 1rem 0;
   }
-  .grid-container {
-    display: grid;
-    grid-template-columns: 33% 1fr;
-    grid-template-rows: repeat(2, 1fr);
-    grid-template-areas:
-    "additionalNotesLabel line1"
-    "nationalIdOrBusinessRegistrationLabel line2";
+  .additional-notes-line1 {
+    place-self: center;
   }
 </style>
 

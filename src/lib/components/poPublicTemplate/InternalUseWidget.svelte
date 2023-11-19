@@ -1,14 +1,14 @@
 <script lang="ts">
-  export let value: string;
   export let label: string;
+  export let value: string;
 </script>
 
 <div class="grid-container">
-  <h5 class="label section3-data-label">
+  <h5 class="label section1-data-label">
     {label}:
   </h5>
-  <p class="value section3-data-actual">
-    {value}
+  <p class="value section1-data-actual">
+    {value ?? ` `}
   </p>
 </div>
 
@@ -27,11 +27,10 @@
   }
   .value {
     grid-area: value;
-    background-color: #F2F2F2;
+    background-color: #FFF;
     padding: 5px 20px;
     border-radius: 12px;
     justify-self: fill;
     text-align: center;
   }
 </style>
-

@@ -1,22 +1,15 @@
 <script lang="ts">
   import {
     pdfTemplateTopicDivisionString,
-    pdfTemplateRequiredString
   } from "$lib/strings/poTemplate";
 
   export let topicDivision = "General";
 </script>
 
 <div class="grid-container">
-  <div class="topic-division-label required-line">
-    <h5 class="date-text section1-data-label">
-      {pdfTemplateTopicDivisionString}
-    </h5>
-    <p class="required warning">
-      {pdfTemplateRequiredString}
-    </p>
-    <h5>:</h5>
-  </div>
+  <h5 class="topic-division-label section1-data-label">
+    {pdfTemplateTopicDivisionString}:
+  </h5>
   <p class="topic-division-actual section1-data-actual">
     {topicDivision ?? ""}
   </p>
@@ -30,7 +23,6 @@
   }
   .topic-division-actual {
     grid-area: topicDivisionActual;
-    border-bottom: 1px solid black;
   }
   .grid-container {
     display: grid;

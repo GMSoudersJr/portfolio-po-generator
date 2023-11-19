@@ -19,6 +19,7 @@
     padding: 15px;
   }
   .title {
-    background-color: #259000;
+    background-color: #4CBB17;
+    border-radius: 12px;
   }
 </style>

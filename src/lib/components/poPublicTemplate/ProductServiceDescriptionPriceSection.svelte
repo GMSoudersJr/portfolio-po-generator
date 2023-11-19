@@ -30,7 +30,9 @@
 </script>
 
 <section class="grid-container">
-  <ProductSvcDescriptionTitle />
+  <ProductSvcDescriptionTitle
+    {currency}
+  />
   {#each productsOrServicesDescriptionsAndPrices as entry}
     <ProductSvcDescriptionLine
       description={entry.productOrServiceDescription}
@@ -44,13 +46,11 @@
   />
 </section>
 
-
-
 <style>
   .grid-container {
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: repeat(auto-fill, auto);
-    border: 2px solid black;
+    row-gap: 0.5rem;
   }
 </style>
