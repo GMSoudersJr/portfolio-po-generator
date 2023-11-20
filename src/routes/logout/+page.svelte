@@ -4,24 +4,20 @@
 	import {deleteDB} from "$lib/indexedDb";
 	import {onMount} from "svelte";
 	import LogoutPage from "./LogoutPage.svelte";
-  import { showToast } from "$lib/utils";
+  import { showToast } from "$lib/toasts";
   import { logoutSuccessString } from "$lib/strings/toasts";
 
 
-onMount(async() => {
-  localStorage.clear();
-  deleteDB();
-  showToast(
-    "success",
-    "Success",
-    logoutSuccessString
-  );
-})
+  onMount(async() => {
+    localStorage.clear();
+    deleteDB();
+    showToast(
+      "success",
+      "Success",
+      logoutSuccessString
+    );
+  })
 </script>
 
 <Toast />
 <LogoutPage />
-
-<style>
-</style>
-
