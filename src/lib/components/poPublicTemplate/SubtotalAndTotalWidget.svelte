@@ -1,24 +1,27 @@
 <script lang="ts">
-	import { pdfTemplateTaxString } from "$lib/strings/poTemplate";
+  import { currency as currencyObject } from "$lib/strings/poForm";
+  export let label: string;
+  export let value: number;
+  export let currency: string = "";
 
-  export let tax = 66654;
-  export let taxRate: number;
+  let currencySymbol: string = "";
+
+  if ( currency.length > 0 ) {
+    currencySymbol = currencyObject.options.filter((entry) => entry.value ==
+                                               currency)[0].symbol;
+  }
+  let totalString = `${currencySymbol} ${value.toLocaleString('en-US')}`
 </script>
 
 <div class="grid-container">
   <div class="label-container">
     <h5 class="label">
-      {pdfTemplateTaxString}:
-    </h5>
-  </div>
-  <div class="tax-rate-container">
-    <h5 class="tax-rate">
-      {taxRate * 100}%
+      {label}:
     </h5>
   </div>
   <div class="amount-container">
     <h5 class="amount">
-      {tax.toLocaleString('en-US')}
+      {totalString}
     </h5>
   </div>
 </div>
@@ -26,18 +29,13 @@
 <style>
   .grid-container {
     display: grid;
-    grid-template-columns: repeat(2, auto) 33%;
+    grid-template-columns: 33% 33%;
     grid-template-rows: 2em;
     align-items: center;
     justify-content: end;
     column-gap: 0.5em;
     grid-template-areas:
-    "label taxRate amount";
-  }
-  .tax-rate-container {
-    grid-area: taxRate;
-    border-radius: 12px;
-    text-align: center;
+    "label amount";
   }
   .label-container {
     grid-area: label;
@@ -46,10 +44,10 @@
   }
   .amount-container {
     grid-area: amount;
-  }
-  .tax-rate-container,
-  .amount-container {
     background-color: #F1F1F1;
+  }
+  .label-container,
+  .amount-container {
     border-radius: 12px;
     text-align: center;
     align-items: center;
@@ -57,12 +55,6 @@
   .amount {
     font-size: var(--fontSizePaymentMethodActualAndMoney);
     padding: 0.5em 0.15em;
-  }
-  .label {
-    font-size: var(--fontSizeSectionDataLabel);
-  }
-  .tax-rate {
-    padding: 8px 5px;
   }
   .label,
   .amount {

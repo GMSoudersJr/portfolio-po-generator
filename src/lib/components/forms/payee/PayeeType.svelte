@@ -20,7 +20,7 @@
       <option
         value={payeeType.value}
       >
-        {payeeType.text}
+        {payeeType.text} - Tax Rate {payeeType.taxRate * 100}%
       </option>
     {/each}
   </select>

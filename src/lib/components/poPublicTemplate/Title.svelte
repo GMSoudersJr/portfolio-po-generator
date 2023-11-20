@@ -14,7 +14,7 @@
     text-align: center;
     font-weight: 900;
     font-size: var(--fontSizePoTitle);
-    font-size: 2rem;
+    font-size: 1.5rem;
     letter-spacing: var(--letterSpacingForAllCaps);
     padding: 15px;
     color: #4CBB17;

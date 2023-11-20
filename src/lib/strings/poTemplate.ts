@@ -1,4 +1,4 @@
-export const pdfTemplateTitleString = "PURCHASE ORDER / PAYMENT REQUEST FORM";
+export const pdfTemplateTitleString = "PURCHASE ORDER / PAYMENT REQUEST";
 export const pdfTemplateSubtitleString = "For Credit Card Purchases Fill Out Sections 1 and 2 Only";
 export const pdfTemplatePaymentMethodString = "METHOD";
 export const pdfTemplateDueByString = "DUE DATE";
@@ -15,7 +15,9 @@ export const pdfTemplateAddressString = "ADDRESS";
 export const pdfTemplateProductServiceDescriptionString = "PRODUCT / SERVICE DESCRIPTION";
 export const pdfTemplateIfEventRelatedString = "(If event related, include name and date of event)";
 export const pdfTemplateWithholdingTaxOrVatString = "Tax or VAT";
-export const pdfTemplateTotalString = "TOTAL";
+export const pdfTemplateTaxString = "tax";
+export const pdfTemplateTotalString = "total";
+export const pdfTemplateSubtotalString = "subtotal";
 export const pdfTemplatePaymentInformationString = "PAYMENT DETAILS";
 export const pdfTemplateInternalInformationString = "FOR INTERNAL USE";
 export const pdfTemplateForWirePaymentsOnlyString = "(Only For Wire Payments)";

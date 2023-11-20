@@ -2,6 +2,7 @@
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   box-sizing: border-box;
+  --kellyGreen: #4CBB17;
   --warningRed: #FF0F0F;
   --exampleCrimson: #D0342C;
   --backgroundSubtitle: #E5DECF;

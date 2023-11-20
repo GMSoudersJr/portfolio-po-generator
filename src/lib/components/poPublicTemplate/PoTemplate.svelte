@@ -1,10 +1,8 @@
 <script lang="ts">
 	import AdditionalNotes from "./AdditionalNotes.svelte";
-  import ApprovedBy from "./ApprovedBy.svelte";
   import DueBy from "./DueBy.svelte";
   import Footer from "./Footer.svelte";
 	import PoNumber from "./PoNumber.svelte";
-	import RequestedBy from "./RequestedBy.svelte";
   import Title from "./Title.svelte";
   import PaymentDetailsSection from "$lib/components/poPublicTemplate/PaymentDetailsSection.svelte";
   import InternalUseSection from "$lib/components/poPublicTemplate/InternalUseSection.svelte";
@@ -137,6 +135,7 @@
     poNumber,
     reportingBudgetLine,
     requestedBy,
+    subtotal,
     tax,
     topicDivision,
     total
@@ -151,7 +150,8 @@
     iban,
     nationalIdOrBusinessRegistrationNumber,
     routingNumber,
-    swiftCode
+    swiftCode,
+    taxRate
   } = payeeData[0];
 </script>
 
@@ -184,8 +184,11 @@
     <ProductServiceDescriptionPriceSection
       {productsOrServicesDescriptionsAndPrices}
       {tax}
+      {taxRate}
       {currency}
+      {subtotal}
       {total}
+      nationalIdOrBusinessRegistrationNumber={decryptedNationalIdOrBusinessRegistrationNumber}
     />
   </section>
 
@@ -200,13 +203,6 @@
       routingNumber={decryptedRoutingNumber}
       swiftCode={decryptedSwiftCode}
     />
-  </section>
-
-  <section class="additional-notes">
-    <AdditionalNotes
-      nationalIdOrBusinessRegistrationNumber={decryptedNationalIdOrBusinessRegistrationNumber}
-    />
-
   </section>
 
   <section class="requested-by">
@@ -248,10 +244,6 @@
   .payment-details {
     grid-area: paymentDetails;
   }
-  .additional-notes {
-    grid-area: additionalNotes;
-    align-self: center;
-  }
   .requested-by {
     grid-area: requestedBy;
     align-self: center;
@@ -271,14 +263,14 @@
     display: grid;
     padding: 30px 45px;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(5, min-content) 1fr min-content;
-    gap: 0.5em;
+    grid-template-rows: repeat(4, min-content) 1fr min-content;
+    column-gap: 0.5em;
+    row-gap: 1em;
     grid-template-areas:
     "title title"
     "poNumber dueBy"
     "paymentDetails internalUse "
     "descriptionPrices descriptionPrices"
-    "additionalNotes ."
     "requestedBy approvedBy"
     "footer footer";
   }

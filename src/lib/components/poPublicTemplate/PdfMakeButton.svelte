@@ -1,6 +1,7 @@
 <script lang="ts">
   import * as pdfMake from "pdfmake/build/pdfmake";
   import html2canvas from "html2canvas";
+	import type {TDocumentDefinitions} from "pdfmake/interfaces";
 
   export let fileName: string | undefined;
 
@@ -11,7 +12,7 @@
         scale: 2
       });
       const data = canvas.toDataURL();
-      const docDefinition = {
+      const docDefinition: TDocumentDefinitions = {
         pageSize: 'A4',
         pageOrientation: 'portrait',
         pageMargins: [0, 0, 0, 0],
@@ -20,7 +21,7 @@
           width: 595,
         }]
       };
-      pdfMake.createPdf(docDefinition).download(fileName);
+      pdfMake.createPdf(docDefinition).download(`${fileName}`);
     }
 
   }
@@ -37,7 +38,7 @@
 
 <style>
   .pdf-button {
-    background-color: #259259;
+    background-color: var(--kellyGreen);
     position: fixed;
     z-index: 1;
     right: 1.5rem;

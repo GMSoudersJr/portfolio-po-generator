@@ -129,7 +129,6 @@ export async function getPoForPdfGeneration(po_id: string) {
 						'$project': {
 							'_id': 0,
 							'typeOfPayee': 0,
-							'taxRate': 0,
 							'reportingBudgetLine': 0,
 							'topicDivision': 0,
 							'currency': 0,

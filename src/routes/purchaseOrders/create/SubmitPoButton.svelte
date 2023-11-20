@@ -6,7 +6,7 @@
   type="submit"
   name="submit"
   id="submitPo"
-  value="Add a New PO"
+  value="Create PO"
 >
 
 <style>

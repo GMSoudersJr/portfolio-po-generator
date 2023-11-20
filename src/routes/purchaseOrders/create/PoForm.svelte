@@ -61,9 +61,6 @@
   $: poNumberActual = poFormPoNumber;
 </script>
 
-{#if form?.success}
-  <p class="success-message">{form.message}</p>
-{/if}
 {#if form?.error}
   <p class="error-message">{form.message}</p>
 {/if}
@@ -79,15 +76,15 @@
   <PoSummary
     on:summaryInput={handlePoNumberUpdate}
   />
-  <NumberOfProductsOrServices
-    on:removalOfProductOrService={resetPriceForRemovedProduct}
-  />
   {#each arrayOfNumbers as d}
     <ProductAndPrice
       on:priceInput={handlePriceInput}
       number={(d).toString()}
     />
   {/each}
+  <NumberOfProductsOrServices
+    on:removalOfProductOrService={resetPriceForRemovedProduct}
+  />
   <Subtotal
     {subtotalActual}
   />
@@ -107,6 +104,8 @@
   <PaymentMethod />
   <Currency
     {clickedPayeeCurrency}
+    value={clickedPayeeCurrency}
+    disabled={false}
   />
   <TopicDivision
     on:topicDivisionSelected={handlePoNumberUpdate}

@@ -1,4 +1,6 @@
 <script lang="ts">
+	import AdditionalNotes from "./AdditionalNotes.svelte";
+
 	import ProductSvcDescriptionLine from "./ProductSVCDescriptionLine.svelte";
   import ProductSvcDescriptionTitle from "./ProductSVCDescriptionTitle.svelte";
 	import TaxesAndTotalsSection from "./TaxesAndTotalsSection.svelte";
@@ -26,6 +28,9 @@
   export let currency = "krw";
   export let tax = 0;
   export let total = 1000000000;
+  export let taxRate = 0;
+  export let subtotal = 0;
+  export let nationalIdOrBusinessRegistrationNumber: string;
 </script>
 
 <section class="grid-container">
@@ -38,13 +43,24 @@
       price={entry.price}
     />
   {/each}
+  <div class="sub-grid-container">
+    <AdditionalNotes {nationalIdOrBusinessRegistrationNumber} />
+    <TaxesAndTotalsSection
+      {subtotal}
+      {tax}
+      {taxRate}
+      {currency}
+      {total}
+    />
+  </div>
 </section>
-<TaxesAndTotalsSection
-  {tax}
-  {currency}
-  {total}
-/>
+
 <style>
+  .sub-grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+  }
   .grid-container {
     display: grid;
     grid-template-columns: auto;
