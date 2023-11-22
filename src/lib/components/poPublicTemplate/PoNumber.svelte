@@ -10,32 +10,39 @@
   <h5 class="po-number-text label">
     {pdfTemplatePoNumberString}:
   </h5>
-  <p class="po-number-actual">
-    {poNumber ?? ""}
-  </p>
+  <div class="value-container">
+    <p class="po-number-actual">
+      {poNumber ?? ""}
+    </p>
+  </div>
 </div>
 
 <style>
   .label {
+    color: var(--kellyGreen);
     grid-area: poLabel;
     letter-spacing: var(--letterSpacingForAllCaps);
     font-size: 12px;
-    padding: 5px 0;
   }
   .po-number-actual {
+    align-self: center;
+  }
+  .value-container {
     grid-area: poNumberActual;
     background-color: #F1F1F1;
-    border-radius: 12px;
+    height: calc(341.85px / 6.472);
+    border-radius: 8px;
     justify-self: stretch;
     text-align: center;
-    padding: 8px;
     font-size: var(--fontSizeSectionDataActual);
+    display: grid;
   }
   .grid-container {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: repeat(2, min-content);
     align-items: center;
+    row-gap: 8px;
     grid-template-areas:
     "poLabel"
     "poNumberActual";

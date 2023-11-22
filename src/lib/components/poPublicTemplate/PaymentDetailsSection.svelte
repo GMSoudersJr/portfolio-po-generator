@@ -23,51 +23,100 @@
 </script>
 
 <section class="grid-container">
-  <BankingInformation />
-  <PaymentDetailsWidget
-    label={pdfTemplateBeneficiaryNameString}
-    value={payeeName}
-  />
-  <PaymentDetailsWidget
-    label={pdfTemplatePaymentMethodString}
-    value={paymentMethod}
-  />
-  <PaymentDetailsWidget
-    label={pdfTemplateBankNameString}
-    value={bankName}
-  />
-  <PaymentDetailsWidget
-    label={pdfTemplateBankAccountNumberOrIbanString}
-    value={bankAccountNumber}
-    additionalValue={iban}
-  />
-  {#if  bankAddress}
-  <PaymentDetailsWidget
-    label={pdfTemplateBankAddressString}
-    value={bankAddress}
-  />
-  {/if}
-  {#if routingNumber}
-  <PaymentDetailsWidget
-    label={pdfTemplateRoutingOrABAString}
-    value={routingNumber}
-  />
-  {/if}
-  {#if swiftCode}
-  <PaymentDetailsWidget
-    label={pdfTemplateSwiftString}
-    value={swiftCode}
-  />
-  {/if}
+  <div class="section-title">
+    <BankingInformation />
+  </div>
+  <div class="payee-name">
+    <PaymentDetailsWidget
+      label={pdfTemplateBeneficiaryNameString}
+      value={payeeName}
+    />
+  </div>
+  <div class="payment-method">
+    <PaymentDetailsWidget
+      label={pdfTemplatePaymentMethodString}
+      value={paymentMethod}
+    />
+  </div>
+  <div class="bank-name">
+    <PaymentDetailsWidget
+      label={pdfTemplateBankNameString}
+      value={bankName}
+    />
+  </div>
+  <div class="account-number-iban">
+    <PaymentDetailsWidget
+      label={pdfTemplateBankAccountNumberOrIbanString}
+      value={bankAccountNumber}
+      additionalValue={iban}
+    />
+  </div>
+  <div class="bank-address">
+    <PaymentDetailsWidget
+      label={pdfTemplateBankAddressString}
+      value={bankAddress}
+    />
+  </div>
+  <div class="line-2">
+    <PaymentDetailsWidget
+      label="Line 2"
+      value=""
+    />
+  </div>
+  <div class="routing-number-aba">
+    <PaymentDetailsWidget
+      label={pdfTemplateRoutingOrABAString}
+      value={routingNumber}
+    />
+  </div>
+  <div class="swift-code">
+    <PaymentDetailsWidget
+      label={pdfTemplateSwiftString}
+      value={swiftCode}
+    />
+  </div>
 </section>
 
 <style>
   .grid-container {
     border-radius: 12px;
     display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: repeat(6, auto);
-    row-gap: 0.75rem;
-    padding: 0.5rem;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, auto);
+    row-gap: 8px;
+    column-gap: 21px;
+    grid-template-areas:
+    "title title"
+    "payeeName bankAddress"
+    "paymentMethod line2"
+    "bankName swiftCode"
+    "accountNumberIban routingNumberAba";
+  }
+  .section-title {
+    grid-area: title;
+  }
+  .payee-name {
+    grid-area: payeeName;
+  }
+  .payment-method {
+    grid-area: paymentMethod;
+  }
+  .bank-name {
+    grid-area: bankName;
+  }
+  .account-number-iban {
+    grid-area: accountNumberIban;
+  }
+  .bank-address {
+    grid-area: bankAddress;
+  }
+  .line-2 {
+    grid-area: line2;
+  }
+  .routing-number-aba {
+    grid-area: routingNumberAba;
+  }
+  .swift-code {
+    grid-area: swiftCode;
   }
 </style>

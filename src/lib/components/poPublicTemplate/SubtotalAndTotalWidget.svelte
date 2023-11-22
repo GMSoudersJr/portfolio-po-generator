@@ -29,11 +29,11 @@
 <style>
   .grid-container {
     display: grid;
-    grid-template-columns: 33% 33%;
+    grid-template-columns: 1.056fr 161.41px;
     grid-template-rows: 2em;
     align-items: center;
     justify-content: end;
-    column-gap: 0.5em;
+    column-gap: 20px;
     grid-template-areas:
     "label amount";
   }
@@ -45,12 +45,13 @@
   .amount-container {
     grid-area: amount;
     background-color: #F1F1F1;
+    justify-content: center;
   }
   .label-container,
   .amount-container {
-    border-radius: 12px;
-    text-align: center;
-    align-items: center;
+    border-radius: 8px;
+    height: calc(161.41px / 4.854);
+    display: grid;
   }
   .amount {
     font-size: var(--fontSizePaymentMethodActualAndMoney);
@@ -59,5 +60,6 @@
   .label,
   .amount {
     padding: 8px 0;
+    align-self: center;
   }
 </style>

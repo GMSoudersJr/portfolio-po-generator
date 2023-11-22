@@ -16,10 +16,6 @@
     font-size: var(--fontSizePoTitle);
     font-size: 1.5rem;
     letter-spacing: var(--letterSpacingForAllCaps);
-    padding: 15px;
     color: #4CBB17;
-  }
-  .title {
-    border-radius: 12px;
   }
 </style>

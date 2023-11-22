@@ -8,35 +8,42 @@
   <h5 class="label">
     {pdfTemplateDueByString}:
   </h5>
-  <p class="due-date">
-    {dueDate ?? ""}
-  </p>
+  <div class="value-container">
+    <p class="due-date">
+      {dueDate ?? ""}
+    </p>
+  </div>
 </div>
 
 <style>
   .grid-container {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: repeat(2, min-content);
     align-items: center;
+    row-gap: 8px;
     grid-template-areas:
     "dueBy"
     "dueDate";
   }
   .label {
+    color: var(--kellyGreen);
     display: flex;
     grid-area: dueBy;
     letter-spacing: var(--letterSpacingForAllCaps);
-    padding: 5px 0;
     font-size: 12px;
   }
-  .due-date {
+  .value-container {
     grid-area: dueDate;
     background-color: #F1F1F1;
-    border-radius: 12px;
+    border-radius: 8px;
     justify-self: stretch;
     text-align: center;
-    padding: 8px;
     font-size: var(--fontSizeSectionDataActual);
+    height: calc(341.85px / 6.472);
+    display: grid;
+  }
+  .due-date {
+    align-self: center;
   }
 </style>

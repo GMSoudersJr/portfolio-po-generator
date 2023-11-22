@@ -4,12 +4,12 @@
 </script>
 
 <div class="grid-container">
-  <div class="description-container">
+  <div class="description-container sub-container">
     <p class="description">
       {description ?? ""}
     </p>
   </div>
-  <div class="amount-container">
+  <div class="amount-container sub-container">
     <p class="amount">
       {#if price && price > 0}
         {price?.toLocaleString('en-US')}
@@ -23,27 +23,29 @@
 <style>
   .grid-container {
     display: grid;
-    grid-template-columns: 1fr 16.5%;
+    grid-template-columns: 3.236fr 1fr;
     grid-template-rows: 2em;
     align-items: center;
-    column-gap: 0.5em;
+    column-gap: 20px;
+    row-gap: 8px;
     grid-template-areas:
     "description amount";
   }
   .description-container,
   .amount-container {
-    height: 2em;
     background-color: #F1F1F1;
-    border-radius: 12px;
-    justify-self: stretch;
-    text-align: center;
+    border-radius: 8px;
     align-items: center;
+    display: grid;
+    height: calc(161.41px / 4.854);
   }
   .description-container {
     grid-area: description;
+    justify-content: center;
   }
   .amount-container {
     grid-area: amount;
+    justify-content: center;
   }
   .description {
     font-size: var(--fontSizeSectionDataLabel);
@@ -53,7 +55,6 @@
     justify-self: end;
     font-size: var(--fontSizePaymentMethodActualAndMoney);
     font-weight: 700;
-    padding: 0 0.5em;
   }
   .description,
   .amount {

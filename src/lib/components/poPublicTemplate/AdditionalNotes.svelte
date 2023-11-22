@@ -18,16 +18,20 @@
   <div class="note-container">
     <p class="additional-notes-line1">
       {nationalIdOrBusinessRegistrationNumber ?? ""}
+      259-25999-952
     </p>
   </div>
 </div>
 
 <style>
   .grid-container {
+    background-color: #F1F1F1;
+    border-radius: 8px;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(2, min-content) auto;
     justify-content: center;
+    padding: 9px 11px;
     grid-template-areas:
     "additionalNotesLabel"
     "nationalIdOrBusinessRegistrationLabel"
@@ -36,6 +40,7 @@
   .additional-notes-label {
     grid-area: additionalNotesLabel;
     font-size: var(--fontSizeSectionDataLabel);
+    color: var(--kellyGreen);
   }
   .national-id-business-registration-label {
     grid-area: nationalIdOrBusinessRegistrationLabel;
@@ -43,7 +48,6 @@
   .note-container {
     grid-area: line1;
     font-size: var(--fontSizeSectionDataActual);
-    background-color: #F1F1F1;
     border-radius: 12px;
     text-align: center;
     padding: 1rem 0;

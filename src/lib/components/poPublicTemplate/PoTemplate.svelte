@@ -169,17 +169,6 @@
     <DueBy {dueDate}/>
   </section>
 
-  <section class="internal-use">
-    <InternalUseSection
-      {createdDate}
-      {topicDivision}
-      {reportingBudgetLine}
-      {location}
-      {payeeName}
-      homeAddress={decryptedHomeAddress}
-    />
-  </section>
-
   <section class="descriptions-prices">
     <ProductServiceDescriptionPriceSection
       {productsOrServicesDescriptionsAndPrices}
@@ -219,7 +208,15 @@
     />
   </section>
 
-  <section class="footer">
+  <section class="internal-use">
+    <InternalUseSection
+      {createdDate}
+      {topicDivision}
+      {reportingBudgetLine}
+      {location}
+      {payeeName}
+      homeAddress={decryptedHomeAddress}
+    />
     <Footer />
   </section>
 
@@ -228,51 +225,62 @@
 <style>
   .title {
     grid-area: title;
-  }
-  .due-by {
-    grid-area: dueBy;
+    padding: 45px 45px 0 45px;
   }
   .po-number {
     grid-area: poNumber;
+    padding: 0 0 0 45px;
+    align-self: stretch;
   }
-  .internal-use {
-    grid-area: internalUse;
-  }
-  .descriptions-prices {
-    grid-area: descriptionPrices;
+  .due-by {
+    grid-area: dueBy;
+    padding: 0 45px 0 0;
+    align-self: stretch;
   }
   .payment-details {
     grid-area: paymentDetails;
+    padding: 0 45px 0 45px;
+    align-self: stretch;
+  }
+  .descriptions-prices {
+    grid-area: descriptionPrices;
+    padding: 0 45px 0 45px;
+    align-self: stretch;
   }
   .requested-by {
     grid-area: requestedBy;
-    align-self: center;
+    padding: 0 0 0 45px;
+    align-self: stretch;
   }
   .approved-by {
     grid-area: approvedBy;
-    align-self: center;
+    padding: 0 45px 0 0;
+    align-self: stretch;
   }
-  .footer {
-    grid-area: footer;
+  .internal-use {
+    grid-area: internalUse;
     align-self: end;
+    background-color: #F1F1F1;
+    display: grid;
+    row-gap: 10px;
+    padding-bottom: 10px;
   }
   .page-container {
     background-color: #FFF;
     width: 21cm;
     height: 29.7cm;
     display: grid;
-    padding: 30px 45px;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(4, min-content) 1fr min-content;
-    column-gap: 0.5em;
-    row-gap: 1em;
+    grid-template-rows: repeat(5, min-content) 1fr;
+    column-gap: 20px;
+    row-gap: 3em;
     grid-template-areas:
     "title title"
     "poNumber dueBy"
-    "paymentDetails internalUse "
+    "paymentDetails paymentDetails "
     "descriptionPrices descriptionPrices"
     "requestedBy approvedBy"
-    "footer footer";
+    "internalUse internalUse";
   }
   @page {
     size: 21cm 29.7cm;
