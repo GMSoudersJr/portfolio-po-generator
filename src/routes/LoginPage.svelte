@@ -20,7 +20,7 @@
     align-items: center;
     row-gap: 2em;
     padding-top: 2em;
-    background-color: #259;
+    background-image: linear-gradient(var(--kellyGreen), #FFF);
   }
   .header {
     color: #F1F1F1;

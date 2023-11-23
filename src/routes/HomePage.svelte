@@ -9,7 +9,9 @@
     cryptionHeading,
     payeeFormHeading,
     poFormHeading,
-    pdfGenerationHeading
+    pdfGenerationHeading,
+	cryptographicKeyHeading,
+	cryptographicKeyBullets
   } from "$lib/strings/homepage";
 </script>
 
@@ -20,6 +22,16 @@
   <p>
     Making something a little less dreadful.
   </p>
+  <section>
+    <h3>{cryptographicKeyHeading}</h3>
+    <ul>
+      {#each cryptographicKeyBullets as item}
+      <li>
+        {@html item}
+      </li>
+      {/each}
+    </ul>
+  </section>
   <section>
     <h3>{navigationHeading}</h3>
     <ul>
@@ -45,7 +57,7 @@
     <h3>{payeeFormHeading}</h3>
     <ul>
       {#each payeeFormBullets as item}
-      <li>
+      <li class="payee-form-detail">
         {@html item}
       </li>
       {/each}
@@ -55,7 +67,7 @@
     <h3>{poFormHeading}</h3>
     <ul>
       {#each poFormBullets as item}
-      <li>
+      <li class="po-form-detail">
         {@html item}
       </li>
       {/each}
@@ -90,6 +102,12 @@
   .header {
     color: #259;
     letter-spacing: -0.02rem;
+  }
+  .payee-form-detail:nth-child(6) {
+    color: var(--warningRed);
+  }
+  .po-form-detail:nth-child(5) {
+    color: var(--warningRed);
   }
   @media screen and (min-width: 480px) {
     .home-page {

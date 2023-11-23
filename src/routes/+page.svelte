@@ -5,7 +5,6 @@
   import type { ActionData } from './login/$types';
 
   export let form: ActionData;
-
 </script>
 
 <div class="page-container">

@@ -8,7 +8,7 @@ export const navigationBullets = [
 export const cryptionHeading = `Cryption Keys 🔐`;
 export const cryptionBullets = [
 	`Dialogs will appear to guide you through the process.`,
-	`There are navigation options in the bottom left corner.`,
+	`There are navigation options in the bottom right corner.`,
 	`The same key can be reused to encrypt and decrypt data.`,
 ];
 export const payeeFormHeading = `Payee Form 📝`;
@@ -44,14 +44,14 @@ export const pdfGenerationBullets = [
 	`Review the PO`,
 	`Click the "PDF-it" button to download the pdf!`,
 ];
-export const cryptographicKeyIntro = `This site uses JSON Web Keys (JWK) for security`;
-export const cryptographicKeyInfo = [
-	`Once generated, your browser will download it to your downloads folder.`,
+export const cryptographicKeyHeading = `JSON Web Keys (JWK) for security`;
+export const cryptographicKeyBullets = [
+	`Once generated, your browser will download it to your Downloads folder.`,
 	`Your key can be used and discarded of once you are finished using the site.`,
 	`You will need to import it into the browser so it can be used.`,
 	`It will not affect your system.`,
 	`It will be used for only this site.`,
 	`There is no sensitive data stored in the JWK file.`,
 	`When you logout, the browser will remove any mention of your JWK from its memory.`,
-	`If you will only visit once, feel free to delete the file from your downloads folder.`,
+	`If you will only visit once, feel free to delete the file from your Downloads folder.`,
 ];
