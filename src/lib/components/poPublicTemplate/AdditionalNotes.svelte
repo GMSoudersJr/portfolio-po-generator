@@ -18,7 +18,6 @@
   <div class="note-container">
     <p class="additional-notes-line1">
       {nationalIdOrBusinessRegistrationNumber ?? ""}
-      259-25999-952
     </p>
   </div>
 </div>
