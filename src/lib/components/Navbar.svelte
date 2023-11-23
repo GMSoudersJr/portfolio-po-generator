@@ -19,7 +19,7 @@
       <a class="nav-link" href="/purchaseOrders">Purchase Orders</a>
     </li>
     <li>
-      <form class="nav-link" action="/logout" method="POST">
+      <form class="logout-form" action="/logout" method="POST">
         <input class="logout-button" type="submit" value="Log out">
       </form>
     </li>
@@ -35,31 +35,32 @@
     background-color: #333;
     display: grid;
     grid-template-columns: repeat(4, minmax(max-content, 1fr));
-    grid-template-rows: auto;
-    justify-content: center;
-    align-items: baseline;
+    grid-template-rows: 3.25rem;
+    align-items: stretch;
   }
   li {
-    display: inline;
+    display: grid;
   }
-  .nav-link {
-    display: block;
+  li .nav-link {
+    display: grid;
     color: #FFFFFF;
-    text-align: center;
-    padding: 14px 16px;
     text-decoration: none;
+    align-items: center;
+    justify-content: center;
+  }
+  li .logout-form {
+    display: block;
   }
   li a:hover, li form:hover {
     background-color: #111;;
   }
   .logout-button {
-    height: 100%;
-    width: 100%;
     background-color: transparent;
-    padding: 0;
     font-size: 1rem;
     border: none;
     color: #FFFFFF;
+    height: 100%;
+    width: 100%;
   }
   .logout-button:hover {
     cursor: pointer;

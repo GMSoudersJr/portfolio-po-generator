@@ -3,7 +3,6 @@
   import type { ActionData } from "./$types";
 
   let form: ActionData;
-
 </script>
 
 <main class="logout-page">
@@ -38,4 +37,3 @@
     text-align: center;
   }
 </style>
-
