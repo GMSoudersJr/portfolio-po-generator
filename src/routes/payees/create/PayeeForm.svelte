@@ -167,7 +167,7 @@
     return async ({ result }) => {
       console.log(result);
       if ( result.type === 'redirect' ) {
-        await goto(result.location);
+        await goto(result.location, { invalidateAll: true });
         showToast(
           "success",
           `Form Submitted`,
