@@ -30,7 +30,7 @@
   .add-form-button:hover {
     cursor: pointer;
     color: #FFF;
-    background-color: #259259;
+    background-color: var(--kellyGreen);
   }
 </style>
 

@@ -4,41 +4,62 @@
 
   export let overviewPos: Document[] | undefined;
 
-  $: headers = Object.keys(overviewPos?.at(0));
+  $: headers = Object.keys(overviewPos?.at(0) as {});
   $: overviewHeaders = headers.map((header) => {
     return PoTableHeadings[header];
-  })
+  });
+  function handleClick(event: MouseEvent) {
+    const target = event.target as HTMLElement;
+    console.log(target.parentElement?.id);
+    //open a dialog box for CRUD oerations
+
+
+  }
 </script>
 
 {#if overviewPos}
 <table class="po-overview-table">
-  <tr>
+  <tr class="header-row">
     {#each overviewHeaders as header}
       {#if header != "_id"}
-      <th class="table-header">
+      <th class={`table-header ${header}`}>
         {header}
       </th>
       {/if}
     {/each}
   </tr>
   {#each overviewPos as po (po._id)}
-    <tr>
+    <tr
+      on:click={handleClick}
+      id={po._id}
+    >
       {#each Object.entries(po) as entry}
         {#if entry[0] != "_id" && entry[0] != "productsOrServicesDescriptionsAndPrices" }
-        <td class={entry[0]}>
+          <td
+            class={entry[0]}
+            title={entry[1]}
+          >
           {#if entry[0] == "currency"}
             {entry[1].toUpperCase()}
           {:else if entry[0] == "subtotal" || entry[0] == "tax" || entry[0] == "total"}
             {entry[1].toLocaleString('en-US')}
+          {:else if entry[0] == "poNumber"}
+            {entry[1].substring(0,15).concat('...')}
           {:else}
             {entry[1]}
           {/if}
         </td>
         {/if}
         {#if entry[0] == "productsOrServicesDescriptionsAndPrices"}
-          <td class="product-description-and-price">
+          <td
+            id="{po._id}"
+            class="product-description-and-price"
+          >
           {#each entry[1] as product}
-            <tr class="table-row-grid">
+            <tr
+              class="table-row-grid"
+              id={po._id}
+            >
               <td class="description">
                 {product.productOrServiceDescription}
               </td>
@@ -64,6 +85,9 @@
     border-collapse: collapse;
     padding: 0.18em 0.3em;
   }
+  tr:has(td):hover {
+    background-color: var(--kellyGreen);
+  }
   .table-header {
     font-size: 0.8rem;
   }
@@ -83,6 +107,11 @@
   .description, .price {
     border: none;
   }
+  .poNumber {
+    width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
   td {
     font-size: 0.6rem;
   }
@@ -96,5 +125,8 @@
   td.pnpLocation,
   td.paymentMethod {
     text-align: center;
+  }
+  .header-row {
+    background-color: var(--tangerineYellow);
   }
 </style>
