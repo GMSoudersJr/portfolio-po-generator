@@ -11,7 +11,6 @@
   import { onMount } from "svelte";
   import { showToast } from "$lib/utils";
   import Toast from "$lib/components/Toast.svelte";
-	import {crytptionTitle} from "$lib/strings/toasts";
 
   let db: IDBDatabase;
   let cryptionKey: CryptoKey | undefined;
@@ -113,6 +112,7 @@
     grid-template-rows: repeat(2, auto);
     row-gap: 1em;
     padding: 0 1rem;
+    padding-bottom: 2rem;
   }
   .purchase-order-header {
     padding-top: 1rem;
@@ -127,8 +127,14 @@
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto;
-    justify-content: left;
-    overflow-x: scroll;
+    justify-content: center;
+  }
+
+  @media screen and (max-width: 770px) {
+  .pos-overview {
+      justify-content: left;
+      overflow-x: scroll;
+    }
   }
 </style>
 

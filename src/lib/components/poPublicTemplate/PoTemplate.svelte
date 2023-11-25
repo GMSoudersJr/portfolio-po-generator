@@ -20,6 +20,7 @@
 	import { invalidKeyUsedString } from "$lib/strings/toasts";
 	import ByWidget from "./ByWidget.svelte";
 	import {pdfTemplateApprovedByString, pdfTemplateRequestedByString} from "$lib/strings/poTemplate";
+	import {error} from "@sveltejs/kit";
   let cryptionKey: CryptoKey | undefined;
   let db: IDBDatabase;
 
@@ -141,6 +142,10 @@
     total
   } = poPdfData;
 
+  if ( payeeData.length == 0 ) {
+    //  TODO catch the error and throw some type of error. May need to do it on
+    //  the server instead.
+  };
   const {
     bankAccountNumber,
     bankAddress,

@@ -30,3 +30,13 @@ export const undoDeletionQuestion = "Would you like to undo your deletion?";
 export const undoButtonText = "Undo";
 export const confirmButtonText = "Confirm";
 /*  Undo delete payee strings end*/
+
+/*  PO strings begin */
+export const poGreeting = "PO Action"
+export const poActions = [
+	//"Create",
+	//"Read",
+	//"Update",
+	"Delete",
+];
+/*  PO strings end */

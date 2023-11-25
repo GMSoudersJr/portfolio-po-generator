@@ -1,4 +1,6 @@
 <script lang="ts">
+	import {goto} from "$app/navigation";
+
   import { PoTableHeadings } from "$lib/enums";
 	import type {Document} from "mongodb";
 
@@ -8,12 +10,11 @@
   $: overviewHeaders = headers.map((header) => {
     return PoTableHeadings[header];
   });
-  function handleClick(event: MouseEvent) {
+  async function handleClick(event: MouseEvent) {
     const target = event.target as HTMLElement;
-    console.log(target.parentElement?.id);
+    const po_id = target.parentElement?.id
     //open a dialog box for CRUD oerations
-
-
+    await goto(`purchaseOrders/create/pdf/${po_id}`);
   }
 </script>
 
@@ -87,6 +88,7 @@
   }
   tr:has(td):hover {
     background-color: var(--kellyGreen);
+    cursor: default;
   }
   .table-header {
     font-size: 0.8rem;
@@ -106,11 +108,6 @@
   }
   .description, .price {
     border: none;
-  }
-  .poNumber {
-    width: 100px;
-    overflow: hidden;
-    text-overflow: ellipsis;
   }
   td {
     font-size: 0.6rem;
