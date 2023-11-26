@@ -5,7 +5,9 @@
 </script>
 
 <main class="login-page">
-	<h1 class="header">Come on in!</h1>
+  <h1 class="header">
+    Purchase Order Generator
+  </h1>
 	<LoginCard {form}/>
 </main>
 
@@ -20,7 +22,7 @@
     align-items: center;
     row-gap: 2em;
     padding-top: 2em;
-    background-image: linear-gradient(var(--kellyGreen), #FFF);
+    background-image: linear-gradient(0deg, var(--kellyGreen), var(--tangerineYellow), var(--brown));
   }
   .header {
     color: #F1F1F1;

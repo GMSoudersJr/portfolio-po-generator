@@ -75,7 +75,6 @@
 
   const pathUrl = '/purchaseOrders/create';
   export let data: PageData;
-  console.log(data);
   $: ({ overviewPos } = data)
 </script>
 

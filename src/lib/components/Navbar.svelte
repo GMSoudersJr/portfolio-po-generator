@@ -1,5 +1,16 @@
 <script lang="ts">
   import { page } from '$app/stores';
+
+  function handleClick(event: MouseEvent) {
+    let clicked = event.target as HTMLAnchorElement;
+    let allNavItems = document.querySelectorAll(".nav-link");
+    allNavItems.forEach(( item ) => {
+      if ( item.classList.contains("active") && item.id != clicked.id ) {
+        item.classList.remove("active");
+      }
+    })
+    clicked.classList.add("active");
+  }
 </script>
 
 <nav class="navbar">
@@ -10,13 +21,34 @@
     </li>
     {:else}
     <li>
-      <a class="nav-link" href="/">Home</a>
+      <a
+        id="link-home"
+        class="nav-link"
+        href="/"
+        on:click={handleClick}
+      >
+        Home
+      </a>
     </li>
     <li>
-      <a class="nav-link" href="/payees">Payees</a>
+      <a
+        id="link-payees"
+        class="nav-link"
+        href="/payees"
+        on:click={handleClick}
+      >
+        Payees
+      </a>
     </li>
     <li>
-      <a class="nav-link" href="/purchaseOrders">Purchase Orders</a>
+      <a
+        id="link-pos"
+        class="nav-link active"
+        href="/purchaseOrders"
+        on:click={handleClick}
+      >
+        Purchase Orders
+      </a>
     </li>
     <li>
       <form class="logout-form" action="/logout" method="POST">
@@ -28,6 +60,9 @@
 </nav>
 
 <style>
+  li > a.active {
+    color: var(--tangerineYellow);
+  }
   ul {
     list-style-type: none;
     margin: 0;

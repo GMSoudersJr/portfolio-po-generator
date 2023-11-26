@@ -5,7 +5,7 @@ import type { Actions, PageServerLoad } from './$types';
 import type { ProductOrServiceDescriptionAndPrice } from '$lib/classes';
 import {formatDateForPo} from '$lib/utils';
 import {addPoToTheDatabase, getPayeesWithMinimalInfo} from '$lib/db';
-import {fail, json, redirect} from '@sveltejs/kit';
+import {fail, redirect} from '@sveltejs/kit';
 
 export const load: PageServerLoad = async () =>{
 	return {
@@ -22,7 +22,6 @@ export const actions = {
 		let productsOrServicesDescriptions = [];
 		let prices: [string, FormDataEntryValue][] = [];
 		for (let entry of iterableFormData) {
-			console.log(entry);
 			if (entry[0].startsWith(productServiceDescription.name)) {
 				productsOrServicesDescriptions.push(entry);
 			}
@@ -40,7 +39,6 @@ export const actions = {
 					return productOrServiceDescriptionAndPrice
 				});
 		const formDataObject = Object.fromEntries(formData);
-		console.log("FORM DATA", formDataObject);
 		const {
 			approvedBy,
 			createdDate,

@@ -113,7 +113,6 @@ export const actions = {
 	},
 
 	delete: async ({ params }) => {
-		console.log(params);
 		const payee_idToDelete = params.payee_id.toString();
 		const deletedPayee = await deletePayee(payee_idToDelete);
 		if (deletedPayee) {

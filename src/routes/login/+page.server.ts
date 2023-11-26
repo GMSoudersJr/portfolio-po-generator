@@ -19,7 +19,6 @@ export const actions = {
 		const formData = Object.fromEntries(await request.formData());
 		const { username, password } = formData;
 		const foundUser = await findUser(trimTheFormData(username));
-		console.log(foundUser);
 
 		if ( !username ) {
 			return fail(401, {username, missing: true, message: "Username empty."})
