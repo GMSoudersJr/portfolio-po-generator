@@ -2,13 +2,20 @@
 	import {afterNavigate} from '$app/navigation';
 
   import { page } from '$app/stores';
-	import {onMount} from 'svelte';
 
   afterNavigate(async() => {
     let allNavItems = document.querySelectorAll(".nav-link");
     let path = window.location.pathname;
+    const urlBasePath = path.split('/').at(1);
+
+    console.log(path.split('/'));
+
     allNavItems.forEach((item) => {
-      if ( item.classList.contains("active") && item.getAttribute("href") != path ) {
+      const navBasePath = item.getAttribute("href")?.split('/').at(1);
+      if (
+        item.classList.contains("active") &&
+        urlBasePath != navBasePath
+      ) {
         item.classList.remove("active");
       }
       if (item.getAttribute("href") === window.location.pathname) {
@@ -16,7 +23,6 @@
       }
     });
   })
-
 
   function handleClick(event: MouseEvent) {
     let clicked = event.target as HTMLAnchorElement;
