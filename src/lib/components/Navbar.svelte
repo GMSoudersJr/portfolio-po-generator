@@ -1,5 +1,22 @@
 <script lang="ts">
+	import {afterNavigate} from '$app/navigation';
+
   import { page } from '$app/stores';
+	import {onMount} from 'svelte';
+
+  afterNavigate(async() => {
+    let allNavItems = document.querySelectorAll(".nav-link");
+    let path = window.location.pathname;
+    allNavItems.forEach((item) => {
+      if ( item.classList.contains("active") && item.getAttribute("href") != path ) {
+        item.classList.remove("active");
+      }
+      if (item.getAttribute("href") === window.location.pathname) {
+        item.classList.add("active");
+      }
+    });
+  })
+
 
   function handleClick(event: MouseEvent) {
     let clicked = event.target as HTMLAnchorElement;
@@ -23,7 +40,7 @@
     <li>
       <a
         id="link-home"
-        class="nav-link"
+        class="nav-link active"
         href="/"
         on:click={handleClick}
       >
@@ -43,7 +60,7 @@
     <li>
       <a
         id="link-pos"
-        class="nav-link active"
+        class="nav-link"
         href="/purchaseOrders"
         on:click={handleClick}
       >

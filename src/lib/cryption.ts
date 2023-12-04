@@ -26,7 +26,6 @@ export async function encryptTheData(key: CryptoKey, data: string | undefined) {
 
 export async function exportCryptoKey(key: CryptoKey) {
 	const exported = await crypto.subtle.exportKey("jwk", key);
-	console.log("EXPORTING KEY", exported)
 	return exported;
 }
 
@@ -54,7 +53,6 @@ export async function generateCryptoKey() {
 		["encrypt", "decrypt"]
 	);
 
-	console.log("Generating crypto key", key);
 
 	return key
 };
