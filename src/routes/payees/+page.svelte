@@ -19,7 +19,12 @@
   let cryptionKeyFileName: IDBValidKey;
 
   async function handleClickedPayee(event: CustomEvent) {
+    const clickedPayeePerformance = performance.measure('clickedPayeePerformance');
+    console.log(clickedPayeePerformance);
     const payee_id = event.detail.payee._id;
+    if ( clickedPayeePerformance.duration > 30_000 ) {
+      showToast('warning','Searching', 'Network connections may slow response.')
+    }
     await goto(`/payees/update/${payee_id}`);
   }
 

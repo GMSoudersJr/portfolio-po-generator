@@ -8,8 +8,6 @@
     let path = window.location.pathname;
     const urlBasePath = path.split('/').at(1);
 
-    console.log(path.split('/'));
-
     allNavItems.forEach((item) => {
       const navBasePath = item.getAttribute("href")?.split('/').at(1);
       if (
