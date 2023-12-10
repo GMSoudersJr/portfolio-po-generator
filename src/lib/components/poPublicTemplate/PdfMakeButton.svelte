@@ -42,7 +42,7 @@
     position: fixed;
     z-index: 1;
     right: 1.5rem;
-    top: 5rem;
+    top: 7rem;
     padding: 12px;
     border-radius: 50%;
     aspect-ratio: 1 / 1;

@@ -20,12 +20,14 @@
 
 <style>
   .pdf-generator-container {
-    background-color: #F2F5F9;
+    background-color: var(--silver);
     display: grid;
     grid-template-columns: 1fr min-content 1fr;
     grid-template-rows: auto;
     grid-template-areas:
     ". pdfTemplate pdfButton";
+    padding-top: 2rem;
+    padding-bottom: 2rem;
   }
   .pdf-template {
     grid-area: pdfTemplate;
