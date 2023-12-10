@@ -109,7 +109,6 @@
     </h3>
   {/if}
   </section>
-  <Toast />
 </main>
 
 <style>

@@ -96,7 +96,6 @@
   </div>
   {/if}
   <KeyDialog />
-  <Toast />
 </main>
 
 <style>

@@ -6,7 +6,7 @@
 
 <main class="login-page">
   <h1 class="header">
-    Purchase Order Generator
+    Gerald's Purchase Order Generator
   </h1>
 	<LoginCard {form}/>
 </main>

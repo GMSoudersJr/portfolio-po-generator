@@ -1,7 +1,7 @@
 <script lang="ts">
 	import {goto} from "$app/navigation";
 	import {clickToUndo, deletedPayeeTitle} from "$lib/strings/toasts";
-  import { showToast, showToastUndoDelete } from "$lib/utils";
+  import { showToast, showToastUndoDelete } from "$lib/toasts";
 
   async function handleClick() {
     const response = await fetch(`/api/payees/delete/${payee_id}`, {

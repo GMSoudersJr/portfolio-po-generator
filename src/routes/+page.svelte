@@ -7,6 +7,12 @@
   export let form: ActionData;
 </script>
 
+<svelte:head>
+  <title>
+    Gerald's PO Generator
+  </title>
+</svelte:head>
+
 <div class="page-container">
 {#if $page.data.user}
   <HomePage />

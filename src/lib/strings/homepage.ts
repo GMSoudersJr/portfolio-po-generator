@@ -15,7 +15,6 @@ export const payeeFormHeading = `Payee Form 📝`;
 export const payeeFormBullets = [
 	`You must have an imported key in order to create a payee.`,
 	`You will be alerted about the status of your imported key.`,
-	`The fields you asked for are required.`,
 	`A form <strong>cannot </strong>be submitted without all required fields.`,
 	`Sensitive data will be encrypted.`,
 	`<strong>Do not click the Submit button more than once!</strong>`,
