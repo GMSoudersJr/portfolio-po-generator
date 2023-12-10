@@ -9,13 +9,10 @@
     dataDecryptedString,
     invalidKeyUsedString
   } from "$lib/strings/toasts";
-  import {
-    showToastInvalidKey,
-    splitEncrypted
-  } from "$lib/utils";
+  import { splitEncrypted } from "$lib/utils";
   import { onMount } from 'svelte';
   import { applyAction, enhance } from "$app/forms";
-  import { showToast } from '$lib/toasts';
+  import { showToast, showToastInvalidKey } from '$lib/toasts';
   import { decryptTheData } from "$lib/cryption";
   import BankAccountNumber from "$lib/components/forms/payee/BankAccountNumber.svelte";
   import BankAddress from "$lib/components/forms/payee/BankAddress.svelte";

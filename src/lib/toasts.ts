@@ -41,10 +41,7 @@ export const showToastInvalidKey = (
 			toasts.clearAll();
 			invalidKeyDialog.showModal();
 		},
-		onRemove: () => {
-			toasts.clearAll();
-			invalidKeyDialog.showModal();
-		},
+		onRemove: () => {},
 	});
 };
 

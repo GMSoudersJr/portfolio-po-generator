@@ -10,7 +10,6 @@
     dbVersion,
     objectStoreName
   } from "$lib/indexedDb";
-	import Toast from '$lib/components/Toast.svelte';
   import { showToast } from "$lib/toasts";
 
   let db: IDBDatabase;

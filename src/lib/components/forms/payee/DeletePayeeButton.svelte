@@ -4,11 +4,11 @@
   import { showToast, showToastUndoDelete } from "$lib/toasts";
 
   async function handleClick() {
+    showToast('info', 'Deleting...','Awaiting database response');
     const response = await fetch(`/api/payees/delete/${payee_id}`, {
       method: 'DELETE',
     });
     const deletedPayee = await response.json();
-    console.log(deletedPayee);
 
     if (deletedPayee) {
       goto('/payees/', {
