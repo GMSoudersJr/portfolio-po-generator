@@ -17,9 +17,7 @@ const poCollection = db.collection('pos');
 const usersCollection = db.collection('users');
 
 export async function undoDeletePayee(document: Document) {
-	console.log("@undoDeletePayee before", document);
 	document._id = new ObjectId(document._id);
-	console.log("@undoDeletePayee after", document);
 	try {
 		await client.connect();
 		console.log("Successfully connected to the database to undo delete a payee.");
