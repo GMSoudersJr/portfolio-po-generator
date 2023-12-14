@@ -2,6 +2,7 @@
 	import {goto} from "$app/navigation";
 
   import { PoTableHeadings } from "$lib/enums";
+	import {showToast} from "$lib/toasts";
 	import type {Document} from "mongodb";
 
   export let overviewPos: Document[] | undefined;
@@ -13,6 +14,11 @@
   async function handleClick(event: MouseEvent) {
     const target = event.target as HTMLElement;
     const po_id = target.parentElement?.id
+    showToast(
+      "info",
+      "Fetching data...",
+      "Slow connections cause slow responses."
+    );
     //open a dialog box for CRUD oerations
     await goto(`purchaseOrders/create/pdf/${po_id}`);
   }
