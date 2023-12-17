@@ -155,21 +155,25 @@
   ) => {
     const payeeName = formData.get("beneficiaryName")?.toString();
     const formAction = action.search;
-    let toastDescriptionString: string;
+    showToast(
+      "success",
+      "Form Submitted",
+      ""
+    )
+    let toastTitleString: string;
     if ( formAction.includes('update') ) {
-      toastDescriptionString = `Updated ${payeeName}`
+      toastTitleString = `Updated ${payeeName}`
     } else {
-      toastDescriptionString = `Added ${payeeName}.`
+      toastTitleString = `Added ${payeeName}.`
     }
     return async ({ result }) => {
-      console.log(result);
       if ( result.type === 'redirect' ) {
-        await goto(result.location, { invalidateAll: true });
         showToast(
           "success",
-          `Form Submitted`,
-          toastDescriptionString
+          toastTitleString,
+          ""
         );
+        await goto(result.location, { invalidateAll: true });
       } else {
         await applyAction(result);
       }

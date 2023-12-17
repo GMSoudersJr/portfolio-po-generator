@@ -16,6 +16,23 @@ const payeeCollection = db.collection('payees');
 const poCollection = db.collection('pos');
 const usersCollection = db.collection('users');
 
+async function deletePOsForDeletedPayee(payee_id: string) {
+	const deletedPayee_id = new ObjectId(payee_id);
+	const filter = { payee_id: deletedPayee_id };
+	try {
+		await client.connect();
+		console.log("Successfully connected to the database to undo delete a payee.");
+		const result = await poCollection.deleteMany(filter);
+		console.log(`Deleted POs: ${result}`)
+		return result;
+	} catch (error) {
+		console.log("Error deleting POs after deleting a payee.")
+	} finally {
+		await client.close();
+		console.log("Closed the database connection @deletePOsForDeletedPayee.")
+	}
+}
+
 export async function undoDeletePayee(document: Document) {
 	document._id = new ObjectId(document._id);
 	try {

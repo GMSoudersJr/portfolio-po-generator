@@ -1,4 +1,14 @@
 <script lang="ts">
+	import {showToast} from "$lib/toasts";
+
+
+  async function handlClick() {
+    showToast(
+      "success",
+      "Form Submitted",
+      "Adding to database..."
+    )
+  }
 </script>
 
 <input
@@ -7,6 +17,7 @@
   name="submit"
   id="submitPayee"
   value="Submit"
+  on:submit={handlClick}
 >
 
 <style>
