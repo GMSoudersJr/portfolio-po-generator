@@ -106,8 +106,8 @@
     <h3 class="no-payees">
       Add Payees to see them here
     </h3>
-    <p>
-      (Refresh if you this is an error)
+    <p class="no-payees">
+      (Refresh, possible loading error)
     </p>
   {/if}
   </section>
