@@ -7,7 +7,7 @@
 </script>
 
 <label for={payeeTypeAndTax.id}>
-  {payeeTypeAndTax.label}:
+  {payeeTypeAndTax.label}<span>*</span>:
   <select
     class={payeeTypeAndTax.class}
     name={payeeTypeAndTax.name}
@@ -27,5 +27,8 @@
 </label>
 
 <style>
+  span {
+    color: var(--warningRed);
+  }
 </style>
 

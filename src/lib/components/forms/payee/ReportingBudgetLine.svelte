@@ -7,7 +7,7 @@
 </script>
 
 <label for={reportBudgetLine.id}>
-  {reportBudgetLine.label}:
+  {reportBudgetLine.label}<span>*</span>:
   <select
     class={reportBudgetLine.class}
     name={reportBudgetLine.name}
@@ -28,4 +28,7 @@
 </label>
 
 <style>
+  span {
+    color: var(--warningRed);
+  }
 </style>

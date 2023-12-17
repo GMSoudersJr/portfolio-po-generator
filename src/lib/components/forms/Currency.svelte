@@ -8,7 +8,7 @@
 </script>
 
 <label for={currency.id}>
-  {currency.label}:
+  {currency.label}<span>*</span>:
   <select
     class={currency.class}
     name={currency.name}
@@ -28,4 +28,7 @@
 </label>
 
 <style>
+  span {
+    color: var(--warningRed);
+  }
 </style>

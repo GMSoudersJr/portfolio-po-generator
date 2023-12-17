@@ -6,7 +6,7 @@
 </script>
 
 <label for={beneficiaryName.id}>
-  {beneficiaryName.label}:
+{beneficiaryName.label}<span>*</span>:
 </label>
   <input
     class={beneficiaryName.class}
@@ -20,4 +20,7 @@
   >
 
 <style>
+  span {
+    color: var(--warningRed);
+  }
 </style>

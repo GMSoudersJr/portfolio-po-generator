@@ -28,7 +28,7 @@
 </script>
 
 <label for={bankAccountNumber.id}>
-  {bankAccountNumber.label}:
+  {bankAccountNumber.label}<span>*</span>:
   <input
     class={bankAccountNumber.class}
     type="text"
@@ -46,4 +46,7 @@
 >
 
 <style>
+  span {
+    color: var(--warningRed);
+  }
 </style>
