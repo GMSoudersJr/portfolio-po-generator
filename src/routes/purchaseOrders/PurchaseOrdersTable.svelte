@@ -1,5 +1,6 @@
 <script lang="ts">
 	import {goto} from "$app/navigation";
+	import {navigating} from "$app/stores";
 
   import { PoTableHeadings } from "$lib/enums";
 	import {showToast} from "$lib/toasts";
@@ -24,7 +25,7 @@
   }
 </script>
 
-{#if overviewPos}
+{#if overviewPos && !$navigating}
 <table class="po-overview-table">
   <tr class="header-row">
     {#each overviewHeaders as header}

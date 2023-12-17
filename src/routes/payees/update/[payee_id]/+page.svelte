@@ -98,11 +98,6 @@
 </main>
 
 <style>
-  .key-container {
-    justify-self: center;
-    padding-top: 2rem;
-    grid-area: key;
-  }
   .page-container {
     width: 100%;
     display: grid;

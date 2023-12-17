@@ -11,7 +11,7 @@ export const showToast = (
 	const toast = toasts.add({
 		title: titleString,
 		description: descriptionString,
-		duration: 5000,
+		duration: 3500,
 		showProgress: true,
 		placement: 'bottom-right',
 		type: typeString,

@@ -186,11 +186,6 @@
     font-weight: 400;
     line-height: 10px;
   }
-  .key-container {
-    justify-self: center;
-    padding-top: 2rem;
-    grid-area: key;
-  }
   .page-grid-container {
     display: grid;
     grid-template-columns: 1fr minmax(400px, 1fr) 1fr;

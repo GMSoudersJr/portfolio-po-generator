@@ -22,6 +22,10 @@
 	import PoSummary from "./PoSummary.svelte";
 	import type {PoFormPoNumber} from "$lib/classes";
   import type { ActionData } from "./$types";
+	import type {SubmitFunction} from "@sveltejs/kit";
+	import {showToast} from "$lib/toasts";
+	import {goto} from "$app/navigation";
+	import {applyAction, enhance} from "$app/forms";
 
   $: arrayOfNumbers = updateArrayOfNumbers($numberOfProductsOrServices);
   interface SubtotalObject {
@@ -59,6 +63,21 @@
   $: taxActual = +clickedPayeeTaxRate * +subtotalActual;
   $: totalActual = +subtotalActual + +taxActual;
   $: poNumberActual = poFormPoNumber;
+
+  const enhancement: SubmitFunction = async () => {
+    showToast(
+      "success",
+      "Form Submitted",
+      ""
+    )
+    return async ({ result }) => {
+      if ( result.type === 'redirect' ) {
+        await goto(result.location, { invalidateAll: true });
+      } else {
+        await applyAction(result);
+      }
+    };
+  }
 </script>
 
 {#if form?.error}
@@ -67,6 +86,7 @@
 <form
   method="post"
   action="?/add"
+  use:enhance={enhancement}
 >
   <PayeeName
     on:searching
@@ -126,10 +146,6 @@
 </form>
 
 <style>
-  .success-message {
-  text-align: center;
-    color: #259259;
-  }
   form {
     width: 100%;
     display: grid;
