@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import { ACCESS_TOKEN_SECRET, DECRYPT_SECRET, ENCRYPT_SECRET } from '$env/static/private';
+import { ACCESS_TOKEN_SECRET, DECRYPT_SECRET, ENCRYPT_SECRET, REGISTRATION_ADMIN } from '$env/static/private';
 
 import { redirect, type Handle } from '@sveltejs/kit';
 
@@ -42,6 +42,13 @@ export const handle: Handle = async ({ event, resolve }) => {
 			throw redirect(302, '/login/')
 		}
 	}
+
+	if ( event.url.pathname.startsWith('/register') ) {
+		if (event.locals.user?.name != REGISTRATION_ADMIN) {
+			throw redirect(302, '/login/')
+		}
+	}
+
 
 	const route = event.url;
 	let start = performance.now();
