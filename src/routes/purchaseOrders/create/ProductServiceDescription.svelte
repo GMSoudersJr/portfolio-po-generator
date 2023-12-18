@@ -5,7 +5,7 @@
 </script>
 
 <label for={`${productServiceDescription.id}${number}`}>
-  {productServiceDescription.label} {number}:
+  {productServiceDescription.label} {number}<span>*</span>:
   <input
     class={productServiceDescription.class}
     id={`${productServiceDescription.id}${number}`}
@@ -16,4 +16,7 @@
 </label>
 
 <style>
+  span {
+    color: var(--warningRed);
+  }
 </style>

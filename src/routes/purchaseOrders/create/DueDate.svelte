@@ -21,7 +21,7 @@
 </script>
 
 <label for={dueDate.id}>
-  {dueDate.label}:
+  {dueDate.label}<span>*</span>:
   <input
     class={dueDate.class}
     type="date"
@@ -36,4 +36,7 @@
 </label>
 
 <style>
+  span {
+    color: var(--warningRed);
+  }
 </style>

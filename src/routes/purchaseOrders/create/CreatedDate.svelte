@@ -3,7 +3,7 @@
 </script>
 
 <label for={createdDate.id}>
-  {createdDate.label}:
+  {createdDate.label}<span>*</span>:
   <input
     class={createdDate.class}
     type={createdDate.type}
@@ -16,4 +16,7 @@
 </label>
 
 <style>
+  span {
+    color: var(--warningRed);
+  }
 </style>

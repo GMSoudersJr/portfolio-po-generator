@@ -3,7 +3,7 @@
 </script>
 
 <label for={paymentMethod.id}>
-  {paymentMethod.label}:
+  {paymentMethod.label}<span>*</span>:
   <select
     class={paymentMethod.class}
     name={paymentMethod.name}
@@ -22,5 +22,7 @@
 </label>
 
 <style>
+  span {
+    color: var(--warningRed);
+  }
 </style>
-

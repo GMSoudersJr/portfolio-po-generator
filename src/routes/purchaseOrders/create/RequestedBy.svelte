@@ -19,7 +19,7 @@
 </script>
 
 <label for={requestedBy.id}>
-  {requestedBy.label}:
+  {requestedBy.label}<span>*</span>:
   <select
     class={requestedBy.class}
     name={requestedBy.name}
@@ -39,4 +39,7 @@
 </label>
 
 <style>
+  span {
+    color: var(--warningRed);
+  }
 </style>

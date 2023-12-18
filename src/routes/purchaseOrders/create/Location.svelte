@@ -3,7 +3,7 @@
 </script>
 
 <label for={businessLocation.id}>
-  {businessLocation.label}:
+  {businessLocation.label}<span>*</span>:
   <select
     class={businessLocation.class}
     name={businessLocation.name}
@@ -22,4 +22,7 @@
 </label>
 
 <style>
+  span {
+    color: var(--warningRed);
+  }
 </style>

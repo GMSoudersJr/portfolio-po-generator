@@ -20,7 +20,7 @@
 </script>
 
 <label for={payeeName.id}>
-  {payeeName.label}:
+  {payeeName.label}<span>*</span>:
   <input
     class={payeeName.class}
     id={payeeName.id}
@@ -39,4 +39,7 @@
 </label>
 
 <style>
+  span {
+    color: var(--warningRed);
+  }
 </style>

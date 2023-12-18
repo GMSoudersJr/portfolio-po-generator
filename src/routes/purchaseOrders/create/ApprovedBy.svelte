@@ -3,7 +3,7 @@
 </script>
 
 <label for={approvedBy.id}>
-  {approvedBy.label}:
+  {approvedBy.label}<span>*</span>:
   <select
     class={approvedBy.class}
     name={approvedBy.name}
@@ -22,5 +22,8 @@
 </label>
 
 <style>
+  span {
+    color: var(--warningRed);
+  }
 </style>
 

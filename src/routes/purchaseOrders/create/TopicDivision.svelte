@@ -22,7 +22,7 @@
 </script>
 
 <label for={topicDivision.id}>
-  {topicDivision.label}:
+  {topicDivision.label}<span>*</span>:
   <select
     class={topicDivision.class}
     name={topicDivision.name}
@@ -45,4 +45,7 @@
 </label>
 
 <style>
+  span {
+    color: var(--warningRed);
+  }
 </style>

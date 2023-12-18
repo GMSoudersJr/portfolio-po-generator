@@ -21,7 +21,7 @@
 </script>
 
 <label for={`${price.id}${number}`}>
-  {price.label}:
+  {price.label}<span>*</span>:
   <input
     class={price.class}
     id={`${price.id}${number}`}
@@ -35,4 +35,7 @@
 </label>
 
 <style>
+  span {
+    color: var(--warningRed);
+  }
 </style>

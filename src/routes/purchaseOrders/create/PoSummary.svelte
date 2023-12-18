@@ -20,7 +20,7 @@
 </script>
 
 <label for={poSummary.id}>
-  {poSummary.label}:
+  {poSummary.label}<span>*</span>:
   <input
     class={poSummary.class}
     id={poSummary.id}
@@ -33,4 +33,7 @@
 </label>
 
 <style>
+  span {
+    color: var(--warningRed);
+  }
 </style>
