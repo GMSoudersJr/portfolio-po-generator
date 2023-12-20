@@ -10,7 +10,6 @@
 
 	import {onMount} from "svelte";
   import type { ActionData } from "./$types";
-	import KeyDialog from "$lib/components/KeyDialog.svelte";
   import { showToast } from "$lib/toasts";
 
   let cryptionKey: CryptoKey | undefined;
@@ -94,18 +93,17 @@
     />
   </div>
   {/if}
-  <KeyDialog />
 </main>
 
 <style>
   .page-container {
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr minmax(400px, 1fr) 1fr;
+    grid-template-columns: 1fr;
     grid-template-rows: auto;
     column-gap: 1rem;
     grid-template-areas:
-    "key form .";
+    ". form .";
   }
   .form {
     grid-area: form;
@@ -115,5 +113,11 @@
     color: #04AA6D;
     text-align: center;
     padding-bottom: 0.5rem;
+  }
+
+  @media screen and (min-width: 40em) {
+    .page-container {
+      grid-template-columns: 1fr 400px 1fr;
+    }
   }
 </style>

@@ -61,5 +61,12 @@
     color: red;
   }
 
+  @media screen and (max-width: 40em) {
+    .login-form {
+      width: 90%;
+      height: 30%;
+    }
+  }
+
 </style>
 

@@ -10,8 +10,8 @@
     payeeFormHeading,
     poFormHeading,
     pdfGenerationHeading,
-	cryptographicKeyHeading,
-	cryptographicKeyBullets
+    cryptographicKeyHeading,
+    cryptographicKeyBullets
   } from "$lib/strings/homepage";
 </script>
 

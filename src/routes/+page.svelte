@@ -26,9 +26,9 @@
     width: 100%;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
+    grid-template-rows: 100%;
     justify-content: center;
     align-items: center;
+    justify-items: center;
   }
-
 </style>
