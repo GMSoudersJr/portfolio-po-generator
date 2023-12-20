@@ -31,5 +31,4 @@
     align-items: center;
     justify-items: center;
   }
-
 </style>
