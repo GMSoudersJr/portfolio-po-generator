@@ -29,7 +29,7 @@
   .grid-container {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
     row-gap: 0.5em;
   }
 </style>
