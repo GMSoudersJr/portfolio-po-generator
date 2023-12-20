@@ -47,7 +47,7 @@
 
 <style>
   .key-dialog[open] {
-    width: 600px;
+    width: 550px;
     left: 50%;
     top: 25%;
     transform: translate(-50%, -25%);
@@ -55,7 +55,7 @@
     grid-template-columns: 1fr;
     grid-template-rows: repeat(4, min-content);
     row-gap: 1.2rem;
-    padding: 1rem 2rem;
+    padding: 1rem 1.4rem;
   }
   h2 {
     line-height: 100%;
