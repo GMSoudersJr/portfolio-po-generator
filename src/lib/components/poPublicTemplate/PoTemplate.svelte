@@ -271,6 +271,7 @@
   }
   .page-container {
     background-color: #FFF;
+    border: 0.5px solid #F1F1F1;
     width: 21cm;
     height: 29.7cm;
     display: grid;

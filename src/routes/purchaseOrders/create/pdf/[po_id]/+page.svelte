@@ -20,8 +20,6 @@
 
 <style>
   .pdf-generator-container {
-    width: fit-content;
-    background-color: var(--silver);
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto;
