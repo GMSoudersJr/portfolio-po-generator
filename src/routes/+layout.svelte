@@ -4,9 +4,10 @@
   import '../app.css';
 
   $: loggedInUser = $page.data.user
+  console.log($page);
 </script>
 
-{#if loggedInUser}
+{#if loggedInUser && $page.route.id != "/purchaseOrders/create/pdf/[po_id]"}
   <Navbar />
 {/if}
 {#if $navigating}
