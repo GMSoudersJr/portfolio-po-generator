@@ -14,7 +14,7 @@
 <style>
   .login-page {
     height: 100vh;
-    width:100vw;
+    width:100%;
     display: grid;
     grid-template-columns: max-content;
     grid-template-rows: auto 1fr;
@@ -25,9 +25,9 @@
     background-image: linear-gradient(0deg, var(--kellyGreen), var(--tangerineYellow), var(--brown));
   }
   .header {
+    width: 400px;
     color: #F1F1F1;
     letter-spacing: -0.02rem;
-    line-height: 1.2rem;
     text-align: center;
   }
 </style>

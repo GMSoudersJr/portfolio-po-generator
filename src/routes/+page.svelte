@@ -25,8 +25,8 @@
   .page-container {
     width: 100%;
     display: grid;
-    grid-template-columns: max-content;
-    grid-template-rows: min-content;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
     justify-content: center;
     align-items: center;
   }
