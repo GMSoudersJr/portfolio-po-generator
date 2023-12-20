@@ -5,7 +5,6 @@
     dbVersion,
     objectStoreName
   } from "$lib/indexedDb";
-	import Toast from '$lib/components/Toast.svelte';
   import { showToast } from '$lib/toasts';
 
 	import {onMount} from "svelte";
@@ -89,23 +88,17 @@
     />
   </div>
   {/if}
-  <Toast />
 </main>
 
 <style>
-  .key-container {
-    justify-self: center;
-    padding-top: 2rem;
-    grid-area: key;
-  }
   .page-container {
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr minmax(400px, 1fr) 1fr;
+    grid-template-columns: 1fr;
     grid-template-rows: auto;
     column-gap: 1rem;
     grid-template-areas:
-    "key form .";
+    ". form .";
   }
   .form {
     grid-area: form;
@@ -115,5 +108,11 @@
     color: #04AA6D;
     text-align: center;
     padding-bottom: 0.5rem;
+  }
+
+  @media screen and (min-width: 40em) {
+    .page-container {
+      grid-template-columns: 1fr 400px 1fr;
+    }
   }
 </style>
