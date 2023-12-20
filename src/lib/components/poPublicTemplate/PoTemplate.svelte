@@ -20,7 +20,6 @@
 	import { invalidKeyUsedString } from "$lib/strings/toasts";
 	import ByWidget from "./ByWidget.svelte";
 	import {pdfTemplateApprovedByString, pdfTemplateRequestedByString} from "$lib/strings/poTemplate";
-	import {error} from "@sveltejs/kit";
   let cryptionKey: CryptoKey | undefined;
   let db: IDBDatabase;
 

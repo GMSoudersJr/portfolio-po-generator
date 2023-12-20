@@ -20,17 +20,19 @@
 
 <style>
   .pdf-generator-container {
+    width: fit-content;
     background-color: var(--silver);
     display: grid;
-    grid-template-columns: 1fr min-content 1fr;
+    grid-template-columns: 1fr;
     grid-template-rows: auto;
     grid-template-areas:
-    ". pdfTemplate pdfButton";
+    "pdfTemplate";
     padding-top: 2rem;
     padding-bottom: 2rem;
   }
   .pdf-template {
     grid-area: pdfTemplate;
+    place-self: center;
   }
 </style>
 
