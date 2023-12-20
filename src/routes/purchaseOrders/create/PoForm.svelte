@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { updateArrayOfNumbers } from "$lib/utils";
+  import { changeToPascalCase, updateArrayOfNumbers } from "$lib/utils";
   import { numberOfProductsOrServices } from "$lib/stores";
 	import ApprovedBy from "./ApprovedBy.svelte";
 	import CreatedDate from "./CreatedDate.svelte";
@@ -26,6 +26,9 @@
 	import {showToast} from "$lib/toasts";
 	import {goto} from "$app/navigation";
 	import {applyAction, enhance} from "$app/forms";
+	import PayeeCards from "./PayeeCards.svelte";
+	import type {Document} from "mongodb";
+	import {reportBudgetLine, topicDivision} from "$lib/strings/poForm";
 
   $: arrayOfNumbers = updateArrayOfNumbers($numberOfProductsOrServices);
   interface SubtotalObject {
@@ -33,6 +36,7 @@
   }
 
   const subtotalObject: SubtotalObject = {};
+  let showFullForm = false;
 
   function handlePoNumberUpdate(event: CustomEvent) {
     const key: string = event.detail.poNumber.key;
@@ -57,6 +61,7 @@
   export let clickedPayeeTopicDivision = "";
   export let clickedPayeeReportingBudgetLine = "";
   export let poFormPoNumber: PoFormPoNumber;
+  export let payees: Document[] | undefined;
   export let form: ActionData;
 
   $: subtotalActual = Object.values(subtotalObject).reduce((accumulator, currentValue) => accumulator + currentValue, 0);
@@ -78,6 +83,51 @@
       }
     };
   }
+
+  function handleSearch(event: CustomEvent) {
+    const query = event.detail.query.toLowerCase();
+    payees?.forEach(payee => {
+      const shouldBeShown = payee.beneficiaryName.toLowerCase().includes(query);
+      payee.shouldBeShown = shouldBeShown;
+    });
+    payees = payees;
+    showFullForm = false;
+  }
+
+  function handleClickedPayee(event: CustomEvent) {
+    const payeeName = event.detail.payee.beneficiaryName;
+    const _id = event.detail.payee._id;
+    const taxRate = event.detail.payee.taxRate;
+    const currency = event.detail.payee.currency;
+    const payeeTopicDivision = event.detail.payee.topicDivision;
+    const payeeReportingBudgetLine = event.detail.payee.reportingBudgetLine;
+    clickedPayeeName = payeeName;
+    clickedPayee_id = _id;
+    clickedPayeeTaxRate = taxRate;
+    clickedPayeeCurrency = currency;
+    clickedPayeeTopicDivision = payeeTopicDivision;
+    clickedPayeeReportingBudgetLine = payeeReportingBudgetLine;
+    showFullForm = true;
+
+    if (!payeeReportingBudgetLine) {
+      clickedPayeeReportingBudgetLine = reportBudgetLine.options.at(0)?.value!;
+    }
+
+    if (payeeTopicDivision) {
+      poFormPoNumber.topicDivision = changeToPascalCase(payeeTopicDivision);
+      clickedPayeeTopicDivision = payeeTopicDivision;
+    } else {
+      poFormPoNumber.topicDivision =
+        changeToPascalCase(topicDivision.options.at(0)?.value);
+      clickedPayeeTopicDivision = topicDivision.options.at(0)?.value!;
+    }
+
+    payees?.forEach(payee => {
+    const shouldBeShown = payee.beneficiaryName.toLowerCase().includes(payeeName.toLowerCase());
+      payee.shouldBeShown = shouldBeShown;
+    });
+    payees = payees;
+  }
 </script>
 
 {#if form?.error}
@@ -89,10 +139,21 @@
   use:enhance={enhancement}
 >
   <PayeeName
-    on:searching
+    on:searching={handleSearch}
     {clickedPayeeName}
     {clickedPayee_id}
   />
+    {#if payees && payees.length > 0}
+    <PayeeCards
+      on:clickedPayee={handleClickedPayee}
+      {payees}
+    />
+    {:else}
+    <p class="no-payees">
+      No payees yet
+    </p>
+    {/if}
+    {#if showFullForm}
   <PoSummary
     on:summaryInput={handlePoNumberUpdate}
   />
@@ -143,6 +204,7 @@
     {poNumberActual}
   />
   <SubmitPoButton />
+    {/if}
 </form>
 
 <style>

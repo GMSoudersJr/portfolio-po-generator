@@ -11,7 +11,6 @@
   import { onMount } from "svelte";
   import { changeToPascalCase, formatPoNumberDateString, getInitials } from "$lib/utils";
 	import type { PageData, ActionData } from "./$types";
-	import PayeeCards from "./PayeeCards.svelte";
 	import PoForm from "./PoForm.svelte";
 	import type {PoFormPoNumber} from "$lib/classes";
 	import {dueDate, reportBudgetLine, requestedBy, topicDivision} from "$lib/strings/poForm";
@@ -39,49 +38,6 @@
     topicDivision: changeToPascalCase(topicDivision.options.at(0)?.value),
     requesterInitials: getInitials(requestedBy.options.at(0)?.value)
   };
-
-  function handleSearch(event: CustomEvent) {
-    const query = event.detail.query.toLowerCase();
-    payees?.forEach(payee => {
-      const shouldBeShown = payee.beneficiaryName.toLowerCase().includes(query);
-      payee.shouldBeShown = shouldBeShown;
-    });
-    payees = payees;
-  }
-
-  function handleClickedPayee(event: CustomEvent) {
-    const payeeName = event.detail.payee.beneficiaryName;
-    const _id = event.detail.payee._id;
-    const taxRate = event.detail.payee.taxRate;
-    const currency = event.detail.payee.currency;
-    const payeeTopicDivision = event.detail.payee.topicDivision;
-    const payeeReportingBudgetLine = event.detail.payee.reportingBudgetLine;
-    clickedPayeeName = payeeName;
-    clickedPayee_id = _id;
-    clickedPayeeTaxRate = taxRate;
-    clickedPayeeCurrency = currency;
-    clickedPayeeTopicDivision = payeeTopicDivision;
-    clickedPayeeReportingBudgetLine = payeeReportingBudgetLine;
-
-    if (!payeeReportingBudgetLine) {
-      clickedPayeeReportingBudgetLine = reportBudgetLine.options.at(0)?.value!;
-    }
-
-    if (payeeTopicDivision) {
-      poFormPoNumber.topicDivision = changeToPascalCase(payeeTopicDivision);
-      clickedPayeeTopicDivision = payeeTopicDivision;
-    } else {
-      poFormPoNumber.topicDivision =
-        changeToPascalCase(topicDivision.options.at(0)?.value);
-      clickedPayeeTopicDivision = topicDivision.options.at(0)?.value!;
-    }
-
-    payees?.forEach(payee => {
-    const shouldBeShown = payee.beneficiaryName.toLowerCase().includes(payeeName.toLowerCase());
-      payee.shouldBeShown = shouldBeShown;
-    });
-    payees = payees;
-  }
 
   let key: CryptoKey;
   let importedCryptionKeyFileName: string | null;
@@ -151,7 +107,6 @@
   {#if importedCryptionKeyFileName && key}
   <div class="po-form">
     <PoForm
-      on:searching={handleSearch}
       {clickedPayeeName}
       {clickedPayee_id}
       {clickedPayeeTaxRate}
@@ -160,50 +115,32 @@
       {clickedPayeeReportingBudgetLine}
       {poFormPoNumber}
       {form}
-    />
-  </div>
-  <div class="available-payees">
-    <h6 class="available-payees-header">
-      Available Payees
-    </h6>
-    {#if payees && payees.length > 0}
-    <PayeeCards
-      on:clickedPayee={handleClickedPayee}
       {payees}
     />
-    {:else}
-    <p class="no-payees">
-      No payees yet
-    </p>
-    {/if}
   </div>
   {/if}
 </div>
 
 <style>
-  .available-payees-header {
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 10px;
-  }
   .page-grid-container {
     display: grid;
-    grid-template-columns: 1fr minmax(400px, 1fr) 1fr;
+    grid-template-columns: 1fr;
     grid-template-rows: auto;
     grid-template-areas:
-    "key poForm availablePayees";
+    "poForm";
     column-gap: 1rem;
-  }
-  .available-payees {
-    grid-area: availablePayees;
   }
   .po-form {
     grid-area: poForm;
-    padding: 2rem 0;
+    padding: 2rem;
   }
-  .available-payees-header,
-  .no-payees {
-    padding-top: 2rem;
-    padding-left: 1rem;
+
+  @media screen and (min-width: 40em) {
+    .page-grid-container {
+      grid-template-columns: 1fr 600px 1fr;
+      grid-template-rows: auto;
+      grid-template-areas:
+      ". poForm .";
+    }
   }
 </style>
