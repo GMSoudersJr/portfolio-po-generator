@@ -9,6 +9,7 @@ This web-app allows users to create "payee" profiles and use them to then create
 <img src="https://github.com/GMSoudersJr/portfolio-po-generator/assets/44438849/7cb90e6e-a5f8-4c2d-adb3-2e841eab9fd1" alt="Payee Form" width="185" />
 <img src="https://github.com/GMSoudersJr/portfolio-po-generator/assets/44438849/1cde6d48-cbca-4201-b455-458894054735" alt="PO Form" width="185" />
 <img src="https://github.com/GMSoudersJr/portfolio-po-generator/assets/44438849/3931f824-84de-48b6-90d9-5ea611e7a0aa" alt="Purchase Order" width="185" />
+<img src="https://github.com/GMSoudersJr/portfolio-po-generator/assets/44438849/f2926460-6bbd-4266-9dc5-3ade14c66b16" alt="Encrypted User Data" width="185" />
 
 **LIVE LINK:** https://portfolio-po-generator.vercel.app
 
